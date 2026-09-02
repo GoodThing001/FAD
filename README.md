@@ -1,6 +1,6 @@
 # FAD clean mainline
 
-这是从旧项目安全重建的主线整理区。旧目录目前保持不动；只有经过校验、可解释、可复现的内容才进入这里。
+这是从旧项目安全重建的独立主线。旧目录只作为迁移和审计来源；只有经过校验、可解释、可复现的内容才进入这里。
 
 ## 当前正式结论
 
@@ -50,5 +50,4 @@ nohup python -u scripts/run_experiment.py configs/experiments/v8_final_100seed.j
 - 禁止在模型目录复制数据集或随意覆盖旧运行结果。
 - 禁止把大型日志、模型权重、NUPACK源码和MD轨迹提交到主线 Git。
 
-当前迁移状态见 [PROJECT_STATUS.md](PROJECT_STATUS.md)，历史目录处理规则见 [docs/MIGRATION_MAP.md](docs/MIGRATION_MAP.md)。
-
+当前迁移状态见 [PROJECT_STATUS.md](PROJECT_STATUS.md)，历史目录处理规则见 [docs/MIGRATION_MAP.md](docs/MIGRATION_MAP.md)，首批可恢复隔离记录见 [docs/ARCHIVE_LOG_20260902.md](docs/ARCHIVE_LOG_20260902.md)。

@@ -25,6 +25,8 @@ def preference(path: str) -> tuple[int, int, str]:
         rank = 10
     elif normalized.startswith("artifacts/"):
         rank = 20
+    elif normalized.startswith("archived/fad_rnaernie/"):
+        rank = 25
     elif normalized.startswith("archived/"):
         rank = 30
     elif normalized.startswith("docs/"):
@@ -129,4 +131,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

@@ -1,0 +1,21 @@
+{
+  "name": "v8_final_100seed",
+  "status": "validated_reproduction",
+  "entrypoint": "scripts/tools/phase3_fusion_v8.py",
+  "supports_log_dir": true,
+  "arguments": {
+    "outer-seeds": 100,
+    "inner-folds": 5,
+    "models": "RF,ET,GBR,XGB,SVR",
+    "screen-k": 100,
+    "n-jobs": 4,
+    "data-dir": "data/proxy2000_v2"
+  },
+  "reference_result": {
+    "metric": "gbsa_spearman",
+    "mean": 0.375,
+    "ci95_low": 0.367,
+    "ci95_high": 0.382
+  }
+}
+

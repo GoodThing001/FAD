@@ -1,0 +1,19 @@
+{
+  "name": "v8_pipeline_smoke",
+  "status": "smoke",
+  "entrypoint": "scripts/tools/phase3_fusion_v8.py",
+  "supports_log_dir": true,
+  "arguments": {
+    "outer-seeds": 1,
+    "inner-folds": 2,
+    "models": "GBR,SVR",
+    "screen-k": 100,
+    "n-jobs": 1,
+    "data-dir": "data/proxy2000_v2"
+  },
+  "acceptance": {
+    "exit_code": 0,
+    "expected_rows": 4
+  }
+}
+

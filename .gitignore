@@ -1,0 +1,24 @@
+# Generated experiment outputs
+runs/
+reports/
+artifacts/
+logs/
+
+# Local/large scientific data
+data/raw/
+data/external/
+data/features/
+*.npy
+*.npz
+*.pkl
+*.joblib
+*.pt
+*.pth
+
+# Python/editor noise
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.idea/
+.vscode/
+

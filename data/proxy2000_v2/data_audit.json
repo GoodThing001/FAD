@@ -1,0 +1,30 @@
+{
+  "source": "data0721.xlsx",
+  "total_rows": 2000,
+  "train": 1600,
+  "val": 200,
+  "test": 200,
+  "seed": 42,
+  "columns": {
+    "Full": "236nt full sequence",
+    "MFE": "NUPACK MFE energy",
+    "Pre": "NUPACK energy before binding",
+    "Aft": "NUPACK energy after binding",
+    "Sequence": "141nt aptamer sequence",
+    "Gap1": "Pre - MFE",
+    "Gap2": "Aft - MFE",
+    "Gap3": "Aft - Pre",
+    "dock": "docking score (FORBIDDEN as input)",
+    "gbsa": "MMGBSA binding energy (FORBIDDEN as input)",
+    "label": "0.961 * Gap2 + 0.039 * gbsa"
+  },
+  "label_formula": "label = 0.961 * Gap2 + 0.039 * gbsa",
+  "label_range": [
+    35.21503104930296,
+    52.76580408737262
+  ],
+  "forbidden_as_input": [
+    "dock",
+    "gbsa"
+  ]
+}

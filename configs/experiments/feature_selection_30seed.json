@@ -1,0 +1,25 @@
+{
+  "name": "feature_selection_30seed",
+  "status": "exploratory",
+  "entrypoint": "scripts/tools/feature_selection_pipeline.py",
+  "supports_log_dir": false,
+  "arguments": {
+    "seeds": 30,
+    "methods": "spearman,mutual_info,tree_importance,permutation,boruta,forward,rfe",
+    "seq-groups": "mut,wd,struct",
+    "top-k": 100,
+    "target": "winsor",
+    "loss": "mae",
+    "eval-models": "ET,RF,GBR,XGB",
+    "stability-inner-folds": 5,
+    "stability-threshold": 0.6,
+    "n-jobs": 4,
+    "data-dir": "data/proxy2000_v2"
+  },
+  "acceptance": {
+    "minimum_seeds": 30,
+    "selection_must_be_nested": true,
+    "promotion_requires_paired_improvement": true
+  }
+}
+

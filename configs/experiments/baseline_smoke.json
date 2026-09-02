@@ -1,0 +1,17 @@
+{
+  "name": "baseline_smoke",
+  "status": "smoke",
+  "entrypoint": "scripts/tools/baseline_30seed.py",
+  "supports_log_dir": false,
+  "arguments": {
+    "models": "ET,RF,GBR",
+    "seeds": 2,
+    "feature-set": "mutation_only",
+    "data-dir": "data/proxy2000_v2"
+  },
+  "acceptance": {
+    "exit_code": 0,
+    "expected_rows": 6
+  }
+}
+

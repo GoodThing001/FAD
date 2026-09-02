@@ -1,0 +1,11 @@
+experiment_id,date,status,dataset_id,feature_set,model_or_method,seeds,gbsa_spearman,ci_or_std,role,evidence
+baseline_mut_rf_100seed,2026-08-06,validated,proxy2000_v2_full,mutation_only_52d,RF500,100,0.365,95CI_0.357_0.373,release_baseline,docs/source_evidence/执行方案_v8.md
+v8_dev_best_30seed,2026-08-07,development_only,proxy2000_v2_full,mut_struct_wd_303d,winsor2.5_GBR_or_XGB_nested100,30,0.395,std_0.039,development_candidate,docs/source_evidence/执行方案_v8.md
+v8_rank_fusion_100seed,2026-08-08,validated,proxy2000_v2_full,mut_struct_wd_303d,five_model_equal_rank_fusion,100,0.375,95CI_0.367_0.382,release,docs/source_evidence/执行方案_v8.md
+v10b_contact_pca,2026-08-13,supplementary,proxy2000_v2_full,seq303_plus_contact_pca15d,XGB,30,0.3920,std_not_registered,nupack_single_block,evidence/logs/v10b_stdout.log
+v11_nupack_combo,2026-08-14,supplementary_negative,proxy2000_v2_full,seq303_plus_nupack192d,XGB,30,0.3849,std_0.0388,nupack_combo,evidence/logs/v11_stdout.log
+v13_final_combo,2026-08-14,supplementary_negative,proxy2000_v2_full,seq_nupack_rna_properties,XGB_and_GBR,30,,no_stable_gain,feature_combo,evidence/logs/v13_stdout.log
+dual_branch_v9,2026-08-12,deprecated,proxy2000_v2_full,tree_plus_nn,rank_fusion,30,0.267_nn_branch,fusion_delta_0.002,closed_route,PROJECT_STATUS.md
+feature_selection_202609,2026-09-02,exploratory,proxy2000_v2_full,mut_struct_wd_303d,filter_wrapper_embedded,2,,insufficient_seeds,active,experiments/feature_selection_202609/partial_results
+organization_smoke_20260902_r3,2026-09-02,smoke_passed,proxy2000_v2_full,mutation_only_52d,ET_RF_GBR,2,0.3396,std_0.0140,cleanroom_validation,runs/organization_smoke_20260902_r3
+v8_pipeline_smoke_20260902,2026-09-02,smoke_passed,proxy2000_v2_full,mut_struct_wd_303d,GBR_SVR_rank_fusion,1,0.3521,single_seed_smoke_only,cleanroom_validation,runs/v8_pipeline_smoke_20260902

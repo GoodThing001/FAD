@@ -65,9 +65,21 @@ def main() -> None:
         for row in csv.DictReader(handle):
             key = os.path.normcase(os.path.abspath(row["source_path"]))
             latest[key] = row
-    eligible = [
+    journal_eligible = [
         row for row in latest.values() if row["status"] in {"moved", "already_quarantined"}
     ]
+    eligible: list[dict[str, str]] = []
+    already_restored = 0
+    state_conflicts = 0
+    for row in journal_eligible:
+        source_exists = io_path(Path(row["source_path"])).exists()
+        target_exists = io_path(Path(row["quarantine_path"])).is_file()
+        if target_exists and not source_exists:
+            eligible.append(row)
+        elif source_exists and not target_exists:
+            already_restored += 1
+        else:
+            state_conflicts += 1
 
     requested = {
         os.path.normcase(os.path.abspath(str(legacy_root / candidate)))
@@ -92,6 +104,8 @@ def main() -> None:
         "mode": "execute" if args.execute else "dry_run",
         "selected_files": len(selected),
         "selected_bytes": sum(int(row["size_bytes"]) for row in selected),
+        "already_restored": already_restored,
+        "state_conflicts": state_conflicts,
     }
     print(json.dumps(preview, ensure_ascii=False, indent=2))
     if not args.execute:

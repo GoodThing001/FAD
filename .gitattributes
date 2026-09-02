@@ -1,0 +1,12 @@
+# Source and documentation use stable LF endings across Windows and Linux.
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# These files are hash-addressed scientific evidence; never rewrite bytes.
+data/proxy2000_v2/*.csv -text
+evidence/recovered_runs/** -text
+experiments/**/metrics*.csv -text

@@ -1,0 +1,24 @@
+contourpy==1.3.2
+cycler==0.12.1
+et_xmlfile==2.0.0
+fonttools==4.62.1
+Jinja2 @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_jinja2_1764517220/work
+kiwisolver==1.5.0
+MarkupSafe @ file:///home/conda/feedstock_root/build_artifacts/markupsafe_1772444934960/work
+matplotlib==3.10.9
+numpy @ file:///home/conda/feedstock_root/build_artifacts/numpy_1707225380409/work/dist/numpy-1.26.4-cp310-cp310-linux_x86_64.whl#sha256=51131fd8fc130cd168aecaf1bc0ea85f92e8ffebf211772ceb16ac2e7f10d7ca
+nupack @ file:///home/hzeng/project/FAD/%E4%BB%BF%E7%9C%9F%E8%AE%A1%E7%AE%97%E6%95%B0%E6%8D%AE/%E4%BB%BF%E7%9C%9F%E8%AE%A1%E7%AE%97%E6%95%B0%E6%8D%AE/nupack-4.0.0.27/source/build
+openpyxl==3.1.5
+packaging==26.0
+pandas @ file:///home/conda/feedstock_root/build_artifacts/pandas_1764614464206/work
+pillow==12.2.0
+pybind11 @ file:///D:/bld/bld/rattler-build_pybind11_1775004608/work
+pybind11-global @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_pybind11-global_1775004520/work
+pyparsing==3.3.2
+python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_python-dateutil_1751104122/work
+pytz @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_pytz_1777892201/work
+SciPy @ file:///home/conda/feedstock_root/build_artifacts/scipy-split_1700812469549/work/dist/scipy-1.11.4-cp310-cp310-linux_x86_64.whl#sha256=136e231ccb8768e60c17ed60f2c2423262d3dfd8136f373e715db9dd77617e41
+seaborn==0.13.2
+six @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_six_1753199211/work
+tqdm==4.67.3
+tzdata @ file:///home/conda/feedstock_root/build_artifacts/python-tzdata_1777068919240/work

@@ -9,7 +9,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data/proxy2000_v2"
 FULL = DATA / "fad_proxy2000_v2_full.csv"
+NUPACK_FEATURES = DATA / "nupack_features_full.csv"
 EXPECTED_SHA256 = "0876C2B25A5571B834EBAC2C0C0F7671E023F6028688E90CCBA884A75FD4322A"
+EXPECTED_NUPACK_SHA256 = "EFF085664F4377CCBA8F8D0E1CD4842BD8C24DC5FA5E56F476B28E736BD8A32D"
 REQUIRED_COLUMNS = {"Full", "MFE", "Pre", "Aft", "Sequence", "Gap1", "Gap2", "Gap3", "dock", "gbsa", "label"}
 
 
@@ -60,7 +62,22 @@ class DataContractTest(unittest.TestCase):
         self.assertFalse(sequence_sets["val"] & sequence_sets["test"])
         self.assertEqual(set.union(*sequence_sets.values()), {row["Sequence"] for row in self.full_rows})
 
+    def test_nupack_supplement_has_safe_schema_and_complete_coverage(self):
+        nupack_rows = read_rows(NUPACK_FEATURES)
+        self.assertEqual(file_sha256(NUPACK_FEATURES), EXPECTED_NUPACK_SHA256)
+        self.assertEqual(len(nupack_rows), 2000)
+        self.assertEqual(len(nupack_rows[0]), 1193)
+        self.assertEqual(
+            {row["Sequence"] for row in nupack_rows},
+            {row["Sequence"] for row in self.full_rows},
+        )
+        feature_columns = set(nupack_rows[0]) - {"Sequence"}
+        self.assertTrue(feature_columns)
+        self.assertTrue(
+            all(name.startswith(("nupack_", "delta_nupack_")) for name in feature_columns)
+        )
+        self.assertFalse(REQUIRED_COLUMNS - {"Sequence"} & set(nupack_rows[0]))
+
 
 if __name__ == "__main__":
     unittest.main()
-

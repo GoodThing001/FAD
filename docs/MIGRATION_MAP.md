@@ -4,7 +4,7 @@
 
 | 旧位置 | 分类 | 新位置/处理 |
 |---|---|---|
-| `data/proxy2000_v2/` | mainline | `data/proxy2000_v2/`；只保留 canonical 表和历史拆分 |
+| `data/proxy2000_v2/` | mainline | 保留canonical表、历史拆分及无泄漏的 `nupack_features_full.csv` |
 | `scripts/tools/baseline_30seed.py` | mainline | 保留为基线入口 |
 | `scripts/tools/phase3_fusion_v8.py` | mainline | 保留为 v8 正式复核入口 |
 | `scripts/tools/data_registry.py` | mainline | 保留为数据完整性入口 |
@@ -13,7 +13,7 @@
 | `scripts/tools/eval_final_combo.py` | supplementary | 依赖尚未同步的NUPACK文件 |
 | `logs/v10b`–`logs/v13` | supplementary evidence | 回收对应CSV后登记到运行包 |
 | `FAD_CNN/`、RNA模型、ESO等 | historical | 只在旧仓保留；新主线写索引，不复制 |
-| `artifacts/` | mixed/large | 按实验注册表挑选；禁止整目录迁移 |
+| `artifacts/` | mixed/large | 正式证据挑选后已移入外部待删隔离区；禁止整目录回灌 |
 | `docs/v1/` | mixed | 提升当前结论，旧版本进入文档归档 |
 | NUPACK源码与安装包 | third-party | 移出主线Git，只记录版本和安装方法 |
 | MD轨迹、Excel原始数据 | external/raw | 外部只读存储，登记哈希和路径 |
@@ -22,7 +22,7 @@
 ## 已识别风险
 
 1. 旧仓存在约 2.9 万条 Git 状态变更，不能进行批量删除或重置。
-2. 服务器日志引用的多个最终CSV未同步到本地。
+2. v8完整checkpoint已同步；旧特征选择日志引用的 `full_30seed.csv` 仍缺失。
 3. 根 README 与 v8 文档对“当前推荐模型”的表述不一致。
 4. `eval_rank_targets.py` 的 rank-uniform/rank-Gaussian 变换联合排序训练和测试标签；winsor分支不受该问题影响。
-5. 旧 `artifacts/` 超过 16 GB，必须按运行登记选择性回收，不能整体复制。
+5. 旧 `artifacts/` 已选择性回收并隔离；不得从服务器再次整体复制到主项目。

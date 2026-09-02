@@ -1,0 +1,5 @@
+{
+  "started": "2026-08-08T18:03:05.233479",
+  "command": "scripts/tools/phase3_fusion_v8.py --outer-seeds 100 --inner-folds 5 --models RF,ET,GBR,XGB,SVR --screen-k 100 --n-jobs 4 --log-dir logs/phase4_v8 --output artifacts/phase4_v8/final_100seed.csv",
+  "host": "user"
+}

@@ -1,8 +1,15 @@
 # 服务器结果回收与同步清单
 
-服务器暂时不可连接时，不重跑已有实验。恢复连接后先生成清单，再按优先级同步；不要直接复制整个旧项目或 MD 轨迹目录。
+核心服务器结果已于2026-09-02回收。以后只增量同步缺失项，不要再次复制整个旧项目或MD轨迹目录。
 
 ## 本地已经具备
+
+新增回收：
+
+- `evidence/server_sync_20260902/v8_fusion_100seed/`：700行、100/100 seeds完整checkpoint及日志。
+- `evidence/server_sync_20260902/v8_fusion_30seed/`：210行、30/30 seeds完整checkpoint及日志。
+- `data/proxy2000_v2/nupack_features_full.csv`：2000条×1192个安全NUPACK特征。
+- `environments/`：NUPACK环境记录。
 
 旧仓中的下列检查点已经在本地核验为完整 30-seed，并回收到 `evidence/recovered_runs/`：
 
@@ -16,13 +23,13 @@
 
 这些文件如果服务器哈希相同，不需要重复下载。
 
-## 服务器必须补回的内容
+## 仍需补回的内容
 
-优先级 A（用于冻结正式结果）：
+优先级 A（缺失但不阻塞v8复核）：
 
-1. v8 100-seed 发布运行包：`artifacts/phase3_v8/`、`logs/phase3_v8/`，以及可能存在的 `artifacts/phase4_v8/`、`logs/phase4_v8/`。
-2. 上述运行的最终 CSV、逐 seed CSV、预测文件、配置、`progress.json`、`run_meta.json` 和 `stdout.log`。
-3. 当时实际使用的 `phase3_fusion_v8.py`、`final_validation_v8.py`、环境文件和 Git 提交号。
+1. v8最终命名CSV和逐样本预测文件（如果服务器仍存在）；逐seed checkpoint已经完整回收。
+2. 旧版特征选择声明生成的 `artifacts/feat_sel/full_30seed.csv`；缺失时不重建或伪造。
+3. 当时服务器Git提交号与主训练环境freeze（NUPACK环境已经回收）。
 
 优先级 B（补齐已完成的 NUPACK 消融证据）：
 
@@ -34,12 +41,7 @@
 6. `artifacts/v13/final_combo_30seed.csv`
 7. 对应 `stdout.log`。本地已有 `all_results.csv`，哈希一致时最终 CSV 只用于确认发布命名和完整性。
 
-优先级 C（后续特征选择或 NUPACK 复现）：
-
-- `data/proxy2000_v2/train_nupack.csv`
-- `data/proxy2000_v2/val_nupack.csv`
-- `data/proxy2000_v2/test_nupack.csv`
-- 生成这些表的 NUPACK 脚本、配置和版本信息。
+优先级 C已经完成：历史split NUPACK表已核验并合并成按 `Sequence` 连接的安全全量特征表，不再需要重复同步三个split文件。
 
 优先级 D（进入物理标签阶段）：
 

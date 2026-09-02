@@ -1,0 +1,44 @@
+Data: 2000 sequences, features: 303d
+  seed= 1 [1/30]  best_single=0.3576  eq_fusion=0.3616  w_fusion=0.3617  best=0.3617  31s
+  seed= 2 [2/30]  best_single=0.3492  eq_fusion=0.3483  w_fusion=0.3483  best=0.3492  61s
+  seed= 3 [3/30]  best_single=0.3653  eq_fusion=0.3780  w_fusion=0.3779  best=0.3780  92s
+  seed= 4 [4/30]  best_single=0.3794  eq_fusion=0.3830  w_fusion=0.3830  best=0.3830  124s
+  seed= 5 [5/30]  best_single=0.3776  eq_fusion=0.3644  w_fusion=0.3644  best=0.3776  155s
+  seed= 6 [6/30]  best_single=0.3691  eq_fusion=0.3616  w_fusion=0.3616  best=0.3691  186s
+  seed= 7 [7/30]  best_single=0.4148  eq_fusion=0.4188  w_fusion=0.4187  best=0.4188  217s
+  seed= 8 [8/30]  best_single=0.3753  eq_fusion=0.3691  w_fusion=0.3690  best=0.3753  248s
+  seed= 9 [9/30]  best_single=0.3903  eq_fusion=0.3806  w_fusion=0.3806  best=0.3903  279s
+  seed=10 [10/30]  best_single=0.4420  eq_fusion=0.4372  w_fusion=0.4370  best=0.4420  310s
+  seed=11 [11/30]  best_single=0.3550  eq_fusion=0.3509  w_fusion=0.3509  best=0.3550  341s
+  seed=12 [12/30]  best_single=0.4170  eq_fusion=0.3959  w_fusion=0.3960  best=0.4170  372s
+  seed=13 [13/30]  best_single=0.4337  eq_fusion=0.4364  w_fusion=0.4365  best=0.4365  403s
+  seed=14 [14/30]  best_single=0.4354  eq_fusion=0.4085  w_fusion=0.4084  best=0.4354  434s
+  seed=15 [15/30]  best_single=0.3889  eq_fusion=0.3943  w_fusion=0.3944  best=0.3944  465s
+  seed=16 [16/30]  best_single=0.3343  eq_fusion=0.3286  w_fusion=0.3285  best=0.3343  496s
+  seed=17 [17/30]  best_single=0.4300  eq_fusion=0.4273  w_fusion=0.4275  best=0.4300  528s
+  seed=18 [18/30]  best_single=0.3879  eq_fusion=0.3693  w_fusion=0.3692  best=0.3879  558s
+  seed=19 [19/30]  best_single=0.4061  eq_fusion=0.4020  w_fusion=0.4025  best=0.4061  589s
+  seed=20 [20/30]  best_single=0.3853  eq_fusion=0.3893  w_fusion=0.3893  best=0.3893  620s
+  seed=21 [21/30]  best_single=0.4466  eq_fusion=0.4421  w_fusion=0.4421  best=0.4466  651s
+  seed=22 [22/30]  best_single=0.3519  eq_fusion=0.3457  w_fusion=0.3457  best=0.3519  682s
+  seed=23 [23/30]  best_single=0.4148  eq_fusion=0.4240  w_fusion=0.4240  best=0.4240  713s
+  seed=24 [24/30]  best_single=0.4185  eq_fusion=0.4047  w_fusion=0.4047  best=0.4185  744s
+  seed=25 [25/30]  best_single=0.3273  eq_fusion=0.2895  w_fusion=0.2894  best=0.3273  775s
+  seed=26 [26/30]  best_single=0.4276  eq_fusion=0.4342  w_fusion=0.4342  best=0.4342  806s
+  seed=27 [27/30]  best_single=0.4390  eq_fusion=0.4432  w_fusion=0.4432  best=0.4432  837s
+  seed=28 [28/30]  best_single=0.4320  eq_fusion=0.4330  w_fusion=0.4328  best=0.4330  868s
+  seed=29 [29/30]  best_single=0.4112  eq_fusion=0.4131  w_fusion=0.4131  best=0.4131  899s
+  seed=30 [30/30]  best_single=0.3744  eq_fusion=0.3780  w_fusion=0.3780  best=0.3780  930s
+
+[OK] 210 rows → /home/hzeng/project/FAD_v1/artifacts/phase3_v8/fusion_results.csv
+
+================================================================================
+PHASE 3 v8 — OOF RANK FUSION RESULTS
+================================================================================
+single.RF            0.3660 +/- 0.0409  [0.2449,0.4466]
+single.ET            0.3699 +/- 0.0397  [0.2553,0.4367]
+single.GBR           0.3740 +/- 0.0383  [0.2946,0.4390]
+single.XGB           0.3841 +/- 0.0381  [0.2972,0.4420]
+single.SVR           0.3483 +/- 0.0368  [0.2607,0.4207]
+equal_weight_rank    0.3904 +/- 0.0370  vs_best_single=-0.0042  wins=13/30
+constrained_weight   0.3904 +/- 0.0370  vs_best_single=-0.0042  wins=13/30

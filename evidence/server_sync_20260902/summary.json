@@ -1,0 +1,27 @@
+{
+  "recovered_at": "2026-09-02",
+  "v8_fusion_100seed": {
+    "status": "validated_complete_checkpoint",
+    "seeds": 100,
+    "rows": 700,
+    "equal_weight_rank_mean": 0.37476952,
+    "equal_weight_rank_bootstrap_95ci": [0.366905437, 0.382314065],
+    "xgb_mean": 0.37231791,
+    "paired_delta_equal_vs_xgb": 0.00245161,
+    "paired_delta_bootstrap_95ci": [-0.001483061, 0.00652399],
+    "paired_wins": 54,
+    "paired_total": 100
+  },
+  "v8_fusion_30seed": {
+    "status": "validated_complete_checkpoint",
+    "seeds": 30,
+    "rows": 210
+  },
+  "legacy_feature_selection_30seed": {
+    "status": "summary_only_incomplete_package",
+    "seeds_reported_complete": 30,
+    "missing_declared_output": "artifacts/feat_sel/full_30seed.csv",
+    "promotion": "not_allowed"
+  },
+  "phase3_script_sha256": "43c7abaeb058eecdf16da385f9f1bbc711e32c3a3c67d67961135f29edbf4a41"
+}

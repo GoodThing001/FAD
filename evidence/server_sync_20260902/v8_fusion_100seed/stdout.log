@@ -1,0 +1,114 @@
+Data: 2000 sequences, features: 303d
+  seed= 1 [1/100]  best_single=0.3576  eq_fusion=0.3616  w_fusion=0.3617  best=0.3617  31s
+  seed= 2 [2/100]  best_single=0.3492  eq_fusion=0.3483  w_fusion=0.3483  best=0.3492  62s
+  seed= 3 [3/100]  best_single=0.3653  eq_fusion=0.3780  w_fusion=0.3779  best=0.3780  94s
+  seed= 4 [4/100]  best_single=0.3794  eq_fusion=0.3830  w_fusion=0.3830  best=0.3830  125s
+  seed= 5 [5/100]  best_single=0.3776  eq_fusion=0.3644  w_fusion=0.3644  best=0.3776  156s
+  seed= 6 [6/100]  best_single=0.3691  eq_fusion=0.3616  w_fusion=0.3616  best=0.3691  187s
+  seed= 7 [7/100]  best_single=0.4148  eq_fusion=0.4188  w_fusion=0.4187  best=0.4188  218s
+  seed= 8 [8/100]  best_single=0.3753  eq_fusion=0.3691  w_fusion=0.3690  best=0.3753  249s
+  seed= 9 [9/100]  best_single=0.3903  eq_fusion=0.3806  w_fusion=0.3806  best=0.3903  280s
+  seed=10 [10/100]  best_single=0.4420  eq_fusion=0.4372  w_fusion=0.4370  best=0.4420  311s
+  seed=11 [11/100]  best_single=0.3550  eq_fusion=0.3509  w_fusion=0.3509  best=0.3550  341s
+  seed=12 [12/100]  best_single=0.4170  eq_fusion=0.3959  w_fusion=0.3960  best=0.4170  372s
+  seed=13 [13/100]  best_single=0.4337  eq_fusion=0.4364  w_fusion=0.4365  best=0.4365  403s
+  seed=14 [14/100]  best_single=0.4354  eq_fusion=0.4085  w_fusion=0.4084  best=0.4354  434s
+  seed=15 [15/100]  best_single=0.3889  eq_fusion=0.3943  w_fusion=0.3944  best=0.3944  465s
+  seed=16 [16/100]  best_single=0.3343  eq_fusion=0.3286  w_fusion=0.3285  best=0.3343  496s
+  seed=17 [17/100]  best_single=0.4300  eq_fusion=0.4273  w_fusion=0.4275  best=0.4300  526s
+  seed=18 [18/100]  best_single=0.3879  eq_fusion=0.3693  w_fusion=0.3692  best=0.3879  557s
+  seed=19 [19/100]  best_single=0.4061  eq_fusion=0.4020  w_fusion=0.4025  best=0.4061  588s
+  seed=20 [20/100]  best_single=0.3853  eq_fusion=0.3893  w_fusion=0.3893  best=0.3893  619s
+  seed=21 [21/100]  best_single=0.4466  eq_fusion=0.4421  w_fusion=0.4421  best=0.4466  650s
+  seed=22 [22/100]  best_single=0.3519  eq_fusion=0.3457  w_fusion=0.3457  best=0.3519  681s
+  seed=23 [23/100]  best_single=0.4148  eq_fusion=0.4240  w_fusion=0.4240  best=0.4240  711s
+  seed=24 [24/100]  best_single=0.4185  eq_fusion=0.4047  w_fusion=0.4047  best=0.4185  742s
+  seed=25 [25/100]  best_single=0.3273  eq_fusion=0.2895  w_fusion=0.2894  best=0.3273  773s
+  seed=26 [26/100]  best_single=0.4276  eq_fusion=0.4342  w_fusion=0.4342  best=0.4342  804s
+  seed=27 [27/100]  best_single=0.4390  eq_fusion=0.4432  w_fusion=0.4432  best=0.4432  835s
+  seed=28 [28/100]  best_single=0.4320  eq_fusion=0.4330  w_fusion=0.4328  best=0.4330  866s
+  seed=29 [29/100]  best_single=0.4112  eq_fusion=0.4131  w_fusion=0.4131  best=0.4131  897s
+  seed=30 [30/100]  best_single=0.3744  eq_fusion=0.3780  w_fusion=0.3780  best=0.3780  928s
+  seed=31 [31/100]  best_single=0.4262  eq_fusion=0.4059  w_fusion=0.4059  best=0.4262  960s
+  seed=32 [32/100]  best_single=0.3811  eq_fusion=0.3691  w_fusion=0.3691  best=0.3811  991s
+  seed=33 [33/100]  best_single=0.3987  eq_fusion=0.4191  w_fusion=0.4192  best=0.4192  1022s
+  seed=34 [34/100]  best_single=0.3155  eq_fusion=0.3232  w_fusion=0.3232  best=0.3232  1053s
+  seed=35 [35/100]  best_single=0.3875  eq_fusion=0.3895  w_fusion=0.3895  best=0.3895  1084s
+  seed=36 [36/100]  best_single=0.4058  eq_fusion=0.3931  w_fusion=0.3930  best=0.4058  1115s
+  seed=37 [37/100]  best_single=0.3833  eq_fusion=0.3876  w_fusion=0.3875  best=0.3876  1145s
+  seed=38 [38/100]  best_single=0.3436  eq_fusion=0.3304  w_fusion=0.3303  best=0.3436  1176s
+  seed=39 [39/100]  best_single=0.3809  eq_fusion=0.3693  w_fusion=0.3693  best=0.3809  1207s
+  seed=40 [40/100]  best_single=0.4130  eq_fusion=0.3961  w_fusion=0.3960  best=0.4130  1238s
+  seed=41 [41/100]  best_single=0.4296  eq_fusion=0.4210  w_fusion=0.4210  best=0.4296  1269s
+  seed=42 [42/100]  best_single=0.4107  eq_fusion=0.3888  w_fusion=0.3887  best=0.4107  1300s
+  seed=43 [43/100]  best_single=0.3605  eq_fusion=0.3282  w_fusion=0.3283  best=0.3605  1331s
+  seed=44 [44/100]  best_single=0.3529  eq_fusion=0.3490  w_fusion=0.3489  best=0.3529  1361s
+  seed=45 [45/100]  best_single=0.3727  eq_fusion=0.3758  w_fusion=0.3759  best=0.3759  1392s
+  seed=46 [46/100]  best_single=0.4006  eq_fusion=0.4017  w_fusion=0.4019  best=0.4019  1423s
+  seed=47 [47/100]  best_single=0.2556  eq_fusion=0.2538  w_fusion=0.2525  best=0.2556  1454s
+  seed=48 [48/100]  best_single=0.4379  eq_fusion=0.4278  w_fusion=0.4278  best=0.4379  1485s
+  seed=49 [49/100]  best_single=0.4143  eq_fusion=0.3905  w_fusion=0.3906  best=0.4143  1515s
+  seed=50 [50/100]  best_single=0.3583  eq_fusion=0.3596  w_fusion=0.3596  best=0.3596  1547s
+  seed=51 [51/100]  best_single=0.3902  eq_fusion=0.3942  w_fusion=0.3942  best=0.3942  1577s
+  seed=52 [52/100]  best_single=0.3328  eq_fusion=0.3198  w_fusion=0.3198  best=0.3328  1608s
+  seed=53 [53/100]  best_single=0.3991  eq_fusion=0.4039  w_fusion=0.4039  best=0.4039  1640s
+  seed=54 [54/100]  best_single=0.3718  eq_fusion=0.3753  w_fusion=0.3754  best=0.3754  1671s
+  seed=55 [55/100]  best_single=0.3918  eq_fusion=0.3820  w_fusion=0.3820  best=0.3918  1702s
+  seed=56 [56/100]  best_single=0.3413  eq_fusion=0.3267  w_fusion=0.3267  best=0.3413  1733s
+  seed=57 [57/100]  best_single=0.2565  eq_fusion=0.2651  w_fusion=0.2653  best=0.2653  1763s
+  seed=58 [58/100]  best_single=0.3770  eq_fusion=0.3850  w_fusion=0.3849  best=0.3850  1794s
+  seed=59 [59/100]  best_single=0.4040  eq_fusion=0.4111  w_fusion=0.4113  best=0.4113  1826s
+  seed=60 [60/100]  best_single=0.3339  eq_fusion=0.3404  w_fusion=0.3405  best=0.3405  1857s
+  seed=61 [61/100]  best_single=0.3396  eq_fusion=0.3303  w_fusion=0.3302  best=0.3396  1888s
+  seed=62 [62/100]  best_single=0.3287  eq_fusion=0.3329  w_fusion=0.3329  best=0.3329  1919s
+  seed=63 [63/100]  best_single=0.4124  eq_fusion=0.4155  w_fusion=0.4156  best=0.4156  1949s
+  seed=64 [64/100]  best_single=0.3714  eq_fusion=0.3720  w_fusion=0.3719  best=0.3720  1980s
+  seed=65 [65/100]  best_single=0.3772  eq_fusion=0.3588  w_fusion=0.3588  best=0.3772  2011s
+  seed=66 [66/100]  best_single=0.3530  eq_fusion=0.3289  w_fusion=0.3290  best=0.3530  2042s
+  seed=67 [67/100]  best_single=0.4022  eq_fusion=0.4057  w_fusion=0.4058  best=0.4058  2073s
+  seed=68 [68/100]  best_single=0.3442  eq_fusion=0.3140  w_fusion=0.3138  best=0.3442  2104s
+  seed=69 [69/100]  best_single=0.3781  eq_fusion=0.3780  w_fusion=0.3780  best=0.3781  2135s
+  seed=70 [70/100]  best_single=0.4228  eq_fusion=0.4034  w_fusion=0.4035  best=0.4228  2166s
+  seed=71 [71/100]  best_single=0.3287  eq_fusion=0.3103  w_fusion=0.3104  best=0.3287  2197s
+  seed=72 [72/100]  best_single=0.3920  eq_fusion=0.4093  w_fusion=0.4094  best=0.4094  2228s
+  seed=73 [73/100]  best_single=0.4017  eq_fusion=0.4037  w_fusion=0.4038  best=0.4038  2259s
+  seed=74 [74/100]  best_single=0.4085  eq_fusion=0.4099  w_fusion=0.4099  best=0.4099  2290s
+  seed=75 [75/100]  best_single=0.3579  eq_fusion=0.3651  w_fusion=0.3652  best=0.3652  2321s
+  seed=76 [76/100]  best_single=0.3809  eq_fusion=0.3734  w_fusion=0.3735  best=0.3809  2351s
+  seed=77 [77/100]  best_single=0.3053  eq_fusion=0.3097  w_fusion=0.3096  best=0.3097  2382s
+  seed=78 [78/100]  best_single=0.4018  eq_fusion=0.3987  w_fusion=0.3987  best=0.4018  2413s
+  seed=79 [79/100]  best_single=0.3269  eq_fusion=0.3247  w_fusion=0.3245  best=0.3269  2444s
+  seed=80 [80/100]  best_single=0.4013  eq_fusion=0.3971  w_fusion=0.3972  best=0.4013  2475s
+  seed=81 [81/100]  best_single=0.3586  eq_fusion=0.3681  w_fusion=0.3681  best=0.3681  2506s
+  seed=82 [82/100]  best_single=0.3315  eq_fusion=0.3326  w_fusion=0.3326  best=0.3326  2537s
+  seed=83 [83/100]  best_single=0.3767  eq_fusion=0.3319  w_fusion=0.3318  best=0.3767  2567s
+  seed=84 [84/100]  best_single=0.3902  eq_fusion=0.3724  w_fusion=0.3724  best=0.3902  2598s
+  seed=85 [85/100]  best_single=0.3996  eq_fusion=0.4002  w_fusion=0.4003  best=0.4003  2629s
+  seed=86 [86/100]  best_single=0.3954  eq_fusion=0.4001  w_fusion=0.4000  best=0.4001  2660s
+  seed=87 [87/100]  best_single=0.3357  eq_fusion=0.3131  w_fusion=0.3131  best=0.3357  2691s
+  seed=88 [88/100]  best_single=0.3969  eq_fusion=0.3547  w_fusion=0.3547  best=0.3969  2722s
+  seed=89 [89/100]  best_single=0.4420  eq_fusion=0.4119  w_fusion=0.4120  best=0.4420  2753s
+  seed=90 [90/100]  best_single=0.3477  eq_fusion=0.3338  w_fusion=0.3336  best=0.3477  2784s
+  seed=91 [91/100]  best_single=0.3617  eq_fusion=0.3579  w_fusion=0.3579  best=0.3617  2816s
+  seed=92 [92/100]  best_single=0.3584  eq_fusion=0.3593  w_fusion=0.3593  best=0.3593  2846s
+  seed=93 [93/100]  best_single=0.3679  eq_fusion=0.3622  w_fusion=0.3623  best=0.3679  2877s
+  seed=94 [94/100]  best_single=0.3921  eq_fusion=0.3695  w_fusion=0.3696  best=0.3921  2908s
+  seed=95 [95/100]  best_single=0.3554  eq_fusion=0.3304  w_fusion=0.3305  best=0.3554  2939s
+  seed=96 [96/100]  best_single=0.3897  eq_fusion=0.3937  w_fusion=0.3936  best=0.3937  2970s
+  seed=97 [97/100]  best_single=0.4330  eq_fusion=0.4424  w_fusion=0.4424  best=0.4424  3001s
+  seed=98 [98/100]  best_single=0.3729  eq_fusion=0.3768  w_fusion=0.3767  best=0.3768  3031s
+  seed=99 [99/100]  best_single=0.3969  eq_fusion=0.3962  w_fusion=0.3961  best=0.3969  3063s
+  seed=100 [100/100]  best_single=0.3412  eq_fusion=0.3329  w_fusion=0.3328  best=0.3412  3094s
+
+[OK] 700 rows → /home/hzeng/project/FAD_v1/artifacts/phase4_v8/final_100seed.csv
+
+================================================================================
+PHASE 3 v8 — OOF RANK FUSION RESULTS
+================================================================================
+single.RF            0.3520 +/- 0.0399  [0.2449,0.4466]
+single.ET            0.3567 +/- 0.0399  [0.2315,0.4367]
+single.GBR           0.3581 +/- 0.0404  [0.2320,0.4390]
+single.XGB           0.3723 +/- 0.0394  [0.2264,0.4420]
+single.SVR           0.3299 +/- 0.0417  [0.2361,0.4207]
+equal_weight_rank    0.3748 +/- 0.0391  vs_best_single=-0.0057  wins=44/100
+constrained_weight   0.3748 +/- 0.0391  vs_best_single=-0.0057  wins=44/100

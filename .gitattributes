@@ -9,4 +9,6 @@
 # These files are hash-addressed scientific evidence; never rewrite bytes.
 data/proxy2000_v2/*.csv -text
 evidence/recovered_runs/** -text
+evidence/server_sync_20260902/** -text
+environments/** -text
 experiments/**/metrics*.csv -text

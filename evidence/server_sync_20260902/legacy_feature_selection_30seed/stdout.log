@@ -1,0 +1,179 @@
+[build] mut: 52d
+[build] wd: 208d
+[build] struct: 43d
+[load] constrained: 301d
+[data] 2000 samples x 604 features; target=gbsa; transform=winsor; loss=mae
+[info] NUPACK 192d is NOT loaded by this script; run the NUPACK pipeline separately for structural features.
+  seed= 1 done [1/30]
+  seed= 2 done [2/30]
+  seed= 3 done [3/30]
+  seed= 4 done [4/30]
+  seed= 5 done [5/30]
+  seed= 6 done [6/30]
+  seed= 7 done [7/30]
+  seed= 8 done [8/30]
+  seed= 9 done [9/30]
+  seed=10 done [10/30]
+  seed=11 done [11/30]
+  seed=12 done [12/30]
+  seed=13 done [13/30]
+  seed=14 done [14/30]
+  seed=15 done [15/30]
+  seed=16 done [16/30]
+  seed=17 done [17/30]
+  seed=18 done [18/30]
+  seed=19 done [19/30]
+  seed=20 done [20/30]
+  seed=21 done [21/30]
+  seed=22 done [22/30]
+  seed=23 done [23/30]
+  seed=24 done [24/30]
+  seed=25 done [25/30]
+  seed=26 done [26/30]
+  seed=27 done [27/30]
+  seed=28 done [28/30]
+  seed=29 done [29/30]
+  seed=30 done [30/30]
+
+[OK] per-seed results -> /home/hzeng/project/FAD_v1/artifacts/feat_sel/full_30seed.csv
+
+==========================================================================================
+SUMMARY — mean test Spearman by method x model (across seeds)
+==========================================================================================
+                   mean                                             std                                        
+model                ET     GBR    LGBM      RF     SVR     XGB      ET     GBR    LGBM      RF     SVR     XGB
+method                                                                                                         
+boruta           0.3043  0.3087  0.2749  0.3256  0.3322  0.2981  0.0397  0.0372  0.0381  0.0373  0.0383  0.0372
+forward          0.2801  0.2869  0.2731  0.2830  0.2833  0.2822  0.0507  0.0509  0.0470  0.0479  0.0464  0.0506
+lasso            0.3735  0.3528  0.3598  0.3707  0.3572  0.3537  0.0414  0.0350  0.0358  0.0406  0.0411  0.0370
+mutual_info      0.3449  0.3456  0.3300  0.3501  0.3367  0.3344  0.0398  0.0417  0.0380  0.0377  0.0389  0.0422
+permutation      0.3362  0.3279  0.2975  0.3460  0.3399  0.3180  0.0445  0.0454  0.0454  0.0458  0.0409  0.0447
+rfe              0.3542  0.3416  0.3215  0.3576  0.3485  0.3343  0.0449  0.0420  0.0489  0.0464  0.0435  0.0386
+spearman         0.3597  0.3563  0.3471  0.3663  0.3591  0.3454  0.0416  0.0421  0.0441  0.0437  0.0430  0.0439
+tree_importance  0.3669  0.3509  0.3448  0.3681  0.3614  0.3474  0.0396  0.0374  0.0396  0.0421  0.0419  0.0384
+
+==========================================================================================
+FEATURE STABILITY — features selected in >= 50% of seeds, per method
+==========================================================================================
+
+[spearman] 93 features >= 50% stability (top 15):
+    mut_p31_A                    100%
+    mut_p31_C                    100%
+    mut_p31_G                    100%
+    mut_p127_A                   100%
+    mut_p128_C                   100%
+    mut_p128_G                   100%
+    wd_p30_AG                    100%
+    wd_p30_CC                    100%
+    wd_p31_AG                    100%
+    wd_p31_CC                    100%
+    wd_p32_AG                    100%
+    wd_p32_CC                    100%
+    wd_p33_AG                    100%
+    wd_p33_CC                    100%
+    wd_p127_AU                   100%
+
+[mutual_info] 45 features >= 50% stability (top 15):
+    inter_45                     100%
+    wd_p127_GU                   93%
+    wd_p129_GU                   93%
+    inter_234                    93%
+    inter_185                    90%
+    inter_246                    90%
+    wd_p128_GU                   87%
+    wd_p130_GU                   87%
+    wd_p131_GU                   87%
+    inter_67                     83%
+    inter_0                      80%
+    inter_107                    80%
+    inter_40                     80%
+    mut_p31_C                    77%
+    mut_p33_C                    73%
+
+[tree_importance] 89 features >= 50% stability (top 15):
+    mut_p31_A                    100%
+    mut_p31_C                    100%
+    mut_p31_G                    100%
+    mut_p31_U                    100%
+    mut_p127_A                   100%
+    mut_p128_C                   100%
+    mut_p128_G                   100%
+    wd_p31_AG                    100%
+    wd_p33_AG                    100%
+    struct_p31_mut_in_stem       100%
+    inter_0                      100%
+    inter_5                      100%
+    inter_30                     100%
+    inter_35                     100%
+    inter_40                     100%
+
+[permutation] 17 features >= 50% stability (top 15):
+    mut_p127_A                   100%
+    inter_0                      100%
+    inter_125                    100%
+    inter_185                    100%
+    inter_234                    100%
+    inter_242                    100%
+    mut_p128_C                   93%
+    inter_45                     93%
+    inter_35                     90%
+    inter_40                     87%
+    inter_5                      83%
+    mut_p128_G                   80%
+    inter_241                    80%
+    inter_77                     70%
+    inter_237                    57%
+
+[boruta] 15 features >= 50% stability (top 15):
+    inter_0                      100%
+    inter_5                      100%
+    inter_35                     100%
+    inter_125                    100%
+    inter_185                    100%
+    inter_234                    100%
+    inter_242                    100%
+    mut_p128_G                   97%
+    inter_40                     87%
+    inter_45                     80%
+    mut_p127_A                   77%
+    mut_p128_C                   67%
+    inter_221                    57%
+    mut_p31_A                    53%
+    struct_p31_mut_in_stem       50%
+
+[lasso] 193 features >= 50% stability (top 15):
+    mut_p91_A                    100%
+    wd_p30_CU                    100%
+    wd_p30_GU                    100%
+    wd_p30_UU                    100%
+    wd_p31_CU                    100%
+    wd_p31_GU                    100%
+    wd_p31_UU                    100%
+    wd_p32_CU                    100%
+    wd_p32_UU                    100%
+    wd_p33_UU                    100%
+    wd_p89_AA                    100%
+    wd_p89_CC                    100%
+    wd_p90_AA                    100%
+    wd_p127_AU                   100%
+    wd_p127_GA                   100%
+
+[forward] 1 features >= 50% stability (top 15):
+    inter_234                    100%
+
+[rfe] 22 features >= 50% stability (top 15):
+    mut_p127_A                   100%
+    inter_0                      100%
+    inter_5                      100%
+    inter_35                     100%
+    inter_45                     100%
+    inter_125                    100%
+    inter_185                    100%
+    inter_234                    100%
+    inter_261                    100%
+    inter_242                    93%
+    mut_p128_C                   87%
+    inter_40                     83%
+    inter_143                    80%
+    mut_p92_C                    80%
+    inter_77                     73%

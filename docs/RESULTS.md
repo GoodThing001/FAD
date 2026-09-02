@@ -5,7 +5,7 @@
 | 方法 | 协议 | gbsa Spearman | 状态 |
 |---|---|---:|---|
 | mutation-only + RF | 100 seeds | 0.365，95% CI 约 ±0.008 | baseline |
-| v8 五模型秩融合 | 100 seeds | 0.375，95% CI [0.367, 0.382] | release |
+| v8 五模型秩融合 | 100 seeds | 0.37477，bootstrap 95% CI [0.36691, 0.38231] | release，服务器checkpoint已回收 |
 | mut+struct+wd + winsor + GBR/XGB | 30 seeds | 约 0.395 ± 0.039 | development only |
 | 固定 seed=42 + NUPACK + epistasis | 单一拆分 | 0.506 | historical outlier |
 
@@ -14,6 +14,10 @@
 最终发布必须使用预先固定的方法在全部 seeds 上的均值，不能对每个 seed 事后选择最佳模型。0.395 是开发阶段配置比较结果；0.506 是固定拆分偶然高值。
 
 当前数据的经验 oracle bound 约为 0.412。继续堆叠同类模型或序列特征预期收益很小；突破需要新增 MD 数据、3D 接触信息或更可靠的 GBSA 标签。
+
+服务器回收的100-seed逐seed结果显示，等权秩融合相对固定XGB的配对增益为 +0.00245，bootstrap 95% CI [-0.00148, 0.00652]，获胜54/100。它可作为稳定发布配置，但没有证据表明显著优于XGB。日志中的“相对每个seed事后最佳单模型”比较不作为方法晋级依据。
+
+旧版604维特征选择日志报告30 seeds已完成，但逐seed `full_30seed.csv` 缺失，而且该流程不同于当前预注册流程，因此只作补充记录，不改变正式结论。
 
 ## 已恢复的 NUPACK / RNA 配对结果
 

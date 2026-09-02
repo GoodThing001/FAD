@@ -50,4 +50,4 @@ nohup python -u scripts/run_experiment.py configs/experiments/v8_final_100seed.j
 - 禁止在模型目录复制数据集或随意覆盖旧运行结果。
 - 禁止把大型日志、模型权重、NUPACK源码和MD轨迹提交到主线 Git。
 
-当前迁移状态见 [PROJECT_STATUS.md](PROJECT_STATUS.md)，历史目录处理规则见 [docs/MIGRATION_MAP.md](docs/MIGRATION_MAP.md)，首批可恢复隔离记录见 [docs/ARCHIVE_LOG_20260902.md](docs/ARCHIVE_LOG_20260902.md)。
+当前迁移状态见 [PROJECT_STATUS.md](PROJECT_STATUS.md)，完整路线判断见 [docs/WORKFLOW_DECISION.md](docs/WORKFLOW_DECISION.md)，服务器回收说明见 [docs/SERVER_HANDOFF.md](docs/SERVER_HANDOFF.md)，候选计算进度见 [docs/CANDIDATE_NUPACK_PROGRESS.md](docs/CANDIDATE_NUPACK_PROGRESS.md)。

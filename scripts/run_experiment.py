@@ -86,7 +86,15 @@ def environment_manifest() -> dict:
 def git_commit() -> str | None:
     try:
         return subprocess.check_output(
-            ["git", "rev-parse", "HEAD"], cwd=PROJECT_ROOT, text=True,
+            [
+                "git",
+                "-c",
+                f"safe.directory={PROJECT_ROOT.as_posix()}",
+                "rev-parse",
+                "HEAD",
+            ],
+            cwd=PROJECT_ROOT,
+            text=True,
             stderr=subprocess.DEVNULL,
         ).strip()
     except (OSError, subprocess.CalledProcessError):

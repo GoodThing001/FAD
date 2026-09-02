@@ -1,0 +1,5 @@
+{
+  "started": "2026-08-14T16:19:53.555100",
+  "command": "scripts/tools/eval_final_combo.py --outer-seeds 30 --models XGB,GBR --screen-k 100 --n-jobs 4 --log-dir logs/v13 --output artifacts/v13/final_combo_30seed.csv",
+  "host": "user"
+}

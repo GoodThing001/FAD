@@ -1,0 +1,8 @@
+{
+  "completed_at": "2026-09-02T14:04:35.075861",
+  "return_code": 0,
+  "metrics_exists": true,
+  "metrics_rows": 12,
+  "expected_rows": 12,
+  "acceptance_ok": true
+}

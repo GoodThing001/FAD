@@ -1,0 +1,5 @@
+{
+  "started": "2026-08-07T15:27:19.156497",
+  "command": "scripts/tools/eval_rank_targets.py --targets raw,rank_uniform,rank_gaussian,winsor_2.5 --losses mse,mae,huber_1,huber_2 --features mutation_only,mut_struct_wd,mut_struct_wd_ed --models RF,ET,SVR,GBR,XGB --outer-seeds 30 --inner-folds 5 --screen-k 0,50,75,100 --screen-mode nested --ed-mode fold_ed --n-jobs 4 --log-dir logs/phase1_v8 --output artifacts/phase1_v8/rank_targets_30seed.csv",
+  "host": "user"
+}

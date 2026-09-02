@@ -1,0 +1,79 @@
+[build] mut: 52d
+[build] wd: 208d
+[build] struct: 43d
+[data] 2000 samples x 303 features; target=gbsa; transform=winsor; loss=mae
+[policy] force-keep=mut (52d)
+[info] NUPACK features not loaded (pass --with-nupack on Linux).
+[info] lasso degrades to ExtraTrees top-k on Windows (BLAS).
+  seed= 1 done [1/2]
+  seed= 2 done [2/2]
+
+[OK] per-seed results -> D:\PyCharm_\FAD\FAD_clean\runs\feature_selection_smoke_20260902_r2\metrics.csv
+[OK] selected features -> D:\PyCharm_\FAD\FAD_clean\runs\feature_selection_smoke_20260902_r2\metrics_selected_features.csv
+[OK] stability table -> D:\PyCharm_\FAD\FAD_clean\runs\feature_selection_smoke_20260902_r2\metrics_stability.csv
+[OK] paired comparison -> D:\PyCharm_\FAD\FAD_clean\runs\feature_selection_smoke_20260902_r2\metrics_paired.csv
+
+==========================================================================================
+SUMMARY — mean test Spearman by method x model (across seeds)
+==========================================================================================
+                   mean             std        
+model                ET     GBR      ET     GBR
+method                                         
+all              0.3186  0.2971  0.0393  0.0053
+spearman         0.3225  0.3312  0.0258  0.0291
+tree_importance  0.3268  0.2982  0.0272  0.0061
+
+==========================================================================================
+FEATURE STABILITY — features selected in >= 50% of seeds, per method
+==========================================================================================
+
+[all] 303 features >= 50% stability (top 15):
+    mut_p30_A                    100%
+    mut_p30_C                    100%
+    mut_p30_G                    100%
+    mut_p30_U                    100%
+    mut_p31_A                    100%
+    mut_p31_C                    100%
+    mut_p31_G                    100%
+    mut_p31_U                    100%
+    mut_p32_A                    100%
+    mut_p32_C                    100%
+    mut_p32_G                    100%
+    mut_p32_U                    100%
+    mut_p33_A                    100%
+    mut_p33_C                    100%
+    mut_p33_G                    100%
+
+[spearman] 184 features >= 50% stability (top 15):
+    mut_p30_A                    100%
+    mut_p30_C                    100%
+    mut_p30_G                    100%
+    mut_p30_U                    100%
+    mut_p31_A                    100%
+    mut_p31_C                    100%
+    mut_p31_G                    100%
+    mut_p31_U                    100%
+    mut_p32_A                    100%
+    mut_p32_C                    100%
+    mut_p32_G                    100%
+    mut_p32_U                    100%
+    mut_p33_A                    100%
+    mut_p33_C                    100%
+    mut_p33_G                    100%
+
+[tree_importance] 167 features >= 50% stability (top 15):
+    mut_p30_A                    100%
+    mut_p30_C                    100%
+    mut_p30_G                    100%
+    mut_p30_U                    100%
+    mut_p31_A                    100%
+    mut_p31_C                    100%
+    mut_p31_G                    100%
+    mut_p31_U                    100%
+    mut_p32_A                    100%
+    mut_p32_C                    100%
+    mut_p32_G                    100%
+    mut_p32_U                    100%
+    mut_p33_A                    100%
+    mut_p33_C                    100%
+    mut_p33_G                    100%

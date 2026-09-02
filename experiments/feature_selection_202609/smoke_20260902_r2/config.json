@@ -1,0 +1,28 @@
+{
+  "name": "feature_selection_smoke",
+  "status": "smoke",
+  "entrypoint": "scripts/tools/feature_selection_pipeline.py",
+  "supports_log_dir": true,
+  "arguments": {
+    "seeds": 2,
+    "methods": "all,spearman,tree_importance",
+    "seq-groups": "mut,wd,struct",
+    "force-keep-groups": "mut",
+    "top-k": 100,
+    "target": "winsor",
+    "loss": "mae",
+    "eval-models": "ET,GBR",
+    "stability-inner-folds": 2,
+    "stability-threshold": 0.5,
+    "n-jobs": 1,
+    "data-dir": "data/proxy2000_v2",
+    "output": "runs\\feature_selection_smoke_20260902_r2\\metrics.csv",
+    "log-dir": "runs\\feature_selection_smoke_20260902_r2\\checkpoints"
+  },
+  "acceptance": {
+    "exit_code": 0,
+    "expected_rows": 12,
+    "selection_must_be_nested": true,
+    "mutation_features_must_be_forced": true
+  }
+}

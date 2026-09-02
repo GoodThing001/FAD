@@ -1,0 +1,5 @@
+{
+  "started": "2026-08-13T21:36:03.525987",
+  "command": "scripts/tools/eval_nupack_blocks.py --outer-seeds 30 --models XGB --screen-k 100 --n-jobs 4 --log-dir logs/v10b --output artifacts/v10b/nupack_blocks_motif_split.csv",
+  "host": "user"
+}

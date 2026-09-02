@@ -1,0 +1,5 @@
+{
+  "started": "2026-08-13T19:42:02.234624",
+  "command": "scripts/tools/eval_nupack_blocks.py --outer-seeds 30 --models GBR,XGB --screen-k 100 --n-jobs 4 --log-dir logs/v10 --output artifacts/v10/nupack_blocks_30seed.csv",
+  "host": "user"
+}

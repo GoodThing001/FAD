@@ -71,10 +71,14 @@ Usage
 from __future__ import annotations
 
 import argparse
+import hashlib
+import json
 import re
+import socket
 import sys
 import warnings
 from collections import Counter
+from datetime import datetime
 from pathlib import Path
 
 import numpy as np
@@ -585,6 +589,7 @@ def wrapper_rfe(X, y, candidate_idx, model_factory, n_features=50, step=1, **kw)
 # ════════════════════════════════════════════════════════════════════════
 
 METHOD_REGISTRY = {
+    "all":             (None, "control"),
     "variance":        (filter_variance, "filter"),
     "f_regression":    (filter_f_regression, "filter"),
     "spearman":        (filter_spearman, "filter"),
@@ -609,6 +614,8 @@ def _dispatch_select(method, family, fn, X, y, cand_idx, args, seed):
     inner-fold path cannot drift apart (which previously dropped lasso_alpha,
     var_threshold, and loss/n_jobs in the generic else-branch).
     """
+    if method == "all":
+        return np.ones(X.shape[1], dtype=bool)
     wf = lambda: _make_tree("ET", args.loss, args.n_jobs, random_state=seed)
     if family == "wrapper":
         return fn(X, y, cand_idx, model_factory=wf,
@@ -631,6 +638,24 @@ def _dispatch_select(method, family, fn, X, y, cand_idx, args, seed):
                   random_state=seed)
     # remaining filters: f_regression, spearman, mutual_info
     return fn(X, y, args.top_k, random_state=seed)
+
+
+def make_force_keep_mask(names, groups):
+    """Build a deterministic mask for feature families that must be retained."""
+    prefixes = {
+        "mut": "mut_",
+        "wd": "wd_",
+        "struct": "struct_",
+        "nupack": "nupack_",
+    }
+    requested = [g.strip() for g in groups.split(",") if g.strip()]
+    unknown = sorted(set(requested) - set(prefixes))
+    if unknown:
+        raise ValueError(f"unknown force-keep group(s): {unknown}")
+    mask = np.zeros(len(names), dtype=bool)
+    for group in requested:
+        mask |= np.char.startswith(names.astype(str), prefixes[group])
+    return mask
 
 
 # ════════════════════════════════════════════════════════════════════════
@@ -707,6 +732,9 @@ def main():
                    help="comma-separated: " + ",".join(METHOD_REGISTRY))
     p.add_argument("--top-k", type=int, default=100,
                    help="top-k for ranking methods")
+    p.add_argument("--force-keep-groups", default="mut",
+                   help="comma-separated feature families always retained; "
+                        "choices: mut,wd,struct,nupack; empty disables")
     p.add_argument("--var-threshold", type=float, default=0.0)
     p.add_argument("--lasso-alpha", type=float, default=0.01)
     p.add_argument("--boruta-iters", type=int, default=20)
@@ -733,12 +761,31 @@ def main():
                    help="if >0, require cross-inner-fold agreement per method")
     p.add_argument("--stability-threshold", type=float, default=0.6)
     p.add_argument("--n-jobs", type=int, default=1)
+    p.add_argument("--log-dir", default=None,
+                   help="checkpoint directory for progress and per-seed rows")
     p.add_argument("--output", default="artifacts/feat_sel/feature_selection.csv")
     args = p.parse_args()
 
     data_dir = PROJECT_ROOT / args.data_dir
     out_path = PROJECT_ROOT / args.output
     out_path.parent.mkdir(parents=True, exist_ok=True)
+    log_dir = None
+    if args.log_dir:
+        log_dir = Path(args.log_dir)
+        if not log_dir.is_absolute():
+            log_dir = PROJECT_ROOT / log_dir
+        log_dir.mkdir(parents=True, exist_ok=True)
+        (log_dir / "run_meta.json").write_text(
+            json.dumps(
+                {
+                    "started": datetime.now().isoformat(),
+                    "command": " ".join(sys.argv),
+                    "host": socket.gethostname(),
+                },
+                indent=2,
+            ),
+            encoding="utf-8",
+        )
 
     # ── Build features ──────────────────────────────────────────────────
     full_df = pd.read_csv(data_dir / "fad_proxy2000_v2_full.csv")
@@ -782,7 +829,9 @@ def main():
     X_full = np.hstack(blocks).astype(np.float32)
     names = np.array(names)
     n, d = X_full.shape
+    force_keep = make_force_keep_mask(names, args.force_keep_groups)
     print(f"[data] {n} samples x {d} features; target=gbsa; transform={args.target}; loss={args.loss}")
+    print(f"[policy] force-keep={args.force_keep_groups or 'none'} ({int(force_keep.sum())}d)")
     if not args.with_nupack:
         print("[info] NUPACK features not loaded (pass --with-nupack on Linux).")
     if IS_WINDOWS:
@@ -796,6 +845,7 @@ def main():
     eval_models = [m.strip() for m in args.eval_models.split(",") if m.strip()]
 
     rows = []
+    selection_records = []
     selection_freq = {m: Counter() for m in methods}
 
     for seed in range(1, args.seeds + 1):
@@ -810,27 +860,43 @@ def main():
             cm = embedded_tree_importance(X_tr, y_tr_t, args.candidate_k,
                                           loss=args.loss, n_jobs=args.n_jobs,
                                           random_state=seed)
-            cand_idx = np.where(cm)[0]
+            cand_idx = np.where(cm & ~force_keep)[0]
 
         for method in methods:
             fn, family = METHOD_REGISTRY[method]
             mask = _dispatch_select(method, family, fn, X_tr, y_tr_t, cand_idx,
                                     args, seed)
+            mask |= force_keep
 
             # Optional stability: cross-inner-fold agreement
             if args.stability_inner_folds > 0:
                 kf = KFold(n_splits=args.stability_inner_folds, shuffle=True,
                            random_state=seed)
                 agree = Counter()
-                for itr, _ in kf.split(X_tr):
+                for fold_index, (itr, _) in enumerate(kf.split(X_tr)):
+                    inner_y_t, _ = fit_target_transform(y_tr[itr], args.target)
+                    inner_cand_idx = None
+                    if method in REFINE_METHODS:
+                        inner_cm = embedded_tree_importance(
+                            X_tr[itr], inner_y_t, args.candidate_k,
+                            loss=args.loss, n_jobs=args.n_jobs,
+                            random_state=seed * 100 + fold_index,
+                        )
+                        inner_cand_idx = np.where(inner_cm & ~force_keep)[0]
                     sub = _dispatch_select(method, family, fn, X_tr[itr],
-                                           y_tr_t[itr], cand_idx, args, seed)
+                                           inner_y_t, inner_cand_idx, args,
+                                           seed * 100 + fold_index)
+                    sub |= force_keep
                     for j in np.where(sub)[0]:
                         agree[j] += 1
-                min_folds = max(1, int(args.stability_inner_folds * args.stability_threshold))
+                min_folds = max(
+                    1,
+                    int(np.ceil(args.stability_inner_folds * args.stability_threshold)),
+                )
                 sel_idx = [j for j, c in agree.items() if c >= min_folds]
                 mask = np.zeros(d, dtype=bool)
                 mask[sel_idx] = True
+                mask |= force_keep
 
             sel_idx = np.where(mask)[0]
             if len(sel_idx) == 0:
@@ -838,6 +904,19 @@ def main():
                 continue
             for j in sel_idx:
                 selection_freq[method][int(j)] += 1
+            selected_names = names[sel_idx].tolist()
+            selected_hash = hashlib.sha256(
+                "\n".join(selected_names).encode("utf-8")
+            ).hexdigest()
+            selection_records.append(
+                {
+                    "seed": seed,
+                    "method": method,
+                    "n_selected": len(sel_idx),
+                    "selected_sha256": selected_hash,
+                    "selected_features": "|".join(selected_names),
+                }
+            )
 
             for model_name in eval_models:
                 fm = make_eval_model(model_name, args.loss, args.n_jobs)
@@ -846,7 +925,8 @@ def main():
                 fm.fit(X_tr[:, sel_idx], y_tr_t)
                 pred = fm.predict(X_te[:, sel_idx])
                 row = {"seed": seed, "method": method, "model": model_name,
-                       "n_selected": len(sel_idx)}
+                       "n_selected": len(sel_idx),
+                       "selected_sha256": selected_hash}
                 # Rank metrics are invariant to the monotone target transform.
                 row["Spearman"] = _spearman(y_te, pred)
                 row["Kendall"] = _kendall(y_te, pred)
@@ -861,6 +941,35 @@ def main():
                     row["RMSE"] = row["MAE"] = row["R2"] = row["Pearson"] = float("nan")
                 rows.append(row)
 
+        if log_dir:
+            seed_rows = [row for row in rows if row["seed"] == seed]
+            running = log_dir / "all_results.csv"
+            pd.DataFrame(seed_rows).to_csv(
+                running,
+                mode="a",
+                index=False,
+                header=not running.exists(),
+            )
+            seed_selections = [row for row in selection_records if row["seed"] == seed]
+            selection_checkpoint = log_dir / "selected_features.csv"
+            pd.DataFrame(seed_selections).to_csv(
+                selection_checkpoint,
+                mode="a",
+                index=False,
+                header=not selection_checkpoint.exists(),
+            )
+            (log_dir / "progress.json").write_text(
+                json.dumps(
+                    {
+                        "completed_seeds": seed,
+                        "requested_seeds": args.seeds,
+                        "result_rows": len(rows),
+                        "updated": datetime.now().isoformat(),
+                    },
+                    indent=2,
+                ),
+                encoding="utf-8",
+            )
         print(f"  seed={seed:2d} done [{seed}/{args.seeds}]")
 
     # ── Save + summarize ────────────────────────────────────────────────
@@ -871,6 +980,60 @@ def main():
     res = pd.DataFrame(rows)
     res.to_csv(out_path, index=False)
     print(f"\n[OK] per-seed results -> {out_path}")
+
+    selection_path = out_path.with_name(out_path.stem + "_selected_features.csv")
+    pd.DataFrame(selection_records).to_csv(selection_path, index=False)
+    stability_rows = []
+    for method, counts in selection_freq.items():
+        for feature_index, count in counts.items():
+            stability_rows.append(
+                {
+                    "method": method,
+                    "feature": names[feature_index],
+                    "selected_seeds": count,
+                    "frequency": count / args.seeds,
+                }
+            )
+    stability_path = out_path.with_name(out_path.stem + "_stability.csv")
+    pd.DataFrame(stability_rows).sort_values(
+        ["method", "frequency", "feature"], ascending=[True, False, True]
+    ).to_csv(stability_path, index=False)
+
+    control = res[res["method"] == "all"][["seed", "model", "Spearman"]].rename(
+        columns={"Spearman": "control_spearman"}
+    )
+    paired_rows = []
+    if not control.empty:
+        paired_rng = np.random.default_rng(20260902)
+        candidates = res[res["method"] != "all"].merge(
+            control, on=["seed", "model"], how="inner"
+        )
+        candidates["delta_vs_all"] = (
+            candidates["Spearman"] - candidates["control_spearman"]
+        )
+        for (method, model), group in candidates.groupby(["method", "model"]):
+            deltas = group["delta_vs_all"].to_numpy(dtype=float)
+            bootstrap_means = paired_rng.choice(
+                deltas, size=(20000, len(deltas)), replace=True
+            ).mean(axis=1)
+            paired_rows.append(
+                {
+                    "method": method,
+                    "model": model,
+                    "paired_seeds": len(group),
+                    "mean_delta_vs_all": group["delta_vs_all"].mean(),
+                    "bootstrap_ci95_low": np.percentile(bootstrap_means, 2.5),
+                    "bootstrap_ci95_high": np.percentile(bootstrap_means, 97.5),
+                    "wins_vs_all": int((group["delta_vs_all"] > 0).sum()),
+                    "mean_spearman": group["Spearman"].mean(),
+                    "control_mean_spearman": group["control_spearman"].mean(),
+                }
+            )
+    paired_path = out_path.with_name(out_path.stem + "_paired.csv")
+    pd.DataFrame(paired_rows).to_csv(paired_path, index=False)
+    print(f"[OK] selected features -> {selection_path}")
+    print(f"[OK] stability table -> {stability_path}")
+    print(f"[OK] paired comparison -> {paired_path}")
 
     print(f"\n{'='*90}")
     print("SUMMARY — mean test Spearman by method x model (across seeds)")

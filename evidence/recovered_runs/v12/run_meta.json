@@ -1,0 +1,5 @@
+{
+  "started": "2026-08-14T15:37:01.352770",
+  "command": "scripts/tools/eval_untested_features.py --outer-seeds 30 --models XGB,GBR --screen-k 100 --n-jobs 4 --log-dir logs/v12 --output artifacts/v12/untested_30seed.csv",
+  "host": "user"
+}

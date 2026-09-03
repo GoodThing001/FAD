@@ -10,5 +10,6 @@
 data/proxy2000_v2/*.csv -text
 evidence/recovered_runs/** -text
 evidence/server_sync_20260902/** -text
+evidence/server_sync_20260903/** -text
 environments/** -text
 experiments/**/metrics*.csv -text

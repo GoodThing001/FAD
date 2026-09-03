@@ -1,0 +1,62 @@
+{
+  "run_id": "20260902_195304_feature_selection_all_safe_30seed",
+  "created_at": "2026-09-02T19:53:04.328259",
+  "source_config": "/home/hzeng/project/FAD_CLEAN/configs/experiments/feature_selection_all_safe_30seed.json",
+  "command": [
+    "/home/hzeng/envs/FAD_env/bin/python",
+    "/home/hzeng/project/FAD_CLEAN/scripts/tools/feature_selection_pipeline.py",
+    "--seeds",
+    "30",
+    "--methods",
+    "all,spearman,mutual_info,tree_importance",
+    "--seq-groups",
+    "mut,wd,struct",
+    "--with-nupack",
+    "--nupack-blocks",
+    "all",
+    "--expected-features",
+    "1495",
+    "--force-keep-groups",
+    "mut",
+    "--top-k",
+    "100",
+    "--target",
+    "winsor",
+    "--loss",
+    "mae",
+    "--eval-models",
+    "ET,GBR,XGB",
+    "--stability-inner-folds",
+    "5",
+    "--stability-threshold",
+    "0.6",
+    "--n-jobs",
+    "4",
+    "--data-dir",
+    "data/proxy2000_v2",
+    "--output",
+    "runs/20260902_195304_feature_selection_all_safe_30seed/metrics.csv",
+    "--log-dir",
+    "runs/20260902_195304_feature_selection_all_safe_30seed/checkpoints"
+  ],
+  "git_commit": null,
+  "canonical_data": {
+    "path": "data/proxy2000_v2/fad_proxy2000_v2_full.csv",
+    "size_bytes": 1064264,
+    "sha256": "0876c2b25a5571b834ebac2c0c0f7671e023f6028688e90ccba884a75fd4322a"
+  },
+  "environment": {
+    "python": "3.10.19 (main, Oct 21 2025, 16:43:05) [GCC 11.2.0]",
+    "executable": "/home/hzeng/envs/FAD_env/bin/python",
+    "platform": "Linux-6.17.0-41-generic-x86_64-with-glibc2.42",
+    "hostname": "user",
+    "packages": {
+      "numpy": "2.2.6",
+      "pandas": "2.3.3",
+      "scipy": "1.15.3",
+      "scikit-learn": "1.7.2",
+      "xgboost": "3.2.0",
+      "lightgbm": "4.6.0"
+    }
+  }
+}

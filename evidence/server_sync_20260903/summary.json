@@ -1,0 +1,42 @@
+{
+  "recovered_at": "2026-09-03",
+  "feature_selection_all_safe_30seed": {
+    "status": "validated_complete_package",
+    "run_id": "20260902_195304_feature_selection_all_safe_30seed",
+    "seeds": 30,
+    "rows": 360,
+    "methods": ["all", "spearman", "mutual_info", "tree_importance"],
+    "eval_models": ["ET", "GBR", "XGB"],
+    "feature_dim": 1495,
+    "nupack_blocks": "all",
+    "force_keep": "mut",
+    "canonical_data_sha256": "0876c2b25a5571b834ebac2c0c0f7671e023f6028688e90ccba884a75fd4322a",
+    "paired_promotion": {
+      "cells": 9,
+      "all_pass": true,
+      "mean_delta_range": [0.0223, 0.0850],
+      "ci95_low_min": 0.0135,
+      "win_rate_range": [24, 30],
+      "win_rate_total": 30,
+      "best_cell": {
+        "method": "tree_importance",
+        "model": "GBR",
+        "mean_delta": 0.0850,
+        "wins": 30
+      }
+    },
+    "cluster_split_check": {
+      "cells": 9,
+      "all_pass": true,
+      "max_drop": 0.01,
+      "mean_delta_range": [0.0287, 0.0517],
+      "caveat": "2000 sequences have unique 13-site mutation patterns; Hamming<=1 clustering yields only 8 pairs (16 sequences) grouped and 1984 isolated, so out-of-cluster pressure is weak."
+    },
+    "control_absolute_performance": {
+      "all_ET": 0.3256,
+      "all_GBR": 0.2670,
+      "all_XGB": 0.2787,
+      "note": "GBR/XGB control collapses under the 1192-d NUPACK block; selection recovers to ~0.35 but does not exceed pure-sequence baselines (mutation-only RF ~0.365, v8 fusion ~0.375)."
+    }
+  }
+}

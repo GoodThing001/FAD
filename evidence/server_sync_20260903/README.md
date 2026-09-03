@@ -1,0 +1,35 @@
+# 服务器同步证据（2026-09-03）
+
+本目录保存从 Linux 服务器回收并经本地核验的 30-seed 特征选择正式运行包，以及 cluster split 外推检查结果。
+
+## 可作为正式证据
+
+- `feature_selection_all_safe_30seed/`：完整的 30-seed 嵌套特征选择运行包，含配置、数据哈希、逐 seed 结果、配对比较、稳定性表、cluster split 检查、stdout 和 `DONE` 完成标记。360 行 = 30 seeds × 4 方法 × 3 模型，全部验收通过。
+
+## 结论
+
+### 预注册问题「筛选 vs 不筛选」：筛选完胜
+
+9 个 method×model 组合全部满足三个统计晋级门槛：
+
+| 门槛 | 要求 | 实际 |
+|---|---|---|
+| 配对平均 ΔSpearman | ≥ 0.005 | +0.022 ~ +0.085 |
+| bootstrap 95% CI 下界 | > 0 | +0.014 ~ +0.072 |
+| 胜率 | ≥ 0.6 | 24/30 ~ 30/30 |
+
+最强组合：`tree_importance + GBR`（Δ +0.085，30/30 胜）、`tree_importance + XGB`（Δ +0.071，30/30 胜）。
+
+### cluster split 外推检查：9/9 通过
+
+所有 method×model 在 cluster split 上的平均 Δ 为 +0.029 ~ +0.052，满足 `max_drop ≤ 0.01`。
+
+但需如实记录：2000 条序列的 13 位点突变 pattern **全部唯一**，Hamming≤1 聚类只产生 8 对（16 条）成组、1984 条孤立，因此这个 cluster split 的分布外压力很弱，几乎退化为随机划分。
+
+### 重要警示：提升主要来自「救回」噪声，而非突破基线
+
+对照 `all`（1495 维全特征）的绝对性能异常低——GBR 仅 0.267、XGB 0.279，明显低于纯序列特征的历史基线（mutation-only RF 约 0.365、v8 融合约 0.375）。1192 维 NUPACK 全堆进来对 GBR/XGB 是噪声淹没，特征选择砍到约 100–140 维后恢复到 ~0.35，但**没有突破**纯序列基线。
+
+这与 [WORKFLOW_DECISION.md](../../docs/WORKFLOW_DECISION.md) 中「继续堆 NUPACK 特征无足够证据成为主路线」的判断一致。
+
+所有回收文件的字节数与 SHA256 见 `manifest.csv`，结构化结论见 `summary.json`。

@@ -1,0 +1,37 @@
+{
+  "name": "feature_selection_all_safe_30seed",
+  "status": "exploratory",
+  "entrypoint": "scripts/tools/feature_selection_pipeline.py",
+  "supports_log_dir": true,
+  "arguments": {
+    "seeds": 30,
+    "methods": "all,spearman,mutual_info,tree_importance",
+    "seq-groups": "mut,wd,struct",
+    "with-nupack": true,
+    "nupack-blocks": "all",
+    "expected-features": 1495,
+    "force-keep-groups": "mut",
+    "top-k": 100,
+    "target": "winsor",
+    "loss": "mae",
+    "eval-models": "ET,GBR,XGB",
+    "stability-inner-folds": 5,
+    "stability-threshold": 0.6,
+    "n-jobs": 4,
+    "data-dir": "data/proxy2000_v2",
+    "output": "runs/20260902_195304_feature_selection_all_safe_30seed/metrics.csv",
+    "log-dir": "runs/20260902_195304_feature_selection_all_safe_30seed/checkpoints"
+  },
+  "acceptance": {
+    "expected_rows": 360,
+    "minimum_seeds": 30,
+    "expected_input_features": 1495,
+    "selection_must_be_nested": true,
+    "mutation_features_must_be_forced": true,
+    "promotion_requires_paired_improvement": true,
+    "promotion_mean_delta_min": 0.005,
+    "promotion_bootstrap_ci95_low_gt": 0.0,
+    "promotion_win_rate_min": 0.6,
+    "promotion_cluster_split_max_drop": 0.01
+  }
+}

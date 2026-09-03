@@ -1,5 +1,14 @@
 # Change log
 
+## 2026-09-03
+
+- 完成 30-seed 嵌套特征选择（1495 维含 NUPACK），9/9 配对达标（Δ+0.022~+0.085，CI 下界>0，胜率 24–30/30）。
+- cluster split 外推检查 9/9 通过；但突变 pattern 全唯一导致区分度弱，仅作稳健性验证。
+- 新增 cluster_split_check.py 脚本与 feature_selection_all_safe_{30seed,smoke} 配置。
+- 特征选择流水线接入 canonical nupack_features_full.csv（按 Sequence 对齐、强制校验），并加固数据/参数/结果矩阵校验。
+- 回收 30-seed + cluster split 完整运行包至 evidence/server_sync_20260903/，登记 SHA256。
+- 主线推送到 GitHub（GoodThing001/FAD）。
+
 ## 2026-09-02
 
 - 建立安全的 clean mainline 整理区；旧项目未移动、未删除。

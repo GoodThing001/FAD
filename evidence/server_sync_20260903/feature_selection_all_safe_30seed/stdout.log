@@ -1,0 +1,124 @@
+[build] mut: 52d
+[build] wd: 208d
+[build] struct: 43d
+[load] nupack (all): 1192d
+[data] 2000 samples x 1495 features; target=gbsa; transform=winsor; loss=mae
+[policy] force-keep=mut (52d)
+  seed= 1 done [1/30]
+  seed= 2 done [2/30]
+  seed= 3 done [3/30]
+  seed= 4 done [4/30]
+  seed= 5 done [5/30]
+  seed= 6 done [6/30]
+  seed= 7 done [7/30]
+  seed= 8 done [8/30]
+  seed= 9 done [9/30]
+  seed=10 done [10/30]
+  seed=11 done [11/30]
+  seed=12 done [12/30]
+  seed=13 done [13/30]
+  seed=14 done [14/30]
+  seed=15 done [15/30]
+  seed=16 done [16/30]
+  seed=17 done [17/30]
+  seed=18 done [18/30]
+  seed=19 done [19/30]
+  seed=20 done [20/30]
+  seed=21 done [21/30]
+  seed=22 done [22/30]
+  seed=23 done [23/30]
+  seed=24 done [24/30]
+  seed=25 done [25/30]
+  seed=26 done [26/30]
+  seed=27 done [27/30]
+  seed=28 done [28/30]
+  seed=29 done [29/30]
+  seed=30 done [30/30]
+
+[OK] per-seed results -> /home/hzeng/project/FAD_CLEAN/runs/20260902_195304_feature_selection_all_safe_30seed/metrics.csv
+[OK] selected features -> /home/hzeng/project/FAD_CLEAN/runs/20260902_195304_feature_selection_all_safe_30seed/metrics_selected_features.csv
+[OK] stability table -> /home/hzeng/project/FAD_CLEAN/runs/20260902_195304_feature_selection_all_safe_30seed/metrics_stability.csv
+[OK] paired comparison -> /home/hzeng/project/FAD_CLEAN/runs/20260902_195304_feature_selection_all_safe_30seed/metrics_paired.csv
+
+==========================================================================================
+SUMMARY — mean test Spearman by method x model (across seeds)
+==========================================================================================
+                   mean                     std                
+model                ET     GBR     XGB      ET     GBR     XGB
+method                                                         
+all              0.3256  0.2670  0.2787  0.0443  0.0410  0.0424
+mutual_info      0.3578  0.3282  0.3379  0.0475  0.0486  0.0456
+spearman         0.3512  0.3313  0.3324  0.0442  0.0399  0.0426
+tree_importance  0.3479  0.3520  0.3501  0.0462  0.0430  0.0416
+
+==========================================================================================
+FEATURE STABILITY — features selected in >= 50% of seeds, per method
+==========================================================================================
+
+[all] 1495 features >= 50% stability (top 15):
+    mut_p30_A                    100%
+    mut_p30_C                    100%
+    mut_p30_G                    100%
+    mut_p30_U                    100%
+    mut_p31_A                    100%
+    mut_p31_C                    100%
+    mut_p31_G                    100%
+    mut_p31_U                    100%
+    mut_p32_A                    100%
+    mut_p32_C                    100%
+    mut_p32_G                    100%
+    mut_p32_U                    100%
+    mut_p33_A                    100%
+    mut_p33_C                    100%
+    mut_p33_G                    100%
+
+[spearman] 131 features >= 50% stability (top 15):
+    mut_p30_A                    100%
+    mut_p30_C                    100%
+    mut_p30_G                    100%
+    mut_p30_U                    100%
+    mut_p31_A                    100%
+    mut_p31_C                    100%
+    mut_p31_G                    100%
+    mut_p31_U                    100%
+    mut_p32_A                    100%
+    mut_p32_C                    100%
+    mut_p32_G                    100%
+    mut_p32_U                    100%
+    mut_p33_A                    100%
+    mut_p33_C                    100%
+    mut_p33_G                    100%
+
+[mutual_info] 83 features >= 50% stability (top 15):
+    mut_p30_A                    100%
+    mut_p30_C                    100%
+    mut_p30_G                    100%
+    mut_p30_U                    100%
+    mut_p31_A                    100%
+    mut_p31_C                    100%
+    mut_p31_G                    100%
+    mut_p31_U                    100%
+    mut_p32_A                    100%
+    mut_p32_C                    100%
+    mut_p32_G                    100%
+    mut_p32_U                    100%
+    mut_p33_A                    100%
+    mut_p33_C                    100%
+    mut_p33_G                    100%
+
+[tree_importance] 100 features >= 50% stability (top 15):
+    mut_p30_A                    100%
+    mut_p30_C                    100%
+    mut_p30_G                    100%
+    mut_p30_U                    100%
+    mut_p31_A                    100%
+    mut_p31_C                    100%
+    mut_p31_G                    100%
+    mut_p31_U                    100%
+    mut_p32_A                    100%
+    mut_p32_C                    100%
+    mut_p32_G                    100%
+    mut_p32_U                    100%
+    mut_p33_A                    100%
+    mut_p33_C                    100%
+    mut_p33_G                    100%

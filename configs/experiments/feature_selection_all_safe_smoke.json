@@ -1,0 +1,29 @@
+{
+  "name": "feature_selection_all_safe_smoke",
+  "status": "smoke",
+  "entrypoint": "scripts/tools/feature_selection_pipeline.py",
+  "supports_log_dir": true,
+  "arguments": {
+    "seeds": 1,
+    "methods": "all,spearman,mutual_info,tree_importance",
+    "seq-groups": "mut,wd,struct",
+    "with-nupack": true,
+    "nupack-blocks": "all",
+    "expected-features": 1495,
+    "force-keep-groups": "mut",
+    "top-k": 100,
+    "target": "winsor",
+    "loss": "mae",
+    "eval-models": "GBR",
+    "stability-inner-folds": 2,
+    "stability-threshold": 0.5,
+    "n-jobs": 1,
+    "data-dir": "data/proxy2000_v2"
+  },
+  "acceptance": {
+    "expected_rows": 4,
+    "expected_input_features": 1495,
+    "selection_must_be_nested": true,
+    "mutation_features_must_be_forced": true
+  }
+}

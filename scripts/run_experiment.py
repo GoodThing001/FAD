@@ -160,6 +160,9 @@ def main() -> int:
     child_env = os.environ.copy()
     child_env["PYTHONUTF8"] = "1"
     child_env["PYTHONIOENCODING"] = "utf-8"
+    # The runner is commonly launched under nohup on Linux.  Force the child
+    # experiment to stream progress instead of block-buffering many seeds.
+    child_env["PYTHONUNBUFFERED"] = "1"
 
     with log_path.open("w", encoding="utf-8") as log:
         process = subprocess.Popen(

@@ -50,8 +50,8 @@ Platform notes
   - Lasso.fit() hard-crashes on Windows (exit 127, BLAS/OpenBLAS) and cannot
     be caught by try/except; the method degrades to ExtraTrees top-k on
     Windows and runs only on Linux.
-  - NUPACK-derived features (192d useful sub-blocks) are Linux-only; load via
-    --with-nupack (skipped automatically if train_nupack.csv is absent).
+  - Validated NUPACK-derived features are loaded from the canonical
+    `nupack_features_full.csv` table and aligned by the unique `Sequence` key.
 
 Usage
 -----
@@ -272,7 +272,7 @@ def load_cached_csv(path):
 
 
 # ════════════════════════════════════════════════════════════════════════
-# NUPACK features (Linux-only; loaded from {train,val,test}_nupack.csv)
+# NUPACK features (canonical safe table, aligned by Sequence)
 # ════════════════════════════════════════════════════════════════════════
 
 # The 7 NUPACK sub-blocks with confirmed positive independent Δ (192d total),
@@ -303,36 +303,49 @@ NUPACK_USEFUL_PATTERNS = [
 
 
 def load_nupack_features(data_dir, full_df, blocks="useful"):
-    """Load NUPACK features from {train,val,test}_nupack.csv (Linux-only).
+    """Load the validated safe NUPACK table and align it to canonical rows.
 
-    Aligns rows to ``full_df`` order via the shared ``Full`` sequence-identifier
-    column, then extracts ``nupack_*`` columns (optionally restricted to the 7
-    useful sub-blocks). Returns ``(X, names)``, or ``(None, None)`` if the
-    files are absent or coverage is incomplete.
+    The clean mainline has one full table rather than historical split files.
+    A requested NUPACK block is mandatory: missing files, unsafe columns,
+    incomplete coverage, duplicates, or non-finite values abort the run.
     """
-    nup_path = data_dir / "train_nupack.csv"
-    if not nup_path.exists():
-        print(f"[skip] {nup_path.name} not found — run add_nupack_local_features.py "
-              f"(Linux) to generate NUPACK features.")
-        return None, None
-    tn = pd.read_csv(data_dir / "train_nupack.csv")
-    vn = pd.read_csv(data_dir / "val_nupack.csv")
-    ten = pd.read_csv(data_dir / "test_nupack.csv")
-    nup_df = pd.concat([tn, vn, ten], ignore_index=True)
-    fl = list(full_df["Full"])
-    nup_df = nup_df[nup_df["Full"].isin(set(fl))]
-    missing = set(fl) - set(nup_df["Full"])
-    if missing:
-        print(f"[skip] NUPACK coverage incomplete ({len(missing)} sequences "
-              f"missing).")
-        return None, None
-    nup_df = nup_df.set_index("Full").loc[fl].reset_index()
-    nup_cols = [c for c in nup_df.columns if c.startswith("nupack_")]
+    nup_path = data_dir / "nupack_features_full.csv"
+    if not nup_path.is_file():
+        raise FileNotFoundError(f"validated NUPACK feature table is missing: {nup_path}")
+    nup_df = pd.read_csv(nup_path)
+    if "Sequence" not in nup_df.columns:
+        raise ValueError("NUPACK feature table is missing the Sequence key")
+    if nup_df["Sequence"].isna().any() or nup_df["Sequence"].duplicated().any():
+        raise ValueError("NUPACK Sequence keys must be non-missing and unique")
+    nup_cols = [c for c in nup_df.columns if c != "Sequence"]
+    unsafe_columns = [
+        c for c in nup_cols
+        if not c.startswith(("nupack_", "delta_nupack_"))
+    ]
+    if unsafe_columns:
+        raise ValueError(
+            f"NUPACK table contains non-feature columns: {unsafe_columns[:10]}"
+        )
+    canonical_sequences = full_df["Sequence"].astype(str).tolist()
+    nupack_sequences = set(nup_df["Sequence"].astype(str))
+    missing = set(canonical_sequences) - nupack_sequences
+    extra = nupack_sequences - set(canonical_sequences)
+    if missing or extra:
+        raise ValueError(
+            "NUPACK/canonical Sequence coverage mismatch: "
+            f"missing={len(missing)}, extra={len(extra)}"
+        )
+    nup_df["Sequence"] = nup_df["Sequence"].astype(str)
+    nup_df = nup_df.set_index("Sequence").loc[canonical_sequences]
     if blocks == "useful":
         keep = [i for i, c in enumerate(nup_cols)
                 if any(re.search(p, c) for p in NUPACK_USEFUL_PATTERNS)]
         nup_cols = [nup_cols[i] for i in keep]
-    X = nup_df[nup_cols].fillna(0.0).values.astype(np.float32)
+    if not nup_cols:
+        raise ValueError(f"no NUPACK columns matched block selection: {blocks}")
+    X = nup_df[nup_cols].to_numpy(dtype=np.float32)
+    if not np.isfinite(X).all():
+        raise ValueError("NUPACK features contain missing or non-finite values")
     return X, list(nup_cols)
 
 
@@ -682,13 +695,21 @@ def make_eval_model(name, loss, n_jobs):
     if name == "XGB":
         try:
             import xgboost as xgb
+            major_version = int(xgb.__version__.split(".", 1)[0])
+            if major_version < 2:
+                raise RuntimeError(
+                    f"XGB requires xgboost>=2.0 for reg:absoluteerror; "
+                    f"found {xgb.__version__}"
+                )
             return xgb.XGBRegressor(
                 n_estimators=500, max_depth=4, learning_rate=0.05,
                 objective="reg:absoluteerror" if loss == "mae" else "reg:squarederror",
                 n_jobs=n_jobs, random_state=42)
-        except ImportError:
-            print("  [eval] xgboost not installed; skipping XGB.")
-            return None
+        except ImportError as exc:
+            raise RuntimeError(
+                "XGB was requested but xgboost is not installed. "
+                "Install the project's boosting dependencies before running."
+            ) from exc
     if name == "LGBM":
         try:
             import lightgbm as lgb
@@ -696,16 +717,17 @@ def make_eval_model(name, loss, n_jobs):
                 n_estimators=500, num_leaves=31, learning_rate=0.05,
                 objective="mae" if loss == "mae" else "regression",
                 n_jobs=n_jobs, random_state=42, verbose=-1)
-        except ImportError:
-            print("  [eval] lightgbm not installed; skipping LGBM.")
-            return None
+        except ImportError as exc:
+            raise RuntimeError(
+                "LGBM was requested but lightgbm is not installed. "
+                "Install the project's boosting dependencies before running."
+            ) from exc
     if name == "SVR":
         try:
             from sklearn.svm import SVR
             return SVR(kernel="rbf", C=1.0, epsilon=0.1)
-        except ImportError:
-            print("  [eval] SVR unavailable; skipping.")
-            return None
+        except ImportError as exc:  # pragma: no cover - sklearn is required
+            raise RuntimeError("SVR was requested but scikit-learn is unavailable.") from exc
     raise ValueError(f"unknown eval model: {name}")
 
 
@@ -722,11 +744,13 @@ def main():
     p.add_argument("--with-ed", action="store_true",
                    help="load ED features (deprecated — label leakage)")
     p.add_argument("--with-nupack", action="store_true",
-                   help="load NUPACK features from {train,val,test}_nupack.csv "
-                        "(Linux-only)")
+                   help="load validated NUPACK features from "
+                        "nupack_features_full.csv")
     p.add_argument("--nupack-blocks", default="useful", choices=["useful", "all"],
                    help="useful = 7 confirmed sub-blocks (192d); "
-                        "all = every nupack_* column (~1192d)")
+                        "all = all validated NUPACK/delta columns (1192d)")
+    p.add_argument("--expected-features", type=int, default=None,
+                   help="abort if the assembled input dimension differs")
     # methods
     p.add_argument("--methods", default="spearman,mutual_info,tree_importance",
                    help="comma-separated: " + ",".join(METHOD_REGISTRY))
@@ -788,17 +812,42 @@ def main():
         )
 
     # ── Build features ──────────────────────────────────────────────────
-    full_df = pd.read_csv(data_dir / "fad_proxy2000_v2_full.csv")
+    full_path = data_dir / "fad_proxy2000_v2_full.csv"
+    if not full_path.is_file():
+        raise FileNotFoundError(f"canonical data is missing: {full_path}")
+    full_df = pd.read_csv(full_path)
+    required_columns = {"Sequence", "gbsa"}
+    missing_columns = required_columns - set(full_df.columns)
+    if missing_columns:
+        raise ValueError(f"canonical data is missing columns: {sorted(missing_columns)}")
+    if len(full_df) != 2000:
+        raise ValueError(f"canonical data must contain 2000 rows, found {len(full_df)}")
+    if full_df["Sequence"].isna().any() or full_df["Sequence"].duplicated().any():
+        raise ValueError("canonical Sequence values must be non-missing and unique")
+    normalized_sequences = full_df["Sequence"].astype(str).str.upper().str.replace("T", "U")
+    invalid_lengths = normalized_sequences.str.len() != len(WT_141)
+    if invalid_lengths.any():
+        raise ValueError(
+            f"canonical sequences must be {len(WT_141)} nt; "
+            f"found {int(invalid_lengths.sum())} invalid rows"
+        )
+    if not np.isfinite(full_df["gbsa"].to_numpy(dtype=np.float64)).all():
+        raise ValueError("canonical gbsa target contains missing or non-finite values")
     seqs = full_df["Sequence"].values
     gbsa = full_df["gbsa"].values.astype(np.float64)
 
     blocks, names = [], []
-    for g in [x.strip() for x in args.seq_groups.split(",") if x.strip()]:
-        if g in SEQUENCE_BUILDERS:
-            Xg, ng = SEQUENCE_BUILDERS[g](seqs)
-            blocks.append(Xg)
-            names += ng
-            print(f"[build] {g}: {Xg.shape[1]}d")
+    seq_groups = [x.strip() for x in args.seq_groups.split(",") if x.strip()]
+    unknown_seq_groups = sorted(set(seq_groups) - set(SEQUENCE_BUILDERS))
+    if unknown_seq_groups:
+        raise ValueError(f"unknown sequence feature group(s): {unknown_seq_groups}")
+    if len(seq_groups) != len(set(seq_groups)):
+        raise ValueError("sequence feature groups must not be repeated")
+    for g in seq_groups:
+        Xg, ng = SEQUENCE_BUILDERS[g](seqs)
+        blocks.append(Xg)
+        names += ng
+        print(f"[build] {g}: {Xg.shape[1]}d")
     if args.with_constrained:
         path = data_dir / "features" / "constrained" / "constrained_interactions_full.csv"
         if path.exists():
@@ -817,10 +866,9 @@ def main():
                   "nested CV cannot remove this. Do NOT use for final results.")
     if args.with_nupack:
         Xn, nn = load_nupack_features(data_dir, full_df, blocks=args.nupack_blocks)
-        if Xn is not None:
-            blocks.append(Xn)
-            names += nn
-            print(f"[load] nupack ({args.nupack_blocks}): {Xn.shape[1]}d")
+        blocks.append(Xn)
+        names += nn
+        print(f"[load] nupack ({args.nupack_blocks}): {Xn.shape[1]}d")
 
     if not blocks:
         print("[error] no feature blocks produced; provide --seq-groups or "
@@ -829,6 +877,11 @@ def main():
     X_full = np.hstack(blocks).astype(np.float32)
     names = np.array(names)
     n, d = X_full.shape
+    if args.expected_features is not None and d != args.expected_features:
+        raise ValueError(
+            f"assembled feature dimension mismatch: expected "
+            f"{args.expected_features}, found {d}"
+        )
     force_keep = make_force_keep_mask(names, args.force_keep_groups)
     print(f"[data] {n} samples x {d} features; target=gbsa; transform={args.target}; loss={args.loss}")
     print(f"[policy] force-keep={args.force_keep_groups or 'none'} ({int(force_keep.sum())}d)")
@@ -838,11 +891,22 @@ def main():
         print("[info] lasso degrades to ExtraTrees top-k on Windows (BLAS).")
 
     methods = [m.strip() for m in args.methods.split(",") if m.strip()]
+    if len(methods) != len(set(methods)):
+        raise ValueError("selection methods must not be repeated")
     for m in methods:
         if m not in METHOD_REGISTRY:
             print(f"[error] unknown method: {m}; aborting.")
             sys.exit(1)
     eval_models = [m.strip() for m in args.eval_models.split(",") if m.strip()]
+    eval_models = [m.upper() for m in eval_models]
+    if not eval_models:
+        raise ValueError("at least one evaluation model is required")
+    if len(eval_models) != len(set(eval_models)):
+        raise ValueError("evaluation models must not be repeated")
+    # Fail before an expensive multi-seed run if an optional requested backend
+    # is unavailable or a model name is invalid.
+    for model_name in eval_models:
+        make_eval_model(model_name, args.loss, args.n_jobs)
 
     rows = []
     selection_records = []
@@ -920,8 +984,6 @@ def main():
 
             for model_name in eval_models:
                 fm = make_eval_model(model_name, args.loss, args.n_jobs)
-                if fm is None:
-                    continue
                 fm.fit(X_tr[:, sel_idx], y_tr_t)
                 pred = fm.predict(X_te[:, sel_idx])
                 row = {"seed": seed, "method": method, "model": model_name,
@@ -978,6 +1040,25 @@ def main():
         sys.exit(1)
 
     res = pd.DataFrame(rows)
+    expected_keys = {
+        (seed, method, model)
+        for seed in range(1, args.seeds + 1)
+        for method in methods
+        for model in eval_models
+    }
+    observed_keys = set(
+        res[["seed", "method", "model"]].itertuples(index=False, name=None)
+    )
+    duplicated_keys = res.duplicated(["seed", "method", "model"]).sum()
+    if duplicated_keys or observed_keys != expected_keys:
+        missing = sorted(expected_keys - observed_keys)[:10]
+        unexpected = sorted(observed_keys - expected_keys)[:10]
+        raise RuntimeError(
+            "incomplete result matrix: "
+            f"rows={len(res)}, expected={len(expected_keys)}, "
+            f"duplicates={int(duplicated_keys)}, missing={missing}, "
+            f"unexpected={unexpected}"
+        )
     res.to_csv(out_path, index=False)
     print(f"\n[OK] per-seed results -> {out_path}")
 

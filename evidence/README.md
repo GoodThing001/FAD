@@ -13,4 +13,4 @@
 - phase1、v10–v13最终命名CSV仍缺失（本地已有完整checkpoint CSV与主要stdout）。
 - 逐帧GBSA与候选批次0031–0099的清单。
 
-具体操作见 `docs/SERVER_HANDOFF.md`。
+具体操作见 `docs/服务器交接.md`。

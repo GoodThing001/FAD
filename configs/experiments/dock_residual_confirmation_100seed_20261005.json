@@ -1,0 +1,14 @@
+{
+  "name": "dock_residual_confirmation_100seed",
+  "entrypoint": "scripts/reproduction/dock_residual_screen.py",
+  "arguments": {
+    "outer-seeds": 100,
+    "seed-start": 3001,
+    "inner-folds": 3,
+    "n-estimators": 200
+  },
+  "acceptance": {
+    "expected_rows": 100
+  },
+  "notes": "Frozen earlier 30-seed residual experiment, independent seeds3001-3100, GBSA-only versus predicted/observed dock; no new docking or GBSA."
+}

@@ -1,0 +1,12 @@
+{
+  "completed_at": "2026-09-30T15:10:52.216854",
+  "return_code": 0,
+  "metrics_exists": true,
+  "metrics_rows": 4,
+  "expected_rows": null,
+  "acceptance_ok": true,
+  "parked": false,
+  "parked_detail": null,
+  "expected_marker": "DONE",
+  "expected_exit_code": 0
+}

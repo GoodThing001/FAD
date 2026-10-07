@@ -339,7 +339,8 @@ def load_nupack_features(data_dir, full_df, blocks="useful"):
     nup_df = nup_df.set_index("Sequence").loc[canonical_sequences]
     if blocks == "useful":
         keep = [i for i, c in enumerate(nup_cols)
-                if any(re.search(p, c) for p in NUPACK_USEFUL_PATTERNS)]
+                if not c.startswith("delta_")
+                and any(re.search(p, c) for p in NUPACK_USEFUL_PATTERNS)]
         nup_cols = [nup_cols[i] for i in keep]
     if not nup_cols:
         raise ValueError(f"no NUPACK columns matched block selection: {blocks}")

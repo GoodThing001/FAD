@@ -1,0 +1,27 @@
+{
+  "name": "loop_strategy_compare_3seed_smoke",
+  "status": "smoke",
+  "entrypoint": "scripts/loop/strategy_compare.py",
+  "supports_log_dir": false,
+  "arguments": {
+    "mode": "retrospective",
+    "strategies": "random,greedy,greedy_diverse,maxmin_coverage",
+    "seeds": 3,
+    "seed-start": 1,
+    "rounds": 5,
+    "budget": 50,
+    "n-init": 300,
+    "n-holdout": 200,
+    "pool-size": 600,
+    "surrogate": "xgb",
+    "n-members": 5,
+    "out-dir": "evidence/loop_20260930/strategy_compare_3seed"
+  },
+  "acceptance": {
+    "exit_code": 0,
+    "expect_exit_code": 0,
+    "expect_marker": "DONE",
+    "expected_rows": 4
+  },
+  "notes": "3-seed plumbing smoke for the equal-budget strategy comparison. It checks that pairing, output files and the CLI all work; it is far too small to rank strategies."
+}

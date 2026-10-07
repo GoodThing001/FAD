@@ -1,0 +1,15 @@
+{
+  "name": "supplement_history_confirmation_20261006",
+  "entrypoint": "scripts/reproduction/supplement_cpu_20261006.py",
+  "arguments": {
+    "mode": "history",
+    "seeds": 100,
+    "seed-start": 12001,
+    "workers": 4
+  },
+  "acceptance": {
+    "expected_rows": 500,
+    "expect_exit_code": 0,
+    "expect_marker": "DONE"
+  }
+}

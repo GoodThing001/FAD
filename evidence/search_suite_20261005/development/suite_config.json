@@ -1,0 +1,43 @@
+{
+  "seeds": 30,
+  "seed_start": 401,
+  "budgets": [
+    1024,
+    4096,
+    8192
+  ],
+  "proxies": [
+    "xgb",
+    "rf"
+  ],
+  "n_init": 300,
+  "max_generations": 64,
+  "workers": 2,
+  "stability": true,
+  "ablations": true,
+  "out_dir": "D:\\PyCharm_\\FAD_clean\\runs\\search_suite_development_20261005",
+  "output": "runs\\local_search_suite_development_30seed_20261005\\metrics.csv",
+  "data_sha256": "0876C2B25A5571B834EBAC2C0C0F7671E023F6028688E90CCBA884A75FD4322A",
+  "policy_config": {
+    "beam_width": 32,
+    "offspring_per_parent": 32,
+    "one_hop_fraction": 0.8,
+    "restart_fraction": 0.1,
+    "diversity_pool_factor": 4,
+    "diversity_distance": 2,
+    "n_measured_seeds": 8,
+    "n_random_seeds": 8,
+    "min_mutual_distance": 2,
+    "population_size": 32,
+    "offspring_size": 128,
+    "tournament_size": 2,
+    "elite_count": 2
+  },
+  "source_hashes": {
+    "scripts\\loop\\search_suite.py": "93795b35aee48decb0b82a372e07ad02799bf1d990c25f7208c8adebdf1d5222",
+    "scripts\\loop\\search.py": "193e42b025be1a66b5f0c09658f905e4e15c9d6b5bdc428f5aa01987693056ae",
+    "scripts\\loop\\search_policies.py": "9960fc354d399f65893fcf1841b1c7641852ae6f6730c67a685796a9625973cc",
+    "scripts\\loop\\surrogates.py": "970362e0a4280cfe0b76efcd56905d57e11143663034cb36c6a8c93ad98dbf76",
+    "scripts\\loop\\search_archive.py": "2a0ea32729bccc4ecca0b98de344325bccad54da6ac7a1283ee853b0309e70b4"
+  }
+}

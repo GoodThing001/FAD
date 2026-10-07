@@ -1,0 +1,17 @@
+[
+  {
+    "original": "D:\\PyCharm_\\FAD\\archived\\server_sync_20260902\\legacy_source\\scripts\\README.md",
+    "copy": "evidence\\report_review_20261006\\seed42_migration_evidence\\历史优化路径_README.md",
+    "sha256": "f6782d764c5c33406dee9cfab4635454f2590a25cb257e8a0b8451408dbf699a"
+  },
+  {
+    "original": "D:\\PyCharm_\\FAD\\archived\\server_sync_20260902\\supplementary_artifacts\\phase0\\audit_report.md",
+    "copy": "evidence\\report_review_20261006\\seed42_migration_evidence\\历史基线混用审计.md",
+    "sha256": "d46c975b17d26741fa1a1c5356c0d14d4ca704c16feb238fa134fe26792714fa"
+  },
+  {
+    "original": "D:\\PyCharm_\\FAD\\archived\\server_sync_20260902\\legacy_docs\\v1\\97_BestModel\\0.5060\\README.md",
+    "copy": "evidence\\report_review_20261006\\seed42_migration_evidence\\历史0506交付说明.md",
+    "sha256": "c417b2798753ef5c05e9fcfccec5e9d074830be5d40001c16afb56ea32e84582"
+  }
+]

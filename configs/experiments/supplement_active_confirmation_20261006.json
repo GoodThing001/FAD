@@ -1,0 +1,14 @@
+{
+  "name": "supplement_active_confirmation_20261006",
+  "entrypoint": "scripts/reproduction/supplement_active_bounded_20261006.py",
+  "arguments": {
+    "seeds": 100,
+    "seed-start": 12001,
+    "workers": 4
+  },
+  "acceptance": {
+    "expected_rows": 2400,
+    "expect_exit_code": 0,
+    "expect_marker": "DONE"
+  }
+}

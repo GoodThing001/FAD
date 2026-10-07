@@ -1,0 +1,15 @@
+proxy,budget,policy,n_seeds,mean_best_pred_gbsa,mean_actual_predictions
+rf,1024,iterated_local_search,100,17.547661715143576,1024.0
+rf,1024,matched_seed_random_walk,100,17.909212536407246,1024.0
+rf,1024,multi_start_beam,100,17.51395378326009,1023.13
+rf,1024,multi_start_hill_climb,100,17.01371596235467,1024.0
+rf,1024,mutation_only_adalead,100,17.021490389178457,1024.0
+rf,1024,mutation_only_ga,100,17.102323903130458,975.89
+rf,1024,simulated_annealing,100,17.376044261548227,1024.0
+xgb,1024,iterated_local_search,100,8.54966690740645,1024.0
+xgb,1024,matched_seed_random_walk,100,9.276039064028287,1024.0
+xgb,1024,multi_start_beam,100,8.200928109913262,1023.4
+xgb,1024,multi_start_hill_climb,100,6.652588795852575,1024.0
+xgb,1024,mutation_only_adalead,100,5.056435674858214,410.62
+xgb,1024,mutation_only_ga,100,7.560363797138507,997.67
+xgb,1024,simulated_annealing,100,8.471687612830927,1024.0

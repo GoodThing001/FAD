@@ -1,0 +1,35 @@
+{
+  "name": "search_mutation_only_ga_demo",
+  "entrypoint": "scripts/loop/search_run.py",
+  "supports_log_dir": true,
+  "arguments": {
+    "policy": "mutation_only_ga",
+    "seed": 5001,
+    "model-seed": 5001,
+    "n-init": 300,
+    "surrogate": "xgb",
+    "n-members": 5,
+    "screen-k": 100,
+    "max-unique-predictions": 1024,
+    "max-generations": 64,
+    "allowed-n-from-wt": "4:13",
+    "n-measured-seeds": 8,
+    "n-random-seeds": 8,
+    "min-mutual-distance": 2,
+    "population-size": 32,
+    "offspring-size": 128,
+    "tournament-size": 2,
+    "elite-count": 2,
+    "one-hop-fraction": 0.8,
+    "restart-fraction": 0.1,
+    "diversity-pool-factor": 4,
+    "diversity-distance": 2,
+    "max-stagnant-generations": 4,
+    "output": "runs\\local_mutation_only_ga_demo_20261005\\metrics.csv",
+    "log-dir": "runs\\local_mutation_only_ga_demo_20261005\\checkpoints"
+  },
+  "acceptance": {
+    "expected_rows": 1
+  },
+  "notes": "Standalone mutation-only GA, no crossover, predictions and one/two candidate groups only. No Oracle/exported real calculation request."
+}

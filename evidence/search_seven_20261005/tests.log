@@ -1,0 +1,485 @@
+test_canonical_file_hash_and_row_count (test_data_contract.DataContractTest.test_canonical_file_hash_and_row_count) ... ok
+test_historical_split_partition (test_data_contract.DataContractTest.test_historical_split_partition) ... ok
+test_label_formula (test_data_contract.DataContractTest.test_label_formula) ... ok
+test_nupack_supplement_has_safe_schema_and_complete_coverage (test_data_contract.DataContractTest.test_nupack_supplement_has_safe_schema_and_complete_coverage) ... ok
+test_schema_and_unique_sequences (test_data_contract.DataContractTest.test_schema_and_unique_sequences) ... ok
+test_all_safe_feature_matrix_dimensions_and_alignment (test_feature_selection_contract.FeatureSelectionContractTest.test_all_safe_feature_matrix_dimensions_and_alignment) ... ok
+test_all_safe_formal_config (test_feature_selection_contract.FeatureSelectionContractTest.test_all_safe_formal_config) ... ok
+test_formal_config_has_control_and_promotion_thresholds (test_feature_selection_contract.FeatureSelectionContractTest.test_formal_config_has_control_and_promotion_thresholds) ... ok
+test_main_sequence_feature_dimensions (test_feature_selection_contract.FeatureSelectionContractTest.test_main_sequence_feature_dimensions) ... ok
+test_mutation_features_are_force_kept (test_feature_selection_contract.FeatureSelectionContractTest.test_mutation_features_are_force_kept) ... ok
+test_useful_nupack_blocks_are_exactly_192d (test_feature_selection_contract.FeatureSelectionContractTest.test_useful_nupack_blocks_are_exactly_192d) ... ok
+test_full_pass_ingest_retrains_and_closes (test_ga_future_integration.MutationOnlyGAFutureTest.test_full_pass_ingest_retrains_and_closes) ... D:\PyCharm_\FAD_clean\scripts\run_experiment.py:533: ResourceWarning: unclosed file <_io.TextIOWrapper name=4 encoding='utf-8'>
+  return_code = run_child(command, run_dir / f"stdout.resume_{stamp}.log")
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_ga_pin_protocol_mixed_return_and_done (test_ga_future_integration.MutationOnlyGAFutureTest.test_ga_pin_protocol_mixed_return_and_done) ... D:\PyCharm_\FAD_clean\scripts\run_experiment.py:533: ResourceWarning: unclosed file <_io.TextIOWrapper name=4 encoding='utf-8'>
+  return_code = run_child(command, run_dir / f"stdout.resume_{stamp}.log")
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\PyCharm_\FAD_clean\scripts\run_experiment.py:533: ResourceWarning: unclosed file <_io.TextIOWrapper name=4 encoding='utf-8'>
+  return_code = run_child(command, run_dir / f"stdout.resume_{stamp}.log")
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_mixed_pass_fail_ingest_closes_and_excludes (test_ga_future_integration.MutationOnlyGAFutureTest.test_mixed_pass_fail_ingest_closes_and_excludes) ... D:\PyCharm_\FAD_clean\scripts\run_experiment.py:533: ResourceWarning: unclosed file <_io.TextIOWrapper name=4 encoding='utf-8'>
+  return_code = run_child(command, run_dir / f"stdout.resume_{stamp}.log")
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_incomplete_comparison_is_reported (test_loop_contract.CompletenessTest.test_incomplete_comparison_is_reported) ... ok
+test_pool_truth_matches_loop_split (test_loop_contract.DiscoveryMetricsTest.test_pool_truth_matches_loop_split) ... ok
+test_top10_recall_counts_only_true_pool_best (test_loop_contract.DiscoveryMetricsTest.test_top10_recall_counts_only_true_pool_best) ... ok
+test_done_requires_retrained_state (test_loop_contract.DoneStateGuardTest.test_done_requires_retrained_state) ... ok
+test_parked_acceptance_not_poisoned_by_awaiting_state (test_loop_contract.DoneStateGuardTest.test_parked_acceptance_not_poisoned_by_awaiting_state)
+A normal park must keep acceptance_ok=true (2026-10-01 audit finding). ... ok
+test_closing_the_batch_clears_parked (test_loop_contract.FingerprintResumeTest.test_closing_the_batch_clears_parked) ... ok
+test_park_records_fingerprint_and_resume_rejects_change (test_loop_contract.FingerprintResumeTest.test_park_records_fingerprint_and_resume_rejects_change) ... ok
+test_qc_failure_closes_batch_and_excludes_candidate (test_loop_contract.FingerprintResumeTest.test_qc_failure_closes_batch_and_excludes_candidate) ... ok
+test_resume_without_fingerprint_is_refused (test_loop_contract.FingerprintResumeTest.test_resume_without_fingerprint_is_refused) ... ok
+test_export_excludes_canonical_table_and_earlier_batches (test_loop_contract.FullLibraryDedupeTest.test_export_excludes_canonical_table_and_earlier_batches) ... ok
+test_candidate_id_is_stable (test_loop_contract.InterfaceContractTest.test_candidate_id_is_stable) ... ok
+test_prediction_contract (test_loop_contract.InterfaceContractTest.test_prediction_contract) ... ok
+test_sequence_contract_includes_fixed_scaffold (test_loop_contract.InterfaceContractTest.test_sequence_contract_includes_fixed_scaffold) ... ok
+test_version_and_target_policy (test_loop_contract.InterfaceContractTest.test_version_and_target_policy) ... ok
+test_ledger_predictions_match_model_for_selected_sequences (test_loop_contract.LedgerAlignmentTest.test_ledger_predictions_match_model_for_selected_sequences) ... ok
+test_cross_round_uniqueness_and_metric_time_point (test_loop_contract.LoopAcceptanceTest.test_cross_round_uniqueness_and_metric_time_point) ... ok
+test_holdout_never_enters_training (test_loop_contract.LoopAcceptanceTest.test_holdout_never_enters_training) ... ok
+test_pool_exhaustion_stops_cleanly (test_loop_contract.LoopAcceptanceTest.test_pool_exhaustion_stops_cleanly) ... ok
+test_prospective_parks_and_resumes_with_same_batch (test_loop_contract.LoopAcceptanceTest.test_prospective_parks_and_resumes_with_same_batch) ... ok
+test_resume_after_rounds_exhausted_still_parks_and_absorbs (test_loop_contract.LoopAcceptanceTest.test_resume_after_rounds_exhausted_still_parks_and_absorbs)
+A resume that only delivers measurements must never look DONE. ... ok
+test_resume_without_checkpoint_fails (test_loop_contract.LoopAcceptanceTest.test_resume_without_checkpoint_fails) ... ok
+test_exclude_respected (test_loop_contract.MutationTest.test_exclude_respected) ... ok
+test_generation_contract_and_provenance (test_loop_contract.MutationTest.test_generation_contract_and_provenance) ... ok
+test_local_mutation_counts_parent_and_wt (test_loop_contract.MutationTest.test_local_mutation_counts_parent_and_wt) ... ok
+test_quota_stratification (test_loop_contract.MutationTest.test_quota_stratification) ... ok
+test_loo_threshold_is_finite_and_flags_far_candidates (test_loop_contract.OodRuleTest.test_loo_threshold_is_finite_and_flags_far_candidates) ... ok
+test_metrics_threshold_matches_pre_round_training_set (test_loop_contract.OodTimePointTest.test_metrics_threshold_matches_pre_round_training_set) ... ok
+test_fail_is_persisted_across_restart_and_closes_batch (test_loop_contract.ParkResumeTest.test_fail_is_persisted_across_restart_and_closes_batch) ... D:\PyCharm_\FAD_clean\scripts\loop\oracle.py:151: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  combined = pd.concat([existing, pd.DataFrame(rows, columns=header)],
+ok
+test_ingest_checks_candidate_id_and_protocol (test_loop_contract.ParkResumeTest.test_ingest_checks_candidate_id_and_protocol) ... D:\PyCharm_\FAD_clean\scripts\loop\oracle.py:151: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  combined = pd.concat([existing, pd.DataFrame(rows, columns=header)],
+ok
+test_ingest_duplicate_ids_with_conflicting_values (test_loop_contract.ParkResumeTest.test_ingest_duplicate_ids_with_conflicting_values) ... D:\PyCharm_\FAD_clean\scripts\loop\oracle.py:151: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  combined = pd.concat([existing, pd.DataFrame(rows, columns=header)],
+ok
+test_ingest_rejects_unknown_batch_and_conflicts (test_loop_contract.ParkResumeTest.test_ingest_rejects_unknown_batch_and_conflicts) ... D:\PyCharm_\FAD_clean\scripts\loop\oracle.py:151: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  combined = pd.concat([existing, pd.DataFrame(rows, columns=header)],
+ok
+test_park_persists_and_ingest_validates (test_loop_contract.ParkResumeTest.test_park_persists_and_ingest_validates) ... D:\PyCharm_\FAD_clean\scripts\loop\oracle.py:151: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  combined = pd.concat([existing, pd.DataFrame(rows, columns=header)],
+ok
+test_no_post_retrain_eval_still_reaches_retrained (test_loop_contract.ProtocolPinTest.test_no_post_retrain_eval_still_reaches_retrained) ... D:\PyCharm_\FAD_clean\scripts\run_experiment.py:533: ResourceWarning: unclosed file <_io.TextIOWrapper name=4 encoding='utf-8'>
+  return_code = run_child(command, run_dir / f"stdout.resume_{stamp}.log")
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_pin_protocol_then_ingest_enforces_allow_list (test_loop_contract.ProtocolPinTest.test_pin_protocol_then_ingest_enforces_allow_list) ... [resume] test_full_ingest_retrain
+[command] D:\AA_Py\A_Anaconda\python.exe D:\PyCharm_\FAD_clean\scripts\loop\loop.py --mode prospective --candidate-source search --rounds 1 --budget 8 --n-init 40 --n-holdout 20 --pool-size 30 --surrogate xgb --n-members 2 --oracle park --protocol-id gbsa_pending_protocol --seed 55 --search-policy mutation_only_ga --search-max-unique-predictions 64 --search-max-generations 8 --search-population-size 8 --search-offspring-size 16 --search-n-measured-seeds 2 --search-n-random-seeds 2 --output runs\test_full_ingest_retrain\metrics.csv --log-dir runs\test_full_ingest_retrain\checkpoints --resume --ingest C:\Users\mmc\AppData\Local\Temp\tmpunrk5kzx\labels.csv
+FAD closed loop | interface v0.2.0 | target=gbsa (gbsa_only) | strategy=greedy
+[resume] round=1 status=awaiting_labels awaiting=8
+[setup] prospective: init=40 holdout=20 pool=0 (source=search, search_policy=mutation_only_ga)
+[resume] fingerprint matched (data=0876c2b25a55, pool=e3b0c44298fc, n_pool=0)
+[ingest] accepted=8 duplicate=0 failed=0 rejected=0 closed=['eafd191048b7']
+[warn] no approved-protocols allow-list is pinned: any non-empty protocol_id is accepted. Pin the lab protocol (--approved-protocols / runner --pin-protocol) before a controlled real ingest.
+  [ingest] batch eafd191048b7 closed (no candidates awaiting labels)
+  [ingest] removed the stale PARKED marker
+[resume] absorbed 8 returned labels before the round loop
+[retrain] batch closed and 8 labels absorbed; final retrain holdout_spearman=-0.193985 (n_train=48)
+[OK] 2 rows -> D:\PyCharm_\FAD_clean\runs\test_full_ingest_retrain\metrics.csv (exit_code=0)
+[DONE] return_code=0
+[pin-protocol] 'gbsa_pending_protocol' -> 'synthetic_ga_test_v1' (audited: protocol_changes.jsonl, 24 ledger/batch rows rewritten)
+[pin-protocol] audited change recorded: {'changed': True, 'protocol': 'synthetic_ga_test_v1', 'rows_rewritten': 24}
+[resume] test_ga_future_protocol
+[command] D:\AA_Py\A_Anaconda\python.exe D:\PyCharm_\FAD_clean\scripts\loop\loop.py --mode prospective --candidate-source search --rounds 1 --budget 8 --n-init 40 --n-holdout 20 --pool-size 30 --surrogate xgb --n-members 2 --oracle park --protocol-id synthetic_ga_test_v1 --seed 55 --search-policy mutation_only_ga --search-max-unique-predictions 64 --search-max-generations 8 --search-population-size 8 --search-offspring-size 16 --search-n-measured-seeds 2 --search-n-random-seeds 2 --approved-protocols synthetic_ga_test_v1 --output runs\test_ga_future_protocol\metrics.csv --log-dir runs\test_ga_future_protocol\checkpoints --resume
+FAD closed loop | interface v0.2.0 | target=gbsa (gbsa_only) | strategy=greedy
+[resume] round=1 status=awaiting_labels awaiting=8
+[setup] prospective: init=40 holdout=20 pool=0 (source=search, search_policy=mutation_only_ga)
+[resume] fingerprint matched (data=0876c2b25a55, pool=e3b0c44298fc, n_pool=0)
+[park] 8 labels still pending after 1 round(s); exit 3
+[OK] 1 rows -> D:\PyCharm_\FAD_clean\runs\test_ga_future_protocol\metrics.csv (exit_code=3)
+[PARKED] return_code=3
+[resume] test_ga_future_protocol
+[command] D:\AA_Py\A_Anaconda\python.exe D:\PyCharm_\FAD_clean\scripts\loop\loop.py --mode prospective --candidate-source search --rounds 1 --budget 8 --n-init 40 --n-holdout 20 --pool-size 30 --surrogate xgb --n-members 2 --oracle park --protocol-id synthetic_ga_test_v1 --seed 55 --search-policy mutation_only_ga --search-max-unique-predictions 64 --search-max-generations 8 --search-population-size 8 --search-offspring-size 16 --search-n-measured-seeds 2 --search-n-random-seeds 2 --approved-protocols synthetic_ga_test_v1 --output runs\test_ga_future_protocol\metrics.csv --log-dir runs\test_ga_future_protocol\checkpoints --resume --ingest C:\Users\mmc\AppData\Local\Temp\tmpa29xapr6\labels.csv
+FAD closed loop | interface v0.2.0 | target=gbsa (gbsa_only) | strategy=greedy
+[resume] round=1 status=awaiting_labels awaiting=8
+[setup] prospective: init=40 holdout=20 pool=0 (source=search, search_policy=mutation_only_ga)
+[resume] fingerprint matched (data=0876c2b25a55, pool=e3b0c44298fc, n_pool=0)
+[ingest] accepted=7 duplicate=0 failed=1 rejected=0 closed=['eafd191048b7']
+  [ingest] 1 candidate(s) marked failed by QC; they stay out of the pool
+  [ingest] batch eafd191048b7 closed (no candidates awaiting labels)
+  [ingest] removed the stale PARKED marker
+[resume] absorbed 7 returned labels before the round loop
+[retrain] batch closed and 7 labels absorbed; final retrain holdout_spearman=-0.123308 (n_train=47)
+[OK] 2 rows -> D:\PyCharm_\FAD_clean\runs\test_ga_future_protocol\metrics.csv (exit_code=0)
+[DONE] return_code=0
+[resume] test_mixed_ingest_retrain
+[command] D:\AA_Py\A_Anaconda\python.exe D:\PyCharm_\FAD_clean\scripts\loop\loop.py --mode prospective --candidate-source search --rounds 1 --budget 8 --n-init 40 --n-holdout 20 --pool-size 30 --surrogate xgb --n-members 2 --oracle park --protocol-id gbsa_pending_protocol --seed 55 --search-policy mutation_only_ga --search-max-unique-predictions 64 --search-max-generations 8 --search-population-size 8 --search-offspring-size 16 --search-n-measured-seeds 2 --search-n-random-seeds 2 --output runs\test_mixed_ingest_retrain\metrics.csv --log-dir runs\test_mixed_ingest_retrain\checkpoints --resume --ingest C:\Users\mmc\AppData\Local\Temp\tmpuq97hw4b\labels.csv
+FAD closed loop | interface v0.2.0 | target=gbsa (gbsa_only) | strategy=greedy
+[resume] round=1 status=awaiting_labels awaiting=8
+[setup] prospective: init=40 holdout=20 pool=0 (source=search, search_policy=mutation_only_ga)
+[resume] fingerprint matched (data=0876c2b25a55, pool=e3b0c44298fc, n_pool=0)
+[ingest] accepted=6 duplicate=0 failed=2 rejected=0 closed=['eafd191048b7']
+[warn] no approved-protocols allow-list is pinned: any non-empty protocol_id is accepted. Pin the lab protocol (--approved-protocols / runner --pin-protocol) before a controlled real ingest.
+  [ingest] 2 candidate(s) marked failed by QC; they stay out of the pool
+  [ingest] batch eafd191048b7 closed (no candidates awaiting labels)
+  [ingest] removed the stale PARKED marker
+[resume] absorbed 6 returned labels before the round loop
+[retrain] batch closed and 6 labels absorbed; final retrain holdout_spearman=0.090226 (n_train=46)
+[OK] 2 rows -> D:\PyCharm_\FAD_clean\runs\test_mixed_ingest_retrain\metrics.csv (exit_code=0)
+[DONE] return_code=0
+[FAILED] return_code=0
+[DONE] return_code=0
+[PARKED] return_code=3
+[resume] test_no_eval_retrain
+[command] D:\AA_Py\A_Anaconda\python.exe D:\PyCharm_\FAD_clean\scripts\loop\loop.py --mode prospective --candidate-source mutate --rounds 1 --budget 8 --n-init 120 --n-holdout 60 --pool-size 300 --surrogate xgb --n-members 2 --oracle park --protocol-id gbsa_pending_protocol --seed 55 --no-post-retrain-eval --output runs\test_no_eval_retrain\metrics.csv --log-dir runs\test_no_eval_retrain\checkpoints --resume --ingest C:\Users\mmc\AppData\Local\Temp\tmpen62ui23\labels.csv
+FAD closed loop | interface v0.2.0 | target=gbsa (gbsa_only) | strategy=greedy
+[resume] round=1 status=awaiting_labels awaiting=8
+[setup] dedup at generation: excluded 2000 known sequences (canonical 2000, init 120, holdout 60); kept 300
+[setup] pool n_from_wt range [7,13] vs labeled [7,13]
+[setup] prospective: init=120 holdout=60 pool=300 (source=mutate, n_from_wt 7-13)
+[resume] fingerprint matched (data=0876c2b25a55, pool=4b11790cfdd5, n_pool=300)
+[ingest] accepted=8 duplicate=0 failed=0 rejected=0 closed=['d494e0f91d60']
+[warn] no approved-protocols allow-list is pinned: any non-empty protocol_id is accepted. Pin the lab protocol (--approved-protocols / runner --pin-protocol) before a controlled real ingest.
+  [ingest] batch d494e0f91d60 closed (no candidates awaiting labels)
+  [ingest] removed the stale PARKED marker
+[resume] absorbed 8 returned labels before the round loop
+[retrain] batch closed and 8 labels absorbed; final retrain holdout_spearman= (n_train=128)
+[OK] 2 rows -> D:\PyCharm_\FAD_clean\runs\test_no_eval_retrain\metrics.csv (exit_code=0)
+[DONE] return_code=0
+[pin-protocol] 'gbsa_pending_protocol' -> 'team_mmgbsa_v1' (audited: protocol_changes.jsonl, 16 ledger/batch rows rewritten)D:\PyCharm_\FAD_clean\scripts\run_experiment.py:533: ResourceWarning: unclosed file <_io.TextIOWrapper name=4 encoding='utf-8'>
+  return_code = run_child(command, run_dir / f"stdout.resume_{stamp}.log")
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\PyCharm_\FAD_clean\scripts\run_experiment.py:533: ResourceWarning: unclosed file <_io.TextIOWrapper name=4 encoding='utf-8'>
+  return_code = run_child(command, run_dir / f"stdout.resume_{stamp}.log")
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_pin_rejected_after_measurements_returned (test_loop_contract.ProtocolPinTest.test_pin_rejected_after_measurements_returned) ... D:\PyCharm_\FAD_clean\scripts\run_experiment.py:533: ResourceWarning: unclosed file <_io.TextIOWrapper name=4 encoding='utf-8'>
+  return_code = run_child(command, run_dir / f"stdout.resume_{stamp}.log")
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_pin_rejects_blank_protocol (test_loop_contract.ProtocolPinTest.test_pin_rejects_blank_protocol) ... ok
+test_full_pass_ingest_retrains_and_closes (test_loop_contract.ResumeRetrainTest.test_full_pass_ingest_retrains_and_closes) ... D:\PyCharm_\FAD_clean\scripts\run_experiment.py:533: ResourceWarning: unclosed file <_io.TextIOWrapper name=4 encoding='utf-8'>
+  return_code = run_child(command, run_dir / f"stdout.resume_{stamp}.log")
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_mixed_pass_fail_ingest_closes_and_excludes (test_loop_contract.ResumeRetrainTest.test_mixed_pass_fail_ingest_closes_and_excludes) ... 
+[pin-protocol] audited change recorded: {'changed': True, 'protocol': 'team_mmgbsa_v1', 'rows_rewritten': 16}
+[resume] test_protocol_pin
+[command] D:\AA_Py\A_Anaconda\python.exe D:\PyCharm_\FAD_clean\scripts\loop\loop.py --mode prospective --candidate-source mutate --rounds 1 --budget 8 --n-init 120 --n-holdout 60 --pool-size 300 --surrogate xgb --n-members 2 --oracle park --protocol-id team_mmgbsa_v1 --seed 55 --approved-protocols team_mmgbsa_v1 --output runs\test_protocol_pin\metrics.csv --log-dir runs\test_protocol_pin\checkpoints --resume
+FAD closed loop | interface v0.2.0 | target=gbsa (gbsa_only) | strategy=greedy
+[resume] round=1 status=awaiting_labels awaiting=8
+[setup] dedup at generation: excluded 2000 known sequences (canonical 2000, init 120, holdout 60); kept 300
+[setup] pool n_from_wt range [7,13] vs labeled [7,13]
+[setup] prospective: init=120 holdout=60 pool=300 (source=mutate, n_from_wt 7-13)
+[resume] fingerprint matched (data=0876c2b25a55, pool=4b11790cfdd5, n_pool=300)
+[park] 8 labels still pending after 1 round(s); exit 3
+[OK] 1 rows -> D:\PyCharm_\FAD_clean\runs\test_protocol_pin\metrics.csv (exit_code=3)
+[PARKED] return_code=3
+[resume] test_protocol_pin
+[command] D:\AA_Py\A_Anaconda\python.exe D:\PyCharm_\FAD_clean\scripts\loop\loop.py --mode prospective --candidate-source mutate --rounds 1 --budget 8 --n-init 120 --n-holdout 60 --pool-size 300 --surrogate xgb --n-members 2 --oracle park --protocol-id team_mmgbsa_v1 --seed 55 --approved-protocols team_mmgbsa_v1 --output runs\test_protocol_pin\metrics.csv --log-dir runs\test_protocol_pin\checkpoints --resume --ingest C:\Users\mmc\AppData\Local\Temp\tmpds3giez6\labels.csv
+FAD closed loop | interface v0.2.0 | target=gbsa (gbsa_only) | strategy=greedy
+[resume] round=1 status=awaiting_labels awaiting=8
+[setup] dedup at generation: excluded 2000 known sequences (canonical 2000, init 120, holdout 60); kept 300
+[setup] pool n_from_wt range [7,13] vs labeled [7,13]
+[setup] prospective: init=120 holdout=60 pool=300 (source=mutate, n_from_wt 7-13)
+[resume] fingerprint matched (data=0876c2b25a55, pool=4b11790cfdd5, n_pool=300)
+[ingest] accepted=0 duplicate=0 failed=0 rejected=8
+  [ingest][reject] unapproved protocol_id 'rogue_protocol'
+  [ingest][reject] unapproved protocol_id 'rogue_protocol'
+  [ingest][reject] unapproved protocol_id 'rogue_protocol'
+  [ingest][reject] unapproved protocol_id 'rogue_protocol'
+  [ingest][reject] unapproved protocol_id 'rogue_protocol'
+[park] 8 labels still pending after 1 round(s); exit 3
+[OK] 1 rows -> D:\PyCharm_\FAD_clean\runs\test_protocol_pin\metrics.csv (exit_code=3)
+[PARKED] return_code=3
+[resume] test_protocol_pin
+[command] D:\AA_Py\A_Anaconda\python.exe D:\PyCharm_\FAD_clean\scripts\loop\loop.py --mode prospective --candidate-source mutate --rounds 1 --budget 8 --n-init 120 --n-holdout 60 --pool-size 300 --surrogate xgb --n-members 2 --oracle park --protocol-id team_mmgbsa_v1 --seed 55 --approved-protocols team_mmgbsa_v1 --output runs\test_protocol_pin\metrics.csv --log-dir runs\test_protocol_pin\checkpoints --resume --ingest C:\Users\mmc\AppData\Local\Temp\tmpa_p33u8v\labels.csv
+FAD closed loop | interface v0.2.0 | target=gbsa (gbsa_only) | strategy=greedy
+[resume] round=1 status=awaiting_labels awaiting=8
+[setup] dedup at generation: excluded 2000 known sequences (canonical 2000, init 120, holdout 60); kept 300
+[setup] pool n_from_wt range [7,13] vs labeled [7,13]
+[setup] prospective: init=120 holdout=60 pool=300 (source=mutate, n_from_wt 7-13)
+[resume] fingerprint matched (data=0876c2b25a55, pool=4b11790cfdd5, n_pool=300)
+[ingest] accepted=8 duplicate=0 failed=0 rejected=0 closed=['d494e0f91d60']
+  [ingest] batch d494e0f91d60 closed (no candidates awaiting labels)
+  [ingest] removed the stale PARKED marker
+[resume] absorbed 8 returned labels before the round loop
+[retrain] batch closed and 8 labels absorbed; final retrain holdout_spearman=-0.070242 (n_train=128)
+[OK] 2 rows -> D:\PyCharm_\FAD_clean\runs\test_protocol_pin\metrics.csv (exit_code=0)
+[DONE] return_code=0
+[resume] test_pin_after_labels
+[command] D:\AA_Py\A_Anaconda\python.exe D:\PyCharm_\FAD_clean\scripts\loop\loop.py --mode prospective --candidate-source mutate --rounds 1 --budget 8 --n-init 120 --n-holdout 60 --pool-size 300 --surrogate xgb --n-members 2 --oracle park --protocol-id gbsa_pending_protocol --seed 55 --output runs\test_pin_after_labels\metrics.csv --log-dir runs\test_pin_after_labels\checkpoints --resume --ingest C:\Users\mmc\AppData\Local\Temp\tmp7_q5wcj7\labels.csv
+FAD closed loop | interface v0.2.0 | target=gbsa (gbsa_only) | strategy=greedy
+[resume] round=1 status=awaiting_labels awaiting=8
+[setup] dedup at generation: excluded 2000 known sequences (canonical 2000, init 120, holdout 60); kept 300
+[setup] pool n_from_wt range [7,13] vs labeled [7,13]
+[setup] prospective: init=120 holdout=60 pool=300 (source=mutate, n_from_wt 7-13)
+[resume] fingerprint matched (data=0876c2b25a55, pool=4b11790cfdd5, n_pool=300)
+[ingest] accepted=2 duplicate=0 failed=0 rejected=0
+[warn] no approved-protocols allow-list is pinned: any non-empty protocol_id is accepted. Pin the lab protocol (--approved-protocols / runner --pin-protocol) before a controlled real ingest.
+[resume] absorbed 2 returned labels before the round loop
+[park] 6 labels still pending after 1 round(s); exit 3
+[OK] 2 rows -> D:\PyCharm_\FAD_clean\runs\test_pin_after_labels\metrics.csv (exit_code=3)
+[PARKED] return_code=3
+[resume] test_full_ingest_retrain
+[command] D:\AA_Py\A_Anaconda\python.exe D:\PyCharm_\FAD_clean\scripts\loop\loop.py --mode prospective --candidate-source mutate --rounds 1 --budget 8 --n-init 120 --n-holdout 60 --pool-size 300 --surrogate xgb --n-members 2 --oracle park --protocol-id gbsa_pending_protocol --seed 55 --output runs\test_full_ingest_retrain\metrics.csv --log-dir runs\test_full_ingest_retrain\checkpoints --resume --ingest C:\Users\mmc\AppData\Local\Temp\tmpiva5od3g\labels.csv
+FAD closed loop | interface v0.2.0 | target=gbsa (gbsa_only) | strategy=greedy
+[resume] round=1 status=awaiting_labels awaiting=8
+[setup] dedup at generation: excluded 2000 known sequences (canonical 2000, init 120, holdout 60); kept 300
+[setup] pool n_from_wt range [7,13] vs labeled [7,13]
+[setup] prospective: init=120 holdout=60 pool=300 (source=mutate, n_from_wt 7-13)
+[resume] fingerprint matched (data=0876c2b25a55, pool=4b11790cfdd5, n_pool=300)
+[ingest] accepted=8 duplicate=0 failed=0 rejected=0 closed=['d494e0f91d60']
+[warn] no approved-protocols allow-list is pinned: any non-empty protocol_id is accepted. Pin the lab protocol (--approved-protocols / runner --pin-protocol) before a controlled real ingest.
+  [ingest] batch d494e0f91d60 closed (no candidates awaiting labels)
+  [ingest] removed the stale PARKED marker
+[resume] absorbed 8 returned labels before the round loop
+[retrain] batch closed and 8 labels absorbed; final retrain holdout_spearman=-0.070242 (n_train=128)
+[OK] 2 rows -> D:\PyCharm_\FAD_clean\runs\test_full_ingest_retrain\metrics.csv (exit_code=0)
+[DONE] return_code=0
+[resume] test_mixed_ingest_retrain
+[command] D:\AA_Py\A_Anaconda\python.exe D:\PyCharm_\FAD_clean\scripts\loop\loop.py --mode prospective --candidate-source mutate --rounds 1 --budget 8 --n-init 120 --n-holdout 60 --pool-size 300 --surrogate xgb --n-members 2 --oracle park --protocol-id gbsa_pending_protocol --seed 55 --output runs\test_mixed_ingest_retrain\metrics.csv --log-dir runs\test_mixed_ingest_retrain\checkpoints --resume --ingest C:\Users\mmc\AppData\Local\Temp\tmp63drzrxu\labels.csv
+FAD closed loop | interface v0.2.0 | target=gbsa (gbsa_only) | strategy=greedy
+[resume] round=1 status=awaiting_labels awaiting=8
+[setup] dedup at generation: excluded 2000 known sequences (canonical 2000, init 120, holdout 60); kept 300
+[setup] pool n_from_wt range [7,13] vs labeled [7,13]
+[setup] prospective: init=120 holdout=60 pool=300 (source=mutate, n_from_wt 7-13)
+[resume] fingerprint matched (data=0876c2b25a55, pool=4b11790cfdd5, n_pool=300)
+[ingest] accepted=6 duplicate=0 failed=2 rejected=0 closed=['d494e0f91d60']
+[warn] no approved-protocols allow-list is pinned: any non-empty protocol_id is accepted. Pin the lab protocol (--approved-protocols / runner --pin-protocol) before a controlled real ingest.
+D:\PyCharm_\FAD_clean\scripts\run_experiment.py:533: ResourceWarning: unclosed file <_io.TextIOWrapper name=4 encoding='utf-8'>
+  return_code = run_child(command, run_dir / f"stdout.resume_{stamp}.log")
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_registry_hash_check_and_source_manifest (test_loop_contract.RunnerSemanticsTest.test_registry_hash_check_and_source_manifest) ... ok
+test_resume_run_requires_an_existing_checkpointed_run (test_loop_contract.RunnerSemanticsTest.test_resume_run_requires_an_existing_checkpointed_run) ... ok
+test_resume_run_reuses_the_run_and_updates_the_marker (test_loop_contract.RunnerSemanticsTest.test_resume_run_reuses_the_run_and_updates_the_marker) ... ok
+test_unregistered_dataset_fails_for_formal_runs (test_loop_contract.RunnerSemanticsTest.test_unregistered_dataset_fails_for_formal_runs) ... ok
+test_chunked_hamming_is_chunk_invariant (test_loop_contract.SelectionTest.test_chunked_hamming_is_chunk_invariant)
+C package: chunked Hamming must not depend on the block size. ... ok
+test_determinism_and_novelty (test_loop_contract.SelectionTest.test_determinism_and_novelty) ... ok
+test_exclusions_and_dedup (test_loop_contract.SelectionTest.test_exclusions_and_dedup) ... ok
+test_greedy_diverse_beats_greedy_on_spread (test_loop_contract.SelectionTest.test_greedy_diverse_beats_greedy_on_spread) ... ok
+test_minimisation_direction (test_loop_contract.SelectionTest.test_minimisation_direction) ... ok
+test_negative_inputs_rejected (test_loop_contract.SelectionTest.test_negative_inputs_rejected) ... ok
+test_pool_exhaustion_reported (test_loop_contract.SelectionTest.test_pool_exhaustion_reported) ... ok
+test_uncertainty_strategy_requires_sigma (test_loop_contract.SelectionTest.test_uncertainty_strategy_requires_sigma) ... ok
+test_zero_budget_and_zero_quota (test_loop_contract.SelectionTest.test_zero_budget_and_zero_quota) ... ok
+test_determinism_and_mismatch (test_loop_contract.SurrogateContractTest.test_determinism_and_mismatch) ... ok
+test_fit_predict_and_metadata (test_loop_contract.SurrogateContractTest.test_fit_predict_and_metadata) ... ok
+test_sigma_can_be_disabled (test_loop_contract.SurrogateContractTest.test_sigma_can_be_disabled) ... ok
+test_tail_stats_direction (test_loop_contract.TailStatsTest.test_tail_stats_direction) ... ok
+test_duplicate_table_rejected (test_loop_contract.TruthIsolationTest.test_duplicate_table_rejected) ... ok
+test_eligibility_and_already_labeled (test_loop_contract.TruthIsolationTest.test_eligibility_and_already_labeled) ... ok
+test_only_pool_labels_are_visible (test_loop_contract.TruthIsolationTest.test_only_pool_labels_are_visible) ... ok
+test_peek_never_reveals (test_loop_contract.TruthIsolationTest.test_peek_never_reveals) ... ok
+test_legacy_static_fingerprint_resumes_without_rewriting (test_loop_fingerprint_compatibility.LegacyFingerprintTest.test_legacy_static_fingerprint_resumes_without_rewriting) ... ok
+test_elite_monotonicity_and_stagnation (test_mutation_ga_contract.GeneticContractTest.test_elite_monotonicity_and_stagnation) ... ok
+test_fitted_model_identity_and_real_cache_rejection (test_mutation_ga_contract.GeneticContractTest.test_fitted_model_identity_and_real_cache_rejection) ... ok
+test_hill_generation_cap_is_enforced (test_mutation_ga_contract.GeneticContractTest.test_hill_generation_cap_is_enforced) ... ok
+test_parameter_validation (test_mutation_ga_contract.GeneticContractTest.test_parameter_validation) ... ok
+test_resume_matches_uninterrupted (test_mutation_ga_contract.GeneticContractTest.test_resume_matches_uninterrupted) ... ok
+test_single_parent_mutations_and_shared_start (test_mutation_ga_contract.GeneticContractTest.test_single_parent_mutations_and_shared_start) ... ok
+test_actual_prediction_prefix_and_shared_start (test_search_compare_contract.DriverMathTest.test_actual_prediction_prefix_and_shared_start) ... ok
+test_bootstrap_ci_basic (test_search_compare_contract.DriverMathTest.test_bootstrap_ci_basic) ... ok
+test_completeness_detects_missing_rows (test_search_compare_contract.DriverMathTest.test_completeness_detects_missing_rows) ... ok
+test_jaccard (test_search_compare_contract.DriverMathTest.test_jaccard) ... ok
+test_paired_delta_math (test_search_compare_contract.DriverMathTest.test_paired_delta_math) ... ok
+test_top50_diversity (test_search_compare_contract.DriverMathTest.test_top50_diversity) ... ok
+test_model_seed_changes_predictions_not_split (test_search_compare_contract.ModelSeedSeparationTest.test_model_seed_changes_predictions_not_split) ... ok
+test_rejected_resume_preserves_fitted_weights (test_search_compare_contract.ModelSeedSeparationTest.test_rejected_resume_preserves_fitted_weights) ... ok
+test_labels_reference_and_mutable_domain_are_bound (test_search_context_identity.ContextIdentityTest.test_labels_reference_and_mutable_domain_are_bound) ... ok
+test_diversity_rule_switchable (test_search_contract.BeamPolicyTest.test_diversity_rule_switchable) ... ok
+test_mechanism_vs_baselines_same_budget (test_search_contract.BeamPolicyTest.test_mechanism_vs_baselines_same_budget) ... ok
+test_no_seeds_stop (test_search_contract.BeamPolicyTest.test_no_seeds_stop) ... ok
+test_stagnation_stop (test_search_contract.BeamPolicyTest.test_stagnation_stop) ... ok
+test_one_hop_neighbors_cap_and_range (test_search_contract.GeometryTest.test_one_hop_neighbors_cap_and_range) ... ok
+test_stratified_random_strata_and_exclude (test_search_contract.GeometryTest.test_stratified_random_strata_and_exclude) ... ok
+test_two_hop_neighbors_sampled_deterministic (test_search_contract.GeometryTest.test_two_hop_neighbors_sampled_deterministic) ... ok
+test_budget_is_never_exceeded (test_search_contract.HillClimbPolicyTest.test_budget_is_never_exceeded) ... ok
+test_reaches_target_on_smooth_landscape (test_search_contract.HillClimbPolicyTest.test_reaches_target_on_smooth_landscape) ... ok
+test_context_round_trip (test_search_contract.InterfaceContractTest.test_context_round_trip) ... ok
+test_version_and_context_validation (test_search_contract.InterfaceContractTest.test_version_and_context_validation) ... ok
+test_groups_one_or_two_clusters (test_search_contract.OodAndGroupsTest.test_groups_one_or_two_clusters) ... ok
+test_ood_helpers_match_loop_implementations (test_search_contract.OodAndGroupsTest.test_ood_helpers_match_loop_implementations) ... ok
+test_reproducible_budget_and_validity (test_search_contract.RandomPolicyTest.test_reproducible_budget_and_validity) ... ok
+test_space_exhausted_graceful (test_search_contract.RandomPolicyTest.test_space_exhausted_graceful) ... ok
+test_beam_resume_is_bit_identical (test_search_contract.ResumeTest.test_beam_resume_is_bit_identical) ... ok
+test_hill_climb_resume_is_bit_identical (test_search_contract.ResumeTest.test_hill_climb_resume_is_bit_identical) ... ok
+test_immediate_parent_evidence_after_multiple_generations (test_search_contract.ResumeTest.test_immediate_parent_evidence_after_multiple_generations) ... ok
+test_matched_random_walk_resume_and_shared_seed_order (test_search_contract.ResumeTest.test_matched_random_walk_resume_and_shared_seed_order) ... ok
+test_rerun_after_done_is_idempotent (test_search_contract.ResumeTest.test_rerun_after_done_is_idempotent) ... ok
+test_resume_refuses_snapshot_mismatch (test_search_contract.ResumeTest.test_resume_refuses_snapshot_mismatch) ... ok
+test_batch_order_alignment_and_minimisation_direction (test_search_contract.ScorerContractTest.test_batch_order_alignment_and_minimisation_direction) ... ok
+test_cache_isolation_by_model_snapshot (test_search_contract.ScorerContractTest.test_cache_isolation_by_model_snapshot) ... ok
+test_dedup_and_hard_budget (test_search_contract.ScorerContractTest.test_dedup_and_hard_budget) ... ok
+test_misaligned_and_nonfinite_predictions_rejected (test_search_contract.ScorerContractTest.test_misaligned_and_nonfinite_predictions_rejected) ... ok
+test_sigma_passthrough (test_search_contract.ScorerContractTest.test_sigma_passthrough) ... ok
+test_surrogate_failure_propagates_clearly (test_search_contract.ScorerContractTest.test_surrogate_failure_propagates_clearly) ... ok
+test_shared_deterministic_seeds (test_search_contract.SeedSelectionTest.test_shared_deterministic_seeds) ... ok
+test_active_extension_parameter_changes_reject_resume (test_search_extensions.ExtensionsTest.test_active_extension_parameter_changes_reject_resume) ... ok
+test_adalead_signed_minimum_uses_additive_threshold (test_search_extensions.ExtensionsTest.test_adalead_signed_minimum_uses_additive_threshold) ... ok
+test_all_new_search_sources_park_with_complete_group_handoff (test_search_extensions.ExtensionsTest.test_all_new_search_sources_park_with_complete_group_handoff) ... ok
+test_all_seven_share_ordered_starts (test_search_extensions.ExtensionsTest.test_all_seven_share_ordered_starts) ... ok
+test_checkpoint_resume_bit_identity_for_each_new_policy (test_search_extensions.ExtensionsTest.test_checkpoint_resume_bit_identity_for_each_new_policy) ... ok
+test_ils_actually_escapes_flat_local_neighborhood_by_two_sites (test_search_extensions.ExtensionsTest.test_ils_actually_escapes_flat_local_neighborhood_by_two_sites) ... ok
+test_invalid_parameters (test_search_extensions.ExtensionsTest.test_invalid_parameters) ... ok
+test_lineage_budget_groups_and_generation_cap (test_search_extensions.ExtensionsTest.test_lineage_budget_groups_and_generation_cap) ... ok
+test_loop_fingerprint_preserves_only_active_extension_settings (test_search_extensions.ExtensionsTest.test_loop_fingerprint_preserves_only_active_extension_settings) ... ok
+test_sa_probability_and_actual_worse_steps (test_search_extensions.ExtensionsTest.test_sa_probability_and_actual_worse_steps) ... ok
+test_standalone_cli_exposes_all_three (test_search_extensions.ExtensionsTest.test_standalone_cli_exposes_all_three) ... ok
+test_group_batch_quota_one_group_and_shortage (test_search_loop_integration.SearchLoopIntegrationTest.test_group_batch_quota_one_group_and_shortage) ... ok
+test_protocol_pin_updates_oracle_search_handoff (test_search_loop_integration.SearchLoopIntegrationTest.test_protocol_pin_updates_oracle_search_handoff) ... ok
+test_search_config_change_refused_on_resume (test_search_loop_integration.SearchLoopIntegrationTest.test_search_config_change_refused_on_resume) ... ok
+test_search_handoff_verifier_detects_lineage_tamper (test_search_loop_integration.SearchLoopIntegrationTest.test_search_handoff_verifier_detects_lineage_tamper) ... ok
+test_search_park_flow_and_archive (test_search_loop_integration.SearchLoopIntegrationTest.test_search_park_flow_and_archive) ... ok
+test_search_resume_is_idempotent (test_search_loop_integration.SearchLoopIntegrationTest.test_search_resume_is_idempotent) ... ok
+test_search_source_is_prospective_only (test_search_loop_integration.SearchLoopIntegrationTest.test_search_source_is_prospective_only) ... ok
+test_search_two_rounds_ingest_retrain_and_new_pool (test_search_loop_integration.SearchLoopIntegrationTest.test_search_two_rounds_ingest_retrain_and_new_pool) ...   [ingest] 2 candidate(s) marked failed by QC; they stay out of the pool
+  [ingest] batch d494e0f91d60 closed (no candidates awaiting labels)
+  [ingest] removed the stale PARKED marker
+[resume] absorbed 6 returned labels before the round loop
+[retrain] batch closed and 6 labels absorbed; final retrain holdout_spearman=-0.079633 (n_train=126)
+[OK] 2 rows -> D:\PyCharm_\FAD_clean\runs\test_mixed_ingest_retrain\metrics.csv (exit_code=0)
+[DONE] return_code=0
+[setup] dedup at generation: excluded 2000 known sequences (canonical 2000, init 40, holdout 20); kept 30
+[setup] pool n_from_wt range [8,13] vs labeled [8,13]
+[setup] prospective: init=40 holdout=20 pool=30 (source=mutate, n_from_wt 8-13)
+[round 1/1] greedy: labeled 40->40 (new 0) awaiting=10 holdout_pre=0.084211 post=
+[OK] 1 rows -> C:\Users\mmc\AppData\Local\Temp\tmp1d85w4qm\metrics.csv (exit_code=3)
+[resume] round=1 status=awaiting_labels awaiting=10
+[setup] dedup at generation: excluded 2000 known sequences (canonical 2000, init 40, holdout 20); kept 30
+[setup] pool n_from_wt range [8,13] vs labeled [8,13]
+[setup] prospective: init=40 holdout=20 pool=30 (source=mutate, n_from_wt 8-13)
+[resume] fingerprint matched (data=0876c2b25a55, pool=73f7d0fc8785, n_pool=30)
+[park] 10 labels still pending after 1 round(s); exit 3
+[OK] 1 rows -> C:\Users\mmc\AppData\Local\Temp\tmp1d85w4qm\metrics.csv (exit_code=3)
+[resume] round=1 status=awaiting_labels awaiting=10
+[setup] dedup at generation: excluded 2000 known sequences (canonical 2000, init 40, holdout 20); kept 30
+[setup] pool n_from_wt range [8,13] vs labeled [8,13]
+[setup] prospective: init=40 holdout=20 pool=30 (source=mutate, n_from_wt 8-13)
+{
+  "search_interface_version": "0.1.1",
+  "policy": "stratified_random",
+  "seed": 201,
+  "n_unique_predicted": 32,
+  "n_candidates": 32,
+  "best_pred_gbsa": 18.146310797768514,
+  "best_candidate_id": "f391c698fa4b86bf",
+  "stop_reason": "budget_exhausted",
+  "n_groups": 2,
+  "group_roles": "predicted_best,diverse_backup",
+  "model_id": "xgb_boot3_sklearn_gbm_fc368031a542c826",
+  "seconds": 0.053
+}
+[OK] 1 row -> C:\Users\mmc\AppData\Local\Temp\tmpjrm5c8xe\metrics_a.csv
+{
+  "search_interface_version": "0.1.1",
+  "policy": "stratified_random",
+  "seed": 201,
+  "n_unique_predicted": 32,
+  "n_candidates": 32,
+  "best_pred_gbsa": 17.324054944871012,
+  "best_candidate_id": "bca19b385bb03724",
+  "stop_reason": "budget_exhausted",
+  "n_groups": 2,
+  "group_roles": "predicted_best,diverse_backup",
+  "model_id": "xgb_boot3_sklearn_gbm_f7258d83d21a9322",
+  "seconds": 0.051
+}
+[OK] 1 row -> C:\Users\mmc\AppData\Local\Temp\tmpjrm5c8xe\metrics_1201.csv
+{
+  "search_interface_version": "0.1.1",
+  "policy": "stratified_random",
+  "seed": 201,
+  "n_unique_predicted": 32,
+  "n_candidates": 32,
+  "best_pred_gbsa": 18.146310797768514,
+  "best_candidate_id": "f391c698fa4b86bf",
+  "stop_reason": "budget_exhausted",
+  "n_groups": 2,
+  "group_roles": "predicted_best,diverse_backup",
+  "model_id": "xgb_boot3_sklearn_gbm_fc368031a542c826",
+  "seconds": 0.048
+}
+[OK] 1 row -> C:\Users\mmc\AppData\Local\Temp\tmpd1w63bgp\metrics_a.csv
+[setup] prospective: init=40 holdout=20 pool=0 (source=search, search_policy=iterated_local_search)
+[search] round 1: policy=iterated_local_search budget=64 stop=budget_exhausted ranked=62 pool=30 best_pred=2.0979731199276084
+[round 1/1] greedy: labeled 40->40 (new 0) awaiting=10 holdout_pre=0.084211 post=
+[OK] 1 rows -> C:\Users\mmc\AppData\Local\Temp\tmpl48h1ij1\iterated_local_search\metrics.csv (exit_code=3)
+[resume] round=1 status=awaiting_labels awaiting=10
+[setup] prospective: init=40 holdout=20 pool=0 (source=search, search_policy=iterated_local_search)
+[resume] fingerprint matched (data=0876c2b25a55, pool=e3b0c44298fc, n_pool=0)
+[park] 10 labels still pending after 1 round(s); exit 3
+[OK] 1 rows -> C:\Users\mmc\AppData\Local\Temp\tmpl48h1ij1\iterated_local_search\metrics.csv (exit_code=3)
+[setup] prospective: init=40 holdout=20 pool=0 (source=search, search_policy=simulated_annealing)
+[search] round 1: policy=simulated_annealing budget=64 stop=budget_exhausted ranked=62 pool=30 best_pred=2.269456230279808
+[round 1/1] greedy: labeled 40->40 (new 0) awaiting=10 holdout_pre=0.084211 post=
+[OK] 1 rows -> C:\Users\mmc\AppData\Local\Temp\tmpl48h1ij1\simulated_annealing\metrics.csv (exit_code=3)
+[resume] round=1 status=awaiting_labels awaiting=10
+[setup] prospective: init=40 holdout=20 pool=0 (source=search, search_policy=simulated_annealing)
+[resume] fingerprint matched (data=0876c2b25a55, pool=e3b0c44298fc, n_pool=0)
+[park] 10 labels still pending after 1 round(s); exit 3
+[OK] 1 rows -> C:\Users\mmc\AppData\Local\Temp\tmpl48h1ij1\simulated_annealing\metrics.csv (exit_code=3)
+[setup] prospective: init=40 holdout=20 pool=0 (source=search, search_policy=mutation_only_adalead)
+[search] round 1: policy=mutation_only_adalead budget=64 stop=budget_exhausted ranked=62 pool=30 best_pred=3.166897311850882
+[round 1/1] greedy: labeled 40->40 (new 0) awaiting=10 holdout_pre=0.084211 post=
+[OK] 1 rows -> C:\Users\mmc\AppData\Local\Temp\tmpl48h1ij1\mutation_only_adalead\metrics.csv (exit_code=3)
+[resume] round=1 status=awaiting_labels awaiting=10
+[setup] prospective: init=40 holdout=20 pool=0 (source=search, search_policy=mutation_only_adalead)
+[resume] fingerprint matched (data=0876c2b25a55, pool=e3b0c44298fc, n_pool=0)
+[park] 10 labels still pending after 1 round(s); exit 3
+[OK] 1 rows -> C:\Users\mmc\AppData\Local\Temp\tmpl48h1ij1\mutation_only_adalead\metrics.csv (exit_code=3)
+[setup] prospective: init=40 holdout=20 pool=0 (source=search, search_policy=multi_start_beam)
+[search] round 1: policy=multi_start_beam budget=64 stop=stagnation ranked=62 pool=30 best_pred=2.269456230279808
+[round 1/1] greedy: labeled 40->40 (new 0) awaiting=10 holdout_pre=0.084211 post=
+[OK] 1 rows -> C:\Users\mmc\AppData\Local\Temp\tmpmdcg5evb\metrics.csv (exit_code=3)
+[pin-protocol] 'gbsa_pending_protocol' -> 'team_gbsa_v1' (audited: protocol_changes.jsonl, 30 ledger/batch rows rewritten)
+[setup] prospective: init=40 holdout=20 pool=0 (source=search, search_policy=multi_start_beam)
+[search] round 1: policy=multi_start_beam budget=64 stop=stagnation ranked=62 pool=30 best_pred=2.269456230279808
+[round 1/1] greedy: labeled 40->40 (new 0) awaiting=10 holdout_pre=0.084211 post=
+[OK] 1 rows -> C:\Users\mmc\AppData\Local\Temp\tmp8bi5codn\metrics.csv (exit_code=3)
+[resume] round=1 status=awaiting_labels awaiting=10
+[setup] prospective: init=40 holdout=20 pool=0 (source=search, search_policy=multi_start_beam)
+[setup] prospective: init=40 holdout=20 pool=0 (source=search, search_policy=multi_start_beam)
+[search] round 1: policy=multi_start_beam budget=64 stop=stagnation ranked=62 pool=30 best_pred=2.269456230279808
+[round 1/1] greedy: labeled 40->40 (new 0) awaiting=10 holdout_pre=0.084211 post=
+[OK] 1 rows -> C:\Users\mmc\AppData\Local\Temp\tmp04qmkvv_\metrics.csv (exit_code=3)
+[setup] prospective: init=40 holdout=20 pool=0 (source=search, search_policy=multi_start_beam)
+[search] round 1: policy=multi_start_beam budget=64 stop=stagnation ranked=62 pool=30 best_pred=2.269456230279808
+[round 1/1] greedy: labeled 40->40 (new 0) awaiting=10 holdout_pre=0.084211 post=
+[OK] 1 rows -> C:\Users\mmc\AppData\Local\Temp\tmpfg26hz1e\metrics.csv (exit_code=3)
+[setup] prospective: init=40 holdout=20 pool=0 (source=search, search_policy=multi_start_beam)
+[search] round 1: policy=multi_start_beam budget=64 stop=stagnation ranked=62 pool=30 best_pred=2.269456230279808
+[round 1/1] greedy: labeled 40->40 (new 0) awaiting=10 holdout_pre=0.084211 post=
+[OK] 1 rows -> C:\Users\mmc\AppData\Local\Temp\tmpwm1zszuo\metrics.csv (exit_code=3)
+[resume] round=1 status=awaiting_labels awaiting=10
+[setup] prospective: init=40 holdout=20 pool=0 (source=search, search_policy=multi_start_beam)
+[resume] fingerprint matched (data=0876c2b25a55, pool=e3b0c44298fc, n_pool=0)
+[park] 10 labels still pending after 1 round(s); exit 3
+[OK] 1 rows -> C:\Users\mmc\AppData\Local\Temp\tmpwm1zszuo\metrics.csv (exit_code=3)
+[setup] prospective: init=40 holdout=20 pool=0 (source=search, search_policy=multi_start_beam)D:\PyCharm_\FAD_clean\scripts\loop\oracle.py:151: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  combined = pd.concat([existing, pd.DataFrame(rows, columns=header)],
+ok
+test_decile_errors (test_sigma_calibration_contract.RecallAndDecileTest.test_decile_errors) ... ok
+test_tiny_end_to_end_arm (test_sigma_calibration_contract.RecallAndDecileTest.test_tiny_end_to_end_arm) ... ok
+test_top_k_recall (test_sigma_calibration_contract.RecallAndDecileTest.test_top_k_recall) ... ok
+
+----------------------------------------------------------------------
+Ran 139 tests in 162.168s
+
+OK
+
+[search] round 1: policy=multi_start_beam budget=64 stop=stagnation ranked=62 pool=30 best_pred=2.269456230279808
+[round 1/2] greedy: labeled 40->40 (new 0) awaiting=10 holdout_pre=0.084211 post=
+[OK] 1 rows -> C:\Users\mmc\AppData\Local\Temp\tmp1nbeo953\metrics.csv (exit_code=3)
+[resume] round=1 status=awaiting_labels awaiting=10
+[setup] prospective: init=40 holdout=20 pool=0 (source=search, search_policy=multi_start_beam)
+[resume] fingerprint matched (data=0876c2b25a55, pool=e3b0c44298fc, n_pool=0)
+[ingest] accepted=10 duplicate=0 failed=0 rejected=0 closed=['f5c241602c60']
+[warn] no approved-protocols allow-list is pinned: any non-empty protocol_id is accepted. Pin the lab protocol (--approved-protocols / runner --pin-protocol) before a controlled real ingest.
+  [ingest] batch f5c241602c60 closed (no candidates awaiting labels)
+  [ingest] removed the stale PARKED marker
+[resume] absorbed 10 returned labels before the round loop
+[search] round 2: policy=multi_start_beam budget=64 stop=stagnation ranked=62 pool=30 best_pred=-6.216121859852378
+[round 2/2] greedy: labeled 50->50 (new 0) awaiting=10 holdout_pre=0.052632 post=
+[OK] 2 rows -> C:\Users\mmc\AppData\Local\Temp\tmp1nbeo953\metrics.csv (exit_code=3)

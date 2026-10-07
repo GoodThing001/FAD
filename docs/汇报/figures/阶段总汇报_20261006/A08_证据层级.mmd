@@ -1,0 +1,7 @@
+flowchart LR
+    A["已测表模型评估<br/>真标签对预测<br/>v8 100种子ρ=0.3748"] --> B["固定池回顾式选样<br/>读取隐藏历史真标签<br/>greedy Δregret=-1.8781"]
+    A --> C["未测序列迭代搜索<br/>固定模型指导并给终点评分<br/>七法已完成；只是预测"]
+    C -. 需新真实计算 .-> D["新增候选真实GBSA<br/>统一协议、同成本、独立批次<br/>目前新增标签为0"]
+    D -. 需相应湿实验 .-> E["亲和力/功能实验<br/>按真实生物学目标设计<br/>目前没有优胜证据"]
+    classDef future fill:#fff3df,stroke:#c77919,stroke-dasharray:5 5;
+    class D,E future;

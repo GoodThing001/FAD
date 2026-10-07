@@ -1,0 +1,27 @@
+{
+  "name": "loop_prospective_park",
+  "status": "exploratory",
+  "entrypoint": "scripts/loop/loop.py",
+  "supports_log_dir": true,
+  "arguments": {
+    "mode": "prospective",
+    "candidate-source": "mutate",
+    "rounds": 1,
+    "budget": 50,
+    "n-init": 400,
+    "n-holdout": 300,
+    "pool-size": 500,
+    "surrogate": "xgb",
+    "n-members": 10,
+    "oracle": "park",
+    "seed": 1,
+    "data-dir": "data/proxy2000_v2"
+  },
+  "acceptance": {
+    "exit_code": 3,
+    "expect_exit_code": 3,
+    "expect_marker": "PARKED",
+    "expected_rows": 1
+  },
+  "notes": "Prospective hand-off: generates fresh mutants and parks the batch CSV for the external MD/MM-GBSA pipeline (labels ingested later, --resume continues). The n_from_wt range is taken from the labeled set (measured library occupies a shell ~8-11 of the 13 sites); see docs/论文改进/候选闭环框架_20260930.md §4."
+}

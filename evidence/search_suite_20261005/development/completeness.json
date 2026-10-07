@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "checks": {
+    "seeds_complete": true,
+    "main_rows": true,
+    "total_subruns": true,
+    "no_duplicate_runs": true,
+    "finite_results": true,
+    "stability_rows": true,
+    "ablation_rows": true
+  },
+  "expected_subruns": 1140,
+  "observed_subruns": 1140,
+  "observed_seeds": 30
+}

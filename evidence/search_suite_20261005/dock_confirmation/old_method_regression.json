@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "seed": 1,
+  "max_abs_difference": 0.0,
+  "differences": {
+    "baseline_sp": 0.0,
+    "predicted_dock_resid_sp": 0.0,
+    "observed_dock_resid_sp": 0.0,
+    "baseline_top10_recall": 0.0,
+    "predicted_dock_top10_recall": 0.0,
+    "observed_dock_top10_recall": 0.0,
+    "baseline_best20": 0.0,
+    "predicted_dock_best20": 0.0,
+    "observed_dock_best20": 0.0
+  }
+}

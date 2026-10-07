@@ -1,0 +1,8 @@
+{
+  "interface_version": "0.2.0",
+  "completed_rounds": 2,
+  "requested_rounds": 2,
+  "status": "retrained",
+  "n_labeled": 300,
+  "awaiting_labels": 0
+}

@@ -1,0 +1,27 @@
+{
+  "name": "search_ils_demo",
+  "entrypoint": "scripts/loop/search_run.py",
+  "supports_log_dir": true,
+  "arguments": {
+    "policy": "iterated_local_search",
+    "seed": 5001,
+    "model-seed": 5001,
+    "n-init": 300,
+    "surrogate": "xgb",
+    "n-members": 5,
+    "screen-k": 100,
+    "max-unique-predictions": 1024,
+    "max-generations": 256,
+    "allowed-n-from-wt": "4:13",
+    "n-measured-seeds": 8,
+    "n-random-seeds": 8,
+    "min-mutual-distance": 2,
+    "ils-perturb-sites": 2,
+    "output": "runs\\local_search_ils_demo_20261005\\metrics.csv",
+    "log-dir": "runs\\local_search_ils_demo_20261005\\checkpoints"
+  },
+  "acceptance": {
+    "expected_rows": 1
+  },
+  "notes": "Two-site ILS perturbations, fixed sequence-only GBSA proxy; no Oracle or real batch."
+}

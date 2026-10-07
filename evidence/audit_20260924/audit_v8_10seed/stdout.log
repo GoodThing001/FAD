@@ -1,0 +1,24 @@
+Data: 2000 sequences, features: 303d
+  seed= 1 [1/10]  best_single=0.3576  eq_fusion=0.3616  w_fusion=0.3617  best=0.3617  193s
+  seed= 2 [2/10]  best_single=0.3492  eq_fusion=0.3483  w_fusion=0.3483  best=0.3492  375s
+  seed= 3 [3/10]  best_single=0.3653  eq_fusion=0.3780  w_fusion=0.3779  best=0.3780  562s
+  seed= 4 [4/10]  best_single=0.3794  eq_fusion=0.3830  w_fusion=0.3830  best=0.3830  749s
+  seed= 5 [5/10]  best_single=0.3776  eq_fusion=0.3644  w_fusion=0.3644  best=0.3776  939s
+  seed= 6 [6/10]  best_single=0.3691  eq_fusion=0.3616  w_fusion=0.3616  best=0.3691  1136s
+  seed= 7 [7/10]  best_single=0.4148  eq_fusion=0.4188  w_fusion=0.4187  best=0.4188  1326s
+  seed= 8 [8/10]  best_single=0.3753  eq_fusion=0.3691  w_fusion=0.3690  best=0.3753  1530s
+  seed= 9 [9/10]  best_single=0.3903  eq_fusion=0.3806  w_fusion=0.3806  best=0.3903  1716s
+  seed=10 [10/10]  best_single=0.4420  eq_fusion=0.4372  w_fusion=0.4370  best=0.4420  1902s
+
+[OK] 70 rows → /home/hzeng/project/FAD_CLEAN/runs/audit_v8_10seed/metrics.csv
+
+================================================================================
+PHASE 3 v8 — OOF RANK FUSION RESULTS
+================================================================================
+single.RF            0.3576 +/- 0.0216  [0.3364,0.3975]
+single.ET            0.3613 +/- 0.0247  [0.3263,0.4148]
+single.GBR           0.3557 +/- 0.0383  [0.2997,0.4390]
+single.XGB           0.3699 +/- 0.0327  [0.3125,0.4420]
+single.SVR           0.3417 +/- 0.0301  [0.2930,0.3858]
+equal_weight_rank    0.3803 +/- 0.0261  vs_best_single=-0.0018  wins=4/10
+constrained_weight   0.3802 +/- 0.0261  vs_best_single=-0.0018  wins=4/10

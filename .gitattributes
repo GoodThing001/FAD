@@ -11,5 +11,16 @@ data/proxy2000_v2/*.csv -text
 evidence/recovered_runs/** -text
 evidence/server_sync_20260902/** -text
 evidence/server_sync_20260903/** -text
+evidence/audit_20260924/** -text
+evidence/loop_20260930/** -text
+evidence/loop_20261002_search/** -text
+evidence/report_review_20261006/** -text
+evidence/search_compare_3seed/** -text
+evidence/search_compare_30seed/** -text
+evidence/search_compare_matched_30seed/** -text
+evidence/search_seven_20261005/** -text
+evidence/search_suite_20261005/** -text
+evidence/sigma_calibration_30seed/** -text
+evidence/supplement_20261006/** -text
 environments/** -text
 experiments/**/metrics*.csv -text

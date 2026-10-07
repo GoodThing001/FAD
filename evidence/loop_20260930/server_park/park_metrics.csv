@@ -1,0 +1,2 @@
+round,strategy,n_labeled_before,n_new_unique,n_labeled_after,model_n_train,n_awaiting,requested_budget,effective_budget,pool_available,ood_fraction,status,holdout_spearman_pre,holdout_spearman_post,seconds
+1,greedy,400,0,400,400,50,50,50,500,0.0,awaiting_labels,0.291304,,4.5

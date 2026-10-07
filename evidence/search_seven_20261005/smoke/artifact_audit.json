@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "subruns": 56,
+  "evaluated_rows": 7168,
+  "checks": [
+    "file digests",
+    "budget/cache/count identity",
+    "finite aligned scores",
+    "RNA scaffold and mutation shell",
+    "single-parent genealogy/evidence",
+    "canonical-table exclusion",
+    "sorted export",
+    "complete unique groups",
+    "same starts and fitted model per comparison cell",
+    "generation cap",
+    "seven-way and pairwise actual-prefix scores"
+  ]
+}

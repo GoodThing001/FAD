@@ -1,0 +1,12 @@
+{
+  "name": "supplement_defect_compute_20261006",
+  "entrypoint": "scripts/reproduction/ensemble_defect.py",
+  "arguments": {
+    "n-jobs": 4
+  },
+  "acceptance": {
+    "expected_rows": 2000,
+    "expect_exit_code": 0,
+    "expect_marker": "DONE"
+  }
+}

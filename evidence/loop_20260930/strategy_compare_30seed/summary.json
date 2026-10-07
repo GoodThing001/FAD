@@ -1,0 +1,238 @@
+{
+  "config": {
+    "mode": "retrospective",
+    "strategies": "random,greedy,greedy_diverse,maxmin_coverage",
+    "seeds": 30,
+    "seed_start": 1,
+    "rounds": 5,
+    "budget": 50,
+    "n_init": 300,
+    "n_holdout": 200,
+    "pool_size": 600,
+    "surrogate": "xgb",
+    "n_members": 5,
+    "data_dir": "data/proxy2000_v2",
+    "out_dir": "evidence/loop_20260930/strategy_compare_30seed",
+    "output": "runs/srv_strategy_compare_30seed_20260930_135716/metrics.csv"
+  },
+  "strategies": [
+    "random",
+    "greedy",
+    "greedy_diverse",
+    "maxmin_coverage"
+  ],
+  "n_seeds": 30,
+  "rounds": 5,
+  "budget": 50,
+  "target": "gbsa",
+  "direction": "minimize (lower is stronger)",
+  "per_round": [
+    {
+      "strategy": "greedy",
+      "round": 1,
+      "mean_best_selected": 1.0092759965332045,
+      "sd_best_selected": 3.741219136099668,
+      "mean_regret": 3.2815544698431056,
+      "mean_holdout_post": 0.2712423666666667
+    },
+    {
+      "strategy": "greedy",
+      "round": 2,
+      "mean_best_selected": -0.015970993381536003,
+      "sd_best_selected": 3.465916710740687,
+      "mean_regret": 2.256307479928365,
+      "mean_holdout_post": 0.2819240333333333
+    },
+    {
+      "strategy": "greedy",
+      "round": 3,
+      "mean_best_selected": -0.588179902120221,
+      "sd_best_selected": 3.4033977349623137,
+      "mean_regret": 1.6840985711896799,
+      "mean_holdout_post": 0.2806628
+    },
+    {
+      "strategy": "greedy",
+      "round": 4,
+      "mean_best_selected": -1.5603477351553008,
+      "sd_best_selected": 3.2200973134975577,
+      "mean_regret": 0.7119307381546001,
+      "mean_holdout_post": 0.28649316666666663
+    },
+    {
+      "strategy": "greedy",
+      "round": 5,
+      "mean_best_selected": -1.8210700889949898,
+      "sd_best_selected": 3.104111297099753,
+      "mean_regret": 0.45120838431491106,
+      "mean_holdout_post": 0.3143985
+    },
+    {
+      "strategy": "greedy_diverse",
+      "round": 1,
+      "mean_best_selected": 2.9270574097178423,
+      "sd_best_selected": 3.4149749196583348,
+      "mean_regret": 5.199335883027744,
+      "mean_holdout_post": 0.27496489999999996
+    },
+    {
+      "strategy": "greedy_diverse",
+      "round": 2,
+      "mean_best_selected": 1.108903918422342,
+      "sd_best_selected": 3.140580142988529,
+      "mean_regret": 3.381182391732243,
+      "mean_holdout_post": 0.2675402666666667
+    },
+    {
+      "strategy": "greedy_diverse",
+      "round": 3,
+      "mean_best_selected": -0.5610234997492327,
+      "sd_best_selected": 3.0807814008012113,
+      "mean_regret": 1.7112549735606681,
+      "mean_holdout_post": 0.283011
+    },
+    {
+      "strategy": "greedy_diverse",
+      "round": 4,
+      "mean_best_selected": -1.052961112090513,
+      "sd_best_selected": 3.2608962894226283,
+      "mean_regret": 1.2193173612193882,
+      "mean_holdout_post": 0.2957570666666667
+    },
+    {
+      "strategy": "greedy_diverse",
+      "round": 5,
+      "mean_best_selected": -1.2293686508756465,
+      "sd_best_selected": 3.1830747308224083,
+      "mean_regret": 1.0429098224342543,
+      "mean_holdout_post": 0.30740006666666664
+    },
+    {
+      "strategy": "maxmin_coverage",
+      "round": 1,
+      "mean_best_selected": 4.141382579734151,
+      "sd_best_selected": 2.2994734534621477,
+      "mean_regret": 6.413661053044052,
+      "mean_holdout_post": 0.2696615333333333
+    },
+    {
+      "strategy": "maxmin_coverage",
+      "round": 2,
+      "mean_best_selected": 1.6775110437219463,
+      "sd_best_selected": 3.2339087499758863,
+      "mean_regret": 3.949789517031847,
+      "mean_holdout_post": 0.2666422666666667
+    },
+    {
+      "strategy": "maxmin_coverage",
+      "round": 3,
+      "mean_best_selected": 0.1379371918021198,
+      "sd_best_selected": 3.0503475590864966,
+      "mean_regret": 2.4102156651120206,
+      "mean_holdout_post": 0.2752442666666667
+    },
+    {
+      "strategy": "maxmin_coverage",
+      "round": 4,
+      "mean_best_selected": -0.36563674121389483,
+      "sd_best_selected": 3.0383051958322698,
+      "mean_regret": 1.906641732096006,
+      "mean_holdout_post": 0.2864954
+    },
+    {
+      "strategy": "maxmin_coverage",
+      "round": 5,
+      "mean_best_selected": -0.39259651388371647,
+      "sd_best_selected": 3.0142630085040714,
+      "mean_regret": 1.8796819594261842,
+      "mean_holdout_post": 0.2991085333333333
+    },
+    {
+      "strategy": "random",
+      "round": 1,
+      "mean_best_selected": 4.579941708440434,
+      "sd_best_selected": 3.624971878072679,
+      "mean_regret": 6.852220181750336,
+      "mean_holdout_post": 0.26747113333333333
+    },
+    {
+      "strategy": "random",
+      "round": 2,
+      "mean_best_selected": 2.6382634012159554,
+      "sd_best_selected": 3.2560122053101765,
+      "mean_regret": 4.910541874525856,
+      "mean_holdout_post": 0.2719530666666667
+    },
+    {
+      "strategy": "random",
+      "round": 3,
+      "mean_best_selected": 1.4391583040228104,
+      "sd_best_selected": 3.2321137117239918,
+      "mean_regret": 3.7114367773327115,
+      "mean_holdout_post": 0.2767580666666667
+    },
+    {
+      "strategy": "random",
+      "round": 4,
+      "mean_best_selected": 0.49951602601468054,
+      "sd_best_selected": 3.421794668097284,
+      "mean_regret": 2.771794499324581,
+      "mean_holdout_post": 0.2893926
+    },
+    {
+      "strategy": "random",
+      "round": 5,
+      "mean_best_selected": -0.14205078031154686,
+      "sd_best_selected": 3.2008437030276475,
+      "mean_regret": 2.1302276929983543,
+      "mean_holdout_post": 0.28321196666666665
+    }
+  ],
+  "paired_vs_random_final_round": {
+    "greedy": {
+      "n_pairs": 30,
+      "delta_regret_mean": -1.679019308683443,
+      "delta_regret_ci95": [
+        -2.6373555031568743,
+        -0.7849902130498614
+      ],
+      "regret_wins": 15,
+      "delta_holdout_spearman_mean": 0.031186533333333332,
+      "delta_holdout_spearman_ci95": [
+        0.01634543833333334,
+        0.04618937333333334
+      ],
+      "spearman_wins": 23
+    },
+    "greedy_diverse": {
+      "n_pairs": 30,
+      "delta_regret_mean": -1.0873178705640998,
+      "delta_regret_ci95": [
+        -1.965488489102497,
+        -0.30247423064343615
+      ],
+      "regret_wins": 13,
+      "delta_holdout_spearman_mean": 0.0241881,
+      "delta_holdout_spearman_ci95": [
+        0.005206925833333331,
+        0.043659114166666665
+      ],
+      "spearman_wins": 19
+    },
+    "maxmin_coverage": {
+      "n_pairs": 30,
+      "delta_regret_mean": -0.2505457335721697,
+      "delta_regret_ci95": [
+        -1.4015041771156211,
+        0.868017849321586
+      ],
+      "regret_wins": 11,
+      "delta_holdout_spearman_mean": 0.01589656666666667,
+      "delta_holdout_spearman_ci95": [
+        -0.0026924949999999996,
+        0.03352914666666666
+      ],
+      "spearman_wins": 19
+    }
+  }
+}

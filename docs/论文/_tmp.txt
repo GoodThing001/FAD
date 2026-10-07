@@ -1,0 +1,2267 @@
+Nucleic Acids Research , 2026, 54 , gkag145 
+https://doi.org/10.1093/nar/gkag145 
+Synthetic Biology and Bioengineering 
+It er ativ e design of a NAND h ybr id r iboswitc h b y deep batc h 
+Ba y esian optimization 
+Daniel Kelvin 
+1 , 2 , 3 ,†, Erik Kubaczka 
+2 ,3 ,†, Marianna Kar a va 
+1 , 4 , 5 , Heinz Koeppl 
+1 , 2 , 3 ,* , 
+Beatrix Suess 
+1 ,3 ,* 
+1 Department of Biology, TU Darmstadt, Darmstadt 64287, Germany 
+2 Department of Electrical Engineering and Information Technology, TU Darmstadt, Darmstadt 64283, Germany 
+3 Centre for Synthetic Biology, TU Darmstadt, Darmstadt 64283, Germany 
+4 Institute of Molecular Biotechnology, Graz University of Technology, Graz 8010, Austria 
+5 Austrian Center of Industrial Biotechnology, Graz 8010, Austria 
+∗To whom correspondence should be addressed. Email: bsuess@bio.tu-darmstadt.de, 
+Correspondence may also be addressed to Heinz Koeppl. Email: heinz.koeppl@tu-darmstadt.de 
+†These authors contributed equally to this work. 
+Abstract 
+The design of large genetic circuits requires genetic regulatory devices capable of performing complex logic operations that place no exces- 
+sive metabolic burden on the host cell. Hybrid riboswitches, synthetically enhanced compact RNA elements ( < 100 nucleotides) that form a 
+tertiary str uct ure with the ability to specifically bind two different target molecules, can be used to design genetic regulators that emulate 
+Boolean logic. When inserted into the 5 ′ UTR of a messenger RNA, these devices can regulate translation initiation upon specific binding of one 
+or both ligands without the need for additional auxiliary factors. The goal of this study is to design hybrid riboswitches that emulate Boolean 
+NAND logic in yeast. We propose a novel machine learning-based design framework combining high-throughput in vivo screening and deep 
+B a y esian optimization. T hrough an initial screening, w e disco v ered a h ybrid riboswitch with NAND behavior. Using batch B a y esian optimization 
+with an ensemble neural network as surrogate, we improved the NAND functionality of our hybrid riboswitch with respect to a performance 
+score, thereb y achie ving near-digital NAND beha vior. With its f ocus on model-based and score-driv en design, our proposed method can com- 
+plement e xperiment-driv en approaches b y allo wing fine grained adaptation of functionality, including constructs sensitive to single nucleotide 
+changes. 
+Gr aphical abstr act 
+GFP
+NOR
+GFP
+NAND
+Riboswitch
+Neo
+Tc
+Deep Learning
+Introduction 
+Information processing plays a key role in cellular pathways 
+as well as synthetically engineered devices. To engineer infor- 
+mation processing synthetically, constructs imitating Boolean 
+logic in cells are ideal [ 1 –4 ]. RNA-based gene regulation, 
+as implemented by riboswitches, provides an appealing ba- 
+sis for the design of logic devices. Riboswitches are RNA se- 
+quences with the ability to influence gene expression through 
+the formation of complex tertiary structures that specifically 
+bind target molecules (ligands) [ 5 , 6 ]. As they require no 
+Received: April 10, 2025. Revised: January 30, 2026. Accepted: February 3, 2026 
+© The Author(s) 2026. Published by Oxford University Press. 
+This is an Open Access article distributed under the terms of the Creative Commons Attribution-NonCommercial License 
+( https:// creativecommons.org/ licenses/ by-nc/ 4.0/ ), which permits non-commercial re-use, distribution, and reproduction in any medium, provided the 
+original work is properly cited. For commercial re-use, please contact reprints@oup.com for reprints and translation rights for reprints. All other 
+permissions can be obtained through our RightsLink service via the Permissions link on the article page on our site—for further information please contact 
+journals.permissions@oup.com . 
+Downloaded from academic.oup.com/nar/article/54/5/gkag145/8500548 by guest on 03 September 2026
+
+2 
+Kelvin et al . 
+auxiliary factors to regulate gene expression, riboswitches 
+impose only a low metabolic burden on the host organism 
+[ 7 ]. While naturally occurring riboswitches have been discov- 
+ered mostly in bacteria, synthetic riboswitches have been engi- 
+neered to utilize novel regulatory mechanisms for implemen- 
+tation not only in bacteria, but also in eukaryotes [ 5 , 8 –11 ]. 
+In Saccharomyces cerevisiae , synthetic riboswitches utilizing a 
+roadblock mechanism prevent translation initiation by stabi- 
+lizing their structure upon ligand binding [ 12 , 13 ]. To enable 
+the design of constructs implementing multi-input Boolean 
+logic, riboswitch architectures capable of accepting two or 
+more inputs are required. Hybrid riboswitches, which contain 
+two different ligand binding pockets in one continuous struc- 
+ture, meet this requirement [ 14 ]. In addition to being excellent 
+regulators, the ability to bind both ligands separately or simul- 
+taneously makes hybrid riboswitches suitable candidates for 
+the implementation of Boolean logic. In particular, the hybrid 
+riboswitch architecture has the potential to implement NAND 
+behavior, a mechanistically challenging type of logic gate that 
+has not been observed in any naturally occurring dual-input ri- 
+boswitch [ 15 ]. Previous attempts at engineering riboswitches 
+to implement NAND behavior have not taken advantage of 
+direct interactions between different binding pockets. Instead, 
+they have relied on a ribozyme to act as a shared expression 
+platform that is controlled by two separately inserted binding 
+pockets [ 16 , 17 ]. 
+The development of a synthetic riboswitch that utilizes the 
+roadblock mechanism begins with an in vitro selection pro- 
+cess known as SELEX (Systematic Evolution of Ligands by 
+EXponential Enrichment) [ 18 –22 ]. This method is used to dis- 
+cover sequences with high binding affinity for the chosen lig- 
+and, called aptamers. Subsequent in vivo screenings are re- 
+quired to identify candidates capable of undergoing confor- 
+mational changes essential for mediating gene expression and 
+to optimize their dynamic range. This approach focuses on dy- 
+namic range optimization based on a single input and is not 
+suitable for the design of devices with multiple inputs (e.g. 
+hybrid riboswitches). Previously reported hybrid riboswitches 
+have been created using rational design [ 14 ], which poses a 
+challenge when attempting to achieve specific switching be- 
+havior, due to the complex sequence-to-function relationship 
+of the roadblock mechanism [ 23 ]. In addition, the sensitivity 
+of (hybrid) riboswitches to single nucleotide changes makes 
+the high-throughput generation of datasets containing regula- 
+tory active constructs for in silico approaches [ 24 , 25 ] ineffi- 
+cient. This lack of robustness poses a challenge in the design 
+of multi-input riboswitches that require structural, sequence- 
+dependent interactions between the different ligand binding 
+pockets to emulate a Boolean switching pattern. Additionally, 
+the method has to cope with the exponential complexity of 
+the sequence space. 
+In modern machine learning, Bayesian optimization 
+[ 26 –29 ], a sequential optimization method suitable for costly 
+to evaluate black box functions, is often used in the context 
+of hyper parameter optimization for deep learning [ 30 –32 ], 
+but has also been applied to biological engineering for the 
+design of proteins [ 33 –35 ], DNA [ 36 ], small molecules [ 37 , 
+38 ], and experimental conditions [ 39 –41 ]. In a round-based 
+manner, new candidates for experimental evaluation are pro- 
+posed and the gained information is taken into account in 
+the next rounds. This compares to active learning [ 42 –44 ], 
+with the difference in the criterion for candidate selection. Us- 
+ing a probabilistic surrogate model that accounts for uncer- 
+tainty, classically a Gaussian process [ 27 , 45 ], Bayesian opti- 
+mization can efficiently trade off exploration and exploitation, 
+also in combinatorial design spaces such as RNA sequences. A 
+promising trend—especially in life sciences—is the use of deep 
+learning-based surrogate models [ 34 –38 ], which are success- 
+fully applied as sequence-to-function models but require care- 
+ful design for well-calibrated uncertainty quantification. For 
+the candidate selection, different acquisition functions exist 
+[ 26 –29 ] and are often applied in a batch setting [ 27 , 34 , 37 , 
+46 ], where multiple sequences are proposed at once. This in- 
+creases experimental efficiency through parallel experimental 
+characterization, but requires batch diversity to maximize the 
+knowledge gained. Current methods maximize the joint un- 
+certainty of the batch by assuming normally distributed pre- 
+dictions [ 37 ] or a heuristic selection of the top candidates ac- 
+cording to a utility measure that does not account for interde- 
+pendencies between candidates [ 34 ]. 
+Following the appeal of riboswitches for information pro- 
+cessing and the complexity of their design, the goal of this 
+study is the engineering of digital-like NAND hybrid ri- 
+boswitches through a novel machine-learning framework for 
+sequence design. Precise emulation of NAND behavior by the 
+hybrid riboswitch is required to ensure its viability in a wide 
+range of applications. Essential to the design of this dual-input 
+RNA device is a method actively coping with the sensitivity 
+of hybrid riboswitches with respect to single nucleotide ex- 
+changes and explicitly considering the switching behavior to 
+achieve. Specifically, the requirement for fine-tuning the four 
+different states of the device to achieve near digital NAND 
+behavior raises needs beyond those required for classical dy- 
+namic range maximization. 
+Therefore, we propose a multistep design approach incor- 
+porating in vivo screening and batch Bayesian optimization 
+for score-driven sequence design. Our sequence design frame- 
+work implements the batch acquisition function by using an 
+ensemble neural network [ 47 –50 ], which extends a custom 
+pretrained transformer encoder [ 51 , 52 ], as a surrogate and 
+Kriging Believer (KB) [ 27 , 46 , 53 , 54 ] as batching strategy. 
+By considering batch diversity and allowing arbitrary distri- 
+butions, our method goes beyond recent work. In addition, 
+the network quantifies the certainty associated with its pre- 
+dictions and is thus applicable to low-throughput regimes 
+such as those used to characterize hybrid riboswitches with 
+high precision. Inspired by the design of hybrid riboswitches 
+engineered for maximum dynamic range [ 14 ], we combined 
+a tetracycline with a neomycin riboswitch and performed 
+an in vivo screening to identify a variant showing NAND- 
+like behavior, i.e. significant regulatory activity only in the 
+presence of both ligands. This construct serves as input to 
+our sequence design framework. The riboswitch design it- 
+self implements a design –build –test –learn (DBTL) cycle, in 
+which the in silico candidate selection and the in vivo char- 
+acterization alternate. The novel hybrid riboswitch we report 
+here is capable of precisely emulating NAND logic through 
+direct binding interactions, resulting in the stabilization of 
+its compact structure only in the simultaneous presence of 
+two different small molecule triggers. In addition, we present 
+our versatile machine learning sequence design framework 
+based on batch Bayesian optimization, which is adaptable to 
+a wide range of design tasks, and provide insights into the 
+method. 
+Downloaded from academic.oup.com/nar/article/54/5/gkag145/8500548 by guest on 03 September 2026
+
+Iterative NAND hybrid riboswitch design by Bayesian optimization 
+3 
+Methods 
+Experimental methods 
+Plasmid assembly 
+All constructs were cloned using the vector pCBB06, a vari- 
+ant of the plasmid pCBB05 containing no gfp start codon, 
+as previously described [ 22 ]. Backbone linearization was per- 
+formed immediately upstream of the gfp gene using the re- 
+striction sites for AgeI-HF and NheI-HF (NEB). Insert se- 
+quences containing a riboswitch sequence and start codon 
+were generated through hybridization of oligonucleotides 
+( Supplementary Table S1 ) with overhangs corresponding to 
+the aforementioned restriction enzymes. Constructs were as- 
+sembled through ligation (T4 DNA Ligase; NEB) and used for 
+the transformation of Esc heric hia coli TOP10 (Invitrogen) fol- 
+lowing a standard 42 ◦C heat shock protocol. The PureYield™
+Plasmid Miniprep System (Promega) was used for plasmid ex- 
+traction, with sequences being verified via Sanger Sequencing 
+(Microsynth Seqlab). 
+Yeast cultivation and GFP measurements 
+Saccharomyces cerevisiae RS453 α cells (MAT α ade 2-1 trp 1-1 
+can 1-100 leu 2-3 his 3-1 ura 3-52) were transformed using the 
+Frozen-EZ Yeast Transformation II Kit (Zymo Research). The 
+cells were used for the inoculation of a 24-well plate, with 
+each well (2 × for each construct) containing 1.5 ml SCD- 
+Ura [0.2% YNB w/o AA (Difco), 0.55% ammonium sulphate 
+(Roth), 2% glucose (Roth), 12 μg/ml adenine (SIGMA), 1 ×
+MEM amino acids (SIGMA), 2% agar (Oxoid)]. After a 24- 
+h incubation period at 30 ◦C and 450 rpm, a 1:1000 dilution 
+in fresh media containing either no ligand, 250 μM tetracy- 
+cline or neomycin, or 250 μM of both ligands was performed 
+in a new 24-well plate. After another 24 h of incubation the 
+fluorescence of GFP and mCherry was measured for 25 000 
+cells per construct (20 μl culture + 180 μl SCD-Ura in a 96- 
+well plate) using the CytoFlex S cytometer (Beckman Coul- 
+ter) [488 nm laser (GFP); 561 nm laser (mCherry)]. Emission 
+light was bandpass filtered at 510/520 and 610/620 nm. Cells 
+containing the control plasmids (positive: pCBB05; negative: 
+pCBB06) were treated equally to the constructs and measured 
+in parallel. The GFP fluorescence of each candidate and con- 
+trol was normalized to its respective mCherry fluorescence 
+and the values of the negative control were subtracted from 
+all candidates and the positive control. The adjusted value 
+of each sample was normalized to the positive control incu- 
+bated with the equivalent ligand condition. A biological du- 
+plicate was measured for every candidate and every experi- 
+ment was performed in technical triplicates at independent 
+days. All bar plots present the mean of the technical tripli- 
+cates. Statistical significance is assessed between lowest ON 
+state and highest OFF state (score defining) via T -test assum- 
+ing identical variance. P -values are reported in respective fig- 
+ures (n.s. = nonsignificant = p > . 05 , ∗= . 01 < p ≤. 05 , ∗∗
+= . 001 < p ≤. 01 , ∗∗∗= p ≤. 001 ). 
+Yeast library pool generation 
+Hybrid riboswitch DNA pools containing randomized regions 
+( Supplementary Table S2 ) were amplified (Q5 High-Fidelity 
+DNA polymerase; NEB) to add regions homologous to the in- 
+sertion site on the plasmid pCBB06. Saccharomyces cerevisiae 
+RS453 α cells were transformed according to a high-efficiency 
+electroporation protocol [ 55 ], using 1.5 μg linearized plasmid 
+pCBB06 (AgeI-HF and NheI-HF) and 1.5 μg amplified pool 
+DNA, as previously described [ 14 ]. Prior to transformation, 
+pool and plasmid DNA were purified using the Wizard SV 
+Gel and PCR Clean-Up System (Promega). Two transforma- 
+tions were performed for each pool to increase transformation 
+efficiency, and the transformed cells were combined in 250 ml 
+SCD-Ura in a 2 l culture flask and incubated for 48 h at 30 ◦C 
+and 110 rpm. After the initial 48-h incubation period, serial 
+dilution steps of the liquid culture in 250 ml SCD-Ura were 
+performed according to the electroporation protocol to avoid 
+the occurrence of double-transformed cells (1/10, 1/30, 1/100; 
+24-h incubation after each dilution). 
+NAND communication module screening 
+A yeast library culture (see above; sequence pool 
+TNNAND1_N6) was used to inoculate 4 × 250 ml SCD-Ura 
+cultures (1:100; 2 l flasks). Each inoculated culture contained 
+a different ligand condition (w/o; 250 μM tetracycline; 250 
+μM neomycin; 250 μM both). Positive (pCBB05) and neg- 
+ative (pCBB05) controls were generated by transforming S. 
+cerevisiae RS453 cells with the respective plasmids using the 
+Frozen-EZ Yeast Transformation II Kit (Zymo Research). 
+Cultures were incubated at 30 ◦C for 24 h in a humidified 
+incubator (shaking). Prior to sorting, cells were diluted (1:10) 
+in 1 × phosphate-buffered saline. For fluorescence-activated 
+cell sorting the SONY SH800 cell sorter was used [488 
+nm laser (GFP), bandpass filter: 525/550 nm]. Doublets 
+(connected cells) and cells of irregular shape or size were 
+excluded. The GFP fluorescence range (0% –100%) for cell 
+sorting was defined as the distance between the peaks of 
+the controls. The fluorescence range was divided into eight 
+equally sized gates on a linear scale, with two additional gates 
+covering the fluorescence ranges occupied by the controls. 
+For each ligand condition, 12 500 candidates per gate were 
+sorted into a separate well (500 μl SCD-Ura; 1 ml SCD-Ura 
+added after sorting) on a 24-well plate. The plates were sealed 
+(Greiner Bio-One Breathseal membrane) and incubated for 48 
+h at 30 ◦C using a plate incubator. Afterward, plasmid DNA 
+was extracted from all wells using the Zymoprep™Yeast 
+Plasmid Miniprep II kit (Zymo Research) according to the 
+manufacturer’s instructions. The sequence region containing 
+the partially randomized hybrid riboswitch was amplified 
+and the PCR product was purified using the Wizard ® SV 
+Gel and PCR Clean-Up System (Promega) according to the 
+manufacturer’s instructions. The sequence content of all sam- 
+ples was analyzed using NGS (AMPLICON-EZ, GENEWIZ). 
+As the gates span the whole fluorescence range and do not 
+overlap, we approximate each sequence’s fluorescence by the 
+frequency-weighted average of the fluorescence intensities 
+assigned to each gate. This is done for all four ligand condi- 
+tions, whereby the gate’s fluorescence intensity is defined as 
+the average fluorescence of events in a gate. 
+N AND h ybrid ribos witch dynamic r ange screening 
+Hybrid riboswitch yeast libraries for the sequence pools 
+TNNAND8_T1(N10)/T2(N10)/T3(N10)/T4(N10) were cre- 
+ated (see Yeast Library Pool Generation) and combined into 
+one culture (1 ml of each library added to one 100 ml 
+SCD-Ura culture). Positive (pCBB05) and negative (pCBB05) 
+controls were generated as previously described (see the 
+“NAND communication module screening” section). All cul- 
+tures were incubated for 24 h at 30 ◦C in a humidified incu- 
+bator (shaking). The combined library and the controls were 
+each used to inoculate (1:100) two 10 ml SCD-Ura cultures, 
+Downloaded from academic.oup.com/nar/article/54/5/gkag145/8500548 by guest on 03 September 2026
+
+4 
+Kelvin et al . 
+containing either no ligand or 250 μM tetracycline and 
+neomycin, and again incubated for 24 h at 30 ◦C in a humid- 
+ified incubator (shaking). Prior to sorting, cells were diluted 
+(1:10) in 10 ml fresh SCD-Ura. For fluorescence-activated cell 
+sorting, the CytoFlex SRT cell sorter (Beckman Coulter) was 
+used [488 nm laser (GFP); 561 nm laser (mCherry); band- 
+pass filter: 525/540 and 610/620 nm]. Doublets (connected 
+cells), cells of irregular shape or size and cells lacking consti- 
+tutive mCherry expression were excluded. GFP fluorescence 
+was normalized to mCherry fluorescence and the fluorescence 
+range (0% –100%) for cell sorting was defined as the distance 
+between the peaks of the controls. In the first sorting step, 
+10% of all cells exhibited low fluorescence (0% –10%) in the 
+presence of both ligands. 1.2 million cells were sorted into 5 ml 
+fresh SCD-Ura medium. The sorted cells were incubated for 
+48 h at 30 ◦C in a humidified incubator (shaking). Afterward, 
+two new 10 ml cultures, one for each ligand condition (w/o; 
+250 μM tetracycline and neomycin), were inoculated (1:100) 
+and incubated for 24 h as previously described. The high- 
+fluorescence area was divided into four gates (20% –40%, 
+40% –60%, 60% –80%, 80% –100%) for the second sorting 
+step, in case NAND behavior would begin to be compromised 
+at higher expression levels. For each gate the amount of sorted 
+cells was chosen based on the percentage of the population it 
+contained to guarantee complete coverage (20% –40% GFP: 
+360k cells; 40% –60% GFP: 36k cells; 60% –80% GFP: 10k 
+cells; 80% –100% GFP: 10k cells). Cells were sorted into four 
+separate 5 ml SCD-Ura cultures and incubated for 24 h as 
+previously described. A final sorting step was performed sep- 
+arately for each subpopulation in the presence of both lig- 
+ands as previously described (0% –10% fluorescence; 10k cells 
+sorted each) to further enrich candidates with low OFF state 
+fluorescence. Plasmid DNA was extracted from all four cul- 
+tures as previously described (see the “NAND communication 
+module screening” section). The sequence content of all sam- 
+ples was analyzed using NGS (AMPLICON-EZ, GENEWIZ). 
+In vitro transcription 
+RNA used for in vitro analysis [isothermal titration calorime- 
+try (ITC), in-line probing] was in vitro transcribed from lin- 
+ear double-stranded DNA (dsDNA) templates. Each tem- 
+plate contained a T7 promoter, followed by 3 × guanosyl 
+residues for transcription initiation upstream of the RNA con- 
+struct sequence. Templates were ordered as single-stranded 
+DNA (ssDNA) oligonucleotides with a 20 nucleotide overlap 
+and amplified using a Q5 ® High-Fidelity DNA polymerase 
+(NEB) according to the supplier’s instructions. The result- 
+ing dsDNA was purified through a phenol/chloroform ex- 
+traction, followed by ethanol precipitation, as previously de- 
+scribed [ 56 ]. The in vitro transcription reaction containing 
+the purified dsDNA template (50 μg/ml), 20 mM Mg(Ac) 2 , 
+200 mM Tris –HCl (pH 8.0), 20 mM DTT, 2 mM spermidine, 
+4 mM of each NTP, 15% DMSO, and 1000 U/ml T7 poly- 
+merase (self-made) was incubated for 6 h at 37 ◦C. The re- 
+sulting RNA of correct size was purified via excision from a 
+polyacrylamide gel. RNA concentration was determined using 
+a NanoPhotometer ® (IMPLEN). 
+Isothermal titration calorimetry 
+ITC measurements of RNA constructs were carried out in 
+binding buffer I (20 mM Tris –HCl, pH 7.5, 10 mM MgCl 2 , 
+100 mM NaCl) [ 57 ]. For each measurement, a 10 μM RNA 
+solution and a separate 100 μM ligand solution (tetracycline 
+or neomycin) were prepared in the same buffer. Experiments 
+were performed using a MicroCal PEAQ-ITC (Malvern Pan- 
+alytical, UK) containing buffered RNA in the sample cell (200 
+μl) and ligand solution in the syringe (40 μl). After equilibra- 
+tion at 25 ◦C and a 60 s delay, a test injection of 0.2 μl in 0.4 
+s was performed. For the measurement, 13 injections of 2 μl 
+in 4 s were carried out in 150-s intervals at a stirring speed of 
+750 rpm. Measurement results were recorded as differential 
+power ( μcal/s) over time (min). The heat associated with each 
+titration peak was integrated and plotted against the molar 
+ratio of ligand and RNA. The dissociation constant ( K d ) was 
+determined from the fitted binding curve using the MicroCal 
+PEAQ-ITC Analysis Software (version 1.41). After titration 
+of the first ligand (tetracycline or neomycin), the same RNA 
+sample was titrated with the second ligand to measure bind- 
+ing affinity for the second ligand in the presence of the first. A 
+replicate was performed for each ITC measurement. 
+In-line probing 
+RNA dephosphorylation was carried out using an alkaline 
+phosphatase (Roche) (15 min at 50 ◦C), followed by a heat 
+inactivation step (3 min at 95 ◦C). Afterward, radioactive 5 ′ 
+labeling was performed with [ γ- 32 P]-ATP (6000 Ci/mmol, 
+10 mCi/ml; HARTMANN ANALYTIC) using a T4 polynu- 
+cleotide kinase (Roche) (40 min at 37 ◦C). The 32 P-labeled 
+RNA was purified via gel excision from a polyacrylamide gel. 
+Separate in-line reactions were prepared for all ligand condi- 
+tions (w/o, neomycin, tetracycline, both), each containing 25 
+kCPM of 32 P-labeled RNA, In-Line reaction buffer (10 mM 
+Tris –HCl, pH 8.3, 10 mM MgCl 2 , and 100 mM KCl) and 1 
+mM of (each) ligand. After incubation at room temperature 
+for 72 h, reactions were stopped by adding an equal amount 
+of 2 × denaturing RNA loading buffer [deionized formamide, 
+25 mM ethylenediaminetetraacetic acid (EDTA), bromophe- 
+nol blue). 32 P-labeled RNA was prepared as a size marker 
+through partial alkaline digestion in 10x Na2CO3 buffer (0.5 
+M Na2CO3, 10 mM EDTA] for 7 min at 95 ◦C. For gua- 
+nine residue identification a separate reaction containing 32 P- 
+labeled RNA and 1 U of T1 RNase was incubated for 5 min 
+at 55 ◦C. Untreated 32 P-labeled RNA was prepared as a con- 
+trol. All samples were mixed with 2 × denaturing RNA load- 
+ing buffer and loaded on a denaturing polyacrylamide gel. Af- 
+ter electrophoresis, the gel was dried on a heated vacuum bed 
+overnight and analyzed via phosphoimaging (Amersham Ty- 
+phoon, GE Healthcare). 
+Machine learning methods 
+Ba y esian optimization 
+Bayesian optimization is a global optimization method using 
+a surrogate model, in our case a deep ensemble neural net- 
+work, to guide optimization. The surrogate model describes 
+the belief p[ S (x ) | D j ] , the distribution over S (x ) conditioned 
+on the knowledge D j in round j. This knowledge is 
+D j = 
+
+( x, s ) : s = S ( x ) , x ∈ X j−1 
+
+where X j−1 is the set of sequences experimentally character- 
+ized in the previous rounds. 
+Derived from the model’s belief, the acquisition function 
+assigns a utility value u (x ) to each sequence x and selects the 
+candidate by solving x ′ = arg max 
+x ∈X 
+u (x ) . 
+Downloaded from academic.oup.com/nar/article/54/5/gkag145/8500548 by guest on 03 September 2026
+
+Iterative NAND hybrid riboswitch design by Bayesian optimization 
+5 
+This optimization problem can be solved by exhaustive 
+enumeration, stochastic optimization or gradient based ap- 
+proaches exploiting differentiability of u (·) . Enabled by the 
+compact size of the final design space considered here, we 
+solve this by exhaustive enumeration of the candidate se- 
+quence pool. 
+Kriging Believer 
+Kriging Believer (KB) is a natural extension of Bayesian op- 
+timization to the batch setting, as it replaces costly function 
+evaluations by the model’s predictions and otherwise sticks 
+to the sequential decision process. For iteration i of batch 
+Bayesian optimization round j, the knowledge is 
+D 
+( i ) 
+j = D j ∪ 
+
+( x, μ ( x ) ) : x ∈ 
+
+x ′ 
+1 , . . . , x ′ 
+( i −1 ) 
+
+, 
+which is the union of D j , the actual measurements at the start 
+of round j, and the augmented dataset given by the predictions 
+μ( x ′ 
+k ) = E[ S ( x ′ 
+k ) | D 
+(k ) 
+j ] for the sequences { x ′ 1 , . . . , x ′ ( i −1 ) } 
+already part of the batch. By training the ensemble model 
+from scratch (except the pretrained encoder), the model’s be- 
+lief is updated and explicitly conditions the predictions on 
+the augmented values (i.e. p[ S (x ) | D 
+(i ) 
+j ] ). The batch of se- 
+quences x ′ 1 , . . . , x ′ m is then experimentally characterized and 
+the knowledge for the next round of batch Bayesian optimiza- 
+tion is 
+D j+1 = D j ∪ 
+
+( x, s ) : s = S ( x ) , x ∈ 
+
+x ′ 
+1 , . . . , x ′ 
+m 
+
+. 
+Encoder model—architecture and training 
+The encoder model follows a BERT-like transformer en- 
+coder architecture [ 51 , 52 ] including multihead attention 
+[ 51 ]. For tokenization, we build upon the 3-mer tokenizer of 
+DNABERT [ 58 ], representing the construct sequence by 3-mer 
+tokens (e.g. [AGC]). Besides, we use [CLS] as start token, [SEP] 
+as end token, and [PAD] as padding token. The combination 
+of [CLS], [SEP], and [PAD] tokens allows to have inputs of 
+varying length. 
+The encoder implementation consists of an embedding 
+layer, sinusoidal positional encoding [ 51 ], and six transformer 
+encoder blocks. The embedding layer turns tokens into vectors 
+of dimension d model = 128 . Each transformer encoder includes 
+a multihead self-attention mechanism consisting of four heads 
+( h = 4 ) with dimension d attention = 64 . In comparison to the 
+original work of Vaswani et al. [ 51 ], where d attention = d model /h 
+for reasons of computational cost, we increase the attention 
+dimension by a factor of two due to the smaller embedding 
+dimension d model (i.e. in our case d attention = 2 d model /h ). The 
+two layer position-wise feed-forward neural network is ap- 
+plied to each token position and has input and output dimen- 
+sion d model = 128 and hidden dimension 384 . Following De- 
+vlin et al. [ 52 ], the first layer employs the Gaussian error linear 
+units (GELU) and the second a linear activation function. Both 
+layers feature a dropout probability of 10% . The remainder of 
+the transformer encoder follows the design of Vaswani et al. 
+[ 51 ]. 
+Our encoder model is trained on 36 925 unique riboswitch 
+sequences obtained from sequencing. We apply train ( 70% ), 
+validation ( 15% ), and test set ( 15% ) splits. The considered ri- 
+boswitch constructs have sequence lengths of up to 70 bases. 
+After 3-mer tokenization, the maximum length is 68 tokens 
+and together with mandatory start and end tokens the max- 
+imum token sequence length is 70 . Token sequences shorter 
+than that are extended with the [PAD] token. The training 
+was carried out on a consumer grade NVIDIA GPU with a 
+batch size of 64 . Following four warmup epochs, the learning 
+rate was determined by an exponential learning rate sched- 
+ule with an initial learning rate of 8 · 10 −4 and γ = 0 . 98 . The 
+learning rate is updated after each epoch and early stopping 
+stops training after multiple iterations without improvements. 
+This pretraining uses the loss defined by Equation ( 2 ) and in- 
+cludes the masked language model (MLM) approach [ 52 ] and 
+the triplet margin loss [ 59 ]. 
+For the MLM objective, we employ online masking [ 60 ] 
+and otherwise follow the prescriptions of Devlin et al. [ 52 ]. In 
+particular, 15% of the tokens in the token sequence (the spe- 
+cial tokens [CLS], [SEP], and [PAD] are not considered) are 
+selected randomly to be masked. From the tokens to mask, 
+80% will be replaced by the [MASK] token, 10% by a ran- 
+dom 3-mer token, and 10% are not altered. For the masked 
+token prediction, the encoder is extended by a position-wise 
+single-layer feed-forward network predicting the tokens at the 
+respective positions. The MLM loss is then the cross-entropy 
+loss of the predictions and the actual tokens, whereby only the 
+masked positions are taken into account. 
+The triplet margin loss [ 59 ] focuses on the quality of the 
+embedding and requires an anchor, a positive and a negative. 
+We here use the output of the [CLS] token as sequence em- 
+bedding (yields embedding vectors of size d model = 128 ). As 
+anchors, we use the unmasked token sequences in the batch. 
+The positive is obtained by applying masking to the anchor 
+and the negative is the masked version of a token sequence 
+identified via hard negative selection [ 59 ]. This selection crite- 
+rion computes the embedding distance between each anchor 
+in the batch and all other sequences and selects the one with 
+the smallest nonzero distance. We then apply the triplet mar- 
+gin loss with a margin of γ = 1 . 0 to the embeddings derived 
+by the sequence encoder. 
+The training loss is calculated as the superposition of the 
+MLM loss and the triplet margin loss. The best parameter con- 
+figuration is selected based on the evaluation on the validation 
+dataset and the final model achieved an accuracy of 96 . 9% on 
+the test dataset. 
+Ensemble and regression model—architecture and training 
+The regression model is a fully connected multilayer percep- 
+tron using the sequence embeddings as input and outputting 
+the expression levels corresponding to the four riboswitch 
+conformations. It consists of nine intermediate layers, each of 
+dimension 256, and a linear output layer. GELU is used as the 
+activation function and no dropout is used. To improve train- 
+ing performance, we use layer normalization after every three 
+hidden layers. 
+Joining the pretrained sequence encoder and the regres- 
+sion model yields the sequence-to-function neural network. 
+n = 100 instantiations of this network constitute the ensem- 
+ble model. To achieve diversity among models in the ensem- 
+ble, the multilayer perceptrons are initialized randomly and 
+the training procedure is designed to prevent ensemble col- 
+lapse. In particular, dropout is only used within the encoder, 
+as initial evaluations showed that further use of dropout neg- 
+atively affects the network’s ability to differentiate known and 
+unknown sequences. As hyperparameters we used a batch size 
+of 4, 120 epochs, a learning rate of 10 −4 , a learning rate de- 
+cay of 0 . 99 , 4 initial warmup epochs, and a train validation 
+split of 75% and 25% . The training includes the training of 
+Downloaded from academic.oup.com/nar/article/54/5/gkag145/8500548 by guest on 03 September 2026
+
+6 
+Kelvin et al . 
+Figure 1. Translation regulation in yeast by a tetracycline –neomycin hybrid riboswitch following Boolean logic. ( a ) Schematic representation of the 
+roadbloc k mec hanism of translation regulation in y east being perf ormed b y a tetracy cline –neom y cin h ybrid riboswitch f ollo wing NAND logic (blue: 
+neom y cin, y ello w: tetracy cline). ( b ) 2D str uct ure prediction of the TNNAND1 h ybrid riboswitch. T he binding pock ets f or neom y cin and tetracy cline ha v e 
+been highlighted in blue and y ello w, respectiv ely. ( c ) Effect of TNNAND1 on GFP expression in the absence (w/o) and the presence of 250 μM 
+tetracycline (Tc), neomycin (Neo), or both. Saccharomyces cerevisiae RS453 were transformed with the plasmid pcBB06 containing TNNAND1 in the 5 ′ 
+UTR of a constitutively expressed gfp gene. Cells were incubated under the respective ligand conditions for 24 h. GFP values were normalized to 
+constitutiv ely e xpressed mCherry to eliminate cell-to-cell e xpression v ariability. pCBB06 without an insert w as used as the blank, and its v alues w ere 
+subtracted from all other measurements. The fluorescence values of each measurement were normalized to their respective ligand-specific positive 
+control (pcBB05). All measurements were performed in duplicates and repeated twice on separate days. P -Values corresponding to worst-case dynamic 
+range are indicated (see the “Methods”"section). 
+the sequence encoder. Each model in the ensemble is trained 
+individually on the same dataset. 
+As loss function for the regression task we use the 
+Kullback –Leibler divergence (KL divergence) [ 61 ]. In partic- 
+ular, we consider the individual expression levels predicted—
+which are in the range between 0 and 1—as Bernoulli prob- 
+abilities, characterizing the distribution of riboswitches ex- 
+pressing proteins or not. This Bernoulli KL divergence for 
+two Bernoulli distributions characterized by the probabilities 
+p (the predicted value) and q (the target value) is given by 
+D KL (p∥ q ) = log 
+
+1 −p 
+1 −q 
+
++ p log 
+
+p−p q 
+q −p q 
+
+. 
+The KL divergence measures the nonmetric distance be- 
+tween two distributions and as such is minimal in case of iden- 
+tical distributions. 
+Results 
+Hybrid riboswitch design 
+In a first step, we screened for a hybrid riboswitch that im- 
+plements Boolean NAND-like behavior, exhibiting significant 
+inhibition of gene expression only in the simultaneous pres- 
+ence of both ligands, while maintaining equally high expres- 
+sion levels in the absence of either or both ligands (Fig. 1 a). 
+We combined two well-established riboswitches that recog- 
+nize tetracycline [ 13 ] and neomycin [ 62 ], respectively, by rec- 
+placing the P2 stem of the tetracycline riboswitch with a trun- 
+cated version of the neomycin riboswitch (Fig. 1 b). We refer 
+to the stem sequence connecting the two binding pockets as 
+a communication module. We designed the hybrid riboswitch 
+to contain a short communication module that enforces close 
+spatial proximity between the two binding pockets, thus al- 
+lowing direct interactions. In addition, we modified the closing 
+P1 stem, as it was shown that expression levels regulated by 
+tetracycline-responsive hybrid riboswitches can be modulated 
+when using different versions of P1 [ 14 ]. This effect was previ- 
+ously observed for the original tetracycline riboswitch [ 13 , 63 ] 
+( Supplementary Fig. S1 ). We used the tetracycline –neomycin 
+variant TN6 [ 14 ] as the starting point, as it exhibits only mod- 
+erate dynamic ranges in the individual presence of either lig- 
+and. We considered this behavior to be a favorable trait for 
+an initial NAND screening template. An additional UA base 
+pair was added to the base of the P1 stem to increase the 
+overall stability of the construct. The sequence of the result- 
+ing construct TNNAND1 is depicted in Fig. 1 b. The effect 
+of TNNAND1 on gene expression was analyzed by inserting 
+the construct into the 5 ′ UTR of a gfp reporter gene directly 
+upstream of the start codon. GFP expression was measured 
+after a 24-h incubation period in the absence and the pres- 
+ence of either or both ligands [w/o; 250 μM tetracycline (Tc); 
+250 μM neomycin (Neo); 250 μM both]. The dynamic range 
+achieved by TNNAND1 in the dual-input state is 7.6-fold, 
+while remaining 2-fold in the presence of only one ligand (Fig. 
+1 c). While the deviation between the state without ligand and 
+the individual ligand states means that TNNAND1 does not 
+achieve any defined logic behavior, we found the similarity of 
+the two individual ligand states to be a good starting point for 
+further engineering. 
+Screening for a NAND communication module 
+We designed a library of different riboswitch sequences 
+through randomization of the TNNAND1 communication 
+module between the binding pockets for tetracycline and 
+neomycin, except for the conserved closing GC base pair 
+of the internal bulge of the neomycin binding pocket, re- 
+sulting in an N6 pool. For the initial in vivo screening, we 
+sorted yeast cells containing the different N6 variants based 
+on their GFP fluorescence. However, sorting specifically for 
+high fluorescence in the presence of one or no ligand and low 
+Downloaded from academic.oup.com/nar/article/54/5/gkag145/8500548 by guest on 03 September 2026
+
+Iterative NAND hybrid riboswitch design by Bayesian optimization 
+7 
+Figure 2. NAND communication module screening top candidates. ( a ) Screening w orkflo w. A yeast library containing the TNNAND1 sequence with a 
+randomized communication module sequence was created via homologous recombination. Cultures for each ligand condition were inoculated and 
+sorted through the same grid of equally sized gates. The plasmid DNA from each subpopulation was extracted and analyzed via NGS. The resulting 
+datasets were used to approximate the switching pattern of each sequence disco v ered under all four ligand conditions. ( b ) The influence on GFP 
+expression of candidates that emulate NAND behavior was measured in the absence (w/o) and the presence of 250 μM tetracycline (Tc), neomycin 
+(Neo), or both. Saccharom y ces cere visiae R S453 w ere transf ormed with the plasmid pcBB06 containing the respectiv e candidate in the 5 ′ UTR of a 
+constitutiv ely e xpressed gfp gene. Cells w ere incubated under the respectiv e ligand conditions f or 24 h. GFP v alues w ere normaliz ed to constitutiv ely 
+expressed mCherry to eliminate cell-to-cell expression variability. pCBB06 without an insert was used as the blank and its values were subtracted from 
+all other measurements. The fluorescence values of each measurement were normalized to its respective ligand-specific positive control (pcBB05). All 
+measurements were performed in duplicates and repeated twice on separate days. The communication module sequence of each candidate is depicted 
+below its respective measurement results. P -Values corresponding to worst-case dynamic range are indicated (see the “Methods” section). 
+fluorescence in the presence of both ligands was not suffi- 
+cient to guarantee the discovery of candidates with NAND 
+behavior. This is because all variants contained in the N6 
+pool have their own sequence-specific expression levels, and 
+candidates with the most NAND-like behavior are not guar- 
+anteed to also achieve high expression levels in the absence 
+of both ligands or a high dynamic range in their presence, 
+making a standard sorting approach difficult. To circumvent 
+this issue, we divided the maximum GFP fluorescence range 
+(0% –100%) into subpopulations using equally sized gates, 
+thereby creating a sorting grid that we could use for all lig- 
+and conditions. We were able to determine the exact sequences 
+contained in each subpopulation using next-generation se- 
+quencing (NGS). Because we used the same grid for all condi- 
+tions, subpopulations originating from a specific gate always 
+contained candidates corresponding to its fluorescence range. 
+This strategy allowed us to approximate the switching pat- 
+tern of each sequence contained in the N6 pool by compar- 
+ing its occurrence in different subpopulations for all ligand 
+conditions. 
+We determined the maximum GFP fluorescence range using 
+control plasmids and divided it into eight equally sized gates 
+on a linear scale ranging from low to high fluorescence. Two 
+additional outer gates cover the fluorescence ranges occupied 
+by the controls. We then used a yeast library containing the 
+N6 pool to inoculate four different cultures, one for each lig- 
+and condition (w/o; 250 μM Tc; 250 μM Neo; 250 μM both). 
+Using the predetermined grid of gates, we divided each culture 
+into subpopulations. We sorted 12 500 candidates per gate for 
+each ligand condition. Plasmid DNA was extracted from each 
+subpopulation and the contained sequences were verified us- 
+ing NGS. We then approximated the switching pattern of each 
+sequence by comparing its occurrence in different subpopula- 
+tions for every ligand condition, with subpopulations originat- 
+ing from gates in the lower fluorescence range corresponding 
+to low expression levels and vice versa (Fig. 2 a). 
+Downloaded from academic.oup.com/nar/article/54/5/gkag145/8500548 by guest on 03 September 2026
+
+8 
+Kelvin et al . 
+We identified sequences occurring in lower gates for the 
+double ligand condition, while showing similar distributions 
+across gates representing higher fluorescence for all other lig- 
+and conditions using the NGS datasets. We then made an 
+expert selection of sequences that demonstrated the most 
+promising NAND-like behavior based on their overall perfor- 
+mance across all ligand conditions. We proceeded to clone the 
+chosen candidates TNNAND2-10 and individually measure 
+their effect on GFP expression. The communication module 
+sequences of TNNAND2-10, as well as their dynamic ranges 
+for each ligand condition are depicted in Fig. 2 b. All can- 
+didates present NAND logic to some degree, with dynamic 
+ranges for the individual ligand conditions remaining low in 
+comparison to the double ligand condition (e.g. TNNAND2: 
+Tc = 1.4 ×, Neo = 1.5 ×, both = 4.6 ×). However, constructs 
+with a higher dynamic range in the presence of both ligands 
+also present a stronger decrease in GFP values for the individ- 
+ual ligand conditions. Constructs with a low dynamic range 
+in the presence of either ligand suffer from poor regulation, 
+even in the presence of both ligands (e.g. TNNAND8: Tc = 
+1.2 ×, Neo = 1.1 ×, both = 2.3 ×). We identified TNNAND8 
+as the most interesting candidate for further optimization. 
+Given that the sequence of the tetracycline riboswitch clos- 
+ing stem P1 strongly influences switching behavior [ 14 , 63 ], 
+our next step was to engineer a TNNAND8-specific P1 stem 
+to improve dynamic range while maintaining the NAND be- 
+havior conferred by the new communication module. 
+Instead of six nucleotides (three base pair long communica- 
+tion module), which yield 4 6 = 4096 combinations in total, the 
+P1 stem region includes five or even more base pairs, increas- 
+ing the combinatorial search space to over one million com- 
+binations. Due to this exponential increase in complexity, the 
+characterization of expression levels by cloning and screening 
+sequence pools of this size and variety becomes challenging. 
+In particular, this requires a significant increase in the num- 
+ber of cells sorted per fluorescence gate to maximize the pool 
+coverage and preserve the desired precision. However, the in- 
+crease of time needed for sorting also poses challenges on the 
+accuracy, as the measurements have to match the timings of 
+the experimental protocols. 
+Bayesian optimization to navigate the sequence 
+space 
+The combinatorial increase in complexity renders purely 
+experimental-based sequence design inefficient and we thus 
+next investigated the use of Bayesian optimization in combina- 
+tion with sequence-to-function surrogate models for efficient 
+and functionality-driven riboswitch stem design. Incorporat- 
+ing individual construct measurements, the learned sequence- 
+to-function model can assess the functionality of yet unex- 
+plored riboswitch sequences, while Bayesian optimization for 
+sequence selection efficiently trades off exploration and ex- 
+ploitation to cope with the combinatorial complexity of the 
+sequence space. 
+The P1 stem design is a particular instance of biological 
+sequence design, i.e. the task of assigning nucleotides in an 
+engineered construct to achieve a desired behavior. This be- 
+havior can be specific expression levels, dynamic range maxi- 
+mization, particular sequence features or—as in our case—the 
+emulation of a particular Boolean function. We assess the de- 
+gree of functionality via a scoring function S (·) , which is based 
+on experimental characterization. Consequently, we formalize 
+the design task in terms of an optimization problem with the 
+ideal design given by 
+ˆ 
+x = arg max 
+x ∈X 
+S ( x ) , 
+where X is the sequence design space and ˆ 
+x maximizes the 
+score S (·) . To solve this design task, we build a sequence design 
+framework on the basis of Bayesian optimization. 
+Core to Bayesian optimization is the model’s belief p[ S (x ) | 
+D j ] , expressed as a probability distribution over scores condi- 
+tioned on the knowledge or data D j available at optimization 
+round j. For a particular sequence x ∈ X , the belief represents 
+a probabilistic sequence-to-function mapping giving rise to 
+not only the expected function value in terms of E[ S ( x ′ ) | D j ] 
+but also the associated uncertainty. This serves as a surro- 
+gate to guide Bayesian optimization also in regions not yet 
+explored by experimental assessment. In particular, the acqui- 
+sition function, which determines the candidates to evaluate 
+next, selects the sequence x maximizing the utility function 
+u (x ) . This utility function is derived from the probabilistic pre- 
+dictions of the surrogate model. 
+We select the upper confidence bound (UCB) [ 27 , 28 , 29 , 46 , 
+53 , 64 , 65 ] as the acquisition function for the sequence design 
+task because of interpretability, expressiveness, and simplicity 
+of evaluation in combination with deep ensemble models. The 
+UCB estimates the utility of each sequence by an upper bound 
+on the achievable score. Formally, the utility function u (x ) is 
+defined to satisfy 
+P 
+
+S (x ) ≤u (x ) | D j 
+
+= 1 −α, 
+(1) 
+where P[ S (x ) ≤s | D j ] is the cumulative distribution func- 
+tion corresponding to p[ S (x ) | D j ] and α ∈ [ 0 , 1 ] defines the 
+desired level of confidence and can be used to trade off ex- 
+ploitation ( α → 0 . 5 ) and exploration ( α → 0) . For example, 
+α = 0 . 05 leads to a utility u (x ) such that, according to the 
+model, the probability of S ( x ) exceeding u ( x ) is at most 5% . 
+The ensemble model as surrogate allows us to define the UCB 
+directly in terms of Equation ( 1 ) by using the quantiles of the 
+empirical distribution, i.e. 
+u ( x ) = q 1 −α ( S ( x ) ) , 
+where q 1 −α( S ( x ) ) refers to the 1 −α quantile function. The 
+sequence x ′ maximizing u (·) is then chosen to be evaluated 
+experimentally (see Fig. 3 a). 
+Experimental efficiency through batch creation 
+We devise a novel Bayesian optimization method for the batch 
+setting [ 27 , 46 , 53 ] to make use of the parallelism of the as- 
+say characterizing the riboswitches, where multiple candidate 
+sequences x ′ 1 , . . . , x ′ m need to be proposed at once. Repeat- 
+edly querying the acquisition function without updating the 
+model’s belief will either (1) select the same riboswitch or, by 
+excluding case (1) explicitly, (2) select sequences with high 
+proximity in terms of the score S (·) . The consequence of both 
+cases is the absence of diversity, again being detrimental to 
+experimental efficiency. 
+We achieve batch diversity by extending our proposal 
+mechanism by the KB technique [ 27 , 46 , 53 , 54 ], explicitly 
+excluding case (1). The idea of KB is to skip the experimen- 
+tal evaluation and instead update the model’s belief with the 
+predicted values. As such, the uncertainty vanishes for can- 
+didates in the current batch and decreases in their vicinity. 
+Upon selecting the m candidates, the batch x ′ 1 , . . . , x ′ m is 
+Downloaded from academic.oup.com/nar/article/54/5/gkag145/8500548 by guest on 03 September 2026
+
+Iterative NAND hybrid riboswitch design by Bayesian optimization 
+9 
+score
+true function
+prediction
+UCB
+measurement
+selection
+update 
+model
+a
+b
+Bayesian optimization
+update 
+model
+belief in
+prediction
+update model
+supersede with in vivo data
+Bayesian optimization with Kriging Believer
+score
+score
+score
+score
+score
+update 
+model
+belief in
+prediction
+true function
+prediction
+UCB
+measurement
+kriging
+selection
+round 6
+iteration 1
+round 7
+iteration 1
+round 6
+iteration 2
+round 7
+iteration 2
+round 6
+round 7
+approx. 3 weeks
+approx. 3 weeks
+Figure 3. Batch Bayesian optimization. Side-by-side comparison of Bayesian optimization (a) and batch Bayesian optimization employing KB (b). ( a ) 
+B a y esian optimization proposes a single sequence (orange star) maximizing the utility function (here UCB, y ello w line) per round. The surrogate model’s 
+belief (blue line and UCB) is updated with the in vivo sequence characterization. ( b ) KB introduces multiple iterations per batch B a y esian optimization 
+round and also selects the sequence maximizing the utility function. B etw een iterations, the model’s belief is updated with the predicted value (purple 
+star). Upon selection of all sequences for the current batch (in this example m = 2 ), the model’s belief is updated with the in vivo characterization of the 
+batch. Errors introduced by kriging are superseded between rounds (compare round 6 iteration 2 and round 7 iteration 1). 
+experimentally characterized and the model is updated with 
+the true measurements. Figure 3 b visualizes this technique for 
+m = 2 , allowing a side-by-side comparison of Bayesian op- 
+timization and KB based batch Bayesian optimization. For 
+clarity, we refer to a round as a single run of batch Bayesian 
+optimization and to an iteration as a single step of Bayesian 
+optimization as part of a batch Bayesian optimization round 
+(compare Fig. 3 a and b). 
+While KB blends nicely with Bayesian optimization and 
+provides an appealing, intuitive, and straightforward ap- 
+proach for the extension to the batch setting, the approach 
+may raise concerns regarding error propagation. Every eval- 
+uation of the utility function—with the exception of the first 
+iteration—explicitly depends on the predictions made in the 
+previous iterations (see Fig. 3 b round 6, iteration2). These pre- 
+dictions are usually not exact and prediction errors can neg- 
+atively affect future predictions. However, these errors do not 
+propagate into the next round of batch Bayesian optimization, 
+as all predictions are superseded by the experimental charac- 
+terization (compare Fig. 3 b round 6, iteration 2 to round 7, it- 
+eration 1). Besides, future rounds of batch Bayesian optimiza- 
+tion as well as the uncertainty reduction in the proximity of 
+sequences in the batch are independent of the particular pre- 
+dictions (see Fig. 3 b round 6, iteration 1). As such, beneficial 
+candidate sequences previously discarded because of incorrect 
+predictions can be reconsidered later. 
+Deep ensemble neural network for uncertainty quantification 
+We propose the use of an ensemble neural network [ 47 –50 ] 
+representing a probabilistic sequence-to-function mapping to 
+guide the Bayesian optimization in the sequence space. By 
+learning the sequence-to-function relations from experimen- 
+tal data, this model allows to assess yet uncharacterized se- 
+quences. 
+We create each of the n networks in the ensemble from a 
+sequence encoder featuring a specifically designed BERT-like 
+transformer encoder [ 51 , 52 ] and a fully connected regression 
+network (MLP) [ 66 ]. To train the ensemble, we employ a two 
+stage training process. First, we pretrain the sequence encoder 
+on a task specific sequence dataset to learn the structure in- 
+herent to the sequence space under consideration. The masked 
+language model (MLM) technique [ 52 ], which is widely used 
+in natural language processing, learns in-sequence relation- 
+ships by randomly masking parts of a sequence and requir- 
+ing the model to predict the masked parts. As previous stud- 
+ies have shown the minor quality of embeddings learned by 
+relying on MLM alone [ 67 ], we extend our pretraining with 
+a novel metric learning task that we derived from the triplet 
+margin loss used in classification tasks [ 59 , 68 , 69 ]. 
+As depicted in Fig. 4 a, we combine both objectives by form- 
+ing a triplet network of identical sequence encoders. During 
+pretraining, we first select sequence x 1 and a corresponding 
+hard negative x 2 (see the “Methods” section). From these, we 
+derive the anchor x a = x 1 , the positive x p = mask ( x 1 ) , and the 
+negative x n = mask ( x 2 ) by masking, as described previously 
+[ 52 ] and outlined in the “Methods” section. The triplet net- 
+work computes the corresponding embeddings v a , v p , v n and 
+predicts the masked parts of x p and x n . Our overall training 
+loss is then defined as 
+L = L MLM + L E , 
+(2) 
+where L MLM is the MLM loss [ 52 ] and L E is the triplet margin 
+loss [ 59 , 68 , 69 ] with margin parameter γ and euclidean norm 
+|| · | | 2 (see Fig. 4 b). 
+L E = L 
+
+v a , v p , v n 
+	
+= max 
+
+0 , || v p −v a || 2 + γ −|| v n −v a || 2 
+
+Downloaded from academic.oup.com/nar/article/54/5/gkag145/8500548 by guest on 03 September 2026
+
+10 
+Kelvin et al . 
+model 1
+model 
+w/o
+31%
+29%
+Tc
+25%
+26%
+Neo
+27%
+28%
+both
+  6%
+  9%
+score
+4.17
+2.89
+score derivation
+distribution
+ensemble model
+riboswitch sequence 
+function prediction
+w/o
+Tc
+Neo
+both
+32%
+25%
+27%
+7%
+w/o
+N
+b
+32%
+w/o
+Tc
+Neo
+both
+34%
+25%
+27%
+7%
+w/o
+N
+b
+34%
+w/o
+Tc
+Neo
+both
+29%
+25%
+27%
+7%
+w/o
+Tc
+T
+Neo
+both
+29%
+25%
+27%
+7%
+w/o
+Tc
+Neo
+both
+31%
+25%
+27%
+7%
+utility value
+c
+b
+training
+sequence encoder
+embedding
+predicted
+sequence
+transformer encoder
+a
+Figure 4. Pretraining and deep ensemble model. ( a ) Triplet network setup for pretraining of the sequence encoder. The same sequence encoder (here 
+depicted three times) is applied to the sequences x 1 , the masked version of x 1 , and the masked version of x 2 . The output values are then considered by 
+the loss function (Equation 2 ). ( b ) Visualization of the triplet margin loss. Training maximizes the embedding distance between distinct sequences. ( c ) 
+Sequence-to-function neural network ensemble as Bayesian optimization utility function instantiating the UCB. 
+Given the pretrained sequence encoder, the second stage of 
+training focuses on the sequence-to-function ensemble model. 
+In particular, a fine-tuning approach is applied where each net- 
+work in the ensemble is trained independently of each other 
+on the same dataset. Despite the same training data, the ran- 
+dom initialization of the parameters of the MLP ensures the 
+diversity of the ensemble [ 48 , 49 ]. 
+As a surrogate model for Bayesian optimization, the trained 
+ensemble predicts the empirical distribution of the score from 
+which the utility of the sequence is derived (Fig. 4 c), while the 
+fine-tuning process is repeated from scratch for every Bayesian 
+optimization iteration. 
+DBTL-cycle for NAND P1 stem design 
+We next apply the proposed batch Bayesian optimization 
+framework to the design of the TNNAND8 P1 stem by com- 
+bining it with an in vivo riboswitch screening. This com- 
+bination allows for a functionality-driven design of the P1 
+stem while using the individual construct measurements re- 
+quired for accurate design and simultaneously tackling the 
+sequence space complexity. In particular, our method com- 
+prises three stages: (i) the design of a riboswitch sequence 
+pool, (ii) the screening of the sequence pool for dataset cre- 
+ation, and (iii) our Bayesian optimization framework for the 
+efficient and effective design of riboswitch sequences. In the 
+initial step (Fig. 5 a), the sequence pool is created by using 
+the sequence of TNNAND8 as the basis for the generation 
+of a pool of partially randomized oligonucleotides (random- 
+ization of P1 stem). By employing fluorescence-activated cell 
+sorting (Fig. 5 b), we enrich sequences that demonstrate suf- 
+ficient dynamic range between the absence and the presence 
+of both ligands. Only these sequences are taken into account 
+by Bayesian optimization. As depicted in Fig. 5 c, this instanti- 
+ates a DBTL cycle. After multiple rounds, this approach results 
+in riboswitch sequences maximizing the desired NAND func- 
+tionality. We describe each of these steps below and provide a 
+flowchart representation in Supplementary Fig. S2 . 
+The screening process focuses on enriching riboswitches 
+with a high dynamic range between the presence and the ab- 
+sence of both ligands. With the goal of increasing sequence 
+diversity without losing pool coverage, we derive four distinct 
+sequence pool designs of TNNAND8. Of note, P1 stems of the 
+tetracycline aptamer conferring improved regulation are likely 
+to contain certain closing base pair combinations below the 
+binding pocket (C –G, C –G/C –G, C –G/G –C) [ 63 ]. Therefore, 
+each pool is designed to contain a five base pair long random- 
+ized sequence within the tetracycline P1 stem and either no ad- 
+ditional closing base pair, or one of the aforementioned closing 
+base pair combinations (Fig. 5 a, Pools T1 –4 from left to right). 
+We separately transformed S. cerevisiae cultures with the four 
+resulting N10 pools ( 4 10 = 1 048 576 variants per N10 pool; 
+transformation efficiency per pool ∼5 × 10 6 cfu/ μg plasmid). 
+Afterward, we combined the four cultures. 
+With the sorting range being defined on the basis of control 
+plasmids, we first sorted the combined N10 pools for low flu- 
+orescence values (0% –10%) in the presence of both ligands 
+to remove riboswitches without function (1.2 million sorted 
+cells) (Fig. 5 b). The sorted subpopulation was allowed to grow 
+and regenerate before the next sorting step. For the second 
+sorting we created equally sized gates dividing GFP values be- 
+tween 20% –100% into four different subpopulations. We did 
+this to differentiate between candidates with lower and higher 
+dynamic ranges to avoid enriching only high performing hy- 
+brid riboswitches that have abolished NAND logic. We based 
+the amount of sorted cells per gate on the size of the respec- 
+tive subpopulation to maximize coverage of all contained se- 
+quence variants (20% –40% GFP: 360k cells; 40% –60% GFP: 
+36k cells; 60% –80% GFP: 10k cells; 80% –100% GFP: 10k 
+cells). Afterward, each subpopulation was individually sorted 
+in the presence of both ligands to further enrich candidates 
+with low OFF state fluorescence (10k sorted cells each). 
+We again extracted and amplified the sequences to analyze 
+them via NGS. In preparation for the computational frame- 
+work, we created two datasets. Dataset 1 contains all se- 
+quences identified via NGS and will serve as the dataset for 
+Downloaded from academic.oup.com/nar/article/54/5/gkag145/8500548 by guest on 03 September 2026
+
+Iterative NAND hybrid riboswitch design by Bayesian optimization 
+11 
+a
+b
+NGS
+w/o
++Tc/Neo
+Count
+Seq
+na
+a
+nb
+b
+…
+…
+Dataset 1:
+All Sequences
+Pre-Training
+of Encoder
+Dataset 2:
+Sequences
+with Count
+>= 10
+Design
+Build
+Learn
+Test
+c
+*
+*Predicted candidate
++Tc/
+Neo
+Figure 5. Ov ervie w on machine learning-guided NAND h ybrid riboswitch design. ( a ) TNNAND8 P1 stem sequence pool design. Yeast libraries w ere 
+generated through homologous recombination with the linearized vector pCBB06. ( b ) Sequence pool and dataset creation. Candidates with high 
+dynamic range in the presence of both ligands were enriched through cell sorting. Four different gates were used for the ligand-free state sorting of 
+candidates previously enriched for low reporter expression in the presence of both ligands to gain a better understanding of riboswitch behavior at 
+different dynamic ranges. Afterward, each subpopulation was again enriched for candidates with low fluorescence in the presence of both ligands. NGS 
+was used to determine the sequence space contained in each enriched subpopulation. For pretraining of the encoder, a first dataset containing all 
+detected sequence variants was used. A second dataset only containing sequences disco v ered 10 times or more was used for model training. ( c ) DBTL 
+cy cle. B ased on the initial training, the model predicted potentially interesting candidates f or in viv o v alidation (Design). T he respectiv e constructs w ere 
+cloned (Build), measured in yeast (Test), and the resulting data were used to train the model for the next iteration (Learn). 
+the pretraining of the sequence-encoder model. In contrast 
+to this, dataset 2 will serve as the candidate sequence pool 
+from which the batch Bayesian optimization selects the se- 
+quences for experimental characterization. To increase the ex- 
+perimental efficiency by removing sequencing artefacts, we re- 
+quired a read count of at least 10 for sequences to be part of 
+dataset 2. 
+Application of Ba y esian optimization to riboswitch design 
+The application of Bayesian optimization to the riboswitch se- 
+quence design requires the definition of a design objective, the 
+scoring function. The scoring function characterizes the func- 
+tionality of the riboswitch, which we define as the worst-case 
+dynamic range with respect to NAND behavior. It assesses the 
+dynamic range between the lowest expression level represent- 
+ing a Boolean ON state (ligand conditions w/o, Tc, and Neo) 
+and the one representing the Boolean OFF state (ligand con- 
+dition both). Formally, this score S (·) is defined as 
+S ( x ) = min [ φx ( w / o ) , φx ( Tc ) , φx ( Neo ) ] 
+φx 
+
+both 
+	
+, 
+where φx (·) is the expression level of sequence x for some lig- 
+and condition. 
+For the sequence design framework, we use a batch size 
+of m = 16 sequences, an ensemble size of n = 100 models, 
+and configure the acquisition function UCB to bound 95% 
+of predicted scores by setting α = 0 . 05 . For pretraining the 
+sequence-encoder, dataset 1 consists of 36 925 riboswitch se- 
+quences. The candidate sequence pool, from which we select 
+the sequences during our optimization, is dataset 2 and has a 
+size of 3256 sequences (see Fig. 6 for sequence space visual- 
+ization). 
+For the selection of the 34 initial riboswitches to char- 
+acterize, we employed a semi-random approach. We ratio- 
+nally selected the majority of riboswitches based on their po- 
+tential function derived from enrichment during screening. 
+To also ensure sequence space coverage, we supplemented 
+the initial riboswitches with candidates selected based on se- 
+quence similarity derived from the Levenshtein distance. All 
+chosen candidates (TNNAND11-45; TNNAND29 was not 
+considered further due to a later discovered sequence over- 
+lap with TNNAND45), despite not being sorted for a spe- 
+cific logic gate pattern, retained NAND logic gate behavior 
+( Supplementary Fig. S3 ). To us, these results clearly indicate 
+that the TNNAND8 communication module specifically en- 
+forces NAND logic gate behavior. 
+Starting the first round of our Bayesian optimization tech- 
+nique, the ensemble regression model is trained on the 34 se- 
+quences and the corresponding expression levels. For all se- 
+quences in the sequence pool, we evaluate the UCB and se- 
+lect the sequence with the highest utility value. The next it- 
+erations of this round continue by augmenting the current 
+knowledge with the estimated expression levels of the selected 
+sequence (the KB step), training the regression model, and se- 
+lecting the sequence with the highest UCB. Upon selection of 
+all sequences for the current batch, we continue with the in 
+vivo evaluation, the build and test steps of the DBTL cycle in 
+Fig. 5 c. 
+In this first round of batch Bayesian optimization 
+(TNNAND46-61) we found 11 riboswitch sequences that 
+performed better than the previous average and three that 
+outperformed the previous best. Among those 16 sequences, 
+there are also four sequences without NAND functionality 
+( Supplementary Fig. S4 ). Noticeably, their stems have at most 
+Downloaded from academic.oup.com/nar/article/54/5/gkag145/8500548 by guest on 03 September 2026
+
+12 
+Kelvin et al . 
+Figure 6. NAND riboswitch design results. ( a ) R elativ e fluorescence and scores of the Top five NAND riboswitches TNNAND56 (score 3.42), TNNAND46 
+(score 3.35), TNNAND88 (score 3.20), TNNAND55 (score 3.17), and TNNAND45 (score 3.15), ordered by descending performance quantified by the 
+w orst-case f old-change score. P -Values corresponding to w orst-case dynamic range are indicated (see the “Methods” section). ( b ) Visualization of 
+riboswitch dose dependency. TNNAND56 significantly downregulates expression only in the presence of both ligands, e x emplifying the NAND behavior. 
+In contrast, TNNAND1 exhibits regulation already in the presence of a single ligand. Color coding refers to the relative expression of each construct 
+(min-max normalization per construct). ( c ) The average score of the Top 5, Top 10, and Top 20 sequences in each round of B a y esian optimization. ( d ) 
+Sequence space visualization of the candidate sequence pool (dataset 2) by multidimensional scaling of pairwise Levenshtein distances. Clustering of 
+sequences corresponding to pools T3 and T4 is likely due sequences from these pools being the most prevalent ones. The Top 10 riboswitches 
+distribute in the sequence space and only form vague clusters. 
+two canonical base pairs. Guided by those insights and the ra- 
+tionale of the riboswitch mechanism [ 12 , 13 ], we consider the 
+absence of base pairs in the stem causal for the absence of any 
+switching behavior. Therefore, we removed sequences featur- 
+ing < 3 base pairs (including G –U pairs) in the stem from the 
+sequence pool, to focus exploration on promising candidates. 
+This reduces the size of the sequence pool by 2.4% to 3177 
+sequences. 
+Including the expression levels of the newly evaluated se- 
+quences into our dataset extends it to 50 entries. Rounds 
+two and three of our Bayesian optimization proposed 32 
+further sequences. However, the in vivo characterization re- 
+vealed that these rounds did not yield a new overall best 
+NAND riboswitch. In addition, the predicted utilities of 
+yet unknown riboswitches decreased, wherefore we termi- 
+nated optimization with only 82 riboswitches being evaluated 
+in vivo . 
+Considering the performance of the newly designed ri- 
+boswitch sequences, Fig. 6 a presents for each ligand combi- 
+nation the average expression levels regulated by the five best 
+NAND riboswitches. Noticeably, the expression levels repre- 
+senting Boolean ON states (i.e. for input combinations w/o, 
+Tc, and Neo) are well separated from the ones representing 
+OFF states (i.e. for input combination both). In addition, the 
+lowest ON state is on average only 22.1% below the high- 
+est, with TNNAND88 having the highest deviation of 34.2%. 
+In combination with the average worst-case dynamic range 
+of 3 . 26 among our Top 5, these riboswitches implement near 
+digital NAND logic in vivo . Compared to TNNAND8 (score 
+1.7), the Top 5 candidates outperform the initial construct 
+score wise, with our method improving the worst-case dy- 
+namic range by two-fold for the best candidate TNNAND56 
+(score 3.42). 
+Figure 6 b compares the dose-response behavior of 
+TNNAND1, the initial hybrid riboswitch, and TNNAND56, 
+the computationally designed NAND hybrid riboswitch. 
+TNNAND1 partially blocks expression already when a sin- 
+gle ligand is present (at concentrations > 25 μM). Addition of 
+the second ligand, even at lower concentrations, is sufficient to 
+downregulate expression almost entirely. TNNAND56 how- 
+ever exhibits strong downregulation of expression only if both 
+ligands are present to a significant extent (100 μM or higher). 
+Decreasing the abundance of one of the ligands increases ex- 
+pression levels immediately. 
+Investigating the convergence of the proposed technique, 
+Fig. 6 c highlights that the presented method continuously im- 
+proves the average scores of the best riboswitches (Top 5, Top 
+10, Top 20) with each round of Bayesian optimization. While 
+the 16 sequences selected in round 1 led to the largest improve- 
+ments, the increases in later rounds are mostly of incremental 
+nature. However, especially with respect to the Top 10 and 
+the Top 20, the NAND score increase between round 1 and 
+round 3 is still significant. Considering the design sequence 
+space (Fig. 6 d), we furthermore observe that the Top 10 
+Downloaded from academic.oup.com/nar/article/54/5/gkag145/8500548 by guest on 03 September 2026
+
+Iterative NAND hybrid riboswitch design by Bayesian optimization 
+13 
+Figure 7. Str uct ural and thermodynamic characterization of TNNAND1 and TNNAND8. ( a ) Two-dimensional str uct ure prediction of the TNNAND1 and 
+TNNAND8 hybrid riboswitches. The binding pockets for tetracycline and neomycin are highlighted in yellow and blue, respectively. The cleavage pattern 
+of 32 P -labeled RNA (TNNAND1: left side, TNNAND8: right side) is shown after a 72-h in-line reaction under different ligand conditions (w/o: no ligand, 
+Neo: 1 mM neom y cin, Tc: 1 mM tetracycline, both: 1mM of each ligand). Size markers were generated through alkaline digestion (AD) and guanine 
+residues were identified using T1 RNase digestion (T1). An untreated control ( −) was prepared alongside the reactions. ( b ) K d values were determined 
+for TNNAND1 and TNNAND8 using ITC measurements (displayed in Supplementary Fig. S5 ). After titration of the first ligand (tetracycline or neomycin), 
+the same RNA sample was titrated with the second ligand to measure binding affinity for the second ligand after binding of the first. Replicates were 
+perf ormed f or each I TC measurement. 
+riboswitches form only vague clusters and instead distribute 
+over the sequence space. 
+Structural and thermod ynamic anal ysis of NAND hybrid ri- 
+boswitches 
+Having identified candidates capable of implementing near 
+digital NAND behavior, we next investigated the struc- 
+tural and thermodynamic characteristics of NAND hybrid ri- 
+boswitches. We observed that all candidates discovered during 
+the second screening implement NAND behavior, even before 
+application of our sequence design framework. These con- 
+structs share the same communication module derived from 
+the precursor NAND riboswitch TNNAND8, whose sequence 
+differs from the original TNNAND1 riboswitch by only two 
+nucleotide positions (A16C/A37U). Therefore, we compared 
+TNNAND1 and TNNAND8 regarding secondary structure 
+formation and binding affinity through in-line probing and 
+ITC. 
+The results of the structural probing are depicted in Fig. 7 a. 
+We confirmed the binding pockets for neomycin and tetra- 
+cycline based on prior structure analysis of the individual 
+parental riboswitches (tetracycline: yellow; neomycin: blue) 
+[ 62 , 70 ]. TNNAND1 and TNNAND8 both exhibit formation 
+of the individual binding pockets in the presence of their re- 
+spective ligands. In both constructs only the binding pocket 
+of the present ligand is stabilized, while the unbound bind- 
+ing pocket remains in a less structured state. Addition of the 
+second ligand then leads to stabilization of the entire con- 
+struct. The cleavage patterns present no alternative structure 
+formation of the NAND construct TNNAND8 in compari- 
+son to TNNAND1. However, signal intensities in the region 
+of the communication module indicate increased flexibility at 
+the positions C16, U36, and U37 of TNNAND8 in compar- 
+ison to TNNAND1 for the ON states (w/o, Tc, Neo). In the 
+presence of both ligands, cleavage patterns of TNNAND1 and 
+TNNAND8 indicate similar degrees of structural stability. 
+Binding affinity assays revealed that K d values of 
+TNNAND8 are worse in the presence of only one ligand when 
+compared to TNNAND1 (see Fig. 7 b and Supplementary Fig. 
+S5 ). Before binding of tetracycline, TNNAND8 reaches a K d 
+of 161 nM in the presence of neomycin, whereas TNNAND1 
+achieves a K d of 53.6 nM. Binding assays performed with 
+neomycin after addition of tetracycline to the RNA revealed 
+improved K d values of 54.4 nM for TNNAND8 and 25 
+nM for TNNAND1. Binding of tetracycline in the presence 
+of neomycin occurs with high affinity for both constructs, 
+with K d values dropping below the threshold of the utilized 
+measurement device ( < 1 nM). Binding of tetracycline with- 
+out prior addition of neomycin occurs at worse affinity for 
+TNNAND8 when compared to TNNAND1, with only the K d 
+of TNNAND1 dropping below the measurement threshold. 
+Sequence characteristics of NAND hybrid riboswitches 
+Following the insights on the communication module, we here 
+investigate the relationship between sequence and function 
+with respect to the P1 stem. We do so by considering the ex- 
+pression profiles of the 82 riboswitches characterized during 
+P1 stem design. 
+Figure 8 a gives rise to the nucleotide frequency per stem 
+position for the Top 10 sequences according to the NAND 
+score. While for most positions each nucleotide appears at 
+least once, the preference for sequences from pool T3 ( 5 out 
+of 10 ) and T4 ( 4 out of 10 ) in the Top 10 is evident at po- 
+sition 7 , as only a single sequence corresponds to pool T2 ( 1 
+out of 10 ) with a stem of length six. At position 6 , nucleotides 
+G and C are almost equally frequent, again reflecting the ra- 
+tio of pools in the Top 10 . Considering pool T1, featuring the 
+shortest stem of length five and no predefined base pairs, there 
+Downloaded from academic.oup.com/nar/article/54/5/gkag145/8500548 by guest on 03 September 2026
+
+14 
+Kelvin et al . 
+i
+h
+0
+1
+2
+3
+4
+5
+6
+7
+7
+6
+5
+4
+3
+2
+1
+0
+0
+1
+2
+3
+4
+5
+6
+7
+No Pairs
+A-U & G-U Pairs
+G-C Pairs
+2.2
+-
+2.4
+2.6
+2.8
+g
+- A G C U
+A G C U -
+NP
+G-U
+A-U
+G-C
+e
+C
+C
+C
+U
+C
+A
+A
+G
+G
+G
+A
+G
+C
+G
+C
+C
+A
+C
+G
+U
+C
+G
+G
+U
+G
+C
+A
+G
+C
+G
+A
+G
+G
+G
+A
+G
+C
+U
+C
+C
+C
+A
+C
+G
+U
+C
+C
+G
+G
+C
+A
+G
+G
+C
+TNNAND55
+TNNAND88
+TNNAND56
+TNNAND46
+b
+G-C Design
+A-U Design
+G-U Design
+No Pair
+c
+a
+NP
+G-U
+A-U
+G-C
+d
+NP
+G-U
+A-U
+G-C
+f
+0%
+25%
+50%
+75%
+100%
+4
+3
+1
+5
+2
+7
+6
+Figure 8. Sequence insights into riboswitch design. ( a ) R elativ e frequency of nucleotides of Top 10 riboswitch sequences, where −indicates the 
+absence of a base through a shorter stem. ( b ) Sequences of Top four riboswitches designed in this work with highlighting of base pairs following the 
+legend in panel ( c ). R elativ e frequency of base pairs in Top 10 of the riboswitches with respect to the score ( d ), high expression in the “w/o” case ( e ), 
+and low expression in the “both” case ( f ). ( g ) Average scores of Top 40 riboswitches in dependence to the number of base pairs, where we differentiate 
+between no base pairing (NP), G –C base pairing (G –C pairs), and A –U or G –U base pairing (A –U and G –U pairs). ( h ) Riboswitch sequence robustness 
+analysis on the basis of the distribution of the fold change in score (lo w er is better) in dependence to the L e v enshtein dist ance bet ween sequences, with 
+substitutions, insertions, and deletions weighted equally. Small score fold change means almost identical scores. ( i ) The distribution of the fold change in 
+score in relation to a base pair distance, where the distance between two distinct base pairs is 1 and between a base pair and no base pair is 2 . 
+is no sequence present in the Top 10 and only three—in gen- 
+eral nonfunctional—sequences from T1 have been evaluated 
+in total. Positions 1 to 5 are not predefined by the pools and 
+present a more heterogeneous choice of nucleotides. In gen- 
+eral, G is the most prominent nucleotide on the right side, with 
+the complementary C occurring slightly less often on the left. 
+Figure 8 b displays the P1 stem of the Top four riboswitches 
+with position-wise base pairs highlighted (legend in Fig. 8 c). 
+Notably, the best performing riboswitch TNNAND56 fea- 
+tures only five base pairs, all of which are in the upper part. 
+The other top riboswitches feature up to seven. In addition, 
+there is a strong prevalence for G –C base pairs ( 19 in total) 
+over A –U base pairs ( 5 in total). Here, TNNAND56 again di- 
+verts from the others in featuring three G –C base pairs in the 
+upper part of the stem. 
+Considering the base pairing of the 10 NAND riboswitches 
+with the highest score (see Fig. 8 d), G –C base pairs are most 
+prevalent. A –U pairs occur only at positions 2, 4, and 5. The 
+noncanonical G –U pair and the absence of base pairs is mainly 
+present at the lower part of the stem. Figure 8 e and f con- 
+tinue this evaluation by focusing on the 10 riboswitches with 
+highest expression levels in the “w/o” case (panel e) and the 
+10 with lowest expression levels in the “both” case (panel 
+f). Comparing panels (e) and (f), one observes that the base 
+pairing patterns differ. The increased absence of base pairs in 
+the w/o case indicates that high expression is best achieved 
+by weakening the base pairing. Contrary to that, we observe 
+frequent use of G –C base pairs in sequences with the least 
+leakiness in the “both” case. 
+Reconsidering the score, Fig. 8 g visualizes the average score 
+in dependence to the number of base pairs per type for the 40 
+best NAND riboswitches. All riboswitches have at most three 
+positions without base pairing. On average, the configurations 
+that perform best have four pairs of type G –C and one of type 
+A –U or G –U, while riboswitches with seven base pairs per- 
+form better than average. 
+An important aspect for sequence design and the pre- 
+dictability of functionality is the robustness of the construct 
+with respect to altering single nucleotides. Figure 8 h presents 
+the distribution of the fold change in score between ri- 
+boswitches with different Levenshtein distances. The score 
+fold change is s 1 / s 2 if s 1 ≥s 2 and otherwise s 2 / s 1 , with s 1 = 
+S ( x 1 ) and s 2 = S ( x 2 ) , and characterizes the deviation in score. 
+Focusing on the mean first, we observe a slight increase in 
+score fold change for increasing Levenshtein distance. Taking 
+the distribution information into account, we observe that dis- 
+tributions for different Levenshtein distances are quite similar, 
+while already a Levenshtein distance of 1 can lead to a two- 
+fold change in NAND score. As the number of base pairs and 
+their type is an important quantity (see Fig. 8 d and e for ex- 
+ample), we additionally introduce a Base pair distance (see 
+Fig. 8 i). The base pair distance weights the distance between 
+two distinct base pairs with 1 and between no base pair and 
+a base pair with 2. The average score fold change in panel 
+Downloaded from academic.oup.com/nar/article/54/5/gkag145/8500548 by guest on 03 September 2026
+
+Iterative NAND hybrid riboswitch design by Bayesian optimization 
+15 
+a
+b
+c
+d
+Current Knowledge
+Candidate Sequence
+Estimate
+UCB
+Current Best
+Figure 9. Batch Bayesian optimization rounds. Visualizations of the model’s predictions ( x ) (blue line) and the corresponding UCB u ( x ) (UCB, yellow area) 
+for each sequence in the candidate sequence pool on the basis of the knowledge at the start of round 1 ( a ), 2 ( b ), and 3 ( c ), with panel ( d ) representing 
+the state for an unexecuted fourth round. In addition, markers indicate current knowledge (blue points) and proposed sequences to evaluate (orange 
+stars). Sequences are ordered per round by ascending predicted score. Deviations between UCB peaks and selected candidate sequences result from 
+different model states for visualization and sequence selection. 
+(i) almost monotonically increases and spans a much larger 
+range in comparison to panel (h). In addition, the distribu- 
+tions differ more significantly, indicating the importance of 
+base pairing for behavioral similarity. 
+Analysis of the Ba y esian optimizer 
+With having covered the evolution of top riboswitch perfor- 
+mance over Bayesian optimization rounds, we here focus on 
+providing further insights into the selection process. Figure 9 
+visualizes the model’s view of the sequence space at the be- 
+ginning of each Bayesian optimization round [round 4 cor- 
+responding to panel (d) is not executed]. Starting with the 
+model’s knowledge at the beginning of the first round (panel 
+a), we see that the characterized riboswitches span the whole 
+performance range from almost nonfunctional to NAND be- 
+havior. The model’s uncertainty vanishes for characterized ri- 
+boswitches (downward spikes in UCB) while otherwise the 
+distance between UCB (representing the 0.95% quantile) and 
+mean estimate is evident for the large uncertainty within the 
+model. 
+As in general the UCB values are high, the riboswitches se- 
+lected are distributed over the whole sequence space, including 
+candidates with low estimated performance but high uncer- 
+tainty (exemplary for exploration), and candidates with lower 
+uncertainty but higher performance estimates (exemplary for 
+exploitation). According to the definition of the acquisition 
+function, the selected candidate sequences should correspond 
+to peaks in the UCB utility function. However, this does not 
+align with our observations in the panels. This is because the 
+presented UCB is representative for the model’s knowledge at 
+the beginning of the Bayesian optimization round. This is not 
+identical to the model’s belief in later iterations when the other 
+candidate riboswitches are selected. Causal to this is the KB 
+approach, which updates the model’s belief in each iteration 
+to reflect the knowledge gained through the incorporation of 
+the previously selected riboswitches. 
+Continuing with round 2 (see Fig. 9 b), we observe a gen- 
+eral drop in uncertainty (deviation between UCB and mean) 
+and a preference for riboswitches with higher estimated per- 
+formance in comparison to round 1 [panel (a) for reference]. 
+Indeed, the information gained through the characterization 
+of the riboswitches selected in round 1 refines the predic- 
+tions, also in the realm of sequences with low estimated per- 
+formance. The decreased predictive uncertainty reduces their 
+selection probability due to the combination of low estimated 
+performance and medium uncertainty levels. At the other end 
+of the performance spectrum, uncertainty is causal for candi- 
+date selection, as the difference in the expected performance of 
+predicted top performers decreases. With respect to the diver- 
+sity of selected riboswitches, the model’s knowledge did lead 
+to preferring exploitation, with the exception of some candi- 
+dates being chosen for the purpose of exploration. 
+Round 3 manifests the trend of decreasing uncertainty and 
+the selection of candidates with higher estimated performance 
+Downloaded from academic.oup.com/nar/article/54/5/gkag145/8500548 by guest on 03 September 2026
+
+16 
+Kelvin et al . 
+(see Fig. 9 c). Especially in the range of riboswitches with 
+medium estimated score, single peaks in uncertainty are causal 
+for the selection of a riboswitch. However, we also do notice 
+that in most cases the distance between selected candidates 
+is larger than in round 2. This indicates the success of the 
+KB approach in reducing uncertainty in the proximity of ri- 
+boswitches already part of the current batch. Besides, the se- 
+lected riboswitches again indicate the trade-off between explo- 
+ration and exploitation by considering sequences with diverse 
+estimated performance. This is in contrast to greedy optimiza- 
+tion, which focuses only on the sequences with the highest es- 
+timated performance. 
+After three rounds of batch Bayesian optimization, the 
+model’s uncertainty decreased significantly (see Fig. 9 d) and 
+the UCB is in general below the already identified best scor- 
+ing riboswitch. This indicates the vanishing chance of identi- 
+fying riboswitches with superior performance. The scores of 
+the evaluated riboswitches span from 0.91, representing an 
+unfunctional riboswitch, to 3.42 in the case of TNNAND56. 
+From the 48 riboswitch sequences selected by batch Bayesian 
+optimization only 14 have a score below 1.70 (score of 
+TNNAND8), while 15 switches exceed this score by at least 
+50%. 
+In order to assess the applicability of our deep batch 
+Bayesian optimization to other sequence design tasks, we ran 
+multiple campaigns with our framework on an in silico bench- 
+mark for promoter design [ 71 ], which has a candidate se- 
+quence space of over 700 000 sequences (see Supplementary 
+Fig. S6 ). We compared our framework to a round based 
+greedy optimization policy based on the state-of-the-art ref- 
+erence neural network for this dataset. The objective was 
+to maximize the expression, while the parametrization of 
+Bayesian optimization stayed the same otherwise. Our se- 
+quence design framework was readily applicable to the pro- 
+moter design after adapting the ensemble model to the pro- 
+moter task. Considering the performance (multiple indepen- 
+dent campaigns are considered), our deep batch Bayesian op- 
+timization framework outperforms the reference neural net- 
+work policy in designing promoter sequences ( Supplementary 
+Fig. S6 ). 
+Discussion 
+RNA-based regulators such as synthetic riboswitches offer 
+enormous potential for the design of complex genetic circuits. 
+Despite this, riboswitches are difficult to engineer due to their 
+sensitivity to sequence changes, with even single nucleotide 
+exchanges having a major impact on regulated expression 
+levels. Because sequence –function relationships are often un- 
+predictable, riboswitch design in many cases remains depen- 
+dent on time-consuming empirical methods. Machine learn- 
+ing approaches have attempted to bridge this gap by combin- 
+ing high-throughput wet lab data generation with sequence- 
+to-function surrogate models. However, these studies have fo- 
+cused exclusively on the generation of single-input RNA de- 
+vices with maximized dynamic range [ 24 , 25 , 63 ]. Our hy- 
+brid riboswitch architecture surpasses these devices in com- 
+plexity by allowing the use of two different inputs to simul- 
+taneously influence the switching behavior, thereby enabling 
+the implementation of Boolean logic. This complexity is fur- 
+ther enhanced by the fact that hybrid riboswitch function 
+is based solely on structure stabilization induced by small- 
+molecule triggers, unlike other riboswitch architectures that 
+rely on strand displacement to facilitate regulation [ 24 , 25 ]. 
+Until now, the design of hybrid riboswitches has focused solely 
+on maximizing dynamic range to create highly efficient regu- 
+lators that take advantage of the additional stability provided 
+by a second binding pocket [ 14 ]. Most of these rationally 
+designed constructs already exhibit a high dynamic range in 
+the presence of a single ligand, thus achieving NOR behavior 
+without the need for extensive optimization. Here, we inves- 
+tigated logic behavior that requires conditional functionality 
+of the construct only in the presence of both ligands, with the 
+specific goal of achieving near digital NAND logic behavior. 
+Most dual-input riboswitch architectures attempting to im- 
+plement Boolean logic rely on separate insertion of two differ- 
+ent devices into the same messenger RNA. While these tandem 
+riboswitches can be created from the use of two different con- 
+structs utilizing the same mechanism of regulation, like the 
+roadblock mechanism in S. cerevisiae [ 72 , 22 ], simultaneous 
+use of different regulation mechanisms is also conceivable [ 10 , 
+73 ]. Tandem riboswitches following Boolean logic have not 
+only been engineered synthetically but also been discovered 
+in nature [ 74 ]. For example, a tandem construct containing 
+aptamers for guanine and 5-phosphoribosyl-1-pyrophosphate 
+discovered in bacteria was shown to achieve IMPLY logic by 
+influencing a shared expression platform (terminator stem) 
+through both binding pockets [ 75 ]. The fact that no natu- 
+ral riboswitch implementing NAND logic has been discovered 
+to date is viewed as an indicator that interactions between 
+both binding pockets are a requirement for dual-input ri- 
+boswitch architectures to achieve complex Boolean functions 
+[ 15 ]. Previously published synthetic riboswitches implement- 
+ing NAND behavior circumvent this by using a self-cleaving 
+ribozyme, a catalytically active RNA sequence, as a shared ex- 
+pression platform for two different aptamer domains [ 16 , 17 ]. 
+These designs make use of the modular nature of ribozymes 
+by replacing two stem-loop structures essential to their func- 
+tion with aptamer domains that stabilize only in the bound 
+state, thus allowing ribozyme activity only in ligand presence. 
+However, the spatial separation between both binding pockets 
+means that no direct interaction is utilized for NAND behav- 
+ior, as each aptamer domain separately functions as a NOT 
+gate. In comparison, our design utilizes direct interactions be- 
+tween both binding pockets to facilitate logic behavior, thus 
+encoding NAND logic directly into a single RNA structure 
+without the need for a separate expression platform. 
+Our tetracycline –neomycin hybrid riboswitch accurately 
+emulates NAND logic, showing relevant downregulation of 
+reporter expression only, and exclusively, in the presence of 
+both ligands. We have validated this behavior in vivo in a dose- 
+dependent manner. Additional in vitro characterization used 
+for comparison with the original riboswitch TNNAND1 re- 
+vealed increased flexibility of the communication module con- 
+veying NAND logic in the presence of a single ligand. The re- 
+duced stability of the communication module potentially af- 
+fects the ability of NAND constructs to form a stable road- 
+block in vivo , thus requiring simultaneous binding of both 
+ligands to efficiently terminate ribosomal scanning. In addi- 
+tion, ITC measurements revealed decreased binding affinity 
+of a NAND riboswitch for individual ligands. Interestingly, 
+both the original TNNAND1 construct and the NAND ri- 
+boswitch exhibit increased binding affinity for the second lig- 
+and (tetracycline or neomycin) after binding of the first. This 
+effect, which is more pronounced for the NAND construct, 
+indicates that both riboswitches utilize cooperative binding. 
+Downloaded from academic.oup.com/nar/article/54/5/gkag145/8500548 by guest on 03 September 2026
+
+Iterative NAND hybrid riboswitch design by Bayesian optimization 
+17 
+This means that each binding pocket, in its bound state, in- 
+creases the affinity of the other binding pocket for its respec- 
+tive ligand. Since we observe this effect independently of logic 
+behavior, cooperative binding may be more generally associ- 
+ated with the hybrid riboswitch architecture and potentially 
+applicable to other binding pocket combinations. 
+We choose Bayesian optimization to guide riboswitch de- 
+sign. Previous works have used classical design methods like 
+directed evolution [ 18 –22 ] or machine learning based ap- 
+proaches for the design of regulatory RNA devices [ 24 , 25 , 76 , 
+77 ]. The collaborative work [ 24 , 25 ] combines high through- 
+put cell sorting and sequencing with deep learning-based 
+sequence-to-function models to predict RNA toehold –switch 
+function. Their optimization pipeline uses the trained model 
+to optimize the input RNA sequence via gradient ascent with 
+respect to target expression values in the bound and un- 
+bound state. In comparison, our batch Bayesian optimization 
+based framework employs probabilistic sequence-to-function 
+modeling, additionally giving rise to the predictive uncer- 
+tainty. This estimate of predictive accuracy is essential to 
+trade off exploration and exploitation in data scarce scenar- 
+ios. Also a generative approach to RNA aptamers on the ba- 
+sis of structure-to-sequence models has been proposed [ 77 ]. 
+This was exemplified by generating structurally similar but 
+sequence-wise dissimilar variants of light-up aptamers. Our 
+framework directly focuses on the functional behavior of the 
+riboswitch and provides means to maximize the performance 
+with respect to a functionality score. 
+Bayesian optimization itself is already employed to guide 
+sequence design in experimental design campaigns like pro- 
+tein engineering [ 34 , 78 ] or small molecule design [ 37 ]. These 
+works use greedy approaches, stochastic acquisition func- 
+tions, or approximate joint uncertainty maximization for 
+batch generation and significantly smaller ensembles [ 34 ] or 
+single neural network techniques such as Laplace approxima- 
+tion, Monte Carlo dropout, or Gaussian process heads [ 37 , 
+34 , 78 ] for probabilistic modeling. Our method goes beyond 
+recent works by explicit batch creation and overcoming distri- 
+butional assumptions. We explicitly condition the selection of 
+riboswitches during batch generation on previously selected 
+candidates through the use of KB to prevent the selection of 
+too similar riboswitches and to ensure batch diversity. In addi- 
+tion, we account for sequences as inputs and arbitrary empir- 
+ical distributions by using a large ensemble neural network 
+and introducing the quantile-based UCB acquisition func- 
+tion. This novel combination of KB and deep ensemble neural 
+networks as surrogate sequence-to-function model presents 
+a Gaussian-process-free alternative for Bayesian optimiza- 
+tion, overcoming the need of intermediate sequence embed- 
+dings and making assumptions on the predictive distribution 
+superfluous. 
+Using the deep batch Bayesian optimization, we were 
+able to double the performance of the optimized candidate 
+TNNAND56 in comparison to the initially discovered NAND 
+predecessor TNNAND8. By having a total sample size of only 
+82 candidates validated in vivo , our framework shows robust 
+performance in this low-throughput regime. We originally 
+considered utilizing larger pool sizes in a high-throughput 
+screening for this task. However, the complexity of designing a 
+multistate device that precisely emulates Boolean logic behav- 
+ior makes it increasingly difficult to generate datasets contain- 
+ing the required information for all four states when work- 
+ing with larger pools. A limiting factor for high-throughput 
+screenings is the number of cells that can be sorted within the 
+time frame permitted by the experimental parameters. There- 
+fore, pool sizes that reach the order of cell count result in 
+loss of information, even when screening for a single state 
+[ 79 ]. 
+We complement our results with an in silico benchmark 
+for promoter design [ 71 ] to allow for general statements on 
+the performance of our design framework. The benchmark 
+showed that our sequence design method is easily adaptable to 
+the new design task and demonstrated superior performance 
+in comparison to the state-of-the-art single-neural-network- 
+based optimization strategy. For our design framework, this 
+performance comes at the cost of a significant increase in com- 
+putational complexity, which is proportional to the product 
+of ensemble size and batch size. However, the time for in vivo 
+characterization still significantly exceeds the time of in silico 
+batch creation, emphasizing the importance of high quality 
+sequence selection. 
+Future extensions of our framework can integrate further 
+knowledge into the modeling, for example by taking structural 
+information into account [ 80 –85 ]. In the context of Bayesian 
+optimization, the integration of means to trade-off data qual- 
+ity and quantity [ 26 , 27 ] is an orthogonal aspect to the pre- 
+vious and opens up a new dimension, which is promising for 
+its application to RNA design but also to other sequence de- 
+sign tasks. Here, it is important to emphasize that the method 
+presented can be adapted to other constructs beyond NAND 
+hybrid riboswitches. By adjusting the in vivo screening and 
+defining the sequence constraints and scoring objective for the 
+in silico process, our framework can be extended to general 5 ′ 
+UTR design and adapted to other sequence design tasks for bi- 
+ological engineering. This includes the engineering of promot- 
+ers, terminators, or enhancer sequences but also protein engi- 
+neering when considered in nucleic acid representation (DNA 
+or RNA). As such, our method can complement experiment- 
+driven approaches by allowing fine grained adaptation of 
+functionality through model-based and score-driven design, 
+including constructs sensitive to single nucleotide changes. In 
+addition, the novel NAND riboswitch we present has interest- 
+ing implications for future riboswitch design. By utilizing our 
+framework in conjunction with other binding pocket combi- 
+nations, e.g. for metabolite sensing, a larger variety of com- 
+pact riboswitches emulating NAND logic can be generated in 
+a time efficient manner. This allows for more advanced circuit 
+design at a low metabolic burden. 
+A c kno wledg ements 
+Author contributions : D.K. devised and executed wet lab ex- 
+periments. E.K. devised and implemented the machine learn- 
+ing framework. D.K. and E.K. performed data analysis jointly. 
+M.K. supported cell-sorting experiments. D.K., E.K., H.K., 
+and B.S. conceptualized the work and wrote the publication 
+together. B.S. and H.K. provided funding. 
+Supplementary data 
+Supplementary data is available at NAR online. 
+Conflict of interest 
+None declared. 
+Downloaded from academic.oup.com/nar/article/54/5/gkag145/8500548 by guest on 03 September 2026
+
+1 8 
+K elvin et al . 
+Funding 
+D.K. and B.S. were supported by the Deutsche Forschungsge- 
+meinschaft (DFG) CRC 902(A2). E.K. and H.K. acknowledge 
+funding by the ERC-PoC grant PLATE (101082333) and the 
+excellence program of the state of Hesse—LOEWE top pro- 
+fessorships [LOEWE/4a/519/05/00.003(0007)/121], and sup- 
+port from the hessian.AI Service Center (funded by the Federal 
+Ministry of Research, Technology and Space, BMFTR, grant 
+no. 16IS22091) and the hessian.AI Innovation Lab (funded 
+by the Hessian Ministry for Digital Strategy and Innovation, 
+grant no. S-DIW04/0013/003). E.K. was partially funded by 
+the German Federal Ministry of Research, Technology and 
+Space (BMFTR) as part of the research program “Software 
+Campus” within the Project Management Agency for Artifi- 
+cial Intelligence. Views and opinions expressed are however 
+those of the author(s) only and do not necessarily reflect those 
+of the funding agencies. Funding to pay the Open Access pub- 
+lication charges for this article was provided by the Deutsche 
+Forschungsgemeinschaft (DFG). 
+Data availability 
+All data are provided in this article and the online supple- 
+mentary material. Supplementary figures and construct/pool 
+sequences are contained in the supplementary file. NGS Data 
+are available at https:// www.ncbi.nlm.nih.gov/ geo/ query/ acc. 
+cgi?acc=GSE293990 . Code is available at Github via the 
+DOI 10.5281/zenodo.15185168 [ 86 ]. 
+References 
+1. Bressler EM, Adams S, Liu R et al. Boolean logic in synthetic 
+biology and biomaterials: towards living materials in mammalian 
+cell therapeutics. Clin Transl Med 2023;13:e1244. 
+https:// doi.org/ 10.1002/ ctm2.1244 
+2. Chen Y, Zhang S, Young EM et al. Genetic circuit design 
+automation for yeast. Nat Microbiol 2020;5:1349 –60. 
+https:// doi.org/ 10.1038/ s41564- 020- 0757- 2 
+3. Mohammadi P, Beerenwinkel N, Benenson Y. Automated design 
+of synthetic cell classifier circuits using a two-step optimization 
+strategy. Cell Syst 2017;4:207 –18. 
+https:// doi.org/ 10.1016/ j.cels.2017.01.003 
+4. Stanton BC, Nielsen AAK, Tamsir A et al. Genomic mining of 
+prokaryotic repressors for orthogonal logic gates. Nat Chem Biol 
+2014;10:99 –105. https:// doi.org/ 10.1038/ nchembio.1411 
+5. Kavita K, Breaker RR. Discovering riboswitches: the past and the 
+future. Trends Biochem Sci 2023;48:119 –41. 
+https:// doi.org/ 10.1016/ j.tibs.2022.08.009 
+6. Nahvi A, Sudarsan N, Ebert MS et al. Genetic control by a 
+metabolite binding mRNA. Chem Biol 2002;9:1043 –9. 
+https:// doi.org/ 10.1016/ S1074- 5521(02)00224- 7 
+7. Tucker BJ, Breaker RR. Riboswitches as versatile gene control 
+elements. Curr Opin Struct Biol 2005;15:342 –8. 
+https:// doi.org/ 10.1016/ j.sbi.2005.05.003 
+8. Etzel M, Mörl M. Synthetic riboswitches: from plug and pray 
+toward plug and play. Biochemistry 2017;56:1181 –98. 
+https:// doi.org/ 10.1021/ acs.biochem.6b01218 
+9. McCown PJ, Corbino KA, Stav S et al. Riboswitch diversity and 
+distribution. RNA 2017;23:995 –1011. 
+https:// doi.org/ 10.1261/ rna.061234.117 
+10. Weigand JE, Suess B. Tetracycline aptamer-controlled regulation of 
+pre-mRNA splicing in yeast. Nucleic Acids Res 2007;35:4179 –85. 
+https:// doi.org/ 10.1093/ nar/ gkm425 
+11. Wieland M, Fussenegger M. Ligand-dependent regulatory RNA 
+parts for synthetic biology in eukaryotes. Curr Opin Biotechnol 
+2010;21:760 –5. https:// doi.org/ 10.1016/ j.copbio.2010.06.010 
+12. Hanson S, Berthelot K, Fink B et al. Tetracycline-aptamer-mediated 
+translational regulation in yeast. Mol Microbiol 2003;49:1627 –37. 
+https:// doi.org/ 10.1046/ j.1365-2958.2003.03656.x 
+13. Suess B, Hanson S, Berens C et al. Conditional gene expression by 
+controlling translation with tetracycline-binding aptamers. Nucleic 
+Acids Res 2003;31:1853 –8. https:// doi.org/ 10.1093/ nar/ gkg285 
+14. Kelvin D, Arias Rodriguez J, Groher A-C et al. Synthetic 
+dual-input hybrid riboswitches—optimized genetic regulators in 
+yeast. ACS Synth Biol 2025;14:497 –509. 
+https:// doi.org/ 10.1021/ acssynbio.4c00660 
+15. Sherlock ME, Higgs G, Yu D et al. Architectures and complex 
+functions of tandem riboswitches. RNA Biol 2022;19:1059 –76. 
+https:// doi.org/ 10.1080/ 15476286.2022.2119017 
+16. Win MN, Smolke CD. Higher-order cellular information 
+processing with synthetic RNA devices. Science 2008;322:456 –60. 
+https:// doi.org/ 10.1126/ science.1160311 
+17. Felletti M, Stifel J, Wurmthaler LA et al. Twister ribozymes as 
+highly versatile expression platforms for artificial riboswitches. 
+Nat Commun 2016;7:12834. 
+https:// doi.org/ 10.1038/ ncomms12834 
+18. Tuerk C, Gold L. Systematic evolution of ligands by exponential 
+enrichment: RNA ligands to bacteriophage T4 DNA polymerase. 
+Science 1990;249:505 –10. 
+https:// doi.org/ 10.1126/ science.2200121 
+19. Ellington AD, Szostak JW. In vitro selection of RNA molecules 
+that bind specific ligands. Nature 1990;346:818 –22. 
+https:// doi.org/ 10.1038/ 346818a0 
+20. Nutiu R, Li Y. In vitro selection of structure-switching signaling 
+aptamers. Angew Chem Int Ed 2005;44:1061 –5. 
+https:// doi.org/ 10.1002/ anie.200461848 
+21. Stoltenburg R, Nikolaus N, Strehlitz B. Capture-SELEX: selection 
+of DNA aptamers for aminoglycoside antibiotics. j Anal Methods 
+Chem 2012;2012:1. https:// doi.org/ 10.1155/ 2012/ 415697 
+22. Boussebayle A, Groher F, Suess B. RNA-based capture-SELEX for 
+the selection of small molecule-binding aptamers. Methods 
+2019;161:10 –5. https:// doi.org/ 10.1016/ j.ymeth.2019.04.004 
+23. Weigand JE, Schmidtke SR, Will TJ et al. Mechanistic insights into 
+an engineered riboswitch: a switching element which confers 
+riboswitch activity. Nucleic Acids Res 2011;39:3363 –72. 
+https:// doi.org/ 10.1093/ nar/ gkq946 
+24. Angenent-Mari NM, Garruss AS, Soenksen LR et al. A deep 
+learning approach to programmable RNA switches. Nat Commun 
+2020;11:5057. https:// doi.org/ 10.1038/ s41467- 020- 18677- 1 
+25. Valeri JA, Collins KM, Ramesh P et al. Sequence-to-function deep 
+learning frameworks for engineered riboregulators. Nat Commun 
+2020;11:5058. https:// doi.org/ 10.1038/ s41467- 020- 18676- 2 
+26. Frazier PI. A tutorial on Bayesian optimization. arXiv , 
+https:// doi.org/ 10.48550/ arXiv.1807.02811 , 8 July 2023, preprint; 
+not peer reviewed.
+27. Garnett R. Bayesian Optimization , Cambridge: Cambridge 
+University Press, 2023. https:// doi.org/ 10.1017/ 9781108348973 
+28. Shahriari B, Swersky K, Wang Z et al. Taking the human out of the 
+loop: a review of Bayesian optimization. Proc IEEE 
+2016;104:148 –75. https:// doi.org/ 10.1109/ JPROC.2015.2494218 
+29. Wang X, Jin Y, Schmitt S et al. Recent advances in Bayesian 
+optimization. ACM Comput Surv 2023;55:1 –36. 
+https:// doi.org/ 10.1145/ 3582078 
+30. Akiba T, Sano S, Yanase T et al. A next-generation 
+hyperparameter optimization framework. In: Proceedings of the 
+25th ACM SIGKDD International Conference on Knowledge 
+Discovery & Data Mining, KDD ’19 . New York: Association for 
+Computing Machinery, 2019, 2623 –31. 
+https:// doi.org/ 10.1145/ 3292500.3330701 
+31. Hutter F., Kotthoff L., Vanschoren J. (eds.), The springer series on 
+challenges in machine learning. Automated Machine Learning: 
+Methods, Systems, Challenges . Cham: Springer International 
+Publishing, 2019. https:// doi.org/ 10.1007/ 978- 3- 030- 05318- 5 
+32. Snoek J, Larochelle H, Adams RP. Practical Bayesian optimization 
+of machine learning algorithms. Advances in Neural Information 
+Downloaded from academic.oup.com/nar/article/54/5/gkag145/8500548 by guest on 03 September 2026
+
+Iterative NAND hybrid riboswitch design by Bayesian optimization 
+19 
+Processing Systems , Vol. 25. New York: Curran Associates, Inc., 
+2012, 25. https:// dl.acm.org/ doi/ 10.5555/ 2999325.2999464 
+33. Wu Z, Kan SBJ, Lewis RD et al. Machine learning-assisted directed 
+protein evolution with combinatorial libraries. Proc Natl Acad Sci 
+USA 2019;116:8852 –8. https:// doi.org/ 10.1073/ pnas.1901979116 
+34. Yang J, Lal RG, Bowden JC et al. Active learning-assisted directed 
+evolution. Nat Commun 2025;16:714. 
+https:// doi.org/ 10.1038/ s41467- 025- 55987- 8 
+35. Yang KK, Wu Z, Arnold FH. Machine-learning-guided directed 
+evolution for protein engineering. Nat Methods 2019;16:687 –94. 
+https:// doi.org/ 10.1038/ s41592- 019- 0496- 6 
+36. Friedman RZ, Ramu A, Lichtarge S et al. Active learning of 
+enhancers and silencers in the developing neural retina. Cell Syst 
+2025; 16, 101163. https:// doi.org/ 10.1016/ j.cels.2024.12.004 
+37. Bailey M, Moayedpour S, Li R et al. Deep batch active learning for 
+drug discovery. eLife 2024;12. 
+https:// doi.org/ 10.7554/ eLife.89679.2 
+38. Stanton S, Maddox W, Gruver N et al. Accelerating Bayesian 
+optimization for biological sequence design with denoising 
+autoencoders. In: Proceedings of the 39th International 
+Conference on Machine Learning . Cambridge MA: PMLR, 2022, 
+20459 –78. https:// proceedings.mlr.press/ v162/ stanton22a 
+39. Dürholt JP, Asche TS, Kleinekorte J et al. : BoFire: Bayesian 
+optimization framework intended for real experiments. JMLR 
+2025;26:204. http:// jmlr.org/ papers/ v26/ 24-1540.html 
+40. Fitzner M, Šoši ´c A, Hopp A et al.. BayBE: a Bayesian Back End for 
+experimental planning in the low-to-no-data regime. Digital 
+Discovery, Royal Society of Chemistry, 2025. 
+https:// doi.org/ 10.1039/ D5DD00050E 
+41. Rosa SS, Nunes D, Antunes L et al. Maximizing mRNA vaccine 
+production with Bayesian optimization. Biotech Bioeng 
+2022;119:3127 –39. https:// doi.org/ 10.1002/ bit.28216 
+42. Settles B. Active learning literature survey. Technical report . 
+University of Wisconsin-Madison Department of Computer 
+Sciences, 2009. https:// minds.wisconsin.edu/ handle/ 1793/ 60660 .
+43. Gal Y, Islam R, Ghahramani Z. Deep Bayesian active learning 
+with image data. In: Proceedings of the 34th International 
+Conference on Machine Learning . Cambridge MA: PMLR, 2017, 
+1183 –92. https:// dl.acm.org/ doi/ 10.5555/ 3305381.3305504 
+44. Di Fiore F, Nardelli M, Mainini L. Active learning and Bayesian 
+optimization: a unified perspective to learn with a goal. Arch 
+Computat Methods Eng 2024;31:2985 –3013. 
+https:// doi.org/ 10.1007/ s11831- 024- 10064- z 
+45. Quadrianto N, Kersting K, Xu Z. Gaussian process. In: Sammut 
+C., Webb G. I. (eds.), Encyclopedia of Machine Learning . Boston: 
+Springer, 2010, 428 –39. 
+https:// doi.org/ 10.1007/ 978- 0- 387- 30164- 8 _ 324 
+46. Hunt N. Batch Bayesian optimization. M.Sc. Thesis. 
+Massachusetts Institute of Technology, Department of Electrical 
+Engineering and Computer Science , 2020, https://dspace.mit.edu/ 
+bitstream/ handle/ 1721.1/ 128591/ 1220836868-MIT.pdf
+47. Cao Y, Geddes TA, Yang JYH et al. Ensemble deep learning in 
+bioinformatics. Nat Mach Intell 2020;2:500 –8. 
+https:// doi.org/ 10.1038/ s42256- 020- 0217- y 
+48. Dietterich TG. Ensemble methods in machine learning. In: 
+Multiple Classifier Systems . Heidelberg: Springer, 2000, 1 –15. 
+https:// doi.org/ 10.1007/ 3- 540- 45014- 9 _ 1 
+49. Ganaie MA, Hu M, Malik AK et al. Ensemble deep learning: a 
+review. Eng Appl Artif Intell 2022;115:105151. 
+https:// doi.org/ 10.1016/ j.engappai.2022.105151 
+50. Krogh A, Vedelsby J. Neural network ensembles, cross validation, 
+and active learning. In: Advances in Neural Information 
+Processing Systems , Vol. 7. Cambridge, MA: MIT Press, 1994. 
+https:// dl.acm.org/ doi/ 10.5555/ 2998687.2998716 
+51. Vaswani A, Shazeer N, Parmar N et al. Attention is all you need. 
+In: Proceedings of the 31st International Conference on Neural 
+Information Processing Systems . New York: Curran Associates 
+Inc, 2017. https:// papers.nips.cc/ paper _ files/ paper/ 2017/ hash/ 
+3f5ee243547dee91fbd053c1c4a845aa-Abstract.html 
+52. Devlin J, Chang M-W, Lee K et al. BERT: pre-training of deep 
+bidirectional transformers for language understanding. NAACL 
+2019;1, Minneapolis. https:// aclanthology.org/ N19-1423.pdf
+53. Desautels T, Krause A, Burdick JW. Parallelizing 
+exploration-exploitation tradeoffs in Gaussian process bandit 
+optimization. J Mach Learn Res 
+2014;15:4053 –103.https:// jmlr.org/ papers/ v15/ desautels14a.html 
+54. Ginsbourger D, Riche RL, Carraro LA. A Multi-points criterion 
+for deterministic parallel global optimization based on Gaussian 
+processes. 2008. https:// hal.science/ hal-00260579v1/ document 
+55. Benatuil L, Perez JM, Belk J et al. An improved yeast 
+transformation method for the generation of very large human 
+antibody libraries. Protein Eng Des Sel 2010;23:155 –9. 
+https:// doi.org/ 10.1093/ protein/ gzq002 
+56. Groher F, Suess B. In vitro selection of antibiotic-binding 
+aptamers. Methods 2016;106:42 –50. 
+https:// doi.org/ 10.1016/ j.ymeth.2016.05.008 
+57. Müller M, Weigand JE, Weichenrieder O et al. Thermodynamic 
+characterization of an engineered tetracycline-binding riboswitch. 
+Nucleic Acids Res 2006;34:2607 –17. 
+https:// doi.org/ 10.1093/ nar/ gkl347 
+58. Ji Y, Zhou Z, Liu H et al. DNABERT: pre-trained bidirectional 
+encoder representations from transformers model for 
+DNA-language in genome. Bioinformatics 2021;37:2112 –20. 
+https:// doi.org/ 10.1093/ bioinformatics/ btab083 
+59. Schroff F, Kalenichenko D, Philbin J. FaceNet: a unified embedding 
+for face recognition and clustering. In: 2015 IEEE Conference on 
+Computer Vision and Pattern Recognition (CVPR) . Boston: IEEE, 
+2015, 815 –23. https:// doi.org/ 10.1109/ CVPR.2015.7298682 
+60. Liu Y, Ott M, Goyal N et al. A robustly optimized BERT 
+pretraining approach. arXiv, 
+https:// doi.org/ 10.48550/ arXiv.1907.11692 , 26 July 2019, 
+preprint; not peer reviewed.
+61. Kullback S, Leibler RA. On information and sufficiency. Ann Math 
+Statist 1951;22:79 –86. https:// doi.org/ 10.1214/ aoms/ 1177729694 
+62. Weigand JE, Sanchez M, Gunnesch EB et al. Screening for 
+engineered neomycin riboswitches that control translation 
+initiation. RNA 2008;14:89 –97. 
+https:// doi.org/ 10.1261/ rna.772408 
+63. Groher A-C, Jager S, Schneider C et al. Tuning the performance of 
+synthetic riboswitches using machine learning. ACS Synth Biol 
+2019;8:34 –44. https:// doi.org/ 10.1021/ acssynbio.8b00207 
+64. Cox DD, John S. A statistical method for global optimization. In: 
+[Proceedings] 1992 IEEE International Conference on Systems, 
+Man, and Cybernetics . IEEE: Chicago, 1992, 1241 –6. 
+https:// doi.org/ 10.1109/ ICSMC.1992.271617 
+65. Srinivas N, Krause A, Kakade SM et al. Gaussian process 
+optimization in the bandit setting: no regret and experimental 
+design. IEEE Trans Inform Theor 2012;58:3250 –65. 
+https:// doi.org/ 10.1109/ TIT.2011.2182033 
+66. Russell S, Norvig P. Artificial Intelligence, Global Edition . 
+Munich: Pearson Deutschland, 2021, 
+https:// elibrary.pearson.de/ book/ 99.150005/ 9781292401171 
+67. Reimer N, Gurevych I, Sentence-BERT: Sentence Embeddings 
+using Siamese BERT-Networks. Association for Computational 
+Linguistics., In Proceedings of the 2019 Conference on Empirical 
+Methods in Natural Language Processing and the 9th 
+International Joint Conference on Natural Language Processing 
+(EMNLP-IJCNLP) , 2019, https:// doi.org/ 10.18653/ v1/ D19-1410 
+68. Hoffer E, Ailon N. Deep metric learning using triplet network. In: 
+Feragen A., Pelillo M., Loog M. (eds.), Similarity-Based Pattern 
+Recognition Lecture Notes in Computer Science . Cham: Springer 
+International Publishing, 2015, 84 –92. 
+https:// doi.org/ 10.1007/ 978- 3- 319- 24261- 3 _ 7 
+69. Malkiel I, Ginzburg D, Barkan O et al. Text representation 
+learning via self-supervised triplet training. In: ICASSP 
+2022—2022 IEEE International Conference on Acoustics, Speech 
+and Signal Processing (ICASSP) . Singapore: ICASSP, 2022, 1 –5. 
+https:// doi.org/ 10.1109/ ICASSP43922.2022.9746018 
+Downloaded from academic.oup.com/nar/article/54/5/gkag145/8500548 by guest on 03 September 2026
+
+20 
+Kelvin et al . 
+70. Hanson S, Bauer G, Fink B et al. Molecular analysis of a synthetic 
+tetracycline-binding riboswitch. RNA 2005;11:503 –11. 
+https:// doi.org/ 10.1261/ rna.7251305 
+71. Gosai SJ, Castro RI, Fuentes N et al. Machine-guided design of 
+cell-type-targeting cis -regulatory elements. Nature 
+2024;634:1211 –20. https:// doi.org/ 10.1038/ s41586- 024- 08070- z 
+72. Schneider C, Bronstein L, Diemer J et al. : Characterizing a 
+riboswitching expression system by modeling single-cell data. ACS 
+Synth Biol 2017;6:1211 –24. 
+https:// doi.org/ 10.1021/ acssynbio.6b00322 
+73. Spöring M, Boneberg R, Hartig JS. Aptamer-mediated control of 
+polyadenylation for gene expression regulation in mammalian 
+cells. ACS Synth Biol 2020;9:3008 –18. 
+https:// doi.org/ 10.1021/ acssynbio.0c00222 
+74. Welz R, Breaker RR. Ligand binding and gene control 
+characteristics of tandem riboswitches in Bacillus anthracis . RNA 
+2007;13:573 –82. https:// doi.org/ 10.1261/ rna.407707 
+75. Sherlock ME, Sudarsan N, Stav S et al. Tandem riboswitches form 
+a natural boolean logic gate to control purine metabolism in 
+bacteria. eLife 2018;7:e33908. 
+https:// doi.org/ 10.7554/ eLife.33908 
+76. Iwano N, Adachi T, Aoki K et al. Generative aptamer discovery 
+using RaptGen. Nat Comput Sci 2022;2:378 –86. 
+https:// doi.org/ 10.1038/ s43588- 022- 00249- 6 
+77. Wong F, He D, Krishnan A et al. Deep generative design of RNA 
+aptamers using structural predictions. Nat Comput Sci 
+2024;4;829 –39. https:// doi.org/ 10.1038/ s43588- 024- 00720- 6 
+78. Hu R, Fu L, Chen Y et al. Protein engineering via Bayesian 
+optimization-guided evolutionary algorithm and robotic 
+experiments. Brief Bioinform 2023;24:bbac570. 
+https:// doi.org/ 10.1093/ bib/ bbac570 
+79. de Boer CG, Vaishnav ED, Sadeh R et al. Deciphering eukaryotic 
+gene-regulatory logic with 100 million random promoters. Nat 
+Biotechnol 2020;38:56 –65. 
+https:// doi.org/ 10.1038/ s41587- 019- 0315- 8 
+80. He S, Huang R, Townley J et al. Ribonanza: deep learning of RNA 
+structure through dual crowdsourcing. bioRxiv , 
+https:// doi.org/ 10.1101/ 2024.02.24.581671 , 27 February 2024, 
+preprint; not peer reviewed.
+81. Kagaya Y, Zhang Z, Ibtehaz N et al. End-to-end approach for 
+RNA tertiary structure prediction with flexible nucleobase center 
+representation. Nat Commun 2025;16:881. 
+https:// doi.org/ 10.1038/ s41467- 025- 56261- 7 
+82. Lorenz R, Bernhart SH, Höner zu Siederdissen C et al. 
+ViennaRNA Package 2.0. Algorithms Mol Biol 2011;6:26. 
+https:// doi.org/ 10.1186/ 1748- 7188- 6- 26 
+83. Mortimer SA, Kidwell MA, Doudna JA. Insights into RNA 
+structure and function from genome-wide studies. Nat Rev Genet 
+2014;15:469 –79. https:// doi.org/ 10.1038/ nrg3681 
+84. Shen T, Hu Z, Sun S et al. Accurate RNA 3D structure prediction 
+using a language model-based deep learning approach. Nat 
+Methods 2024; 21:, 2287 –98. 
+https:// doi.org/ 10.1038/ s41592- 024- 02487- 0 
+85. Wayment-Steele HK, Kladwang W, Strom AI et al. RNA secondary 
+structure packages evaluated and improved by high-throughput 
+experiments. Nat Methods 2022;19:1234 –42. 
+https:// doi.org/ 10.1038/ s41592- 022- 01605- 0 
+86. Kelvin D, Kubaczka E, Koeppl H et al. Self-Organizing-Systems- 
+TU-Darmstadt/NANDRiboswitchDesignByBayesOpt. Zenodo 
+2026. https:// doi.org/ 10.5281/ ZENODO.15185168 , Version 
+2.0.0.
+Received: April 10, 2025. Revised: January 30, 2026. Accepted: February 3, 2026 
+© The Author(s) 2026. Published by Oxford University Press. 
+This is an Open Access article distributed under the terms of the Creative Commons Attribution-NonCommercial License ( https:// creativecommons.org/ licenses/ by-nc/ 4.0/ ), which permits 
+non-commercial re-use, distribution, and reproduction in any medium, provided the original work is properly cited. For commercial re-use, please contact reprints@oup.com for reprints and 
+translation rights for reprints. All other permissions can be obtained through our RightsLink service via the Permissions link on the article page on our site—for further information please contact 
+journals.permissions@oup.com . 
+Downloaded from academic.oup.com/nar/article/54/5/gkag145/8500548 by guest on 03 September 2026

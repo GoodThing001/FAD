@@ -1,0 +1,47 @@
+{
+  "search_interface_version": "0.1.1",
+  "search_id": "search_iterated_local_search_5001_1024_m5001",
+  "policy": "iterated_local_search",
+  "policy_config": {
+    "n_measured_seeds": 8,
+    "n_random_seeds": 8,
+    "min_mutual_distance": 2,
+    "ils_perturb_sites": 2
+  },
+  "seed": 5001,
+  "outer_round": 1,
+  "data_sha256": "0876C2B25A5571B834EBAC2C0C0F7671E023F6028688E90CCBA884A75FD4322A",
+  "max_unique_predictions": 1024,
+  "n_unique_predicted": 1024,
+  "n_candidates": 1016,
+  "best_pred_gbsa": 8.373855364981184,
+  "best_candidate_id": "066373940058d4f3",
+  "stop_reason": "budget_exhausted",
+  "generations_run": 2,
+  "n_groups": 2,
+  "group_roles": [
+    "predicted_best",
+    "diverse_backup"
+  ],
+  "model_id": "xgb_boot5_sklearn_gbm_eed2739e5301b59b",
+  "feature_version": "seq303_screen100",
+  "top10_ood_fraction": 0.0,
+  "top10_min_train_hamming": 1.0,
+  "seconds_total": 0.77,
+  "rejection_stats": {
+    "proposed": 1189,
+    "rejected_forbidden": 0,
+    "rejected_duplicate": 0,
+    "rejected_constraint": 0,
+    "scored": 1024
+  },
+  "files_sha256": {
+    "search_snapshot.json": "ff2be8ca942b2448406fcd9cef0a5dd84d69639126d8ab725404a34563ee2a24",
+    "search_state.json": "14832f471e9d0fed57f27b568a64dac628f9c1b7492c97760b4a6cb99319654c",
+    "predictions.jsonl": "03e469fe97a8ba13b48a7698c65a2111d35fbd34465d088c182a0fd096c77d20",
+    "search_evaluated.jsonl": "48c8ca9b37ae120f2317ccac5f06ac9c7be6311b21eb6629d86184700493f51f",
+    "search_candidates.csv": "548472d70db19356efb5e2bc001a0816509f31cd555a70532994c2078866fd43",
+    "search_generations.csv": "13e7a631b2504f8a3795d3c5001a635273a5c45ab3fb6afd4d329fc3d401ae02",
+    "search_groups.json": "897a995fc87cb6daefec3e1b44a2a3b69f2d212b918d870a7f9ac65213baf3b2"
+  }
+}

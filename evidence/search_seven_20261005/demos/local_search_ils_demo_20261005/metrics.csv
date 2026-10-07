@@ -1,0 +1,2 @@
+search_id,policy,seed,model_seed,outer_round,n_unique_predicted,n_candidates,best_pred_gbsa,best_candidate_id,stop_reason,n_groups,group_roles,model_id,feature_version,budget,seconds,archive_dir
+search_iterated_local_search_5001_1024_m5001,iterated_local_search,5001,5001,1,1024,1016,8.373855364981184,066373940058d4f3,budget_exhausted,2,"predicted_best,diverse_backup",xgb_boot5_sklearn_gbm_eed2739e5301b59b,seq303_screen100,1024,0.818,D:\PyCharm_\FAD_clean\runs\local_search_ils_demo_20261005\checkpoints

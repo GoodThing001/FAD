@@ -1,0 +1,37 @@
+{
+  "model": "v8 five-model rank fusion (release config)",
+  "features": "303d (mut 52 + struct 43 + wd 208), screen-k=100 (ET importance, fit on train fold)",
+  "target": "gbsa, winsor_2.5",
+  "models": {
+    "RF": "n=1747 leaf=14",
+    "ET": "n=1596 leaf=7",
+    "GBR": "n=500 dp=3 lr=0.03 loss=absolute_error",
+    "XGB": "n=500 dp=3 lr=0.03",
+    "SVR": "rbf C=0.57 eps=0.047"
+  },
+  "fusion": "equal-weight rank average",
+  "training_split": "historical seed-42 train.csv (1600); locked eval = val/test 200+200",
+  "data_sha256": "0876c2b25a5571b834ebac2c0c0f7671e023f6028688e90ccba884a75fd4322a",
+  "feature_sha256": "c3902efc85f20d677c6bebef28a0532e2685fac984e3a8a4d9e48e3bacb1f6a5",
+  "environment": {
+    "python": "3.10.19",
+    "platform": "Linux-6.17.0-41-generic-x86_64-with-glibc2.42"
+  },
+  "reference_metrics": {
+    "100_seed_gbsa_spearman_fusion": 0.37477,
+    "ci95": [
+      0.36691,
+      0.38231
+    ],
+    "locked_split_metrics": {
+      "val": {
+        "n": 200,
+        "gbsa_spearman_fused": 0.3160748392035475
+      },
+      "test": {
+        "n": 200,
+        "gbsa_spearman_fused": 0.4506745519152824
+      }
+    }
+  }
+}

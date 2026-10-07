@@ -1,0 +1,18 @@
+{
+  "name": "eval_sigma_calibration_30seed",
+  "status": "exploratory",
+  "entrypoint": "scripts/reproduction/eval_sigma_calibration.py",
+  "arguments": {
+    "outer-seeds": 30,
+    "seed-start": 301,
+    "n-trains": "1600,400",
+    "n-test": 400,
+    "n-members": 5,
+    "screen-k": 100,
+    "data-dir": "data/proxy2000_v2"
+  },
+  "acceptance": {
+    "expected_rows": 60
+  },
+  "notes": "Sigma calibration study (docs/项目记录/突变序列迭代搜索算法与代理接口实施方案_20261002.md §5 gates): does the XGB bootstrap ensemble sigma stratify |error| and does any LCB (mu-beta*sigma) beat plain greedy on top-5%/10% recall, on independent dev folds, at n_train=1600 and the closed-loop scale 400, with a shuffled-label negative control. 30 seeds (301-330, disjoint from other study ranges). Gate output is written into summary.json; uncertainty-based acquisition stays closed unless the gates pass. PROXY-table diagnostics only."
+}

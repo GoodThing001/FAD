@@ -1,0 +1,89 @@
+{
+  "tests": {
+    "count": 139,
+    "passed": true,
+    "log": "tests.log"
+  },
+  "new_strategy_test_methods": 11,
+  "synthetic_future_interface_policies": 3,
+  "smoke_subruns": 56,
+  "smoke_evaluated_rows": 7168,
+  "compilation_passed": true,
+  "available_memory_GiB": 4.02,
+  "free_disk_GiB": 122.35,
+  "workers": 2,
+  "new_real_GBSA": 0,
+  "new_docking": 0,
+  "new_MD": 0,
+  "server_sync": false,
+  "development_artifact_audit": {
+    "ok": true,
+    "subruns": 1260,
+    "evaluated_rows": 2190086,
+    "checks": [
+      "file digests",
+      "budget/cache/count identity",
+      "finite aligned scores",
+      "RNA scaffold and mutation shell",
+      "single-parent genealogy/evidence",
+      "canonical-table exclusion",
+      "sorted export",
+      "complete unique groups",
+      "same starts and fitted model per comparison cell",
+      "generation cap",
+      "seven-way and pairwise actual-prefix scores"
+    ]
+  },
+  "demo_audit_ok": true,
+  "confirmation_artifact_audit": {
+    "ok": true,
+    "subruns": 1400,
+    "evaluated_rows": 1364671,
+    "checks": [
+      "file digests",
+      "budget/cache/count identity",
+      "finite aligned scores",
+      "RNA scaffold and mutation shell",
+      "single-parent genealogy/evidence",
+      "canonical-table exclusion",
+      "sorted export",
+      "complete unique groups",
+      "same starts and fitted model per comparison cell",
+      "generation cap",
+      "seven-way and pairwise actual-prefix scores"
+    ]
+  },
+  "final_document_audit": {
+    "ok": true,
+    "docs_checked": 3,
+    "local_links_and_anchors": 160,
+    "all_document_link_check": "checked 50 files, 0 broken local links",
+    "images": {
+      "GBSA优化项目总汇报_生工团队版_20261005.md": 17,
+      "七算法同起点比较与实施结果_20261005.md": 7,
+      "README.md": 0
+    },
+    "mermaid_sources": {
+      "GBSA优化项目总汇报_生工团队版_20261005.md": 9,
+      "七算法同起点比较与实施结果_20261005.md": 3,
+      "README.md": 0
+    },
+    "explicit_anchors": {
+      "GBSA优化项目总汇报_生工团队版_20261005.md": 13,
+      "七算法同起点比较与实施结果_20261005.md": 0,
+      "README.md": 0
+    },
+    "tests": 139,
+    "formal_subruns": 2660,
+    "formal_evaluated_rows": 3554757,
+    "source_and_parameter_freeze_unchanged": true,
+    "development_seed_range": [
+      6001,
+      6030
+    ],
+    "confirmation_seed_range": [
+      8001,
+      8100
+    ]
+  }
+}

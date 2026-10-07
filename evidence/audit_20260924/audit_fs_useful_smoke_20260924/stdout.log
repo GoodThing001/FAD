@@ -1,0 +1,59 @@
+[build] mut: 52d
+[build] wd: 208d
+[build] struct: 43d
+[load] nupack (useful): 192d
+[data] 2000 samples x 495 features; target=gbsa; transform=winsor; loss=mae
+[policy] force-keep=mut (52d)
+  seed= 1 done [1/1]
+
+[OK] per-seed results -> /home/hzeng/project/FAD_CLEAN/runs/audit_fs_useful_smoke_20260924/metrics.csv
+[OK] selected features -> /home/hzeng/project/FAD_CLEAN/runs/audit_fs_useful_smoke_20260924/metrics_selected_features.csv
+[OK] stability table -> /home/hzeng/project/FAD_CLEAN/runs/audit_fs_useful_smoke_20260924/metrics_stability.csv
+[OK] paired comparison -> /home/hzeng/project/FAD_CLEAN/runs/audit_fs_useful_smoke_20260924/metrics_paired.csv
+
+==========================================================================================
+SUMMARY — mean test Spearman by method x model (across seeds)
+==========================================================================================
+                   mean
+model               GBR
+method                 
+all              0.2975
+tree_importance  0.2584
+
+==========================================================================================
+FEATURE STABILITY — features selected in >= 50% of seeds, per method
+==========================================================================================
+
+[all] 495 features >= 50% stability (top 15):
+    mut_p30_A                    100%
+    mut_p30_C                    100%
+    mut_p30_G                    100%
+    mut_p30_U                    100%
+    mut_p31_A                    100%
+    mut_p31_C                    100%
+    mut_p31_G                    100%
+    mut_p31_U                    100%
+    mut_p32_A                    100%
+    mut_p32_C                    100%
+    mut_p32_G                    100%
+    mut_p32_U                    100%
+    mut_p33_A                    100%
+    mut_p33_C                    100%
+    mut_p33_G                    100%
+
+[tree_importance] 159 features >= 50% stability (top 15):
+    mut_p30_A                    100%
+    mut_p30_C                    100%
+    mut_p30_G                    100%
+    mut_p30_U                    100%
+    mut_p31_A                    100%
+    mut_p31_C                    100%
+    mut_p31_G                    100%
+    mut_p31_U                    100%
+    mut_p32_A                    100%
+    mut_p32_C                    100%
+    mut_p32_G                    100%
+    mut_p32_U                    100%
+    mut_p33_A                    100%
+    mut_p33_C                    100%
+    mut_p33_G                    100%

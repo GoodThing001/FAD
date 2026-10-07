@@ -1,0 +1,12 @@
+{
+  "name": "search_seven_development_30seed",
+  "entrypoint": "scripts/loop/search_suite.py",
+  "arguments": {
+    "seeds": 30, "seed-start": 6001, "budgets": "1024,4096", "proxies": "xgb,rf",
+    "policies": "matched_seed_random_walk,multi_start_hill_climb,multi_start_beam,mutation_only_ga,iterated_local_search,simulated_annealing,mutation_only_adalead",
+    "n-init": 300, "max-generations": 256, "workers": 2, "stability": true,
+    "out-dir": "runs/search_seven_development_20261005"
+  },
+  "acceptance": {"expected_rows": 28},
+  "notes": "Frozen seven-policy comparison: 840 main searches plus 420 refit searches, paired at common actual unique-prediction prefixes. No parameter tuning or new labels."
+}

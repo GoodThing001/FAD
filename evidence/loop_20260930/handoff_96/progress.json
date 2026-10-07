@@ -1,0 +1,22 @@
+{
+  "interface_version": "0.2.0",
+  "completed_rounds": 1,
+  "requested_rounds": 1,
+  "status": "awaiting_labels",
+  "n_labeled": 400,
+  "n_failed": 0,
+  "awaiting_labels": 96,
+  "open_batch": "46844fc08eb8",
+  "pool_stats": {
+    "requested": 600,
+    "generated": 600,
+    "excluded_total": 2000,
+    "excluded_canonical_table": 2000,
+    "excluded_init_labeled": 400,
+    "excluded_holdout": 300,
+    "n_from_wt_range": [
+      5,
+      13
+    ]
+  }
+}

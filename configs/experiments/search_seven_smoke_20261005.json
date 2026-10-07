@@ -1,0 +1,12 @@
+{
+  "name": "search_seven_smoke",
+  "entrypoint": "scripts/loop/search_suite.py",
+  "arguments": {
+    "seeds": 2, "seed-start": 9901, "budgets": "128", "proxies": "xgb,rf",
+    "policies": "matched_seed_random_walk,multi_start_hill_climb,multi_start_beam,mutation_only_ga,iterated_local_search,simulated_annealing,mutation_only_adalead",
+    "n-init": 300, "max-generations": 256, "workers": 2, "stability": true,
+    "out-dir": "runs/search_seven_smoke_20261005"
+  },
+  "acceptance": {"expected_rows": 14},
+  "notes": "Seven matched mutation-only policies; engineering smoke with synthetic search proposals; no new GBSA, no Oracle."
+}

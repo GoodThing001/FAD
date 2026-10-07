@@ -1,0 +1,42 @@
+{
+  "ok": true,
+  "checks": [
+    "artifact integrity",
+    "budget and genealogy",
+    "groups",
+    "saved fitted weights reproduce archived scores",
+    "same fitted model and ordered starts"
+  ],
+  "runs": [
+    {
+      "policy": "iterated_local_search",
+      "run": "local_search_ils_demo_20261005",
+      "actual_predictions": 1024,
+      "n_candidates": 1016,
+      "best_pred_gbsa": 8.373855364981184,
+      "stop_reason": "budget_exhausted",
+      "n_groups": 2,
+      "fitted_weights_sha256": "0851e4cb00e8719931ad911f16cbbfb86b91c9dc6da0068e815728757cdabf34"
+    },
+    {
+      "policy": "simulated_annealing",
+      "run": "local_search_sa_demo_20261005",
+      "actual_predictions": 1024,
+      "n_candidates": 1016,
+      "best_pred_gbsa": 6.150741114773896,
+      "stop_reason": "budget_exhausted",
+      "n_groups": 2,
+      "fitted_weights_sha256": "0851e4cb00e8719931ad911f16cbbfb86b91c9dc6da0068e815728757cdabf34"
+    },
+    {
+      "policy": "mutation_only_adalead",
+      "run": "local_search_adalead_demo_20261005",
+      "actual_predictions": 367,
+      "n_candidates": 359,
+      "best_pred_gbsa": 6.150741114773896,
+      "stop_reason": "neighbors_exhausted",
+      "n_groups": 2,
+      "fitted_weights_sha256": "0851e4cb00e8719931ad911f16cbbfb86b91c9dc6da0068e815728757cdabf34"
+    }
+  ]
+}

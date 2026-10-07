@@ -1,0 +1,29 @@
+{
+  "name": "search_adalead_demo",
+  "entrypoint": "scripts/loop/search_run.py",
+  "supports_log_dir": true,
+  "arguments": {
+    "policy": "mutation_only_adalead",
+    "seed": 5001,
+    "model-seed": 5001,
+    "n-init": 300,
+    "surrogate": "xgb",
+    "n-members": 5,
+    "screen-k": 100,
+    "max-unique-predictions": 1024,
+    "max-generations": 256,
+    "allowed-n-from-wt": "4:13",
+    "n-measured-seeds": 8,
+    "n-random-seeds": 8,
+    "min-mutual-distance": 2,
+    "adalead-tolerance-scale": 0.05,
+    "adalead-parent-cap": 32,
+    "adalead-rollouts": 16,
+    "output": "runs\\local_search_adalead_demo_20261005\\metrics.csv",
+    "log-dir": "runs\\local_search_adalead_demo_20261005\\checkpoints"
+  },
+  "acceptance": {
+    "expected_rows": 1
+  },
+  "notes": "Explicit mutation-only AdaLead adaptation: signed minimization, additive threshold, root-relative rollouts, frozen model."
+}

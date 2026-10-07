@@ -1,0 +1,32 @@
+{
+  "name": "search_smoke_beam",
+  "status": "exploratory",
+  "entrypoint": "scripts/loop/search_run.py",
+  "supports_log_dir": true,
+  "arguments": {
+    "policy": "multi_start_beam",
+    "seed": 1,
+    "max-unique-predictions": 256,
+    "max-generations": 8,
+    "allowed-n-from-wt": "4:13",
+    "n-init": 400,
+    "surrogate": "xgb",
+    "n-members": 5,
+    "screen-k": 100,
+    "data-dir": "data/proxy2000_v2",
+    "beam-width": 8,
+    "offspring-per-parent": 8,
+    "one-hop-fraction": 0.8,
+    "restart-fraction": 0.1,
+    "diversity-pool-factor": 4,
+    "diversity-distance": 2,
+    "max-stagnant-generations": 2,
+    "n-measured-seeds": 4,
+    "n-random-seeds": 4,
+    "min-mutual-distance": 2
+  },
+  "acceptance": {
+    "expected_rows": 1
+  },
+  "notes": "Engineering smoke for the iterative search layer (interface v0.1.0, docs/项目记录/突变序列迭代搜索算法与代理接口实施方案_20261002.md §6 step 4). Budget 256 is the smoke scale; the beam is deliberately shrunk to 8x8 with 4+4 seeds so several generations run before the budget is exhausted. Produces one metrics row and a full search archive (snapshot/state/evaluated log/candidates/groups/summary). Nothing is labelled and nothing is PARKED; the existing 96-candidate hand-off batch is untouched."
+}

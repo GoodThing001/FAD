@@ -1,0 +1,225 @@
+{
+ "ok": true,
+ "report": "docs/汇报/文档_论文复现到七算法搜索_阶段总汇报_PPT素材版_20261006.md",
+ "characters": 105649,
+ "lines": 1962,
+ "markdown_tables": 95,
+ "inline_images": 34,
+ "new_data_figures": 14,
+ "new_flowcharts": 6,
+ "mermaid_sources": 6,
+ "local_destinations": 191,
+ "verified_anchors": 1,
+ "input_sha256_checked": 117,
+ "seven_confirmation_paired_mean_median_win_tie_loss_checks": 44,
+ "new_model_experiments": 7,
+ "new_GBSA": 0,
+ "supplementary_files_sha256_checked": 8118,
+ "report_sha256": "1e74e397dd60f9d87481cf4f92f1081d2d16ac5d4dce5378be46654f6ef80c44",
+ "images": [
+  {
+   "path": "docs/汇报/figures/阶段总汇报_20261006/A02_论文迁移历史结果.png",
+   "width": 1947,
+   "height": 987,
+   "sha256": "15d0c5fd79702b1fe51bdbd82f0721d0650cfba7eed517a86a8a1000daff1e95"
+  },
+  {
+   "path": "docs/汇报/figures/阶段总汇报_20261006/B03_论文迁移补实验.png",
+   "width": 1980,
+   "height": 1007,
+   "sha256": "5835c5f6a45b1df37eec7cee5a6269d5633bb27424eac03f228279bbc3e6e656"
+  },
+  {
+   "path": "docs/汇报/figures/阶段总汇报_20261006/A14_预训练受控比较.png",
+   "width": 1532,
+   "height": 2375,
+   "sha256": "7caa22580ff585253e542ec976cc1565eaec217f85ab944509a8eea4c4095df0"
+  },
+  {
+   "path": "docs/汇报/figures/阶段总汇报_20261006/A06_固定池选样确认.png",
+   "width": 2907,
+   "height": 1131,
+   "sha256": "a6f7f5687c9ded4da8c6e2483c21520448b5d139459c3bea760000d7f67e8764"
+  },
+  {
+   "path": "docs/汇报/figures/阶段总汇报_20261006/B02_主动学习补实验.png",
+   "width": 1980,
+   "height": 1007,
+   "sha256": "96005b53f6b6e54c89ff37b7fedd30d1c10f42115a4edb8027c3bf76c310f7c6"
+  },
+  {
+   "path": "docs/汇报/figures/阶段总汇报_20261006/B05_模型与发现终点.png",
+   "width": 2520,
+   "height": 990,
+   "sha256": "09f2e5528857cec573f744c5ee3dcf78b4871f1f93741d02083d27b6710a4aef"
+  },
+  {
+   "path": "docs/汇报/figures/阶段总汇报_20261006/A01_实际数据分布.png",
+   "width": 3387,
+   "height": 1107,
+   "sha256": "b85a708bab1706c1da1d169b0eeaa097790042030fa370f3ecc66ba89dc1fa39"
+  },
+  {
+   "path": "docs/汇报/figures/阶段总汇报_20261006/A03_正式GBSA代理基准.png",
+   "width": 2907,
+   "height": 1107,
+   "sha256": "ab0e692e26b5a29ff72b1c00c52c3cf6b75e23e294eb840f1734e5d310b75854"
+  },
+  {
+   "path": "docs/汇报/figures/阶段总汇报_20261006/B01_历史配方补实验.png",
+   "width": 1980,
+   "height": 1007,
+   "sha256": "cd2da993a0aa3581e5c63d37942ff6e8004e17bf5c3a39ace3342c64b1315fc9"
+  },
+  {
+   "path": "docs/汇报/figures/阶段总汇报_20261006/A04_代理改进与外推压力.png",
+   "width": 3627,
+   "height": 1227,
+   "sha256": "35d2e0e6dfa95473a3e65dfeb8ec63766e806b43f22836979277a5e2bf192735"
+  },
+  {
+   "path": "docs/汇报/figures/阶段总汇报_20261006/B04_结构缺陷补实验.png",
+   "width": 1980,
+   "height": 1007,
+   "sha256": "665861f4b85c50b86b53e74bd64b26045fba5ab36176d790fd6c6a45b4169150"
+  },
+  {
+   "path": "docs/汇报/figures/阶段总汇报_20261006/B06_结构强制保留诊断.png",
+   "width": 1980,
+   "height": 1007,
+   "sha256": "8c68222990398e5ac9e71dc3ad6b4bd0161a92ddf0b1f192c2b16aa9eacbd8a4"
+  },
+  {
+   "path": "docs/汇报/figures/阶段总汇报_20261006/A12_两种目标的正式预测参照.png",
+   "width": 2667,
+   "height": 1083,
+   "sha256": "3f6e06b7323c09f34243bcbb2ea216e784eddfe42a0ee1616a62c06ec7de0087"
+  },
+  {
+   "path": "docs/汇报/9月/figures/GBSA总汇报_20261005/01_对接残差训练边界.png",
+   "width": 1224,
+   "height": 1443,
+   "sha256": "90c16834c4d6edce782e4e9aa142b2fd76149a4c7cfa3c06e0d8c321b8ba696d"
+  },
+  {
+   "path": "docs/汇报/figures/阶段总汇报_20261006/A05_对接修正与预筛.png",
+   "width": 2907,
+   "height": 1107,
+   "sha256": "7ee6cefcaa9d2a536427cedc8ca906e2757ea1cc80976010203a6453ceb4bdb0"
+  },
+  {
+   "path": "docs/汇报/figures/阶段总汇报_20261006/A13_论文到当前搜索的决策链.png",
+   "width": 414,
+   "height": 1518,
+   "sha256": "22352a4677f5b601ebdb6d3b9e8c53af29506c9a4912ba2b6279c5d080f03979"
+  },
+  {
+   "path": "docs/汇报/figures/阶段总汇报_20261006/A09_当前搜索与未来验证.png",
+   "width": 1817,
+   "height": 2073,
+   "sha256": "86fa01376248bc8e754f5c58e9bd08147040a739a480e5ab80b7d3d3579408e9"
+  },
+  {
+   "path": "docs/汇报/figures/阶段总汇报_20261006/A07_不确定性校准门槛.png",
+   "width": 2907,
+   "height": 1131,
+   "sha256": "190f7b9f617604d3e4e648e9679a6a903c1f36d1dfadead7ab6ae3981a35e715"
+  },
+  {
+   "path": "docs/汇报/9月/figures/GBSA总汇报_20261005/04_多起点爬山.png",
+   "width": 891,
+   "height": 2546,
+   "sha256": "f9efc8070d05b4dd78a53e89591df48f6ba358766f93da67440388a68a37315f"
+  },
+  {
+   "path": "docs/汇报/9月/figures/GBSA总汇报_20261005/05_多路径束搜索.png",
+   "width": 903,
+   "height": 1593,
+   "sha256": "021f418f368e37d261809e03a0b22f96f73876c00af805859c68cbe001b9feb6"
+  },
+  {
+   "path": "docs/汇报/9月/figures/GBSA总汇报_20261005/06_无交叉遗传算法.png",
+   "width": 864,
+   "height": 2439,
+   "sha256": "85f9f86f88be418067497eb8f6bfad60d2d95f1b44e1ed832acca7cb3702ad0e"
+  },
+  {
+   "path": "docs/汇报/9月/figures/GBSA总汇报_20261005/18_迭代局部搜索.png",
+   "width": 1157,
+   "height": 2675,
+   "sha256": "240fb252609f4c28df0cc043c58b5f1859e9af4f7581b2f1f1a561ae4e4a892a"
+  },
+  {
+   "path": "docs/汇报/9月/figures/GBSA总汇报_20261005/19_模拟退火.png",
+   "width": 1026,
+   "height": 3083,
+   "sha256": "6b6a9d13d7442bf262c00b24fb1d46a774a98f6404942d8e712e13f8d0330bb4"
+  },
+  {
+   "path": "docs/汇报/9月/figures/GBSA总汇报_20261005/20_无交叉AdaLead.png",
+   "width": 1047,
+   "height": 2936,
+   "sha256": "c3b35af9e4747040eb78ef623dcc719c8615f4a1031216f7944aa7433d860bf8"
+  },
+  {
+   "path": "docs/汇报/9月/figures/GBSA总汇报_20261005/03_评分验证与预算.png",
+   "width": 1337,
+   "height": 1989,
+   "sha256": "822fe9db38daf897fbcab24da2fce8e47a4bd77484f0e491155ae13dbb3679d0"
+  },
+  {
+   "path": "docs/汇报/9月/figures/GBSA总汇报_20261005/09_四算法确认配对结果.png",
+   "width": 2665,
+   "height": 1081,
+   "sha256": "5a640fab67d9e75de752f7987a2d4a7070d92a946431ebb987fce93a42215fe1"
+  },
+  {
+   "path": "docs/汇报/9月/figures/GBSA总汇报_20261005/14_七算法确认对随机.png",
+   "width": 3105,
+   "height": 1521,
+   "sha256": "0b51c204e73b8a40938bcb533ac7e3d465078829f867b23fdf1b945e985bda66"
+  },
+  {
+   "path": "docs/汇报/9月/figures/GBSA总汇报_20261005/15_三新算法确认对爬山.png",
+   "width": 3105,
+   "height": 1059,
+   "sha256": "21f26da1ed1771c1a97a6e4aeed1f9899d77652a75ea181c88a71918d0eba0c4"
+  },
+  {
+   "path": "docs/汇报/9月/figures/GBSA总汇报_20261005/10_搜索预算敏感性.png",
+   "width": 2665,
+   "height": 1147,
+   "sha256": "191fe8f1f3462c627e401427000c13aa7d99bf92d7629a5007b7755c948aa02b"
+  },
+  {
+   "path": "docs/汇报/9月/figures/GBSA总汇报_20261005/16_七算法预算诊断.png",
+   "width": 2885,
+   "height": 1191,
+   "sha256": "a390b6e79273abbe07fc8594e201a4101e622f45b589926886a24db8eb06fe2d"
+  },
+  {
+   "path": "docs/汇报/9月/figures/GBSA总汇报_20261005/17_七算法模型敏感性.png",
+   "width": 2880,
+   "height": 1345,
+   "sha256": "0e3d3f4f5402ece1eeb60426433f933038360537bc616962daf3a18fc4f4f21e"
+  },
+  {
+   "path": "docs/汇报/figures/阶段总汇报_20261006/A08_证据层级.png",
+   "width": 1907,
+   "height": 393,
+   "sha256": "e5455e8589c001bde343b12050336946ed94827f5b7eea43fa60af7e15c06d2b"
+  },
+  {
+   "path": "docs/汇报/figures/阶段总汇报_20261006/A10_结果到汇报核验.png",
+   "width": 3146,
+   "height": 249,
+   "sha256": "19d913133056e338238c296d959f07e543117b9136c88890727b4843fd8002ad"
+  },
+  {
+   "path": "docs/汇报/figures/阶段总汇报_20261006/A11_阶段进度与触发条件.png",
+   "width": 1020,
+   "height": 1883,
+   "sha256": "2c42429b6f7ebfedd1a75a8f9671861d7798861ec8ab4abad8f7846b2b8ddd28"
+  }
+ ]
+}

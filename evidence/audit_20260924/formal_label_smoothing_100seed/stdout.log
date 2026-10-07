@@ -1,0 +1,13 @@
+features: 495d
+  Hamming distance 1: 8 pairs
+  Hamming distance 2: 45 pairs
+  Hamming distance 3: 375 pairs
+  Hamming distance 4: 2182 pairs
+  Hamming distance 5: 10389 pairs
+  Hamming distance 6: 39496 pairs
+
+============================================================
+XGB on original labels : 0.3420 +/- 0.0437
+XGB on smoothed labels (k=5, alpha=0.5) : 0.3612 +/- 0.0429
+Δ = +0.0191  paired CI [0.0146, 0.0237]  wins 82/100
+[OK] -> /home/hzeng/project/FAD_CLEAN/runs/label_smoothing_100seed/metrics.csv

@@ -1,0 +1,14 @@
+WT MFE structure: .......(((..(.((((....)))).).)))(.(((..(((((((....)))))))..)))).....((((((((....))))))))(((.((((((....)))))).))).(((.......)))............... (0s)
+one sequence defect=57.85 wt_prob=0.0000 in 0.1s -> est total 60s with 4 jobs
+  200/2000  5s
+  400/2000  10s
+  600/2000  15s
+  800/2000  20s
+  1000/2000  26s
+  1200/2000  32s
+  1400/2000  38s
+  1600/2000  45s
+  1800/2000  50s
+  2000/2000  55s
+computed 2000/2000 in 55s
+[OK] -> /home/hzeng/project/FAD_CLEAN/runs/srv_supplement_defect_compute_v2_20261006/metrics.csv

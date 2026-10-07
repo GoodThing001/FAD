@@ -1,0 +1,25 @@
+{
+  "name": "search_smoke_hillclimb",
+  "status": "exploratory",
+  "entrypoint": "scripts/loop/search_run.py",
+  "supports_log_dir": true,
+  "arguments": {
+    "policy": "multi_start_hill_climb",
+    "seed": 1,
+    "max-unique-predictions": 256,
+    "max-generations": 8,
+    "allowed-n-from-wt": "4:13",
+    "n-init": 400,
+    "surrogate": "xgb",
+    "n-members": 5,
+    "screen-k": 100,
+    "data-dir": "data/proxy2000_v2",
+    "n-measured-seeds": 4,
+    "n-random-seeds": 4,
+    "min-mutual-distance": 2
+  },
+  "acceptance": {
+    "expected_rows": 1
+  },
+  "notes": "Same-budget hill-climbing baseline for the search layer (256 smoke scale; one-hop walks from the shared seed set, restart on local optima). Seed set logic is identical to multi_start_beam so the two are comparable. No labels are queried and no batch is exported."
+}

@@ -1,0 +1,27 @@
+{
+  "spearman_mean": 0.2609584,
+  "spearman_std": 0.047859751685941705,
+  "results": [
+    {
+      "seed": 1,
+      "spearman": 0.274334
+    },
+    {
+      "seed": 2,
+      "spearman": 0.206374
+    },
+    {
+      "seed": 3,
+      "spearman": 0.214097
+    },
+    {
+      "seed": 4,
+      "spearman": 0.338312
+    },
+    {
+      "seed": 5,
+      "spearman": 0.271675
+    }
+  ],
+  "n_physics": 192
+}

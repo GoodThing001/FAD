@@ -1,0 +1,16 @@
+{
+  "completed_at": "2026-09-30T18:24:08.860911",
+  "return_code": 3,
+  "metrics_exists": true,
+  "metrics_rows": 1,
+  "expected_rows": 1,
+  "acceptance_ok": true,
+  "parked": true,
+  "parked_detail": {
+    "reason": "awaiting_labels",
+    "batch_id": "46844fc08eb8",
+    "n_awaiting": 96
+  },
+  "expected_marker": "PARKED",
+  "expected_exit_code": 3
+}

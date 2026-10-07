@@ -1,0 +1,48 @@
+{
+  "search_interface_version": "0.1.1",
+  "search_id": "search_simulated_annealing_5001_1024_m5001",
+  "policy": "simulated_annealing",
+  "policy_config": {
+    "n_measured_seeds": 8,
+    "n_random_seeds": 8,
+    "min_mutual_distance": 2,
+    "sa_temperature_scale": 0.25,
+    "sa_final_temperature_ratio": 0.02
+  },
+  "seed": 5001,
+  "outer_round": 1,
+  "data_sha256": "0876C2B25A5571B834EBAC2C0C0F7671E023F6028688E90CCBA884A75FD4322A",
+  "max_unique_predictions": 1024,
+  "n_unique_predicted": 1024,
+  "n_candidates": 1016,
+  "best_pred_gbsa": 6.150741114773896,
+  "best_candidate_id": "de9c8bdd48be655b",
+  "stop_reason": "budget_exhausted",
+  "generations_run": 63,
+  "n_groups": 2,
+  "group_roles": [
+    "predicted_best",
+    "diverse_backup"
+  ],
+  "model_id": "xgb_boot5_sklearn_gbm_eed2739e5301b59b",
+  "feature_version": "seq303_screen100",
+  "top10_ood_fraction": 0.0,
+  "top10_min_train_hamming": 4.0,
+  "seconds_total": 1.824,
+  "rejection_stats": {
+    "proposed": 1008,
+    "rejected_forbidden": 0,
+    "rejected_duplicate": 0,
+    "rejected_constraint": 0,
+    "scored": 1024
+  },
+  "files_sha256": {
+    "search_snapshot.json": "bf1815251ae95f10c6cc9df0c554a2819fefcea931f5639342d0b4a7b9bf5cf4",
+    "search_state.json": "a7de1d7aa0e2d9fdc74951e6b625a7e9e73518591082befc98ab3c99f044c5d6",
+    "predictions.jsonl": "80b9c241d0be2d338b0d5aa8c074e385bd7ff86ad4fc3982049e2f113e7051ef",
+    "search_evaluated.jsonl": "1da2293daac0bdb1ea0675fa244a64119cf917b6aea35d8c041c35d6db55be39",
+    "search_candidates.csv": "41f7e6709b1cfcb2a76c488ed8c64bebcad8c989c47ca746f1b8f1c0c713adbc",
+    "search_generations.csv": "200375fc225f5980954b96090b5f2712f373c5196b7d5d9e31fa1abe38dceace",
+    "search_groups.json": "fa7df47b4d018433b26f80f769b803f96f51c5c88c5f85810858aeb13cda8a91"
+  }
+}

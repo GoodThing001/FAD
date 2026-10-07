@@ -1,0 +1,14 @@
+{
+  "completed_at": "2026-10-02T17:32:58.361834",
+  "return_code": 0,
+  "metrics_exists": true,
+  "metrics_rows": 60,
+  "expected_rows": 60,
+  "acceptance_ok": true,
+  "parked": false,
+  "parked_detail": null,
+  "terminal_state_ok": true,
+  "checkpoint_status": null,
+  "expected_marker": null,
+  "expected_exit_code": null
+}

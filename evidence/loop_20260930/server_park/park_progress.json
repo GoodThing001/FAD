@@ -1,0 +1,8 @@
+{
+  "interface_version": "0.2.0",
+  "completed_rounds": 1,
+  "requested_rounds": 1,
+  "status": "awaiting_labels",
+  "n_labeled": 405,
+  "awaiting_labels": 45
+}

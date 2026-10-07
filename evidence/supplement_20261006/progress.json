@@ -1,0 +1,20 @@
+{
+  "completed": [
+    "local_supplement_history_dev_20261006",
+    "local_supplement_history_confirm_20261006",
+    "local_supplement_active_dev_20261006",
+    "local_supplement_active_confirm_20261006"
+  ],
+  "running": [],
+  "completed_remote_model_experiments": ["srv_supplement_defect_dev_20261006", "srv_supplement_paper_aggregate_20261006", "srv_supplement_defect_force_20261006"],
+  "completed_execution_cohorts": ["srv_supplement_paper_cohort1_20261006", "srv_supplement_paper_cohort2_20261006", "srv_supplement_paper_cohort3_20261006", "srv_supplement_paper_cohort4_20261006"],
+  "session_id": null,
+  "pending_server_authorization": [],
+  "remote_authorized_by_user": true,
+  "completed_remote_feature_computations": ["srv_supplement_defect_compute_v2_20261006"],
+  "retained_failed_runs": ["srv_supplement_defect_compute_20261006", "srv_supplement_paper_dev_20261006"],
+  "paper_confirmation_100seed_gate": false,
+  "remote_destination": "100.81.254.35 hzeng /home/hzeng/project/FAD_CLEAN",
+  "upload_review_rejections": 2,
+  "real_GBSA_added": 0
+}

@@ -1,0 +1,3 @@
+round,strategy,n_labeled_before,n_new_unique,n_labeled_after,model_n_train,n_awaiting,requested_budget,effective_budget,pool_available,status,holdout_spearman_pre,holdout_spearman_post,seconds
+1,greedy,200,50,250,200,0,50,50,300,retrained,0.172568,0.184988,4.6
+2,greedy,250,50,300,250,0,50,50,250,retrained,0.184988,0.320094,5.0

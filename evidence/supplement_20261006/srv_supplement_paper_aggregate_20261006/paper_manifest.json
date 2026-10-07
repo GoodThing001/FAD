@@ -1,0 +1,26 @@
+{
+  "device": "cuda",
+  "torch": "2.9.1+cu130",
+  "foreign_corpus_sha256": "7d8bf1a3b6785b56e5d824990a3f9e07e7ccba4f33afd8e8e24451e1c2c2fd0c",
+  "foreign_used_sha256": "2bea55eeed36321cff4acb01c7454921804fb5e5f5767ff9e22eb209b55516ba",
+  "foreign_n": 2000,
+  "foreign_reused": "within each cohort; same initial weights, corpus, epochs and seed across cohorts",
+  "initial_encoder_seed": 13000,
+  "n_members": 10,
+  "head_epochs": 50,
+  "pretrain_epochs": 5,
+  "head_batch_size": 128,
+  "pretrain_batch_size": 32,
+  "supervision": "GBSA MSE, target standardized on train only",
+  "physics_features": false,
+  "encoder_frozen": true,
+  "foreign_length_stats": {
+    "min": 145,
+    "mean": 168.0115,
+    "max": 207
+  },
+  "budget_matching": "equal sequence count and epochs, not equal tokens (foreign sequence lengths differ)",
+  "shared_foreign_pretrain_and_embedding_seconds": 161.3687560558319,
+  "random_encoder_embedding_seconds": 7.288945436477661,
+  "execution_cohorts": 4
+}

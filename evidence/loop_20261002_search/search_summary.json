@@ -1,0 +1,53 @@
+{
+  "search_interface_version": "0.1.0",
+  "search_id": "search_multi_start_beam_1_8192",
+  "policy": "multi_start_beam",
+  "policy_config": {
+    "beam_width": 32,
+    "offspring_per_parent": 32,
+    "one_hop_fraction": 0.8,
+    "restart_fraction": 0.1,
+    "diversity_pool_factor": 4,
+    "diversity_distance": 2,
+    "max_stagnant_generations": 2,
+    "n_measured_seeds": 8,
+    "n_random_seeds": 8,
+    "min_mutual_distance": 2
+  },
+  "seed": 1,
+  "outer_round": 1,
+  "data_sha256": "0876C2B25A5571B834EBAC2C0C0F7671E023F6028688E90CCBA884A75FD4322A",
+  "max_unique_predictions": 8192,
+  "n_unique_predicted": 5598,
+  "n_candidates": 5590,
+  "best_pred_gbsa": 5.838059425354004,
+  "best_candidate_id": "e9dcd88fc387264c",
+  "stop_reason": "stagnation",
+  "generations_run": 7,
+  "n_groups": 2,
+  "group_roles": [
+    "predicted_best",
+    "diverse_backup"
+  ],
+  "model_id": "xgb_boot5_xgboost",
+  "feature_version": "seq303_screen100",
+  "top10_ood_fraction": 0.0,
+  "top10_min_train_hamming": 2.0,
+  "seconds_total": 107.998,
+  "rejection_stats": {
+    "proposed": 6656,
+    "rejected_forbidden": 17,
+    "rejected_duplicate": 1057,
+    "rejected_constraint": 0,
+    "scored": 5598
+  },
+  "files_sha256": {
+    "search_snapshot.json": "6af31dcaf6d3d39d05f25797a8db9234206d66e72921e9f3b246746aae2de317",
+    "search_state.json": "5352e20a906cda5e086251664c48745ed74e59f6b73674d320c2d61b3ccee1e1",
+    "predictions.jsonl": "2c713f4b77b499fc91e1d31ed5ae59bc76e59b933b33153fbe94456a7ca9ba88",
+    "search_evaluated.jsonl": "d036b645266ab780a0c613aef2fec49eb6a8678ed96704d0a0b4bc7d07561b61",
+    "search_candidates.csv": "f8793dbf7b50a4ed464eb787a535f9e569cbd643884c515be8690d5ac2124d4e",
+    "search_generations.csv": "e3cf1d2f614b8328cda2c993a0dc6bb47231683d00681bdc9e4701b01ebf59d6",
+    "search_groups.json": "57257bc74bcc504cf181bc5ee1233672463e73dfb4e8845b2d1af7f593218064"
+  }
+}

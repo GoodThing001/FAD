@@ -1,0 +1,17 @@
+{
+  "name": "supplement_paper_cohort4_20261006",
+  "entrypoint": "scripts/reproduction/supplement_paper_20261006.py",
+  "arguments": {
+    "seeds": 7,
+    "seed-start": 11024,
+    "pretrain-epochs": 5,
+    "head-epochs": 50,
+    "members": 10,
+    "corpus-size": 2000
+  },
+  "acceptance": {
+    "expected_rows": 28,
+    "expect_exit_code": 0,
+    "expect_marker": "DONE"
+  }
+}

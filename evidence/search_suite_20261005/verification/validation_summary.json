@@ -1,0 +1,104 @@
+{
+  "local_only": true,
+  "tests": {
+    "ok": true,
+    "count": 128,
+    "seconds": 145.353,
+    "log": "runs/verification_search_20261005/unittest.log"
+  },
+  "compile": {
+    "ok": true,
+    "command": "python -m compileall -q scripts tests tools"
+  },
+  "links": {
+    "ok": true,
+    "primary_markdown_files": 48,
+    "extra_evidence_markdown_files": 2,
+    "broken_local_links": 0,
+    "checker_output": "checked 48 files, 0 broken local links"
+  },
+  "development_artifact_audit": {
+    "ok": true,
+    "subruns": 1140,
+    "evaluated_rows": 2438283,
+    "checks": [
+      "file digests",
+      "budget/cache/count identity",
+      "finite aligned scores",
+      "RNA scaffold and mutation shell",
+      "single-parent genealogy/evidence",
+      "canonical-table exclusion",
+      "sorted export",
+      "complete unique groups",
+      "same starts and fitted model per comparison cell"
+    ]
+  },
+  "confirmation_artifact_audit": {
+    "ok": true,
+    "subruns": 800,
+    "evaluated_rows": 812265,
+    "checks": [
+      "file digests",
+      "budget/cache/count identity",
+      "finite aligned scores",
+      "RNA scaffold and mutation shell",
+      "single-parent genealogy/evidence",
+      "canonical-table exclusion",
+      "sorted export",
+      "complete unique groups",
+      "same starts and fitted model per comparison cell"
+    ]
+  },
+  "demo_artifact_audit_ok": true,
+  "dock_old_method_regression": {
+    "ok": true,
+    "seed": 1,
+    "max_abs_difference": 0.0,
+    "differences": {
+      "baseline_sp": 0.0,
+      "predicted_dock_resid_sp": 0.0,
+      "observed_dock_resid_sp": 0.0,
+      "baseline_top10_recall": 0.0,
+      "predicted_dock_top10_recall": 0.0,
+      "observed_dock_top10_recall": 0.0,
+      "baseline_best20": 0.0,
+      "predicted_dock_best20": 0.0,
+      "observed_dock_best20": 0.0
+    }
+  },
+  "status": "complete",
+  "demo_model_weight_verification": {
+    "ok": true,
+    "model_id": "xgb_boot5_sklearn_gbm_eed2739e5301b59b",
+    "weight_sha256": "0851e4cb00e8719931ad911f16cbbfb86b91c9dc6da0068e815728757cdabf34",
+    "top2_predictions_exact_after_reload": true,
+    "n_train": 300
+  },
+  "dock_result_audit": {
+    "ok": true,
+    "rows": 100,
+    "seed_range": [
+      3001,
+      3100
+    ],
+    "paired_summaries_recomputed_from_saved_rows": true,
+    "prefilter_true_retention_monotonic": true
+  },
+  "search_numeric_audit": {
+    "ok": true,
+    "shared_initial_count": 16,
+    "paired_means_medians_counts_recomputed": true
+  },
+  "figures": {
+    "frameworks_rendered": 8,
+    "data_plots_rendered": 4,
+    "png_svg_pairs": 12,
+    "visual_inspection": true
+  },
+  "original_run_markers": {
+    "local_search_suite_development_30seed_20261005": true,
+    "local_search_suite_confirmation_100seed_20261005": true,
+    "local_dock_residual_confirmation_100seed_20261005": true,
+    "local_mutation_only_ga_demo_20261005": true
+  }
+}

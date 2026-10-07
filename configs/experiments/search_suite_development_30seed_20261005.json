@@ -1,0 +1,20 @@
+{
+  "name": "search_suite_development_30seed",
+  "entrypoint": "scripts/loop/search_suite.py",
+  "arguments": {
+    "seeds": 30,
+    "seed-start": 401,
+    "budgets": "1024,4096,8192",
+    "proxies": "xgb,rf",
+    "n-init": 300,
+    "max-generations": 64,
+    "workers": 2,
+    "stability": true,
+    "ablations": true,
+    "out-dir": "runs/search_suite_development_20261005"
+  },
+  "acceptance": {
+    "expected_rows": 24
+  },
+  "notes": "Frozen mutation-only GA; four matched policies, two fixed diagnostic proxies, three budgets, refit stability, three predefined GA ablations. Predicted GBSA only; no Oracle."
+}

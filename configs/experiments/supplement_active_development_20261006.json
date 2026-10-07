@@ -1,0 +1,14 @@
+{
+  "name": "supplement_active_development_20261006",
+  "entrypoint": "scripts/reproduction/supplement_active_20261006.py",
+  "arguments": {
+    "seeds": 30,
+    "seed-start": 11001,
+    "workers": 4
+  },
+  "acceptance": {
+    "expected_rows": 720,
+    "expect_exit_code": 0,
+    "expect_marker": "DONE"
+  }
+}

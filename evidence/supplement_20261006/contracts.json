@@ -1,0 +1,22 @@
+{
+  "default_python_contract_tests": {
+    "passed": true,
+    "count": 8,
+    "files": [
+      "tests/test_supplement_20261006.py",
+      "tests/test_structure_metrics.py",
+      "tests/test_defect_error_contract_20261006.py"
+    ]
+  },
+  "torch_cpu_contract_tests": {
+    "passed": true,
+    "count": 2,
+    "python": "D:/AA_Py/A_Anaconda/envs/clean_env/python.exe",
+    "torch": "2.9.0+cpu",
+    "file": "tests/test_paper_supplement_contract_20261006.py"
+  },
+  "real_nupack_check_completed": true,
+  "real_nupack_official_checks": 44,
+  "real_nupack_run": "srv_supplement_defect_compute_v2_20261006",
+  "scope": "program contracts only; stub NUPACK and random tensor training do not constitute scientific results"
+}

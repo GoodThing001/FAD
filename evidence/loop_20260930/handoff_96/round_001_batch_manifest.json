@@ -1,0 +1,98 @@
+{
+  "batch_id": "46844fc08eb8",
+  "run_round": 1,
+  "strategy": "greedy",
+  "n_candidates": 96,
+  "export_columns": [
+    "batch_id",
+    "candidate_id",
+    "sequence",
+    "pred_gbsa",
+    "ood_flag",
+    "protocol_id"
+  ],
+  "model_id": [
+    "xgb_boot10_xgboost"
+  ],
+  "feature_version": [
+    "seq303_screen100"
+  ],
+  "protocol_id": "gbsa_pending_protocol",
+  "approved_protocols": [],
+  "target": {
+    "column": "gbsa",
+    "direction": "minimize"
+  },
+  "interface_version": "0.2.0",
+  "fingerprint": {
+    "interface_version": "0.2.0",
+    "config": {
+      "mode": "prospective",
+      "candidate_source": "mutate",
+      "min_mutations": null,
+      "max_mutations": null,
+      "candidate_quotas": null,
+      "rounds": 1,
+      "budget": 96,
+      "n_init": 400,
+      "n_holdout": 300,
+      "pool_size": 600,
+      "surrogate": "xgb",
+      "n_members": 10,
+      "screen_k": 100,
+      "oracle": "park",
+      "strategy": "greedy",
+      "ratios": "45,25,20,10",
+      "direction": "minimize",
+      "diverse_multiplier": 5,
+      "seed": 101,
+      "data_dir": "data/proxy2000_v2",
+      "protocol_id": "gbsa_pending_protocol",
+      "approved_protocols": ""
+    },
+    "data_sha256": "0876c2b25a5571b834ebac2c0c0f7671e023f6028688e90ccba884a75fd4322a",
+    "pool_sha256": "9645f25fb98b4b52a52d9ef58450489e95707ba0f622e28614e210ef8200b943",
+    "pool_size": 600,
+    "pool_stats": {
+      "requested": 600,
+      "generated": 600,
+      "excluded_total": 2000,
+      "excluded_canonical_table": 2000,
+      "excluded_init_labeled": 400,
+      "excluded_holdout": 300,
+      "n_from_wt_range": [
+        5,
+        13
+      ]
+    },
+    "holdout_sha256": "36ee8839d82af700d68c01e03a526a2a55cd36380f9535c56de9e08ea66a0df5",
+    "holdout_size": 300,
+    "init_labeled_sha256": "349743df4cfe316c2f13637343848b04ac3b8ca29039470b7774e149ac458c45",
+    "init_labeled_size": 400,
+    "source_sha256": "b1c95593f15c22bd2ea9677dcf09b2edd087080bbe70c1e30dc327a925583a86",
+    "source_files": [
+      "__init__.py",
+      "interface.py",
+      "loop.py",
+      "mutate.py",
+      "oracle.py",
+      "selection.py",
+      "strategy_compare.py",
+      "surrogates.py"
+    ],
+    "created_at": "2026-09-30T18:24:04.133236"
+  },
+  "ingest_schema": [
+    "batch_id",
+    "candidate_id",
+    "sequence",
+    "gbsa",
+    "measurement_status",
+    "protocol_id"
+  ],
+  "measurement_status_values": [
+    "pass",
+    "fail"
+  ],
+  "created_at": "2026-09-30T18:24:08.359695"
+}

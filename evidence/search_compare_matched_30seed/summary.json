@@ -1,0 +1,242 @@
+{
+  "config": {
+    "policies": "matched_seed_random_walk,multi_start_hill_climb,multi_start_beam",
+    "seeds": 30,
+    "seed_start": 301,
+    "consistency_seeds": 0,
+    "budget": 1024,
+    "n_init": 300,
+    "surrogate": "xgb",
+    "n_members": 5,
+    "screen_k": 100,
+    "max_generations": 8,
+    "allowed_n_from_wt": "4:13",
+    "beam_width": 32,
+    "offspring_per_parent": 32,
+    "one_hop_fraction": 0.8,
+    "restart_fraction": 0.1,
+    "diversity_pool_factor": 4,
+    "diversity_distance": 2,
+    "max_stagnant_generations": 2,
+    "n_measured_seeds": 8,
+    "n_random_seeds": 8,
+    "min_mutual_distance": 2,
+    "data_dir": "data/proxy2000_v2",
+    "skip_cross_model": true,
+    "out_dir": "runs/search_compare_matched_30seed",
+    "output": "runs\\search_matched_30seed_final_20261005\\metrics.csv"
+  },
+  "policies": [
+    "matched_seed_random_walk",
+    "multi_start_hill_climb",
+    "multi_start_beam"
+  ],
+  "n_seeds": 30,
+  "consistency_seeds": 0,
+  "budget": 1024,
+  "target": "gbsa",
+  "direction": "minimize (lower is stronger)",
+  "per_policy": [
+    {
+      "policy": "matched_seed_random_walk",
+      "mean_best_pred": 8.476423869585462,
+      "sd_best_pred": 2.0112746839132574,
+      "mean_n_unique_predicted": 1024.0,
+      "mean_seconds": 5.323033333333333,
+      "mean_diversity_top50": 7.1657142857142855,
+      "mean_ood_fraction_top50": 0.008666666666666666,
+      "mean_hamming_top50": 2.033333333333333,
+      "mean_feas_rate": 1.0158730158730158,
+      "mean_n_groups": 2.0
+    },
+    {
+      "policy": "multi_start_beam",
+      "mean_best_pred": 7.143053173320266,
+      "sd_best_pred": 1.9491466915995526,
+      "mean_n_unique_predicted": 1023.6,
+      "mean_seconds": 5.213633333333333,
+      "mean_diversity_top50": 6.003755102040816,
+      "mean_ood_fraction_top50": 0.0013333333333333333,
+      "mean_hamming_top50": 2.118666666666667,
+      "mean_feas_rate": 0.985568798531741,
+      "mean_n_groups": 2.0
+    },
+    {
+      "policy": "multi_start_hill_climb",
+      "mean_best_pred": 4.769617969429254,
+      "sd_best_pred": 2.232499233734393,
+      "mean_n_unique_predicted": 1024.0,
+      "mean_seconds": 5.405133333333334,
+      "mean_diversity_top50": 4.294938775510204,
+      "mean_ood_fraction_top50": 0.0,
+      "mean_hamming_top50": 4.199333333333334,
+      "mean_feas_rate": 0.931763979831359,
+      "mean_n_groups": 2.0
+    }
+  ],
+  "stop_reason_counts": [
+    {
+      "policy": "matched_seed_random_walk",
+      "stop_reason": "budget_exhausted",
+      "n": 30
+    },
+    {
+      "policy": "multi_start_beam",
+      "stop_reason": "budget_exhausted",
+      "n": 8
+    },
+    {
+      "policy": "multi_start_beam",
+      "stop_reason": "stagnation",
+      "n": 22
+    },
+    {
+      "policy": "multi_start_hill_climb",
+      "stop_reason": "budget_exhausted",
+      "n": 30
+    }
+  ],
+  "matched_seed_actual_prediction_comparison": {
+    "baseline": "matched_seed_random_walk",
+    "initial_seeds_identical": true,
+    "alignment": "per seed, minimum actual unique predictions among matched policies",
+    "n_seeds": 30,
+    "common_n_min": 1021,
+    "common_n_median": 1024.0,
+    "common_n_max": 1024,
+    "mean_best_at_common_n": {
+      "matched_seed_random_walk": 8.476423869585462,
+      "multi_start_beam": 7.143053173320266,
+      "multi_start_hill_climb": 4.769617969429254
+    },
+    "paired_vs_matched_random": {
+      "multi_start_hill_climb": {
+        "n_pairs": 30,
+        "delta_mean": -3.7068059001562057,
+        "delta_ci95": [
+          -4.39169675821324,
+          -3.0109639616089967
+        ],
+        "delta_median": -3.7403107425844726,
+        "wins": 29,
+        "ties": 1,
+        "losses": 0
+      },
+      "multi_start_beam": {
+        "n_pairs": 30,
+        "delta_mean": -1.3333706962651959,
+        "delta_ci95": [
+          -1.7764795436749663,
+          -0.9079655802286609
+        ],
+        "delta_median": -1.24075325281034,
+        "wins": 26,
+        "ties": 1,
+        "losses": 3
+      }
+    }
+  },
+  "paired_vs_random": {
+    "multi_start_hill_climb": {
+      "best_pred": {
+        "n_pairs": 30,
+        "delta_mean": -3.7068059001562057,
+        "delta_ci95": [
+          -4.39169675821324,
+          -3.0109639616089967
+        ],
+        "delta_median": -3.7403107425844726,
+        "wins": 29,
+        "ties": 1,
+        "losses": 0
+      },
+      "diversity": {
+        "n_pairs": 30,
+        "delta_mean": -2.8707755102040817,
+        "delta_ci95": [
+          -3.213180272108844,
+          -2.517695918367347
+        ],
+        "delta_median": -2.894285714285714,
+        "wins": 0,
+        "ties": 0,
+        "losses": 30
+      },
+      "ood_fraction": {
+        "n_pairs": 30,
+        "delta_mean": -0.008666666666666666,
+        "delta_ci95": [
+          -0.01933333333333333,
+          -0.0013333333333333333
+        ],
+        "delta_median": 0.0,
+        "wins": 5,
+        "ties": 25,
+        "losses": 0
+      },
+      "hamming": {
+        "n_pairs": 30,
+        "delta_mean": 2.1659999999999995,
+        "delta_ci95": [
+          1.9426500000000002,
+          2.3806666666666674
+        ],
+        "delta_median": 2.2099999999999995,
+        "wins": 0,
+        "ties": 0,
+        "losses": 30
+      }
+    },
+    "multi_start_beam": {
+      "best_pred": {
+        "n_pairs": 30,
+        "delta_mean": -1.3333706962651959,
+        "delta_ci95": [
+          -1.7764795436749663,
+          -0.9079655802286609
+        ],
+        "delta_median": -1.24075325281034,
+        "wins": 26,
+        "ties": 1,
+        "losses": 3
+      },
+      "diversity": {
+        "n_pairs": 30,
+        "delta_mean": -1.1619591836734695,
+        "delta_ci95": [
+          -1.434455782312925,
+          -0.885521768707483
+        ],
+        "delta_median": -1.1383673469387756,
+        "wins": 3,
+        "ties": 0,
+        "losses": 27
+      },
+      "ood_fraction": {
+        "n_pairs": 30,
+        "delta_mean": -0.007333333333333332,
+        "delta_ci95": [
+          -0.016666666666666666,
+          -0.0006666666666666666
+        ],
+        "delta_median": 0.0,
+        "wins": 4,
+        "ties": 26,
+        "losses": 0
+      },
+      "hamming": {
+        "n_pairs": 30,
+        "delta_mean": 0.08533333333333334,
+        "delta_ci95": [
+          -0.003999999999999959,
+          0.16666666666666669
+        ],
+        "delta_median": 0.11999999999999988,
+        "wins": 8,
+        "ties": 2,
+        "losses": 20
+      }
+    }
+  },
+  "cross_model_ranking_stability": {}
+}

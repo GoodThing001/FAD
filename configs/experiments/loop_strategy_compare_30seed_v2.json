@@ -1,0 +1,27 @@
+{
+  "name": "loop_strategy_compare_30seed_v2",
+  "status": "exploratory",
+  "entrypoint": "scripts/loop/strategy_compare.py",
+  "supports_log_dir": false,
+  "arguments": {
+    "mode": "retrospective",
+    "strategies": "random,greedy,greedy_diverse,maxmin_coverage",
+    "seeds": 30,
+    "seed-start": 1,
+    "rounds": 5,
+    "budget": 50,
+    "n-init": 300,
+    "n-holdout": 200,
+    "pool-size": 600,
+    "surrogate": "xgb",
+    "n-members": 5,
+    "out-dir": "evidence/loop_20260930/strategy_compare_30seed_v2"
+  },
+  "acceptance": {
+    "exit_code": 0,
+    "expect_exit_code": 0,
+    "expect_marker": "DONE",
+    "expected_rows": 4
+  },
+  "notes": "Re-run of the 30-seed comparison with the §7 P0/P1 fixes in place: ledger pred_gbsa is now index-correct, OOD uses the pre-acquisition training set, and the driver refuses to report success when any seed/strategy/round is missing (completeness.json). Seeds/split/pool/budget/metrics are unchanged so the result is directly comparable with the v1 package, whose discovery metrics stay valid but whose prediction-ledger columns are superseded."
+}

@@ -1,0 +1,31 @@
+{
+  "name": "audit_feature_selection_useful_smoke",
+  "status": "audit_reproduction",
+  "entrypoint": "scripts/tools/feature_selection_pipeline.py",
+  "supports_log_dir": true,
+  "arguments": {
+    "seeds": 1,
+    "methods": "all,tree_importance",
+    "seq-groups": "mut,wd,struct",
+    "with-nupack": true,
+    "nupack-blocks": "useful",
+    "expected-features": 495,
+    "force-keep-groups": "mut",
+    "top-k": 100,
+    "target": "winsor",
+    "loss": "mae",
+    "eval-models": "GBR",
+    "stability-inner-folds": 2,
+    "stability-threshold": 0.5,
+    "n-jobs": 1,
+    "data-dir": "data/proxy2000_v2",
+    "output": "runs/audit_fs_useful_smoke_20260924/metrics.csv",
+    "log-dir": "runs/audit_fs_useful_smoke_20260924/checkpoints"
+  },
+  "acceptance": {
+    "expected_rows": 2,
+    "expected_input_features": 495,
+    "selection_must_be_nested": true,
+    "mutation_features_must_be_forced": true
+  }
+}

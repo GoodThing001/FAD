@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "subruns": 1140,
+  "evaluated_rows": 2438283,
+  "checks": [
+    "file digests",
+    "budget/cache/count identity",
+    "finite aligned scores",
+    "RNA scaffold and mutation shell",
+    "single-parent genealogy/evidence",
+    "canonical-table exclusion",
+    "sorted export",
+    "complete unique groups",
+    "same starts and fitted model per comparison cell"
+  ]
+}

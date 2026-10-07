@@ -24,3 +24,8 @@ __pycache__/
 .claude/
 .cursor/
 
+# Transient chart/pptx tool scratch dirs
+.chart-data-*/
+
+
+data/candidates/

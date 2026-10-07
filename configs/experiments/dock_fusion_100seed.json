@@ -1,0 +1,20 @@
+{
+  "name": "dock_fusion_100seed",
+  "status": "validated_reproduction",
+  "entrypoint": "scripts/reproduction/dock_fusion.py",
+  "supports_log_dir": false,
+  "arguments": {
+    "outer-seeds": 100,
+    "models": "RF,ET,GBR,XGB",
+    "data-dir": "data/proxy2000_v2"
+  },
+  "reference_result": {
+    "metric": "dock_spearman_rank_fusion",
+    "mean": 0.552,
+    "std": 0.034
+  },
+  "acceptance": {
+    "exit_code": 0,
+    "expected_rows": 100
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "results": [
+    {
+      "seed": 1,
+      "spearman": 0.287117,
+      "gates": {
+        "pos_pair_prob": 0.7462,
+        "pos_entropy": 0.7361,
+        "win_stats": 0.7474,
+        "cluster_pair": 0.7239,
+        "pair_dist": 0.7362,
+        "seg_entropy": 0.7493,
+        "ensemble": 0.7289,
+        "contact_pca": 0.7338,
+        "expected_acc": 0.7315,
+        "mfe_basic": 0.733,
+        "squarna": 0.7411,
+        "mfe_detailed": 0.7388,
+        "ufold_blocks": 0.7277,
+        "dist_moments": 0.7313,
+        "gradient": 0.769,
+        "energy_land": 0.7346,
+        "motif_positional": 0.7509,
+        "motif_global": 0.731
+      }
+    },
+    {
+      "seed": 2,
+      "spearman": 0.240393,
+      "gates": {
+        "pos_pair_prob": 0.7462,
+        "pos_entropy": 0.7344,
+        "win_stats": 0.7465,
+        "cluster_pair": 0.7262,
+        "pair_dist": 0.735,
+        "seg_entropy": 0.7484,
+        "ensemble": 0.7283,
+        "contact_pca": 0.7337,
+        "expected_acc": 0.7316,
+        "mfe_basic": 0.7345,
+        "squarna": 0.7416,
+        "mfe_detailed": 0.7402,
+        "ufold_blocks": 0.7293,
+        "dist_moments": 0.7319,
+        "gradient": 0.7701,
+        "energy_land": 0.7348,
+        "motif_positional": 0.7533,
+        "motif_global": 0.7318
+      }
+    },
+    {
+      "seed": 3,
+      "spearman": 0.241567,
+      "gates": {
+        "pos_pair_prob": 0.749,
+        "pos_entropy": 0.7348,
+        "win_stats": 0.7451,
+        "cluster_pair": 0.7252,
+        "pair_dist": 0.7385,
+        "seg_entropy": 0.745,
+        "ensemble": 0.7283,
+        "contact_pca": 0.735,
+        "expected_acc": 0.7299,
+        "mfe_basic": 0.7341,
+        "squarna": 0.7419,
+        "mfe_detailed": 0.7351,
+        "ufold_blocks": 0.7298,
+        "dist_moments": 0.7308,
+        "gradient": 0.7678,
+        "energy_land": 0.734,
+        "motif_positional": 0.7524,
+        "motif_global": 0.7304
+      }
+    }
+  ],
+  "mean_gates": {
+    "pos_pair_prob": 0.7471333333333333,
+    "pos_entropy": 0.7351,
+    "win_stats": 0.7463333333333333,
+    "cluster_pair": 0.7251,
+    "pair_dist": 0.7365666666666667,
+    "seg_entropy": 0.7475666666666667,
+    "ensemble": 0.7284999999999999,
+    "contact_pca": 0.7341666666666667,
+    "expected_acc": 0.731,
+    "mfe_basic": 0.7338666666666667,
+    "squarna": 0.7415333333333333,
+    "mfe_detailed": 0.7380333333333334,
+    "ufold_blocks": 0.7289333333333333,
+    "dist_moments": 0.7313333333333333,
+    "gradient": 0.7689666666666666,
+    "energy_land": 0.7344666666666667,
+    "motif_positional": 0.7521999999999999,
+    "motif_global": 0.7310666666666666
+  },
+  "spearman_mean": 0.256359,
+  "spearman_std": 0.02175447068229119
+}

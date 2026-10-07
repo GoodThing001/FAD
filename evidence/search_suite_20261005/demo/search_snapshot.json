@@ -1,0 +1,56 @@
+{
+  "search_interface_version": "0.1.1",
+  "search_id": "search_mutation_only_ga_5001_1024_m5001",
+  "outer_round": 1,
+  "seed": 5001,
+  "data_sha256": "0876C2B25A5571B834EBAC2C0C0F7671E023F6028688E90CCBA884A75FD4322A",
+  "measured_sha256": "0cedce02f10e9ab67c578a4395aa5620897134c862d357e4f1be043238d4d556",
+  "measured_values_sha256": "ecc538521437483c20a196abfdfcf8623b2a758fe8fb35dab64a31548a620d63",
+  "wt_sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACCGGCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUGGAUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGGAUGGGAGAAGGAUG",
+  "mutable_positions_1based": [
+    30,
+    31,
+    32,
+    33,
+    89,
+    90,
+    91,
+    92,
+    127,
+    128,
+    129,
+    130,
+    131
+  ],
+  "measured_count": 300,
+  "forbidden_sha256": "37572b58c61e8a051bd3fb6c9add7b0fd2dd3648241b1edceb36e706d08830c7",
+  "forbidden_count": 2000,
+  "allowed_n_from_wt": [
+    4,
+    13
+  ],
+  "max_unique_predictions": 1024,
+  "max_generations": 64,
+  "constraints_version": "v1",
+  "policy": "mutation_only_ga",
+  "policy_config": {
+    "population_size": 32,
+    "offspring_size": 128,
+    "tournament_size": 2,
+    "elite_count": 2,
+    "one_hop_fraction": 0.8,
+    "restart_fraction": 0.1,
+    "diversity_pool_factor": 4,
+    "diversity_distance": 2,
+    "max_stagnant_generations": 4,
+    "n_measured_seeds": 8,
+    "n_random_seeds": 8,
+    "min_mutual_distance": 2
+  },
+  "model_snapshot": {
+    "model_id": "xgb_boot5_sklearn_gbm_eed2739e5301b59b",
+    "feature_version": "seq303_screen100"
+  },
+  "source_sha256": "8a2d181e322ba435c8b4690f61d1d5bb0ad61e5e071a4d754bb6a0738a24b29c",
+  "created_at": "2026-10-05T17:33:42.451192"
+}

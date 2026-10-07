@@ -1,0 +1,28 @@
+flowchart LR
+    subgraph INPUT["当前输入和固定模型"]
+    direction TB
+    D["2000条既有Sequence和GBSA<br/>哈希核验；划分训练与留出"] --> M["代理拟合或读取固定快照<br/>当前RF / 本地五成员GBM<br/>模型身份、特征版本、目标与方向"]
+    M --> I["共有16起点<br/>8已测低值 + 8随机<br/>起点由模型重打分并计预算"]
+    end
+    subgraph ENGINE["当前：固定模型搜索"]
+    direction TB
+    P["七种策略共享接口<br/>随机游走 / 爬山 / 束搜索 / 无交叉GA<br/>ILS / SA / 无交叉AdaLead"]
+    P --> V["单父本提出、约束检查与排重<br/>141nt / 13位点 / 4–13突变<br/>禁止导出标准表已有序列"]
+    V --> S["统一评分器<br/>按序列顺序返回pred_gbsa<br/>合法性、缓存、唯一预测预算"]
+    S --> A["逐条预测档案<br/>父本ID、序列、跳数、代际、模型与次数"]
+    A --> R["按策略接受和保留下一代<br/>固定模型；不读取新真标签"]
+    R --> Q{"实际预算/停滞/邻居/代数<br/>达到停止条件？"}
+    Q -- 否 --> P
+    Q -- 是 --> X["停止内循环<br/>保存最佳候选和完整档案"]
+    end
+    subgraph OUTPUT["当前输出和未来独立决策"]
+    direction TB
+    G["未测候选按预测排序<br/>单/双原型分组；单父本谱系<br/>输出可审查的序列建议"]
+    G -. 团队未来独立决策 .-> C["统一真实GBSA协议与预算<br/>配体、QC、重复、失败、对照预注册"]
+    C -. 获批后才启动 .-> L["真实GBSA计算及受控回传<br/>不是代理预测；目前未开展"]
+    L -. 条件通过后 .-> U["判断真实算法效果<br/>另决定重训、主动学习和湿实验"]
+    end
+    INPUT --> ENGINE
+    ENGINE -- 满足停止条件 --> OUTPUT
+    classDef future fill:#fff3df,stroke:#c77919,stroke-dasharray:5 5;
+    class C,L,U future;

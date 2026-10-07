@@ -1,0 +1,21 @@
+{
+  "name": "search_suite_confirmation_100seed",
+  "entrypoint": "scripts/loop/search_suite.py",
+  "arguments": {
+    "seeds": 100,
+    "seed-start": 2001,
+    "budgets": "1024",
+    "proxies": "xgb,rf",
+    "n-init": 300,
+    "max-generations": 64,
+    "workers": 2,
+    "stability": false,
+    "ablations": false,
+    "out-dir": "runs/search_suite_confirmation_20261005",
+    "output": "runs\\local_search_suite_confirmation_100seed_20261005\\metrics.csv"
+  },
+  "acceptance": {
+    "expected_rows": 8
+  },
+  "notes": "Independent 2001-2100 confirmation seeds; all four policies and two fixed proxies; no retuning after development; proxy computational confirmation only."
+}

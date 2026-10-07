@@ -1,0 +1,58 @@
+{
+  "seeds": 100,
+  "seed_start": 8001,
+  "budgets": [
+    1024
+  ],
+  "proxies": [
+    "xgb",
+    "rf"
+  ],
+  "policies": [
+    "matched_seed_random_walk",
+    "multi_start_hill_climb",
+    "multi_start_beam",
+    "mutation_only_ga",
+    "iterated_local_search",
+    "simulated_annealing",
+    "mutation_only_adalead"
+  ],
+  "n_init": 300,
+  "max_generations": 256,
+  "workers": 2,
+  "stability": false,
+  "ablations": false,
+  "out_dir": "D:\\PyCharm_\\FAD_clean\\runs\\search_seven_confirmation_20261005",
+  "output": "runs\\local_search_seven_confirmation_20261005\\metrics.csv",
+  "data_sha256": "0876C2B25A5571B834EBAC2C0C0F7671E023F6028688E90CCBA884A75FD4322A",
+  "policy_config": {
+    "beam_width": 32,
+    "offspring_per_parent": 32,
+    "one_hop_fraction": 0.8,
+    "restart_fraction": 0.1,
+    "diversity_pool_factor": 4,
+    "diversity_distance": 2,
+    "n_measured_seeds": 8,
+    "n_random_seeds": 8,
+    "min_mutual_distance": 2,
+    "population_size": 32,
+    "offspring_size": 128,
+    "tournament_size": 2,
+    "elite_count": 2,
+    "ils_perturb_sites": 2,
+    "sa_temperature_scale": 0.25,
+    "sa_final_temperature_ratio": 0.02,
+    "adalead_tolerance_scale": 0.05,
+    "adalead_parent_cap": 32,
+    "adalead_rollouts": 16
+  },
+  "source_hashes": {
+    "scripts\\loop\\search_suite.py": "cce29b6afb0b06a1b889d1e5e1bfdf2adabfb1fe73dbc3b924922993071cb918",
+    "scripts\\loop\\search.py": "193e42b025be1a66b5f0c09658f905e4e15c9d6b5bdc428f5aa01987693056ae",
+    "scripts\\loop\\search_policies.py": "51d49bd2dd82c2b9fd425438695a709ca9964d13e019e4e6bd347762f49a280f",
+    "scripts\\loop\\surrogates.py": "970362e0a4280cfe0b76efcd56905d57e11143663034cb36c6a8c93ad98dbf76",
+    "scripts\\loop\\search_archive.py": "2f67f7ecf45424d0c938e57031a2397740cee8c62dad3e7380534196abfa5530",
+    "scripts\\loop\\interface.py": "1d48aff4764b4b49e5c62ed451dcc7e13a6c17fba4e9a9c0211d0ef805bb8079",
+    "scripts\\loop\\search_compare.py": "d93094716b22aa6133c9f5421605517e486918802afe54cdc5ee823ef5027c9c"
+  }
+}

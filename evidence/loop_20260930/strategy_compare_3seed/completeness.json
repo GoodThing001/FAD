@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "problems": [],
+  "expected_runs": 12,
+  "observed_runs": 60,
+  "expected_rows": 60,
+  "observed_rows": 60,
+  "seeds": [
+    1,
+    2,
+    3
+  ],
+  "strategies": [
+    "random",
+    "greedy",
+    "greedy_diverse",
+    "maxmin_coverage"
+  ],
+  "rounds": 5
+}

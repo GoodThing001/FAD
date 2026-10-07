@@ -1,0 +1,20 @@
+{
+  "name": "search_suite_smoke",
+  "entrypoint": "scripts/loop/search_suite.py",
+  "arguments": {
+    "seeds": 2,
+    "seed-start": 901,
+    "budgets": "128",
+    "proxies": "xgb,rf",
+    "n-init": 300,
+    "max-generations": 64,
+    "workers": 2,
+    "stability": true,
+    "ablations": true,
+    "out-dir": "runs/search_suite_smoke_20261005"
+  },
+  "acceptance": {
+    "expected_rows": 8
+  },
+  "notes": "No new GBSA; matched-model and starts, mutation-only GA, full engineering smoke."
+}

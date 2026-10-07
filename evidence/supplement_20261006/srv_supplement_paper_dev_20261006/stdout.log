@@ -1,0 +1,50 @@
+  pretrain ep 1/5  mlm=5.8429  trip=0.9827
+  pretrain ep 2/5  mlm=3.7683  trip=0.5346
+  pretrain ep 3/5  mlm=3.1355  trip=0.2337
+  pretrain ep 4/5  mlm=2.7217  trip=0.1625
+  pretrain ep 5/5  mlm=2.3686  trip=0.1332
+  pretrain ep 1/5  mlm=5.4259  trip=1.0234
+  pretrain ep 2/5  mlm=2.4864  trip=0.6099
+  pretrain ep 3/5  mlm=1.6767  trip=0.2572
+  pretrain ep 4/5  mlm=1.3749  trip=0.1468
+  pretrain ep 5/5  mlm=1.2192  trip=0.1034
+11001 no_pretrain 0.09540552047798714
+11001 foreign_pretrain 0.1316291101020528
+11001 in_domain_pretrain 0.15773329833311459
+  pretrain ep 1/5  mlm=5.5023  trip=0.9740
+  pretrain ep 2/5  mlm=2.5614  trip=0.7342
+  pretrain ep 3/5  mlm=1.7225  trip=0.2835
+  pretrain ep 4/5  mlm=1.3853  trip=0.1406
+  pretrain ep 5/5  mlm=1.2255  trip=0.1128
+11002 no_pretrain 0.06946067892700278
+11002 foreign_pretrain 0.14813698835617725
+11002 in_domain_pretrain 0.10841449009056305
+  pretrain ep 1/5  mlm=5.5200  trip=0.9777
+  pretrain ep 2/5  mlm=2.5889  trip=0.5440
+  pretrain ep 3/5  mlm=1.7137  trip=0.2172
+  pretrain ep 4/5  mlm=1.3510  trip=0.1281
+  pretrain ep 5/5  mlm=1.2116  trip=0.0820
+11003 no_pretrain 0.15637849549827937
+11003 foreign_pretrain 0.1128239551497197
+11003 in_domain_pretrain 0.1493962462265389
+  pretrain ep 1/5  mlm=5.5164  trip=0.9783
+  pretrain ep 2/5  mlm=2.5042  trip=0.5376
+  pretrain ep 3/5  mlm=1.6544  trip=0.2153
+  pretrain ep 4/5  mlm=1.3400  trip=0.1257
+  pretrain ep 5/5  mlm=1.1995  trip=0.1158
+11004 no_pretrain 0.19894899899156712
+11004 foreign_pretrain 0.23987231170194814
+11004 in_domain_pretrain 0.09320233251457821
+  pretrain ep 1/5  mlm=5.5522  trip=0.9773
+  pretrain ep 2/5  mlm=2.6238  trip=0.5457
+  pretrain ep 3/5  mlm=1.7188  trip=0.2356
+  pretrain ep 4/5  mlm=1.3782  trip=0.1343
+  pretrain ep 5/5  mlm=1.1984  trip=0.0995
+11005 no_pretrain 0.11646584500490892
+11005 foreign_pretrain 0.17454840342752143
+11005 in_domain_pretrain 0.11672266701666886
+  pretrain ep 1/5  mlm=5.5810  trip=0.9636
+  pretrain ep 2/5  mlm=2.7161  trip=0.5409
+  pretrain ep 3/5  mlm=1.7754  trip=0.2600
+  pretrain ep 4/5  mlm=1.4070  trip=0.1406
+  pretrain ep 5/5  mlm=1.2255  trip=0.0892

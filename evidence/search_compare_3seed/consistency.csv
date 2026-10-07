@@ -1,0 +1,4 @@
+seed,policy,jaccard_top50
+201,stratified_random,0.42857142857142855
+201,multi_start_hill_climb,0.0
+201,multi_start_beam,0.19047619047619047

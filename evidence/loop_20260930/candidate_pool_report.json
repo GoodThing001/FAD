@@ -1,0 +1,117 @@
+{
+  "generated_at": "2026-09-30T13:36:29.329602",
+  "seed": 1,
+  "requested_pool_size": 2000,
+  "generation_n_from_wt_range": [
+    4,
+    13
+  ],
+  "table_n_from_wt_histogram": {
+    "0": 1,
+    "4": 2,
+    "5": 9,
+    "6": 34,
+    "7": 80,
+    "8": 247,
+    "9": 410,
+    "10": 481,
+    "11": 444,
+    "12": 226,
+    "13": 66
+  },
+  "table_n_from_wt_range": [
+    4,
+    13
+  ],
+  "generated": 2000,
+  "kept_after_dedupe": 1998,
+  "dropped_already_in_canonical_table": 2,
+  "dropped_already_in_training_set": 0,
+  "stratum_capacity": {
+    "4": 57915,
+    "5": 312741,
+    "6": 1250964,
+    "7": 3752892,
+    "8": 8444007,
+    "9": 14073345,
+    "10": 16888014,
+    "11": 13817466,
+    "12": 6908733,
+    "13": 1594323
+  },
+  "total_capacity_in_range": 67100400,
+  "requested_histogram": {
+    "4": 200,
+    "5": 200,
+    "6": 200,
+    "7": 200,
+    "8": 200,
+    "9": 200,
+    "10": 200,
+    "11": 200,
+    "12": 200,
+    "13": 200
+  },
+  "kept_histogram": {
+    "4": 200,
+    "5": 200,
+    "6": 199,
+    "7": 200,
+    "8": 200,
+    "9": 200,
+    "10": 199,
+    "11": 200,
+    "12": 200,
+    "13": 200
+  },
+  "distance_to_wt": {
+    "n": 1998,
+    "min": 4.0,
+    "p05": 4.0,
+    "median": 8.5,
+    "mean": 8.5005005005005,
+    "p95": 13.0,
+    "max": 13.0
+  },
+  "distance_to_nearest_canonical": {
+    "n": 1998,
+    "min": 1.0,
+    "p05": 3.0,
+    "median": 4.0,
+    "mean": 3.9079079079079078,
+    "p95": 5.0,
+    "max": 5.0
+  },
+  "distance_to_nearest_training": {
+    "n": 1998,
+    "min": 1.0,
+    "p05": 4.0,
+    "median": 5.0,
+    "mean": 4.7507507507507505,
+    "p95": 6.0,
+    "max": 6.0
+  },
+  "training_n_from_wt_range": [
+    4,
+    13
+  ],
+  "ood_threshold_hamming": 6.0,
+  "ood_fraction": 0.0,
+  "unique_candidate_ids": 1998,
+  "changed_position_coverage": {
+    "30": 1311,
+    "31": 1328,
+    "32": 1273,
+    "33": 1311,
+    "89": 1354,
+    "90": 1282,
+    "91": 1283,
+    "92": 1301,
+    "127": 1309,
+    "128": 1314,
+    "129": 1303,
+    "130": 1323,
+    "131": 1292
+  },
+  "notes": "Label-free report: no gbsa/label/dock/Gap2 value is read. `distance_to_nearest_canonical` uses the 13-site Hamming space only."
+}

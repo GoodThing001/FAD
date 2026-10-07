@@ -1,0 +1,15 @@
+{
+  "search_interface_version": "0.1.1",
+  "policy": "mutation_only_ga",
+  "seed": 5001,
+  "n_unique_predicted": 916,
+  "n_candidates": 908,
+  "best_pred_gbsa": 6.150741114773896,
+  "best_candidate_id": "de9c8bdd48be655b",
+  "stop_reason": "stagnation",
+  "n_groups": 2,
+  "group_roles": "predicted_best,diverse_backup",
+  "model_id": "xgb_boot5_sklearn_gbm_eed2739e5301b59b",
+  "seconds": 1.656
+}
+[OK] 1 row -> D:\PyCharm_\FAD_clean\runs\local_mutation_only_ga_demo_20261005\metrics.csv

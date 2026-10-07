@@ -1,0 +1,27 @@
+{
+  "name": "loop_strategy_compare_30seed",
+  "status": "exploratory",
+  "entrypoint": "scripts/loop/strategy_compare.py",
+  "supports_log_dir": false,
+  "arguments": {
+    "mode": "retrospective",
+    "strategies": "random,greedy,greedy_diverse,maxmin_coverage",
+    "seeds": 30,
+    "seed-start": 1,
+    "rounds": 5,
+    "budget": 50,
+    "n-init": 300,
+    "n-holdout": 200,
+    "pool-size": 600,
+    "surrogate": "xgb",
+    "n-members": 5,
+    "out-dir": "evidence/loop_20260930/strategy_compare_30seed"
+  },
+  "acceptance": {
+    "exit_code": 0,
+    "expect_exit_code": 0,
+    "expect_marker": "DONE",
+    "expected_rows": 4
+  },
+  "notes": "Development-scale (30-seed) equal-budget comparison of selection strategies on the PROXY table via TableOracle. Same split/pool/budget per seed; paired deltas vs random with bootstrap CI. The driver refuses to report success when any seed/strategy/round is missing (completeness.json) or a sub-run failed. Proxy evidence only: it cannot certify wet-lab discovery; the release decision (100 seeds) is a separate run."
+}

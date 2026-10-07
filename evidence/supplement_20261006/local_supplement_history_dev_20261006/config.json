@@ -1,0 +1,17 @@
+{
+  "name": "supplement_history_development_20261006",
+  "entrypoint": "scripts/reproduction/supplement_cpu_20261006.py",
+  "arguments": {
+    "mode": "history",
+    "fixed": true,
+    "seeds": 30,
+    "seed-start": 11001,
+    "workers": 4,
+    "output": "runs\\local_supplement_history_dev_20261006\\metrics.csv"
+  },
+  "acceptance": {
+    "expected_rows": 155,
+    "expect_exit_code": 0,
+    "expect_marker": "DONE"
+  }
+}

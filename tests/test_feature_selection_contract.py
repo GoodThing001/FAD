@@ -46,6 +46,17 @@ class FeatureSelectionContractTest(unittest.TestCase):
         )
         self.assertEqual(sum(block.shape[1] for block in sequence_blocks) + nupack.shape[1], 1495)
 
+    def test_useful_nupack_blocks_are_exactly_192d(self) -> None:
+        data_dir = ROOT / "data/proxy2000_v2"
+        full_df = MODULE.pd.read_csv(data_dir / "fad_proxy2000_v2_full.csv")
+        nupack, names = MODULE.load_nupack_features(data_dir, full_df, blocks="useful")
+        self.assertEqual(nupack.shape, (2000, 192))
+        self.assertEqual(len(names), 192)
+        self.assertTrue(
+            all(name.startswith("nupack_") and not name.startswith("delta_")
+                for name in names)
+        )
+
     def test_all_safe_formal_config(self) -> None:
         config = json.loads(
             (ROOT / "configs/experiments/feature_selection_all_safe_30seed.json").read_text(

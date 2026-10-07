@@ -1,0 +1,20 @@
+{
+  "name": "search_seven_confirmation_100seed",
+  "entrypoint": "scripts/loop/search_suite.py",
+  "arguments": {
+    "seeds": 100,
+    "seed-start": 8001,
+    "budgets": "1024",
+    "proxies": "xgb,rf",
+    "policies": "matched_seed_random_walk,multi_start_hill_climb,multi_start_beam,mutation_only_ga,iterated_local_search,simulated_annealing,mutation_only_adalead",
+    "n-init": 300,
+    "max-generations": 256,
+    "workers": 2,
+    "out-dir": "runs/search_seven_confirmation_20261005",
+    "output": "runs\\local_search_seven_confirmation_20261005\\metrics.csv"
+  },
+  "acceptance": {
+    "expected_rows": 14
+  },
+  "notes": "100 independent confirmation seeds for all seven frozen algorithms, 1400 main searches, two diagnostic proxies. Predicted-GBSA evidence only."
+}

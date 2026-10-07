@@ -1,0 +1,9 @@
+proxy,budget,policy,n_seeds,mean_best_pred_gbsa,mean_actual_predictions
+rf,1024,matched_seed_random_walk,100,17.723753464728958,1024.0
+rf,1024,multi_start_beam,100,17.36887770676368,1023.09
+rf,1024,multi_start_hill_climb,100,16.98275247092473,1024.0
+rf,1024,mutation_only_ga,100,17.01962931070799,975.54
+xgb,1024,matched_seed_random_walk,100,9.026532660152139,1024.0
+xgb,1024,multi_start_beam,100,7.5387292060091635,1023.68
+xgb,1024,multi_start_hill_climb,100,5.221151585830897,1024.0
+xgb,1024,mutation_only_ga,100,5.567382032472397,1004.34

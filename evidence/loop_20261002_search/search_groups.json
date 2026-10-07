@@ -1,0 +1,33 @@
+[
+  {
+    "group_id": "search_multi_start_beam_1_8192_g1",
+    "group_role": "predicted_best",
+    "prototype_id": "e9dcd88fc387264c",
+    "member_ids": [
+      "e9dcd88fc387264c",
+      "1f5196efc8a14810",
+      "dcb1488a60a64766",
+      "5a20aed976a3fb70",
+      "48c4b3fae2238cb4",
+      "330f95a4096ad645",
+      "76302f9a6fa61974",
+      "84064a63533c3f92"
+    ],
+    "within_group_distance_summary": "n=8 min=1 mean=1.714 max=2",
+    "group_selection_rule": "top50_hamming_mutsites_radius1_sep3"
+  },
+  {
+    "group_id": "search_multi_start_beam_1_8192_g2",
+    "group_role": "diverse_backup",
+    "prototype_id": "eab2c1ac2b26aa3f",
+    "member_ids": [
+      "eab2c1ac2b26aa3f",
+      "462368781f892793",
+      "5b81a9206d322be2",
+      "95ee2191cdf83db8",
+      "d0c0f63be30c4bdb"
+    ],
+    "within_group_distance_summary": "n=5 min=1 mean=1.600 max=2",
+    "group_selection_rule": "top50_hamming_mutsites_radius1_sep3"
+  }
+]

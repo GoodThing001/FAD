@@ -1,0 +1,11 @@
+{
+  "spearman": 0.12279114244464026,
+  "mae": 8.321125984191895,
+  "rmse": 10.435785293579102,
+  "n": 2000,
+  "n_train": 1600,
+  "epochs_pretrain": 30,
+  "epochs_head": 50,
+  "n_ensemble": 30,
+  "device": "cuda"
+}

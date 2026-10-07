@@ -1,0 +1,14 @@
+{
+  "n_seeds": 100,
+  "fusion_mean": 0.37476952000000013,
+  "fusion_std": 0.0390967509318818,
+  "rf_mutation_only_mean": 0.3643817299999999,
+  "rf_mutation_only_std": 0.04236648206279464,
+  "paired_delta_mean": 0.010387790000000003,
+  "paired_bootstrap_ci95": [
+    0.006094178500000004,
+    0.014662050750000002
+  ],
+  "fusion_wins": 66,
+  "fusion_win_rate": 0.66
+}

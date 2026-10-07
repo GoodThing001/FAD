@@ -1,0 +1,36 @@
+{
+  "name": "search_compare_matched_30seed",
+  "status": "exploratory",
+  "entrypoint": "scripts/loop/search_compare.py",
+  "arguments": {
+    "policies": "matched_seed_random_walk,multi_start_hill_climb,multi_start_beam",
+    "seeds": 30,
+    "seed-start": 301,
+    "consistency-seeds": 0,
+    "budget": 1024,
+    "n-init": 300,
+    "surrogate": "xgb",
+    "n-members": 5,
+    "screen-k": 100,
+    "max-generations": 8,
+    "allowed-n-from-wt": "4:13",
+    "beam-width": 32,
+    "offspring-per-parent": 32,
+    "one-hop-fraction": 0.8,
+    "restart-fraction": 0.1,
+    "diversity-pool-factor": 4,
+    "diversity-distance": 2,
+    "max-stagnant-generations": 2,
+    "n-measured-seeds": 8,
+    "n-random-seeds": 8,
+    "min-mutual-distance": 2,
+    "skip-cross-model": true,
+    "data-dir": "data/proxy2000_v2",
+    "out-dir": "runs/search_compare_matched_30seed",
+    "output": "runs\\search_matched_30seed_final_20261005\\metrics.csv"
+  },
+  "acceptance": {
+    "expected_rows": 3
+  },
+  "notes": "30-seed computational development comparison at a 1024 hard cap. Primary paired metric uses equal initial seeds and per-seed actual prediction-count prefixes; it is not real GBSA validation."
+}

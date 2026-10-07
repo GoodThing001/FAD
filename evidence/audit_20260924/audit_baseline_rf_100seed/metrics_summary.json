@@ -1,0 +1,25 @@
+{
+  "feature_set": "mutation_only",
+  "n_seeds": 100,
+  "seed_range": [
+    1,
+    100
+  ],
+  "models": [
+    "RF"
+  ],
+  "per_model": {
+    "RF": {
+      "mean_gbsa_Sp": 0.3643817299999999,
+      "std_gbsa_Sp": 0.04236648206279464,
+      "min_gbsa_Sp": 0.230319,
+      "max_gbsa_Sp": 0.450695,
+      "mean_Hybrid_Sp": 0.9154933299999999,
+      "mean_RMSE": 9.777047
+    }
+  },
+  "oracle_best_per_seed": {
+    "mean": 0.3643817299999999,
+    "std": 0.04236648206279464
+  }
+}

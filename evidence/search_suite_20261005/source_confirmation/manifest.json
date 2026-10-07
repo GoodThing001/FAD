@@ -1,0 +1,50 @@
+[
+  {
+    "source": "scripts\\loop\\search_suite.py",
+    "snapshot": "search_suite.py",
+    "sha256": "93795b35aee48decb0b82a372e07ad02799bf1d990c25f7208c8adebdf1d5222",
+    "manifest_verified": true
+  },
+  {
+    "source": "scripts\\loop\\search.py",
+    "snapshot": "search.py",
+    "sha256": "193e42b025be1a66b5f0c09658f905e4e15c9d6b5bdc428f5aa01987693056ae",
+    "manifest_verified": true
+  },
+  {
+    "source": "scripts\\loop\\search_policies.py",
+    "snapshot": "search_policies.py",
+    "sha256": "36b4d5b84a1cf7ad7341f4d040ab6b688c3a993be3f69e81456b4205f725ccf2",
+    "manifest_verified": true
+  },
+  {
+    "source": "scripts\\loop\\surrogates.py",
+    "snapshot": "surrogates.py",
+    "sha256": "970362e0a4280cfe0b76efcd56905d57e11143663034cb36c6a8c93ad98dbf76",
+    "manifest_verified": true
+  },
+  {
+    "source": "scripts\\loop\\search_archive.py",
+    "snapshot": "search_archive.py",
+    "sha256": "2f67f7ecf45424d0c938e57031a2397740cee8c62dad3e7380534196abfa5530",
+    "manifest_verified": true
+  },
+  {
+    "source": "scripts/loop/interface.py",
+    "snapshot": "interface.py",
+    "sha256": "1d48aff4764b4b49e5c62ed451dcc7e13a6c17fba4e9a9c0211d0ef805bb8079",
+    "manifest_verified": false
+  },
+  {
+    "source": "scripts/loop/search_compare.py",
+    "snapshot": "search_compare.py",
+    "sha256": "c1452273751f5768d9bfa17ff9bc007fe2920823bcfd18a929ae0add49890417",
+    "manifest_verified": false
+  },
+  {
+    "source": "scripts/reproduction/eval_fusion_smoothing.py",
+    "snapshot": "eval_fusion_smoothing.py",
+    "sha256": "c3902efc85f20d677c6bebef28a0532e2685fac984e3a8a4d9e48e3bacb1f6a5",
+    "manifest_verified": false
+  }
+]

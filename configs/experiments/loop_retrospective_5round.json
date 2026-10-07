@@ -1,0 +1,25 @@
+{
+  "name": "loop_retrospective_5round",
+  "status": "exploratory",
+  "entrypoint": "scripts/loop/loop.py",
+  "supports_log_dir": true,
+  "arguments": {
+    "mode": "retrospective",
+    "rounds": 5,
+    "budget": 100,
+    "n-init": 400,
+    "n-holdout": 300,
+    "pool-size": 900,
+    "surrogate": "xgb",
+    "n-members": 10,
+    "oracle": "table",
+    "ratios": "45,25,20,10",
+    "seed": 1,
+    "data-dir": "data/proxy2000_v2"
+  },
+  "acceptance": {
+    "exit_code": 0,
+    "expected_rows": 5
+  },
+  "notes": "Framework bring-up on the canonical 2000 labels (retrospective). Not a release evaluation: it reuses already-measured gbsa labels to validate loop mechanics and selection policies."
+}

@@ -1,0 +1,18 @@
+{
+  "name": "eval_sigma_calibration_smoke",
+  "status": "exploratory",
+  "entrypoint": "scripts/reproduction/eval_sigma_calibration.py",
+  "arguments": {
+    "outer-seeds": 2,
+    "seed-start": 301,
+    "n-trains": "400",
+    "n-test": 400,
+    "n-members": 3,
+    "screen-k": 100,
+    "data-dir": "data/proxy2000_v2"
+  },
+  "acceptance": {
+    "expected_rows": 2
+  },
+  "notes": "Local smoke for the sigma calibration driver (2 seeds, 1 arm, 3 members, sklearn-GBM fallback backend recorded in model_id)."
+}

@@ -1,0 +1,3 @@
+generation,n_parents,n_proposed,n_rejected,n_new_scored,n_cumulative_scored,best_pred_gbsa,best_candidate_id,seconds,perturbations,accepted_worse
+1,16,620,0,620,636,8.94308033941456,5d7bc29a8497e3ae,0.383,0,0
+2,16,569,181,388,1024,8.373855364981184,066373940058d4f3,0.262,0,0

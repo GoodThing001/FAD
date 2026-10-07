@@ -1,0 +1,2 @@
+search_id,policy,seed,model_seed,outer_round,n_unique_predicted,n_candidates,best_pred_gbsa,best_candidate_id,stop_reason,n_groups,group_roles,model_id,feature_version,budget,seconds,archive_dir
+search_mutation_only_ga_5001_1024_m5001,mutation_only_ga,5001,5001,1,916,908,6.150741114773896,de9c8bdd48be655b,stagnation,2,"predicted_best,diverse_backup",xgb_boot5_sklearn_gbm_eed2739e5301b59b,seq303_screen100,1024,1.656,D:\PyCharm_\FAD_clean\runs\local_mutation_only_ga_demo_20261005\checkpoints

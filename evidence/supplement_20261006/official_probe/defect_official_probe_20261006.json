@@ -1,0 +1,53 @@
+{
+  "compatible_count": 4,
+  "checks": [
+    {
+      "name": "WT",
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACCGGCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUGGAUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGGAUGGGAGAAGGAUG",
+      "target": ".......(((..(.((((....)))).).)))(.(((..(((((((....)))))))..)))).....((((((((....))))))))(((.((((((....)))))).))).(((.......)))...............",
+      "official": 33.98782723910357,
+      "ours": 33.98782723910358,
+      "error": 1.4210854715202004e-14
+    },
+    {
+      "name": "first",
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACAAACGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUCUGUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGACAAUGAGAAGGAUG",
+      "target": ".......(((..(.((((....)))).).)))(.(((..(((((((....)))))))..)))).....((((((((....))))))))(((.((((((....)))))).))).(((.......)))...............",
+      "error_type": "RuntimeError",
+      "message": "C++: Space::clone: Attempt to invoke operation on failed space"
+    },
+    {
+      "name": "first_unpaired",
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACAAACGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUCUGUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGACAAUGAGAAGGAUG",
+      "target": ".............................................................................................................................................",
+      "official": 77.49909019885096,
+      "ours": 77.49909019885095,
+      "error": 1.4210854715202004e-14
+    },
+    {
+      "name": "compatible",
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACCGGCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUGGAUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGGAUGGGAGAAGGAUG",
+      "target": ".......(((..(.((((....)))).).)))(.(((..(((((((....)))))))..)))).....((((((((....))))))))(((.((((((....)))))).))).(((.......)))...............",
+      "official": 33.98782723910357,
+      "ours": 33.98782723910358,
+      "error": 1.4210854715202004e-14
+    },
+    {
+      "name": "compatible",
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACCGGCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUGGCUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGAUUCGGAGAAGGAUG",
+      "target": ".......(((..(.((((....)))).).)))(.(((..(((((((....)))))))..)))).....((((((((....))))))))(((.((((((....)))))).))).(((.......)))...............",
+      "official": 34.06503932838654,
+      "ours": 34.065039328385254,
+      "error": 1.2860823517257813e-12
+    },
+    {
+      "name": "compatible",
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACUGGCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUGGUUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGCCCCGGAGAAGGAUG",
+      "target": ".......(((..(.((((....)))).).)))(.(((..(((((((....)))))))..)))).....((((((((....))))))))(((.((((((....)))))).))).(((.......)))...............",
+      "official": 57.1826633428502,
+      "ours": 57.18266212041891,
+      "error": 1.222431286862502e-06
+    }
+  ],
+  "official_source": "def structure_defect(structure, strands, *, model):\n    '''\n    A raw utility meant to take a structure string and evaluate the multitube defect\n    - structure(str or Structure): target structure\n    - strands(List[str]): list of strand sequences (fully determined)\n    - model(Model): free energy model\n    '''\n    structure = Structure(structure)\n    strands = strands.split('+') if isinstance(strands, str) else strands\n    domains = [Domain(str(s),  name='Domain[%d]' % i) for i, s in enumerate(strands)]\n    strands = [TargetStrand([d], name='RawStrand[%d]' % i) for i, d in enumerate(domains)]\n    complexes = [TargetComplex(strands, structure=structure, name='complex')]\n    design = complex_design(complexes, model=model)\n    return design.evaluate().ensemble_defect\n"
+}

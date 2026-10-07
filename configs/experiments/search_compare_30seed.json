@@ -1,0 +1,34 @@
+{
+  "name": "search_compare_30seed",
+  "status": "exploratory",
+  "entrypoint": "scripts/loop/search_compare.py",
+  "arguments": {
+    "policies": "stratified_random,multi_start_hill_climb,multi_start_beam",
+    "seeds": 30,
+    "seed-start": 201,
+    "consistency-seeds": 10,
+    "budget": 8192,
+    "n-init": 300,
+    "surrogate": "xgb",
+    "n-members": 5,
+    "screen-k": 100,
+    "max-generations": 8,
+    "allowed-n-from-wt": "4:13",
+    "beam-width": 32,
+    "offspring-per-parent": 32,
+    "one-hop-fraction": 0.8,
+    "restart-fraction": 0.1,
+    "diversity-pool-factor": 4,
+    "diversity-distance": 2,
+    "max-stagnant-generations": 2,
+    "n-measured-seeds": 8,
+    "n-random-seeds": 8,
+    "min-mutual-distance": 2,
+    "data-dir": "data/proxy2000_v2",
+    "out-dir": "evidence/search_compare_30seed"
+  },
+  "acceptance": {
+    "expected_rows": 3
+  },
+  "notes": "阶段 B 30-seed equal-budget search-policy comparison (docs/项目记录/突变序列迭代搜索算法与代理接口实施方案_20261002.md §5 阶段 B): seeds 201-230, same split (300 init), same surrogate snapshot and hard 8192 unique-prediction budget; paired diagnostics vs stratified_random (best predicted gbsa, top-50 diversity, top-50 OOD fraction, top-50 train proximity), cross-model ranking stability (top-50 re-scored by 2 retrained surrogates) and retrain consistency (arm B, 10 seeds with model seed +1000). PROXY-table computational diagnostics only: best_pred_gbsa is a surrogate output, not a discovery claim; 阶段 C with real GBSA is a separate step. Server: nice 19 / 2 threads via launch_loop_jobs.sh."
+}

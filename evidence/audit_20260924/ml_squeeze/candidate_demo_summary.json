@@ -1,0 +1,20 @@
+{
+  "n_labeled_train": 2000,
+  "n_candidates": 31000,
+  "n_unique_candidates": 31000,
+  "top_k": 200,
+  "mfe_range": [
+    -103.10421752929688,
+    -77.6894302368164
+  ],
+  "fusion_pred_range": [
+    10.8,
+    30974.4
+  ],
+  "dock_fusion_range": [
+    23.5,
+    30995.5
+  ],
+  "overlap_with_train": 1,
+  "ranking_components": "mean(rank(gbsa_fusion), rank(dock_fusion), rank(mfe))"
+}

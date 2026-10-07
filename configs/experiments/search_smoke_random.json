@@ -1,0 +1,22 @@
+{
+  "name": "search_smoke_random",
+  "status": "exploratory",
+  "entrypoint": "scripts/loop/search_run.py",
+  "supports_log_dir": true,
+  "arguments": {
+    "policy": "stratified_random",
+    "seed": 1,
+    "max-unique-predictions": 256,
+    "max-generations": 8,
+    "allowed-n-from-wt": "4:13",
+    "n-init": 400,
+    "surrogate": "xgb",
+    "n-members": 5,
+    "screen-k": 100,
+    "data-dir": "data/proxy2000_v2"
+  },
+  "acceptance": {
+    "expected_rows": 1
+  },
+  "notes": "Stratified random baseline for the search layer (256 smoke scale; no generational feedback). Every search claim must be compared against this policy at the same unique-prediction budget."
+}

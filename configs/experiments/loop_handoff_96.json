@@ -1,0 +1,30 @@
+{
+  "name": "loop_handoff_96",
+  "status": "exploratory",
+  "entrypoint": "scripts/loop/loop.py",
+  "supports_log_dir": true,
+  "arguments": {
+    "mode": "prospective",
+    "candidate-source": "mutate",
+    "rounds": 1,
+    "budget": 96,
+    "n-init": 400,
+    "n-holdout": 300,
+    "pool-size": 600,
+    "surrogate": "xgb",
+    "n-members": 10,
+    "screen-k": 100,
+    "strategy": "greedy",
+    "oracle": "park",
+    "protocol-id": "gbsa_pending_protocol",
+    "seed": 101,
+    "data-dir": "data/proxy2000_v2"
+  },
+  "acceptance": {
+    "exit_code": 3,
+    "expect_exit_code": 3,
+    "expect_marker": "PARKED",
+    "expected_rows": 1
+  },
+  "notes": "Real pending batch for the wet-lab/MM-GBSA hand-off: one 96-candidate plate selected by greedy under the frozen v0.2.0 contract, exported with batch_id/candidate_id/sequence/pred_gbsa/ood_flag plus model/protocol/data fingerprints (batch_manifest.json). Nothing is measured yet, so the run parks (rc 3). The measurement protocol string is a placeholder: after the lab confirms the protocol, pin it through the audited flow — python scripts/run_experiment.py --resume-run <run_id> --pin-protocol <协议串> (writes protocol_changes.jsonl and rewrites config/fingerprint/ledger/both manifest copies) — then ingest with --resume-run <run_id> --ingest labels.csv. Never hand-edit the run's config, and never ingest before pinning. Seed 101 is deliberately outside the 1-30 development range."
+}

@@ -1,0 +1,367 @@
+{
+  "nupack_version": "4.0.0.27",
+  "material": "rna",
+  "celsius": 30,
+  "target": ".......(((..(.((((....)))).).)))(.(((..(((((((....)))))))..)))).....((((((((....))))))))(((.((((((....)))))).))).(((.......)))...............",
+  "checks": [
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACCGGCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUGGAUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGGAUGGGAGAAGGAUG",
+      "target": ".......(((..(.((((....)))).).)))(.(((..(((((((....)))))))..)))).....((((((((....))))))))(((.((((((....)))))).))).(((.......)))...............",
+      "kind": "compatible_WT_target",
+      "official_count": 33.98782723910357,
+      "ours_count": 33.98782723910358,
+      "absolute_error": 1.4210854715202004e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACCGGCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUGGCUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGAUUCGGAGAAGGAUG",
+      "target": ".......(((..(.((((....)))).).)))(.(((..(((((((....)))))))..)))).....((((((((....))))))))(((.((((((....)))))).))).(((.......)))...............",
+      "kind": "compatible_WT_target",
+      "official_count": 34.06503932838654,
+      "ours_count": 34.065039328385254,
+      "absolute_error": 1.2860823517257813e-12
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACUGGCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUGGUUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGCCCCGGAGAAGGAUG",
+      "target": ".......(((..(.((((....)))).).)))(.(((..(((((((....)))))))..)))).....((((((((....))))))))(((.((((((....)))))).))).(((.......)))...............",
+      "kind": "compatible_WT_target",
+      "official_count": 57.1826633428502,
+      "ours_count": 57.18266212041891,
+      "absolute_error": 1.222431286862502e-06
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAUUGGCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGCGGCUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGGCCGAGAGAAGGAUG",
+      "target": ".......(((..(.((((....)))).).)))(.(((..(((((((....)))))))..)))).....((((((((....))))))))(((.((((((....)))))).))).(((.......)))...............",
+      "kind": "compatible_WT_target",
+      "official_count": 39.706264076743324,
+      "ours_count": 39.70625426597758,
+      "absolute_error": 9.810765746465222e-06
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACAAACGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUCUGUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGACAAUGAGAAGGAUG",
+      "target": ".............................................................................................................................................",
+      "kind": "all_unpaired_diagnostic",
+      "official_count": 77.49909019885096,
+      "ours_count": 77.49909019885095,
+      "absolute_error": 1.4210854715202004e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACAAACGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUCUGUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGACAAUGAGAAGGAUG",
+      "target": "......((((((...........))))))...(((((..(((((((....)))))))..))).))((.((((((((....))))))))))((.(((((((..((((.......))))..))).))))))............",
+      "kind": "own_MFE_diagnostic",
+      "official_count": 29.596225575344235,
+      "ours_count": 29.59622557534422,
+      "absolute_error": 1.4210854715202004e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACCAACGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGCGGAUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGGAGUGGAGAAGGAUG",
+      "target": ".............................................................................................................................................",
+      "kind": "all_unpaired_diagnostic",
+      "official_count": 77.1571878707295,
+      "ours_count": 77.15718787072952,
+      "absolute_error": 1.4210854715202004e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACCAACGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGCGGAUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGGAGUGGAGAAGGAUG",
+      "target": "...((...))((..(((.......)))..)).(((((..(((((((....)))))))..))).))...((((((((....))))))))(((.((((((....)))))).))).(((.......)))...............",
+      "kind": "own_MFE_diagnostic",
+      "official_count": 20.150182143679636,
+      "ours_count": 20.150182143679643,
+      "absolute_error": 7.105427357601002e-15
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACAAUCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGACAUUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGAUUUUGAGAAGGAUG",
+      "target": ".............................................................................................................................................",
+      "kind": "all_unpaired_diagnostic",
+      "official_count": 77.03721089876548,
+      "ours_count": 77.03721089876545,
+      "absolute_error": 2.842170943040401e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACAAUCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGACAUUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGAUUUUGAGAAGGAUG",
+      "target": "......((((((...........)))))).....(((..(((((((....)))))))..)))......((((((((....))))))))...(((((((....)))))))((..(..(((((......))))).)..))...",
+      "kind": "own_MFE_diagnostic",
+      "official_count": 30.975594908830427,
+      "ours_count": 30.975594908830445,
+      "absolute_error": 1.7763568394002505e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAGAUGCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGACGAUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGUCUCUGAGAAGGAUG",
+      "target": ".............................................................................................................................................",
+      "kind": "all_unpaired_diagnostic",
+      "official_count": 81.4903322721644,
+      "ours_count": 81.49033227216437,
+      "absolute_error": 2.842170943040401e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAGAUGCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGACGAUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGUCUCUGAGAAGGAUG",
+      "target": "((((..((((((...........)))))))))).(((..(((((((....)))))))..)))(((...((((((((....))))))))))).((((((....))))))...(((((.......)))))(((.....)))..",
+      "kind": "own_MFE_diagnostic",
+      "official_count": 21.317029065019412,
+      "ours_count": 21.317029065019398,
+      "absolute_error": 1.4210854715202004e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAAAUGCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGAAUAUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGCUGGGGAGAAGGAUG",
+      "target": ".............................................................................................................................................",
+      "kind": "all_unpaired_diagnostic",
+      "official_count": 77.15178606769375,
+      "ours_count": 77.15178606769375,
+      "absolute_error": 0.0
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAAAUGCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGAAUAUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGCUGGGGAGAAGGAUG",
+      "target": ".....(((((((...........)))))))(((.(((..(((((((....)))))))..))))))...((((((((....))))))))....((((((....)))))).((..(((((......))))).)).........",
+      "kind": "own_MFE_diagnostic",
+      "official_count": 17.801661401246914,
+      "ours_count": 17.80166140124689,
+      "absolute_error": 2.4868995751603507e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAAUAACGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGCUUGUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGACCACGAGAAGGAUG",
+      "target": ".............................................................................................................................................",
+      "kind": "all_unpaired_diagnostic",
+      "official_count": 83.71966148357077,
+      "ours_count": 83.71966148357077,
+      "absolute_error": 0.0
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAAUAACGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGCUUGUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGACCACGAGAAGGAUG",
+      "target": ".....(((((((...........)))))))..(((((..(((((((....)))))))..))).))...((((((((....))))))))((((((((((((..((((.......))))..))).))))..))))).......",
+      "kind": "own_MFE_diagnostic",
+      "official_count": 6.695836019688452,
+      "ours_count": 6.695836019688443,
+      "absolute_error": 8.881784197001252e-15
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACAGACGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGCCAUUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGACUAUGAGAAGGAUG",
+      "target": ".............................................................................................................................................",
+      "kind": "all_unpaired_diagnostic",
+      "official_count": 79.0237737444225,
+      "ours_count": 79.02377374442253,
+      "absolute_error": 2.842170943040401e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACAGACGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGCCAUUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGACUAUGAGAAGGAUG",
+      "target": "....((((((((...........)))))).))(((((..(((((((....)))))))..))).))...((((((((....))))))))((((.(((((((..((((.......))))..))).))))..))).).......",
+      "kind": "own_MFE_diagnostic",
+      "official_count": 27.404784904314987,
+      "ours_count": 27.404784904314994,
+      "absolute_error": 7.105427357601002e-15
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAUUAUCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGACUUUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGAGCCUGAGAAGGAUG",
+      "target": ".............................................................................................................................................",
+      "kind": "all_unpaired_diagnostic",
+      "official_count": 90.54235708256812,
+      "ours_count": 90.54235708256812,
+      "absolute_error": 0.0
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAUUAUCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGACUUUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGAGCCUGAGAAGGAUG",
+      "target": "((((((((.((((.((((....)))).(.((((.(((..(((((((....)))))))..))).)))))((((((((....)))))))).....(((((((..((((.......))))..))).))))))))..))))))))",
+      "kind": "own_MFE_diagnostic",
+      "official_count": 42.72437351549793,
+      "ours_count": 42.72437351549797,
+      "absolute_error": 4.263256414560601e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACAGUCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGGAUCUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGGAAUUGAGAAGGAUG",
+      "target": ".............................................................................................................................................",
+      "kind": "all_unpaired_diagnostic",
+      "official_count": 77.9436633196372,
+      "ours_count": 77.94366331963721,
+      "absolute_error": 1.4210854715202004e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACAGUCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGGAUCUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGGAAUUGAGAAGGAUG",
+      "target": "....((((((((...........)))))).))..(((..(((((((....)))))))..))).....(((((((((....)))))))))..(((((((....)))))))(((((.......))).))..............",
+      "kind": "own_MFE_diagnostic",
+      "official_count": 10.539797531576703,
+      "ours_count": 10.53979753157671,
+      "absolute_error": 7.105427357601002e-15
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAUAAUCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUAUAUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGAUGUGGAGAAGGAUG",
+      "target": ".............................................................................................................................................",
+      "kind": "all_unpaired_diagnostic",
+      "official_count": 74.9848488590754,
+      "ours_count": 74.98484885907537,
+      "absolute_error": 2.842170943040401e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAUAAUCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUAUAUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGAUGUGGAGAAGGAUG",
+      "target": "......((((((...........)))))).....(((..(((((((....)))))))..)))......((((((((....))))))))((((.(((((((..((((.......))))..))).))))))))..........",
+      "kind": "own_MFE_diagnostic",
+      "official_count": 24.30252440503079,
+      "ours_count": 24.302524405030795,
+      "absolute_error": 3.552713678800501e-15
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAGACGCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUAUUUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGUGCUGGAGAAGGAUG",
+      "target": ".............................................................................................................................................",
+      "kind": "all_unpaired_diagnostic",
+      "official_count": 79.86515948062464,
+      "ours_count": 79.86515948062461,
+      "absolute_error": 2.842170943040401e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAGACGCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUAUUUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGUGCUGGAGAAGGAUG",
+      "target": ".....(((((((...........)))))))(((.(((..(((((((....)))))))..))))))...((((((((....))))))))...(((((((....)))))))(((((((.......))))..))).........",
+      "kind": "own_MFE_diagnostic",
+      "official_count": 27.39201648314253,
+      "ours_count": 27.392016483142527,
+      "absolute_error": 3.552713678800501e-15
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAGAUUCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGCCGAUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGAUACAGAGAAGGAUG",
+      "target": ".............................................................................................................................................",
+      "kind": "all_unpaired_diagnostic",
+      "official_count": 73.67154001520544,
+      "ours_count": 73.67154001520545,
+      "absolute_error": 1.4210854715202004e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAGAUUCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGCCGAUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGAUACAGAGAAGGAUG",
+      "target": ".....(((((((...........)))))))....(((..(((((((....)))))))..)))((.(..((((((((....)))))))))))..(((((((..((((.......))))..))).))))..............",
+      "kind": "own_MFE_diagnostic",
+      "official_count": 36.16319634029096,
+      "ours_count": 36.163196340290966,
+      "absolute_error": 7.105427357601002e-15
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACAUGCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUUCGUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGCUGGAGAGAAGGAUG",
+      "target": ".............................................................................................................................................",
+      "kind": "all_unpaired_diagnostic",
+      "official_count": 79.84967186428472,
+      "ours_count": 79.84967186428466,
+      "absolute_error": 5.684341886080802e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACAUGCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUUCGUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGCUGGAGAGAAGGAUG",
+      "target": "......((((((...........))))))((((.(((..(((((((....)))))))..)))))))..((((((((....))))))))...(((((((....)))))).)(..(((((......)))))..).........",
+      "kind": "own_MFE_diagnostic",
+      "official_count": 15.011103432213792,
+      "ours_count": 15.011103432213787,
+      "absolute_error": 5.329070518200751e-15
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAAGCUCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGAAGGUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGAUAGAGAGAAGGAUG",
+      "target": ".............................................................................................................................................",
+      "kind": "all_unpaired_diagnostic",
+      "official_count": 76.10777849918881,
+      "ours_count": 76.10777849918877,
+      "absolute_error": 4.263256414560601e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAAGCUCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGAAGGUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGAUAGAGAGAAGGAUG",
+      "target": "....((((((((...........))))))))(.((((..(((((((....)))))))..))).).)..((((((((....))))))))..((((((((....)))))).))..(((.......)))...............",
+      "kind": "own_MFE_diagnostic",
+      "official_count": 15.167423557280834,
+      "ours_count": 15.167423557280856,
+      "absolute_error": 2.1316282072803006e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAUCAACGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUAGUUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGGACCGGAGAAGGAUG",
+      "target": ".............................................................................................................................................",
+      "kind": "all_unpaired_diagnostic",
+      "official_count": 79.9544102275465,
+      "ours_count": 79.9544102275465,
+      "absolute_error": 0.0
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAUCAACGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUAGUUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGGACCGGAGAAGGAUG",
+      "target": "......((((((...........))))))(((..(((..(((((((....)))))))..)))..))).((((((((....))))))))..((((((((....))))))))...(((.......)))..((......))...",
+      "kind": "own_MFE_diagnostic",
+      "official_count": 21.268102517928128,
+      "ours_count": 21.268102517928128,
+      "absolute_error": 0.0
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACAGACGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUUAAUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGAUAUCGAGAAGGAUG",
+      "target": ".............................................................................................................................................",
+      "kind": "all_unpaired_diagnostic",
+      "official_count": 81.65284462396394,
+      "ours_count": 81.65284462396397,
+      "absolute_error": 2.842170943040401e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACAGACGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUUAAUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGAUAUCGAGAAGGAUG",
+      "target": "....((((((((...........)))))).))..(((..(((((((....)))))))..)))..(((.((((((((....)))))))))))..(((((((..((((.......))))..))).))))((((......))))",
+      "kind": "own_MFE_diagnostic",
+      "official_count": 28.732316974911217,
+      "ours_count": 28.7323169749112,
+      "absolute_error": 1.7763568394002505e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAAACGCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGACAGUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGUGAAGGAGAAGGAUG",
+      "target": ".............................................................................................................................................",
+      "kind": "all_unpaired_diagnostic",
+      "official_count": 76.81585154942468,
+      "ours_count": 76.81585154942466,
+      "absolute_error": 1.4210854715202004e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAAACGCGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGACAGUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGUGAAGGAGAAGGAUG",
+      "target": ".....(((((((...........)))))))(((.(((..(((((((....)))))))..))))))...((((((((....))))))))....((((((....)))))).((.((((.......))))...)).........",
+      "kind": "own_MFE_diagnostic",
+      "official_count": 15.377025859417147,
+      "ours_count": 15.37702585941716,
+      "absolute_error": 1.2434497875801753e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAGGAACGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGGCCUUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGUACUAGAGAAGGAUG",
+      "target": ".............................................................................................................................................",
+      "kind": "all_unpaired_diagnostic",
+      "official_count": 82.08890066350779,
+      "ours_count": 82.08890066350776,
+      "absolute_error": 2.842170943040401e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAGGAACGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGGCCUUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGUACUAGAGAAGGAUG",
+      "target": "..(((.((((((...........)))))))))..(((..(((((((....)))))))..))).....(((((((((....)))))))))(((((((((((..((((.......))))..))).))).......)))))...",
+      "kind": "own_MFE_diagnostic",
+      "official_count": 37.17730704000796,
+      "ours_count": 37.177307040007975,
+      "absolute_error": 1.4210854715202004e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAAAAACGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGAGUAUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGUCCAUGAGAAGGAUG",
+      "target": ".............................................................................................................................................",
+      "kind": "all_unpaired_diagnostic",
+      "official_count": 81.57974770896772,
+      "ours_count": 81.57974770896772,
+      "absolute_error": 0.0
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGAAAAACGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGAGUAUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGUCCAUGAGAAGGAUG",
+      "target": ".....(((((((...........)))))))..(((((..(((((((....)))))))..))).)).((((((((((....)))))))).)).((((((....))))))...(((((.......)))))(((.......)))",
+      "kind": "own_MFE_diagnostic",
+      "official_count": 10.88300538752279,
+      "ours_count": 10.883005387522758,
+      "absolute_error": 3.197442310920451e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACAGACGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUCAAUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGAUCCGGAGAAGGAUG",
+      "target": ".............................................................................................................................................",
+      "kind": "all_unpaired_diagnostic",
+      "official_count": 81.98674318003519,
+      "ours_count": 81.98674318003516,
+      "absolute_error": 2.842170943040401e-14
+    },
+    {
+      "Sequence": "UAUCCUUCGGGGCAGGGUGGAAAUCCCGACAGACGGUAGUAAAGCACAUUUGCUUUAGAGCCCGUGACCCGUGUGCAUAAGCACGCGGUCAAUUCAGUUUAAGCUGAAGCCGACAGUGAAAGUCUGAUCCGGAGAAGGAUG",
+      "target": "....((((((((...........)))))).))..(((..(((((((....)))))))..)))..(((.((((((((....))))))))))).((((((....))))))...(((.......)))..((((......)))).",
+      "kind": "own_MFE_diagnostic",
+      "official_count": 15.17791106953357,
+      "ours_count": 15.17791106953355,
+      "absolute_error": 1.9539925233402755e-14
+    }
+  ],
+  "n_errors": 0,
+  "status_counts": {
+    "invalid_target_pair": 1996,
+    "computed": 4
+  },
+  "official_incompatible_WT_target_checks": "not supported by design-based utility; explicit diagnostic failure retained separately",
+  "elapsed_seconds": 62.71664810180664
+}

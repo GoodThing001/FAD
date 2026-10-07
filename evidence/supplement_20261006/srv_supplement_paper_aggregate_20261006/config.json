@@ -1,0 +1,18 @@
+{
+  "name": "supplement_paper_development_aggregate_20261006",
+  "entrypoint": "scripts/reproduction/aggregate_paper_20261006.py",
+  "arguments": {
+    "seeds": 30,
+    "seed-start": 11001,
+    "pretrain-epochs": 5,
+    "head-epochs": 50,
+    "members": 10,
+    "corpus-size": 2000,
+    "output": "runs/srv_supplement_paper_aggregate_20261006/metrics.csv"
+  },
+  "acceptance": {
+    "expected_rows": 120,
+    "expect_marker": "DONE",
+    "expect_exit_code": 0
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "loop_strategy_compare_100seed",
+  "status": "release_candidate",
+  "entrypoint": "scripts/loop/strategy_compare.py",
+  "supports_log_dir": false,
+  "arguments": {
+    "mode": "retrospective",
+    "strategies": "random,greedy,greedy_diverse,maxmin_coverage",
+    "seeds": 100,
+    "seed-start": 1001,
+    "rounds": 5,
+    "budget": 50,
+    "n-init": 300,
+    "n-holdout": 200,
+    "pool-size": 600,
+    "surrogate": "xgb",
+    "n-members": 5,
+    "out-dir": "evidence/loop_20260930/strategy_compare_100seed"
+  },
+  "acceptance": {
+    "exit_code": 0,
+    "expect_exit_code": 0,
+    "expect_marker": "DONE",
+    "expected_rows": 4
+  },
+  "notes": "Release-candidate confirmation (§8.4, pre-registered in docs/项目记录/发布候选预注册_100seed_20260930.md): 100 non-overlapping seeds 1001-1100, same GBSA target, split (300 init / 200 holdout / 600 pool), budget (5x50), XGB backend (5 members) and primary metric as the 30-seed development run. Primary test: greedy vs random, round-5 paired mean regret, 95% bootstrap CI upper bound < 0, reported together with median/win-rate/Q25-Q75/worst-10% seeds. greedy_diverse and maxmin_coverage are secondary exploratory arms. The driver exits non-zero if any seed/strategy/round is missing (completeness.json)."
+}

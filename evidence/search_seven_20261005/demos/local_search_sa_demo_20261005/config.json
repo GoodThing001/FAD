@@ -1,0 +1,28 @@
+{
+  "name": "search_sa_demo",
+  "entrypoint": "scripts/loop/search_run.py",
+  "supports_log_dir": true,
+  "arguments": {
+    "policy": "simulated_annealing",
+    "seed": 5001,
+    "model-seed": 5001,
+    "n-init": 300,
+    "surrogate": "xgb",
+    "n-members": 5,
+    "screen-k": 100,
+    "max-unique-predictions": 1024,
+    "max-generations": 256,
+    "allowed-n-from-wt": "4:13",
+    "n-measured-seeds": 8,
+    "n-random-seeds": 8,
+    "min-mutual-distance": 2,
+    "sa-temperature-scale": 0.25,
+    "sa-final-temperature-ratio": 0.02,
+    "output": "runs\\local_search_sa_demo_20261005\\metrics.csv",
+    "log-dir": "runs\\local_search_sa_demo_20261005\\checkpoints"
+  },
+  "acceptance": {
+    "expected_rows": 1
+  },
+  "notes": "Deduplicated optimizer with 16 SA chains; algorithm temperature is not an MD temperature."
+}

@@ -1,0 +1,33 @@
+{
+  "ok": true,
+  "docs_checked": 3,
+  "local_links_and_anchors": 160,
+  "all_document_link_check": "checked 50 files, 0 broken local links",
+  "images": {
+    "GBSA优化项目总汇报_生工团队版_20261005.md": 17,
+    "七算法同起点比较与实施结果_20261005.md": 7,
+    "README.md": 0
+  },
+  "mermaid_sources": {
+    "GBSA优化项目总汇报_生工团队版_20261005.md": 9,
+    "七算法同起点比较与实施结果_20261005.md": 3,
+    "README.md": 0
+  },
+  "explicit_anchors": {
+    "GBSA优化项目总汇报_生工团队版_20261005.md": 13,
+    "七算法同起点比较与实施结果_20261005.md": 0,
+    "README.md": 0
+  },
+  "tests": 139,
+  "formal_subruns": 2660,
+  "formal_evaluated_rows": 3554757,
+  "source_and_parameter_freeze_unchanged": true,
+  "development_seed_range": [
+    6001,
+    6030
+  ],
+  "confirmation_seed_range": [
+    8001,
+    8100
+  ]
+}

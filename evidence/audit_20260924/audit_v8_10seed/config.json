@@ -1,0 +1,20 @@
+{
+  "name": "audit_v8_10seed",
+  "status": "audit_reproduction",
+  "entrypoint": "scripts/tools/phase3_fusion_v8.py",
+  "supports_log_dir": true,
+  "arguments": {
+    "outer-seeds": 10,
+    "inner-folds": 5,
+    "models": "RF,ET,GBR,XGB,SVR",
+    "screen-k": 100,
+    "n-jobs": 1,
+    "data-dir": "data/proxy2000_v2",
+    "output": "runs/audit_v8_10seed/metrics.csv",
+    "log-dir": "runs/audit_v8_10seed/checkpoints"
+  },
+  "acceptance": {
+    "exit_code": 0,
+    "expected_rows": 70
+  }
+}

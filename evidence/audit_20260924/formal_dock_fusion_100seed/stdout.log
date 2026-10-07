@@ -1,0 +1,12 @@
+features: 303d, target: dock
+
+============================================================
+dock prediction (100-seed), 303d features
+============================================================
+  single.RF   0.5322 +/- 0.0359
+  single.ET   0.5259 +/- 0.0360
+  single.GBR  0.5405 +/- 0.0337
+  single.XGB  0.5487 +/- 0.0326
+  rank_fusion  0.5523 +/- 0.0342
+  fusion+smooth 0.5515 +/- 0.0342
+[OK] -> /home/hzeng/project/FAD_CLEAN/runs/dock_fusion_100seed/metrics.csv

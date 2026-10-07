@@ -1,0 +1,17 @@
+{
+  "name": "audit_baseline_rf_100seed",
+  "status": "audit_reproduction",
+  "entrypoint": "scripts/tools/baseline_30seed.py",
+  "supports_log_dir": false,
+  "arguments": {
+    "models": "RF",
+    "seeds": 100,
+    "seed-start": 1,
+    "feature-set": "mutation_only",
+    "data-dir": "data/proxy2000_v2"
+  },
+  "acceptance": {
+    "exit_code": 0,
+    "expected_rows": 100
+  }
+}

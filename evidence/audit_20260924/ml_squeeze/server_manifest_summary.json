@@ -1,0 +1,30 @@
+{
+  "root": "/home/hzeng/project/FAD_CLEAN",
+  "created_at": "2026-09-26T08:49:37.662282+00:00",
+  "files": 90,
+  "bytes": 49390208,
+  "category_counts": {
+    "candidate_nupack_progress": 63,
+    "canonical_data": 1,
+    "environment": 1,
+    "experiment_evidence": 18,
+    "relevant_source": 7
+  },
+  "expected_present": [
+    "data/proxy2000_v2/fad_proxy2000_v2_full.csv"
+  ],
+  "expected_missing": [
+    "data/proxy2000_v2/train_nupack.csv",
+    "data/proxy2000_v2/val_nupack.csv",
+    "data/proxy2000_v2/test_nupack.csv",
+    "artifacts/phase1_v8/rank_targets_30seed.csv",
+    "artifacts/phase3_v8/fusion_results.csv",
+    "artifacts/v10/nupack_blocks_30seed.csv",
+    "artifacts/v10b/nupack_blocks_motif_split.csv",
+    "artifacts/v11/nupack_combo_30seed.csv",
+    "artifacts/v12/untested_30seed.csv",
+    "artifacts/v13/final_combo_30seed.csv"
+  ],
+  "scan_error_count": 0,
+  "scan_error_sample": []
+}

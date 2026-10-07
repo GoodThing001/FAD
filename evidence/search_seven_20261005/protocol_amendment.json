@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-05",
+  "stage": "before_confirmation_start",
+  "field": "confirmation_seed_range",
+  "previous": [7001, 7100],
+  "revised": [8001, 8100],
+  "reason": "Development data/search seeds 6001-6030 use model-refit seeds 7001-7030. Avoid overlap of pseudorandom-number seeds in the independent confirmation package.",
+  "outcome_independent": true,
+  "unchanged": ["all seven policies", "all algorithm parameters", "budgets", "100 confirmation seeds", "two proxies", "comparisons", "analysis rules"],
+  "confirmation_runs_started": 0
+}

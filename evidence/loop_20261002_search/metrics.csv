@@ -1,0 +1,2 @@
+search_id,policy,seed,outer_round,n_unique_predicted,n_candidates,best_pred_gbsa,best_candidate_id,stop_reason,n_groups,group_roles,model_id,feature_version,budget,seconds,archive_dir
+search_multi_start_beam_1_8192,multi_start_beam,1,1,5598,5590,5.838059425354004,e9dcd88fc387264c,stagnation,2,"predicted_best,diverse_backup",xgb_boot5_xgboost,seq303_screen100,8192,108.385,/home/hzeng/project/FAD_CLEAN/runs/srv_search_dev_beam_8192_20261002_014350/checkpoints

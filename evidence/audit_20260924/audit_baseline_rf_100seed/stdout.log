@@ -1,0 +1,115 @@
+Data: 2000 sequences from /home/hzeng/project/FAD_CLEAN/data/proxy2000_v2/fad_proxy2000_v2_full.csv
+Models: ['RF']
+Seeds: 1–100 (100 total)
+Feature set: mutation_only
+  seed= 1  [ 1/100]  best_gbsa_Sp=0.3256  elapsed=3s
+  seed= 2  [ 2/100]  best_gbsa_Sp=0.3536  elapsed=7s
+  seed= 3  [ 3/100]  best_gbsa_Sp=0.3665  elapsed=10s
+  seed= 4  [ 4/100]  best_gbsa_Sp=0.3580  elapsed=14s
+  seed= 5  [ 5/100]  best_gbsa_Sp=0.3615  elapsed=18s
+  seed= 6  [ 6/100]  best_gbsa_Sp=0.3734  elapsed=21s
+  seed= 7  [ 7/100]  best_gbsa_Sp=0.4049  elapsed=25s
+  seed= 8  [ 8/100]  best_gbsa_Sp=0.3441  elapsed=29s
+  seed= 9  [ 9/100]  best_gbsa_Sp=0.3785  elapsed=33s
+  seed=10  [10/100]  best_gbsa_Sp=0.4365  elapsed=36s
+  seed=11  [11/100]  best_gbsa_Sp=0.3407  elapsed=40s
+  seed=12  [12/100]  best_gbsa_Sp=0.3921  elapsed=44s
+  seed=13  [13/100]  best_gbsa_Sp=0.4002  elapsed=48s
+  seed=14  [14/100]  best_gbsa_Sp=0.3712  elapsed=52s
+  seed=15  [15/100]  best_gbsa_Sp=0.3308  elapsed=56s
+  seed=16  [16/100]  best_gbsa_Sp=0.2715  elapsed=59s
+  seed=17  [17/100]  best_gbsa_Sp=0.3952  elapsed=63s
+  seed=18  [18/100]  best_gbsa_Sp=0.3810  elapsed=67s
+  seed=19  [19/100]  best_gbsa_Sp=0.3860  elapsed=71s
+  seed=20  [20/100]  best_gbsa_Sp=0.3486  elapsed=74s
+  seed=21  [21/100]  best_gbsa_Sp=0.4309  elapsed=78s
+  seed=22  [22/100]  best_gbsa_Sp=0.3913  elapsed=82s
+  seed=23  [23/100]  best_gbsa_Sp=0.4284  elapsed=85s
+  seed=24  [24/100]  best_gbsa_Sp=0.4154  elapsed=89s
+  seed=25  [25/100]  best_gbsa_Sp=0.2582  elapsed=93s
+  seed=26  [26/100]  best_gbsa_Sp=0.4289  elapsed=97s
+  seed=27  [27/100]  best_gbsa_Sp=0.4507  elapsed=100s
+  seed=28  [28/100]  best_gbsa_Sp=0.4251  elapsed=104s
+  seed=29  [29/100]  best_gbsa_Sp=0.3841  elapsed=108s
+  seed=30  [30/100]  best_gbsa_Sp=0.3796  elapsed=111s
+  seed=31  [31/100]  best_gbsa_Sp=0.3916  elapsed=115s
+  seed=32  [32/100]  best_gbsa_Sp=0.3336  elapsed=119s
+  seed=33  [33/100]  best_gbsa_Sp=0.3943  elapsed=122s
+  seed=34  [34/100]  best_gbsa_Sp=0.3028  elapsed=126s
+  seed=35  [35/100]  best_gbsa_Sp=0.3600  elapsed=129s
+  seed=36  [36/100]  best_gbsa_Sp=0.3789  elapsed=132s
+  seed=37  [37/100]  best_gbsa_Sp=0.3776  elapsed=136s
+  seed=38  [38/100]  best_gbsa_Sp=0.3606  elapsed=139s
+  seed=39  [39/100]  best_gbsa_Sp=0.3229  elapsed=142s
+  seed=40  [40/100]  best_gbsa_Sp=0.4046  elapsed=145s
+  seed=41  [41/100]  best_gbsa_Sp=0.3861  elapsed=148s
+  seed=42  [42/100]  best_gbsa_Sp=0.3645  elapsed=151s
+  seed=43  [43/100]  best_gbsa_Sp=0.3251  elapsed=155s
+  seed=44  [44/100]  best_gbsa_Sp=0.3085  elapsed=158s
+  seed=45  [45/100]  best_gbsa_Sp=0.3219  elapsed=161s
+  seed=46  [46/100]  best_gbsa_Sp=0.3814  elapsed=165s
+  seed=47  [47/100]  best_gbsa_Sp=0.2349  elapsed=167s
+  seed=48  [48/100]  best_gbsa_Sp=0.4110  elapsed=170s
+  seed=49  [49/100]  best_gbsa_Sp=0.4146  elapsed=173s
+  seed=50  [50/100]  best_gbsa_Sp=0.3179  elapsed=177s
+  seed=51  [51/100]  best_gbsa_Sp=0.3803  elapsed=179s
+  seed=52  [52/100]  best_gbsa_Sp=0.3199  elapsed=183s
+  seed=53  [53/100]  best_gbsa_Sp=0.4045  elapsed=186s
+  seed=54  [54/100]  best_gbsa_Sp=0.3532  elapsed=189s
+  seed=55  [55/100]  best_gbsa_Sp=0.3786  elapsed=192s
+  seed=56  [56/100]  best_gbsa_Sp=0.3215  elapsed=195s
+  seed=57  [57/100]  best_gbsa_Sp=0.2303  elapsed=198s
+  seed=58  [58/100]  best_gbsa_Sp=0.3816  elapsed=201s
+  seed=59  [59/100]  best_gbsa_Sp=0.3830  elapsed=204s
+  seed=60  [60/100]  best_gbsa_Sp=0.3409  elapsed=207s
+  seed=61  [61/100]  best_gbsa_Sp=0.3177  elapsed=211s
+  seed=62  [62/100]  best_gbsa_Sp=0.3283  elapsed=214s
+  seed=63  [63/100]  best_gbsa_Sp=0.3817  elapsed=217s
+  seed=64  [64/100]  best_gbsa_Sp=0.3736  elapsed=220s
+  seed=65  [65/100]  best_gbsa_Sp=0.3860  elapsed=223s
+  seed=66  [66/100]  best_gbsa_Sp=0.3364  elapsed=226s
+  seed=67  [67/100]  best_gbsa_Sp=0.3617  elapsed=229s
+  seed=68  [68/100]  best_gbsa_Sp=0.3505  elapsed=232s
+  seed=69  [69/100]  best_gbsa_Sp=0.3938  elapsed=235s
+  seed=70  [70/100]  best_gbsa_Sp=0.3930  elapsed=238s
+  seed=71  [71/100]  best_gbsa_Sp=0.3170  elapsed=242s
+  seed=72  [72/100]  best_gbsa_Sp=0.4131  elapsed=245s
+  seed=73  [73/100]  best_gbsa_Sp=0.3827  elapsed=249s
+  seed=74  [74/100]  best_gbsa_Sp=0.3967  elapsed=252s
+  seed=75  [75/100]  best_gbsa_Sp=0.3725  elapsed=255s
+  seed=76  [76/100]  best_gbsa_Sp=0.3868  elapsed=259s
+  seed=77  [77/100]  best_gbsa_Sp=0.2453  elapsed=263s
+  seed=78  [78/100]  best_gbsa_Sp=0.4028  elapsed=267s
+  seed=79  [79/100]  best_gbsa_Sp=0.3114  elapsed=270s
+  seed=80  [80/100]  best_gbsa_Sp=0.4058  elapsed=274s
+  seed=81  [81/100]  best_gbsa_Sp=0.3641  elapsed=278s
+  seed=82  [82/100]  best_gbsa_Sp=0.3324  elapsed=281s
+  seed=83  [83/100]  best_gbsa_Sp=0.3684  elapsed=285s
+  seed=84  [84/100]  best_gbsa_Sp=0.3803  elapsed=288s
+  seed=85  [85/100]  best_gbsa_Sp=0.4019  elapsed=291s
+  seed=86  [86/100]  best_gbsa_Sp=0.3799  elapsed=295s
+  seed=87  [87/100]  best_gbsa_Sp=0.3200  elapsed=298s
+  seed=88  [88/100]  best_gbsa_Sp=0.3612  elapsed=301s
+  seed=89  [89/100]  best_gbsa_Sp=0.3723  elapsed=304s
+  seed=90  [90/100]  best_gbsa_Sp=0.3618  elapsed=307s
+  seed=91  [91/100]  best_gbsa_Sp=0.3460  elapsed=311s
+  seed=92  [92/100]  best_gbsa_Sp=0.3545  elapsed=314s
+  seed=93  [93/100]  best_gbsa_Sp=0.3824  elapsed=317s
+  seed=94  [94/100]  best_gbsa_Sp=0.3557  elapsed=321s
+  seed=95  [95/100]  best_gbsa_Sp=0.3115  elapsed=324s
+  seed=96  [96/100]  best_gbsa_Sp=0.4069  elapsed=327s
+  seed=97  [97/100]  best_gbsa_Sp=0.4385  elapsed=331s
+  seed=98  [98/100]  best_gbsa_Sp=0.3583  elapsed=334s
+  seed=99  [99/100]  best_gbsa_Sp=0.3492  elapsed=338s
+  seed=100  [100/100]  best_gbsa_Sp=0.3362  elapsed=341s
+
+[OK] Per-seed results saved to runs/audit_baseline_rf_100seed/metrics.csv
+
+================================================================================
+SUMMARY: mutation_only | 100 seeds | 1 models
+================================================================================
+Model       Mean Sp     Std Sp     Min Sp     Max Sp   Mean Hyb  Mean RMSE
+RF           0.3644     0.0424     0.2303     0.4507     0.9155       9.78
+
+Best (any model)     0.3644     0.0424     0.2303     0.4507
+[OK] Summary saved to /home/hzeng/project/FAD_CLEAN/runs/audit_baseline_rf_100seed/metrics_summary.json

@@ -1,0 +1,32 @@
+{
+  "name": "search_dev_beam_8192",
+  "status": "exploratory",
+  "entrypoint": "scripts/loop/search_run.py",
+  "supports_log_dir": true,
+  "arguments": {
+    "policy": "multi_start_beam",
+    "seed": 1,
+    "max-unique-predictions": 8192,
+    "max-generations": 8,
+    "allowed-n-from-wt": "4:13",
+    "n-init": 400,
+    "surrogate": "xgb",
+    "n-members": 5,
+    "screen-k": 100,
+    "data-dir": "data/proxy2000_v2",
+    "beam-width": 32,
+    "offspring-per-parent": 32,
+    "one-hop-fraction": 0.8,
+    "restart-fraction": 0.1,
+    "diversity-pool-factor": 4,
+    "diversity-distance": 2,
+    "max-stagnant-generations": 2,
+    "n-measured-seeds": 8,
+    "n-random-seeds": 8,
+    "min-mutual-distance": 2
+  },
+  "acceptance": {
+    "expected_rows": 1
+  },
+  "notes": "Development-scale beam search (8192 unique predictions, the plan §4.1 starting budget; beam 32 x 32 offspring with 80/20 one/two-hop mix, 10% global restart, diversity distance 2 over the top 4x beam pool). Engineering throughput test on the server (nohup, check load, 4-8 workers); on Windows the local xgboost fallback backend is recorded in model_id and must not be compared to server numbers as the same backend."
+}

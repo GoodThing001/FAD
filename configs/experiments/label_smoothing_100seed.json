@@ -1,0 +1,22 @@
+{
+  "name": "label_smoothing_100seed",
+  "status": "validated_reproduction",
+  "entrypoint": "scripts/reproduction/label_smoothing.py",
+  "supports_log_dir": false,
+  "arguments": {
+    "outer-seeds": 100,
+    "k": 5,
+    "alpha": 0.5,
+    "data-dir": "data/proxy2000_v2"
+  },
+  "reference_result": {
+    "metric": "gbsa_spearman_paired_delta_smoothed_vs_original",
+    "mean": 0.019,
+    "ci95_low": 0.015,
+    "ci95_high": 0.024
+  },
+  "acceptance": {
+    "exit_code": 0,
+    "expected_rows": 100
+  }
+}

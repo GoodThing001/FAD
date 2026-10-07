@@ -1,0 +1,55 @@
+{
+  "search_interface_version": "0.1.1",
+  "search_id": "search_mutation_only_ga_5001_1024_m5001",
+  "policy": "mutation_only_ga",
+  "policy_config": {
+    "population_size": 32,
+    "offspring_size": 128,
+    "tournament_size": 2,
+    "elite_count": 2,
+    "one_hop_fraction": 0.8,
+    "restart_fraction": 0.1,
+    "diversity_pool_factor": 4,
+    "diversity_distance": 2,
+    "max_stagnant_generations": 4,
+    "n_measured_seeds": 8,
+    "n_random_seeds": 8,
+    "min_mutual_distance": 2
+  },
+  "seed": 5001,
+  "outer_round": 1,
+  "data_sha256": "0876C2B25A5571B834EBAC2C0C0F7671E023F6028688E90CCBA884A75FD4322A",
+  "max_unique_predictions": 1024,
+  "n_unique_predicted": 916,
+  "n_candidates": 908,
+  "best_pred_gbsa": 6.150741114773896,
+  "best_candidate_id": "de9c8bdd48be655b",
+  "stop_reason": "stagnation",
+  "generations_run": 8,
+  "n_groups": 2,
+  "group_roles": [
+    "predicted_best",
+    "diverse_backup"
+  ],
+  "model_id": "xgb_boot5_sklearn_gbm_eed2739e5301b59b",
+  "feature_version": "seq303_screen100",
+  "top10_ood_fraction": 0.0,
+  "top10_min_train_hamming": 3.0,
+  "seconds_total": 1.609,
+  "rejection_stats": {
+    "proposed": 1024,
+    "rejected_forbidden": 3,
+    "rejected_duplicate": 121,
+    "rejected_constraint": 0,
+    "scored": 916
+  },
+  "files_sha256": {
+    "search_snapshot.json": "e4c8a03f2da7f52ba24b865cdecc4843b659d9e76f7fd944c4268977b47cd014",
+    "search_state.json": "aaf8d72d85603007fc5b8b718f99ac81ab8d120e2f3c5dd3b6a44131248d6fc4",
+    "predictions.jsonl": "758ed91c0eecfb2c19cd8ca9aa86ebf256a66ac9a9efabe7406a4348b9d6ece6",
+    "search_evaluated.jsonl": "8e3b521001eea8207c091be7ba3b122e9ff1dbeb7cd871f70de4c82d31d78bcb",
+    "search_candidates.csv": "0ddd751b72c45c519f16337363fb39ef34a871dcb46314aff3e558fe40ef00db",
+    "search_generations.csv": "9ab6ecf820c982a40cd38c91263a3cafd11cf3f92a0af1afe761be85479d4d94",
+    "search_groups.json": "02da7afffba98e06e6a4f8c5f0fa60c80ab005a120c3581b3e1ad308e635d24e"
+  }
+}

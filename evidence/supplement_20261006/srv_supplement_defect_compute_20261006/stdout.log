@@ -1,0 +1,27 @@
+WT MFE structure: .......(((..(.((((....)))).).)))(.(((..(((((((....)))))))..)))).....((((((((....))))))))(((.((((((....)))))).))).(((.......)))............... (0s)
+one sequence defect=57.85 wt_prob=0.0000 in 0.2s -> est total 78s with 4 jobs
+  200/2000  6s
+  400/2000  13s
+  600/2000  20s
+  800/2000  27s
+  1000/2000  34s
+  1200/2000  41s
+  1400/2000  47s
+  1600/2000  53s
+  1800/2000  59s
+  2000/2000  64s
+computed 2000/2000 in 64s
+Traceback (most recent call last):
+  File "/home/hzeng/project/FAD_CLEAN/scripts/reproduction/ensemble_defect.py", line 219, in <module>
+    main()
+  File "/home/hzeng/project/FAD_CLEAN/scripts/reproduction/ensemble_defect.py", line 206, in main
+    official=float(nupack.defect(strands=[seq],structure=_WT_STRUCT,model=_get_model()))*len(seq)
+  File "/home/hzeng/envs/nupack_env_py39/lib/python3.9/site-packages/nupack/design/__init__.py", line 1151, in structure_defect
+    return design.evaluate().ensemble_defect
+  File "/home/hzeng/envs/nupack_env_py39/lib/python3.9/site-packages/nupack/design/__init__.py", line 924, in evaluate
+    return self.build_result(self.spec.evaluate(env))
+  File "/home/hzeng/envs/nupack_env_py39/lib/python3.9/site-packages/nupack/rebind/render.py", line 243, in wrap
+    return _old(*args, _fun_=_orig, **kwargs)
+  File "/home/hzeng/envs/nupack_env_py39/lib/python3.9/site-packages/nupack/design/core.py", line 539, in evaluate
+    return _fun_(self, env, gil=False).cast(rs.Result)
+RuntimeError: C++: Space::clone: Attempt to invoke operation on failed space

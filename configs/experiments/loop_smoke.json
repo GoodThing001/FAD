@@ -1,0 +1,26 @@
+{
+  "name": "loop_smoke",
+  "status": "smoke",
+  "entrypoint": "scripts/loop/loop.py",
+  "supports_log_dir": true,
+  "arguments": {
+    "mode": "retrospective",
+    "rounds": 2,
+    "budget": 50,
+    "n-init": 200,
+    "n-holdout": 150,
+    "pool-size": 300,
+    "surrogate": "xgb",
+    "n-members": 5,
+    "oracle": "table",
+    "seed": 1,
+    "data-dir": "data/proxy2000_v2"
+  },
+  "acceptance": {
+    "exit_code": 0,
+    "expect_exit_code": 0,
+    "expect_marker": "DONE",
+    "expected_rows": 2
+  },
+  "notes": "Retrospective smoke test of the closed loop on held-out proxy labels. PASSING THIS RUN IS NOT EVIDENCE THAT SELECTION BEATS RANDOM: both arms read the same in-table labels, and the point is only that the machinery (mutate -> score -> select -> reveal -> retrain -> ledger) runs end to end without contract violations."
+}

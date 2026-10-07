@@ -1,0 +1,13 @@
+Ran 128 tests in 145.353s
+OK
+compileall: exit0
+Development: 1140 subruns,2438283 evaluated records audited
+Confirmation: 800 subruns,812265 evaluated records audited
+GA demo: 916 records audited
+Old dock residual seed1: exact original numeric outputs
+checked 48 files, 0 broken local links
+2 extra evidence markdown files:0broken links
+Saved model top2 after reload:exact
+Paired search means/medians/win counts:consistent
+Dock100 saved-summary recalculation:consistent
+8Mermaid frameworks rendered and4data plots inspected

@@ -1,0 +1,7 @@
+{
+  "logical_cpu": 8,
+  "physical_cpu": 4,
+  "memory_available_gb": 4.240653991699219,
+  "xgboost_available": false,
+  "disk_free_gb": 134.37607955932617
+}
